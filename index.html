@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Diplomatura Blockchain 2026 — UNQ</title>
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<header class="unq-header">
+  <a href="index.html" class="brand" title="Volver al menú principal">
+    <div class="brand-text">
+      <div class="institution">Universidad Nacional de Quilmes</div>
+      <div class="department">Diplomatura en Blockchain</div>
+    </div>
+  </a>
+  <div class="course-bar">
+    <span class="course">Desarrollo de Smart Contracts y dApps</span>
+    <span class="year">2026</span>
+    <span class="instructor">Dr. David Petrocelli &amp; Ciro</span>
+  </div>
+</header>
+
+<div class="layout" style="grid-template-columns: 1fr;">
+  <main class="content" style="max-width: 1100px; margin: 0 auto; padding: 48px 56px 80px;">
+
+    <h1 style="border-bottom: none; padding-bottom: 0; margin-bottom: 6px;">Material de cursada</h1>
+    <p style="color: var(--gray); margin: 0 0 32px; font-size: 15px;">
+      Diplomatura en Blockchain · Desarrollo de Smart Contracts y dApps · 2026 · Cátedra Petrocelli &amp; Ciro.
+    </p>
+
+    <h2 style="border-left: 5px solid var(--unq-orange); margin-top: 16px;">Clases</h2>
+
+    <div class="flow-diagram" aria-label="Flujo de clases">
+      <div class="flow-step closed" data-status="cerrado">
+        <div class="step-num">Clase 1</div>
+        <div class="step-name">Fundamentos + Remix + MetaMask</div>
+        <div class="step-status">✅ Dictada (asincrónica + sincrónica con Ciro)</div>
+      </div>
+      <span class="flow-arrow" aria-hidden="true">→</span>
+      <a href="clase-2.html" class="flow-step open" data-status="abierto">
+        <div class="step-num">Clase 2</div>
+        <div class="step-name">Foundry + SimpleStorage</div>
+        <div class="step-status">🔓 Hoy 18:00 · David + Ciro</div>
+      </a>
+      <span class="flow-arrow" aria-hidden="true">→</span>
+      <div class="flow-step" data-status="proximamente">
+        <div class="step-num">Clase 3</div>
+        <div class="step-name">OpenZeppelin + ERC-20 + Frontend</div>
+        <div class="step-status">⏳ Próximamente</div>
+      </div>
+      <span class="flow-arrow" aria-hidden="true">→</span>
+      <div class="flow-step" data-status="proximamente">
+        <div class="step-num">Clase 4</div>
+        <div class="step-name">Seguridad + Auditoría + Slither</div>
+        <div class="step-status">⏳ Próximamente</div>
+      </div>
+    </div>
+
+    <h2 style="border-left: 5px solid var(--unq-orange); margin-top: 48px;">Recursos</h2>
+
+    <ul style="font-size: 15px; line-height: 1.9;">
+      <li><strong>Repo del ejercicio (clase 2):</strong>
+        <a href="https://github.com/dpetrocelli/diplo-unq-blockchain-clase2" target="_blank" rel="noopener noreferrer">
+          github.com/dpetrocelli/diplo-unq-blockchain-clase2
+        </a>
+      </li>
+      <li><strong>Foundry Book:</strong>
+        <a href="https://book.getfoundry.sh/" target="_blank" rel="noopener noreferrer">book.getfoundry.sh</a>
+      </li>
+      <li><strong>Solidity Docs:</strong>
+        <a href="https://docs.soliditylang.org/" target="_blank" rel="noopener noreferrer">docs.soliditylang.org</a>
+      </li>
+      <li><strong>OpenZeppelin Contracts:</strong>
+        <a href="https://docs.openzeppelin.com/contracts/" target="_blank" rel="noopener noreferrer">docs.openzeppelin.com/contracts</a>
+      </li>
+      <li><strong>Sepolia Etherscan:</strong>
+        <a href="https://sepolia.etherscan.io" target="_blank" rel="noopener noreferrer">sepolia.etherscan.io</a>
+      </li>
+      <li><strong>Faucet recomendada:</strong>
+        <a href="https://cloud.google.com/application/web3/faucet/ethereum/sepolia" target="_blank" rel="noopener noreferrer">
+          Google Cloud Web3 Faucet (Sepolia)
+        </a>
+      </li>
+    </ul>
+
+    <h2 style="border-left: 5px solid var(--unq-orange); margin-top: 48px;">Cómo arrancar la clase 2</h2>
+
+    <p>Una sola línea para clonar el ejercicio:</p>
+
+    <pre style="cursor: text;"><code>git clone https://github.com/dpetrocelli/diplo-unq-blockchain-clase2.git
+cd diplo-unq-blockchain-clase2
+forge install foundry-rs/forge-std --shallow
+forge build
+forge test</code></pre>
+
+    <p>Tienen que ver <code>10 passed; 0 failed</code>. Después <a href="clase-2.html">abrí la guía de la clase 2</a>.</p>
+
+  </main>
+</div>
+
+<footer class="unq-footer">
+  <div>
+    UNQ · Diplomatura en Blockchain · Desarrollo de Smart Contracts y dApps <strong>2026</strong>
+    · Dr. David Petrocelli &amp; Ciro
+  </div>
+</footer>
+
+</body>
+</html>
