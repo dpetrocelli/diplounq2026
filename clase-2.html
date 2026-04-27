@@ -4,7 +4,6 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=2.0">
   <meta name="generator" content="pandoc + UNLu/DCB template">
-  <meta name="author" content="David Petrocelli">
   <title>Clase 2 — Foundry + SimpleStorage — UNQ Diplo
 Blockchain</title>
   <link rel="stylesheet" href="assets/style.css">
@@ -99,130 +98,47 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
       <button type="button" id="sidebar-hide" class="sidebar-toggle-btn sidebar-hide" aria-label="Ocultar índice lateral" title="Ocultar índice lateral">×</button>
     </div>
     <ul>
-    <li><a href="#slide-de-apertura--qué-vamos-a-cubrir-hoy"
-    id="toc-slide-de-apertura--qué-vamos-a-cubrir-hoy">Slide de apertura
-    — qué vamos a cubrir hoy</a>
+    <li><a href="#clase-2--foundry--simplestorage"
+    id="toc-clase-2--foundry--simplestorage">Clase 2 — Foundry +
+    SimpleStorage</a>
     <ul>
-    <li><a href="#repo-del-ejercicio-público"
-    id="toc-repo-del-ejercicio-público">Repo del ejercicio
-    (público)</a></li>
-    </ul></li>
-    <li><a href="#0-pre-flight-qué-está-instalado-y-cómo-lo-instalé"
-    id="toc-0-pre-flight-qué-está-instalado-y-cómo-lo-instalé">0.
-    Pre-flight: qué está instalado y cómo lo instalé</a>
+    <li><a href="#qué-vamos-a-hacer-hoy"
+    id="toc-qué-vamos-a-hacer-hoy">Qué vamos a hacer hoy</a></li>
+    <li><a href="#repo-del-ejercicio" id="toc-repo-del-ejercicio">Repo
+    del ejercicio</a></li>
+    <li><a href="#pre-requisitos-traerlos-hechos"
+    id="toc-pre-requisitos-traerlos-hechos">Pre-requisitos (traerlos
+    hechos)</a></li>
+    <li><a href="#setup-en-clase" id="toc-setup-en-clase">Setup en
+    clase</a>
     <ul>
-    <li><a href="#01--instalación-de-foundry"
-    id="toc-01--instalación-de-foundry">0.1 — Instalación de
-    Foundry</a></li>
-    <li><a href="#02--setup-del-proyecto-cosas-que-tuve-que-arreglar"
-    id="toc-02--setup-del-proyecto-cosas-que-tuve-que-arreglar">0.2 —
-    Setup del proyecto (cosas que tuve que arreglar)</a></li>
-    <li><a href="#03--fix-necesario-en-foundrytoml"
-    id="toc-03--fix-necesario-en-foundrytoml">0.3 — Fix necesario en
-    <code>foundry.toml</code></a></li>
-    <li><a href="#04--verificación-final-del-proyecto"
-    id="toc-04--verificación-final-del-proyecto">0.4 — Verificación
-    final del proyecto</a></li>
-    <li><a href="#05--verificación-de-sepolia-sin-gastar-tokens"
-    id="toc-05--verificación-de-sepolia-sin-gastar-tokens">0.5 —
-    Verificación de Sepolia (sin gastar tokens)</a></li>
+    <li><a href="#1-instalar-foundry" id="toc-1-instalar-foundry">1.
+    Instalar Foundry</a></li>
+    <li><a href="#2-instalar-la-extensión-solidity-en-vs-code"
+    id="toc-2-instalar-la-extensión-solidity-en-vs-code">2. Instalar la
+    extensión Solidity en VS Code</a></li>
+    <li><a href="#3-clonar-el-repo-y-compilar"
+    id="toc-3-clonar-el-repo-y-compilar">3. Clonar el repo y
+    compilar</a></li>
     </ul></li>
-    <li><a href="#1-mapa-de-tiempos" id="toc-1-mapa-de-tiempos">1. Mapa
-    de tiempos</a></li>
-    <li><a href="#2-bloque-1--intro--repaso-1800--1815-15-min"
-    id="toc-2-bloque-1--intro--repaso-1800--1815-15-min">2. Bloque 1 —
-    Intro + repaso (18:00 – 18:15, 15 min)</a>
+    <li><a href="#comandos-clave-cheat-sheet"
+    id="toc-comandos-clave-cheat-sheet">Comandos clave (cheat sheet)</a>
     <ul>
-    <li><a href="#21--saludo-2-min" id="toc-21--saludo-2-min">2.1 —
-    Saludo (2 min)</a></li>
-    <li><a href="#22--repaso-lightning-de-clase-1-3-min"
-    id="toc-22--repaso-lightning-de-clase-1-3-min">2.2 — Repaso
-    lightning de clase 1 (3 min)</a></li>
-    <li><a href="#23--qa-pendiente-5-min"
-    id="toc-23--qa-pendiente-5-min">2.3 — Q&amp;A pendiente (5 min)</a>
-    <ul>
-    <li><a
-    href="#pregunta-1--alfredo-qué-tipo-de-archivo-es-la-blockchain"
-    id="toc-pregunta-1--alfredo-qué-tipo-de-archivo-es-la-blockchain">Pregunta
-    1 — Alfredo: “¿qué tipo de archivo es la blockchain?”</a></li>
-    <li><a href="#pregunta-2--alfredo-ethereum-está-en-c-o-en-rust"
-    id="toc-pregunta-2--alfredo-ethereum-está-en-c-o-en-rust">Pregunta 2
-    — Alfredo: “¿Ethereum está en C++ o en Rust?”</a></li>
-    <li><a
-    href="#pregunta-3--anónimo-el-contrato-queda-encriptado-en-la-blockchain"
-    id="toc-pregunta-3--anónimo-el-contrato-queda-encriptado-en-la-blockchain">Pregunta
-    3 — anónimo: “¿el contrato queda encriptado en la
-    blockchain?”</a></li>
+    <li><a href="#compilar-y-testear"
+    id="toc-compilar-y-testear">Compilar y testear</a></li>
+    <li><a href="#blockchain-local-con-anvil"
+    id="toc-blockchain-local-con-anvil">Blockchain local con
+    Anvil</a></li>
+    <li><a href="#deploy-real-a-sepolia"
+    id="toc-deploy-real-a-sepolia">Deploy real a Sepolia</a></li>
     </ul></li>
-    <li><a href="#24--check-operativo-5-min"
-    id="toc-24--check-operativo-5-min">2.4 — Check operativo (5
-    min)</a></li>
+    <li><a href="#tarea-para-la-próxima-clase"
+    id="toc-tarea-para-la-próxima-clase">Tarea para la próxima
+    clase</a></li>
+    <li><a href="#recursos" id="toc-recursos">Recursos</a></li>
+    <li><a href="#si-algo-falla" id="toc-si-algo-falla">Si algo
+    falla</a></li>
     </ul></li>
-    <li><a
-    href="#3-bloque-2--foundry-install--build--tests-1815--1900-45-min"
-    id="toc-3-bloque-2--foundry-install--build--tests-1815--1900-45-min">3.
-    Bloque 2 — Foundry: install → build → tests (18:15 – 19:00, 45
-    min)</a>
-    <ul>
-    <li><a
-    href="#31--instalación-de-foundry-y-extensión-solidity-10-min"
-    id="toc-31--instalación-de-foundry-y-extensión-solidity-10-min">3.1
-    — Instalación de Foundry y extensión Solidity (10 min)</a>
-    <ul>
-    <li><a href="#paso-1--foundry" id="toc-paso-1--foundry">Paso 1 —
-    Foundry</a></li>
-    <li><a href="#paso-2--extensión-solidity-de-vs-code"
-    id="toc-paso-2--extensión-solidity-de-vs-code">Paso 2 — Extensión
-    Solidity de VS Code</a></li>
-    <li><a href="#paso-3--verificar" id="toc-paso-3--verificar">Paso 3 —
-    Verificar</a></li>
-    </ul></li>
-    <li><a href="#32--clonar-el-repo-del-ejercicio-y-forge-build-10-min"
-    id="toc-32--clonar-el-repo-del-ejercicio-y-forge-build-10-min">3.2 —
-    Clonar el repo del ejercicio y <code>forge build</code> (10
-    min)</a></li>
-    <li><a href="#33--tour-de-simplestoragesol-10-min"
-    id="toc-33--tour-de-simplestoragesol-10-min">3.3 — Tour de
-    <code>SimpleStorage.sol</code> (10 min)</a></li>
-    <li><a href="#34--tests-15-min" id="toc-34--tests-15-min">3.4 —
-    Tests (15 min)</a>
-    <ul>
-    <li><a href="#ejercicio-en-vivo-agregar-test_doubleincrement-8-min"
-    id="toc-ejercicio-en-vivo-agregar-test_doubleincrement-8-min">Ejercicio
-    en vivo: agregar <code>test_DoubleIncrement</code> (8 min)</a></li>
-    </ul></li>
-    </ul></li>
-    <li><a href="#4-break-1900--1905-5-min"
-    id="toc-4-break-1900--1905-5-min">4. Break (19:00 – 19:05, 5
-    min)</a></li>
-    <li><a href="#5-bloque-3--anvil--deploy-real-1905--1935-30-min"
-    id="toc-5-bloque-3--anvil--deploy-real-1905--1935-30-min">5. Bloque
-    3 — Anvil + deploy real (19:05 – 19:35, 30 min)</a>
-    <ul>
-    <li><a href="#51--anvil-blockchain-local-instantánea-8-min"
-    id="toc-51--anvil-blockchain-local-instantánea-8-min">5.1 — Anvil:
-    blockchain local instantánea (8 min)</a></li>
-    <li><a href="#52--deploy-local-con-forge-create-5-min"
-    id="toc-52--deploy-local-con-forge-create-5-min">5.2 — Deploy local
-    con <code>forge create</code> (5 min)</a></li>
-    <li><a href="#53--interactuar-con-cast-7-min"
-    id="toc-53--interactuar-con-cast-7-min">5.3 — Interactuar con
-    <code>cast</code> (7 min)</a></li>
-    <li><a href="#54--deploy-a-sepolia--etherscan-10-min"
-    id="toc-54--deploy-a-sepolia--etherscan-10-min">5.4 — Deploy a
-    Sepolia + Etherscan (10 min)</a></li>
-    </ul></li>
-    <li><a href="#6-handoff-a-ciro-1935"
-    id="toc-6-handoff-a-ciro-1935">6. Handoff a Ciro (19:35)</a>
-    <ul>
-    <li><a href="#tarea-para-la-próxima"
-    id="toc-tarea-para-la-próxima">Tarea para la próxima</a></li>
-    </ul></li>
-    <li><a href="#7-riesgos-y-planes-b" id="toc-7-riesgos-y-planes-b">7.
-    Riesgos y planes B</a></li>
-    <li><a href="#8-checklist-final-pre-clase-chequear-10-min-antes"
-    id="toc-8-checklist-final-pre-clase-chequear-10-min-antes">8.
-    Checklist final pre-clase (chequear 10 min antes)</a></li>
     </ul>
     <div style="margin-top:24px;padding-top:14px;border-top:1px solid var(--light-gray);font-size:12px;">
       <a href="index.html" style="color:var(--gray);">← Volver al índice</a>
@@ -243,134 +159,48 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
     <details class="toc-inline" open>
       <summary>📑 Índice del documento</summary>
       <ul>
-      <li><a href="#slide-de-apertura--qué-vamos-a-cubrir-hoy"
-      id="toc-slide-de-apertura--qué-vamos-a-cubrir-hoy">Slide de
-      apertura — qué vamos a cubrir hoy</a>
+      <li><a href="#clase-2--foundry--simplestorage"
+      id="toc-clase-2--foundry--simplestorage">Clase 2 — Foundry +
+      SimpleStorage</a>
       <ul>
-      <li><a href="#repo-del-ejercicio-público"
-      id="toc-repo-del-ejercicio-público">Repo del ejercicio
-      (público)</a></li>
-      </ul></li>
-      <li><a href="#0-pre-flight-qué-está-instalado-y-cómo-lo-instalé"
-      id="toc-0-pre-flight-qué-está-instalado-y-cómo-lo-instalé">0.
-      Pre-flight: qué está instalado y cómo lo instalé</a>
+      <li><a href="#qué-vamos-a-hacer-hoy"
+      id="toc-qué-vamos-a-hacer-hoy">Qué vamos a hacer hoy</a></li>
+      <li><a href="#repo-del-ejercicio" id="toc-repo-del-ejercicio">Repo
+      del ejercicio</a></li>
+      <li><a href="#pre-requisitos-traerlos-hechos"
+      id="toc-pre-requisitos-traerlos-hechos">Pre-requisitos (traerlos
+      hechos)</a></li>
+      <li><a href="#setup-en-clase" id="toc-setup-en-clase">Setup en
+      clase</a>
       <ul>
-      <li><a href="#01--instalación-de-foundry"
-      id="toc-01--instalación-de-foundry">0.1 — Instalación de
-      Foundry</a></li>
-      <li><a href="#02--setup-del-proyecto-cosas-que-tuve-que-arreglar"
-      id="toc-02--setup-del-proyecto-cosas-que-tuve-que-arreglar">0.2 —
-      Setup del proyecto (cosas que tuve que arreglar)</a></li>
-      <li><a href="#03--fix-necesario-en-foundrytoml"
-      id="toc-03--fix-necesario-en-foundrytoml">0.3 — Fix necesario en
-      <code>foundry.toml</code></a></li>
-      <li><a href="#04--verificación-final-del-proyecto"
-      id="toc-04--verificación-final-del-proyecto">0.4 — Verificación
-      final del proyecto</a></li>
-      <li><a href="#05--verificación-de-sepolia-sin-gastar-tokens"
-      id="toc-05--verificación-de-sepolia-sin-gastar-tokens">0.5 —
-      Verificación de Sepolia (sin gastar tokens)</a></li>
+      <li><a href="#1-instalar-foundry" id="toc-1-instalar-foundry">1.
+      Instalar Foundry</a></li>
+      <li><a href="#2-instalar-la-extensión-solidity-en-vs-code"
+      id="toc-2-instalar-la-extensión-solidity-en-vs-code">2. Instalar
+      la extensión Solidity en VS Code</a></li>
+      <li><a href="#3-clonar-el-repo-y-compilar"
+      id="toc-3-clonar-el-repo-y-compilar">3. Clonar el repo y
+      compilar</a></li>
       </ul></li>
-      <li><a href="#1-mapa-de-tiempos" id="toc-1-mapa-de-tiempos">1.
-      Mapa de tiempos</a></li>
-      <li><a href="#2-bloque-1--intro--repaso-1800--1815-15-min"
-      id="toc-2-bloque-1--intro--repaso-1800--1815-15-min">2. Bloque 1 —
-      Intro + repaso (18:00 – 18:15, 15 min)</a>
+      <li><a href="#comandos-clave-cheat-sheet"
+      id="toc-comandos-clave-cheat-sheet">Comandos clave (cheat
+      sheet)</a>
       <ul>
-      <li><a href="#21--saludo-2-min" id="toc-21--saludo-2-min">2.1 —
-      Saludo (2 min)</a></li>
-      <li><a href="#22--repaso-lightning-de-clase-1-3-min"
-      id="toc-22--repaso-lightning-de-clase-1-3-min">2.2 — Repaso
-      lightning de clase 1 (3 min)</a></li>
-      <li><a href="#23--qa-pendiente-5-min"
-      id="toc-23--qa-pendiente-5-min">2.3 — Q&amp;A pendiente (5
-      min)</a>
-      <ul>
-      <li><a
-      href="#pregunta-1--alfredo-qué-tipo-de-archivo-es-la-blockchain"
-      id="toc-pregunta-1--alfredo-qué-tipo-de-archivo-es-la-blockchain">Pregunta
-      1 — Alfredo: “¿qué tipo de archivo es la blockchain?”</a></li>
-      <li><a href="#pregunta-2--alfredo-ethereum-está-en-c-o-en-rust"
-      id="toc-pregunta-2--alfredo-ethereum-está-en-c-o-en-rust">Pregunta
-      2 — Alfredo: “¿Ethereum está en C++ o en Rust?”</a></li>
-      <li><a
-      href="#pregunta-3--anónimo-el-contrato-queda-encriptado-en-la-blockchain"
-      id="toc-pregunta-3--anónimo-el-contrato-queda-encriptado-en-la-blockchain">Pregunta
-      3 — anónimo: “¿el contrato queda encriptado en la
-      blockchain?”</a></li>
+      <li><a href="#compilar-y-testear"
+      id="toc-compilar-y-testear">Compilar y testear</a></li>
+      <li><a href="#blockchain-local-con-anvil"
+      id="toc-blockchain-local-con-anvil">Blockchain local con
+      Anvil</a></li>
+      <li><a href="#deploy-real-a-sepolia"
+      id="toc-deploy-real-a-sepolia">Deploy real a Sepolia</a></li>
       </ul></li>
-      <li><a href="#24--check-operativo-5-min"
-      id="toc-24--check-operativo-5-min">2.4 — Check operativo (5
-      min)</a></li>
+      <li><a href="#tarea-para-la-próxima-clase"
+      id="toc-tarea-para-la-próxima-clase">Tarea para la próxima
+      clase</a></li>
+      <li><a href="#recursos" id="toc-recursos">Recursos</a></li>
+      <li><a href="#si-algo-falla" id="toc-si-algo-falla">Si algo
+      falla</a></li>
       </ul></li>
-      <li><a
-      href="#3-bloque-2--foundry-install--build--tests-1815--1900-45-min"
-      id="toc-3-bloque-2--foundry-install--build--tests-1815--1900-45-min">3.
-      Bloque 2 — Foundry: install → build → tests (18:15 – 19:00, 45
-      min)</a>
-      <ul>
-      <li><a
-      href="#31--instalación-de-foundry-y-extensión-solidity-10-min"
-      id="toc-31--instalación-de-foundry-y-extensión-solidity-10-min">3.1
-      — Instalación de Foundry y extensión Solidity (10 min)</a>
-      <ul>
-      <li><a href="#paso-1--foundry" id="toc-paso-1--foundry">Paso 1 —
-      Foundry</a></li>
-      <li><a href="#paso-2--extensión-solidity-de-vs-code"
-      id="toc-paso-2--extensión-solidity-de-vs-code">Paso 2 — Extensión
-      Solidity de VS Code</a></li>
-      <li><a href="#paso-3--verificar" id="toc-paso-3--verificar">Paso 3
-      — Verificar</a></li>
-      </ul></li>
-      <li><a
-      href="#32--clonar-el-repo-del-ejercicio-y-forge-build-10-min"
-      id="toc-32--clonar-el-repo-del-ejercicio-y-forge-build-10-min">3.2
-      — Clonar el repo del ejercicio y <code>forge build</code> (10
-      min)</a></li>
-      <li><a href="#33--tour-de-simplestoragesol-10-min"
-      id="toc-33--tour-de-simplestoragesol-10-min">3.3 — Tour de
-      <code>SimpleStorage.sol</code> (10 min)</a></li>
-      <li><a href="#34--tests-15-min" id="toc-34--tests-15-min">3.4 —
-      Tests (15 min)</a>
-      <ul>
-      <li><a
-      href="#ejercicio-en-vivo-agregar-test_doubleincrement-8-min"
-      id="toc-ejercicio-en-vivo-agregar-test_doubleincrement-8-min">Ejercicio
-      en vivo: agregar <code>test_DoubleIncrement</code> (8
-      min)</a></li>
-      </ul></li>
-      </ul></li>
-      <li><a href="#4-break-1900--1905-5-min"
-      id="toc-4-break-1900--1905-5-min">4. Break (19:00 – 19:05, 5
-      min)</a></li>
-      <li><a href="#5-bloque-3--anvil--deploy-real-1905--1935-30-min"
-      id="toc-5-bloque-3--anvil--deploy-real-1905--1935-30-min">5.
-      Bloque 3 — Anvil + deploy real (19:05 – 19:35, 30 min)</a>
-      <ul>
-      <li><a href="#51--anvil-blockchain-local-instantánea-8-min"
-      id="toc-51--anvil-blockchain-local-instantánea-8-min">5.1 — Anvil:
-      blockchain local instantánea (8 min)</a></li>
-      <li><a href="#52--deploy-local-con-forge-create-5-min"
-      id="toc-52--deploy-local-con-forge-create-5-min">5.2 — Deploy
-      local con <code>forge create</code> (5 min)</a></li>
-      <li><a href="#53--interactuar-con-cast-7-min"
-      id="toc-53--interactuar-con-cast-7-min">5.3 — Interactuar con
-      <code>cast</code> (7 min)</a></li>
-      <li><a href="#54--deploy-a-sepolia--etherscan-10-min"
-      id="toc-54--deploy-a-sepolia--etherscan-10-min">5.4 — Deploy a
-      Sepolia + Etherscan (10 min)</a></li>
-      </ul></li>
-      <li><a href="#6-handoff-a-ciro-1935"
-      id="toc-6-handoff-a-ciro-1935">6. Handoff a Ciro (19:35)</a>
-      <ul>
-      <li><a href="#tarea-para-la-próxima"
-      id="toc-tarea-para-la-próxima">Tarea para la próxima</a></li>
-      </ul></li>
-      <li><a href="#7-riesgos-y-planes-b"
-      id="toc-7-riesgos-y-planes-b">7. Riesgos y planes B</a></li>
-      <li><a href="#8-checklist-final-pre-clase-chequear-10-min-antes"
-      id="toc-8-checklist-final-pre-clase-chequear-10-min-antes">8.
-      Checklist final pre-clase (chequear 10 min antes)</a></li>
       </ul>
       <div class="toc-controls">
         <button type="button" class="toc-btn" data-action="expand-all">Expandir todo</button>
@@ -378,946 +208,224 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
       </div>
     </details>
 
-<h1 id="slide-de-apertura--qué-vamos-a-cubrir-hoy">Slide de apertura —
-qué vamos a cubrir hoy</h1>
-<p>Mostrar este resumen al inicio (proyectarlo o tenerlo de fondo
-durante la intro):</p>
-<blockquote>
-<p><strong>Clase 2 — De Remix a la línea de comandos</strong></p>
+<h1 id="clase-2--foundry--simplestorage">Clase 2 — Foundry +
+SimpleStorage</h1>
+<p><strong>Cuándo:</strong> lunes 27/04/2026, 18:00 a 19:35 (sincrónica)
+<strong>Docentes:</strong> Dr. David Petrocelli + Ciro <strong>Duración
+total:</strong> ~95 minutos</p>
+<hr />
+<h2 id="qué-vamos-a-hacer-hoy">Qué vamos a hacer hoy</h2>
 <ol type="1">
-<li><strong>Repaso clase 1</strong> y respuesta a las dudas que quedaron
+<li><strong>Repaso clase 1</strong> y resolución de dudas que quedaron
 al aire</li>
-<li><strong>Instalación de Foundry</strong> (forge / cast / anvil) y
-extensión Solidity de VS Code</li>
-<li><strong>Clonar el repo del ejercicio</strong>:
-<code>git clone https://github.com/dpetrocelli/diplo-unq-blockchain-clase2.git</code></li>
-<li><strong>Compilar y entender</strong> un smart contract: bytecode +
-ABI</li>
-<li><strong>Tour de Solidity</strong>: state variables, eventos,
-funciones, visibility</li>
-<li><strong>Tests automáticos con Foundry</strong>: assertions,
-cheatcodes, fuzz testing</li>
+<li><strong>Instalar Foundry</strong> (<code>forge</code>,
+<code>cast</code>, <code>anvil</code>) y la extensión de Solidity en VS
+Code</li>
+<li><strong>Clonar el repo del ejercicio</strong> y compilarlo</li>
+<li><strong>Tour del contrato <code>SimpleStorage</code></strong> en
+Solidity — entender bytecode, ABI, eventos</li>
+<li><strong>Tests automáticos</strong>: ver pasar 10 tests, escribir uno
+nuevo en vivo</li>
 <li><strong>Anvil</strong>: blockchain local para desarrollo, deploy y
 <code>cast</code> interactivo</li>
 <li><strong>Deploy real a Sepolia</strong> y verificación en
 Etherscan</li>
-<li><strong>Tarea</strong> y handoff a Ciro</li>
+<li><strong>Tarea para la próxima clase</strong></li>
 </ol>
-<p><em>Objetivo: al terminar esta clase tienen el flujo profesional
+<blockquote>
+<p><strong>Objetivo:</strong> al terminar tienen el flujo profesional
 completo — write, test, deploy local, deploy testnet — funcionando en su
-máquina.</em></p>
+máquina.</p>
 </blockquote>
-<h2 id="repo-del-ejercicio-público">Repo del ejercicio (público)</h2>
+<hr />
+<h2 id="repo-del-ejercicio">Repo del ejercicio</h2>
 <blockquote>
 <p><strong><a
 href="https://github.com/dpetrocelli/diplo-unq-blockchain-clase2">https://github.com/dpetrocelli/diplo-unq-blockchain-clase2</a></strong></p>
 </blockquote>
-<p>Los alumnos solo necesitan eso. Un único <code>git clone</code> y
-arrancan. El repo tiene:</p>
-<ul>
-<li><code>src/SimpleStorage.sol</code> — el contrato</li>
-<li><code>test/SimpleStorage.t.sol</code> — los tests (10 tests, todos
-verdes)</li>
-<li><code>script/Deploy.s.sol</code> — script de deploy</li>
-<li><code>foundry.toml</code> — configuración (solc 0.8.28, fuzz runs
-256)</li>
-<li><code>README.md</code> — instrucciones mínimas con los comandos
-clave</li>
-</ul>
-<blockquote>
-<p><strong>Verificado</strong>: <code>git clone</code> →
-<code>forge install foundry-rs/forge-std --shallow</code> →
-<code>forge build</code> → <code>forge test</code> da <strong>10 passed;
-0 failed</strong>.</p>
-</blockquote>
-<hr />
-<h1 id="0-pre-flight-qué-está-instalado-y-cómo-lo-instalé">0.
-Pre-flight: qué está instalado y cómo lo instalé</h1>
-<p>Esto YA está corriendo en tu máquina. Si querés repetir el setup en
-otro lado o ayudar a un alumno trabado, son exactamente estos
-comandos.</p>
-<h2 id="01--instalación-de-foundry">0.1 — Instalación de Foundry</h2>
+<p>Una sola línea para clonar:</p>
 <div class="sourceCode" id="cb1"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Bajar el instalador (foundryup)</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">curl</span> <span class="at">-L</span> https://foundry.paradigm.xyz <span class="kw">|</span> <span class="fu">bash</span></span></code></pre></div>
-<p><strong>Output esperado</strong>: te dice que detectó tu shell (zsh o
-bash), agrega el PATH a tu rc file, y te pide reabrir terminal o hacer
-<code>source</code>.</p>
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/dpetrocelli/diplo-unq-blockchain-clase2.git</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> diplo-unq-blockchain-clase2</span></code></pre></div>
+<hr />
+<h2 id="pre-requisitos-traerlos-hechos">Pre-requisitos (traerlos
+hechos)</h2>
+<ul>
+<li>✅ MetaMask instalada y configurada en <strong>Sepolia</strong>
+(chain ID <code>11155111</code>)</li>
+<li>✅ Saldo &gt; 0.01 ETH de Sepolia (faucet recomendada: <a
+href="https://cloud.google.com/application/web3/faucet/ethereum/sepolia">https://cloud.google.com/application/web3/faucet/ethereum/sepolia</a>)</li>
+<li>✅ VS Code instalado</li>
+<li>✅ Git instalado</li>
+</ul>
+<p>Foundry y la extensión de Solidity los instalamos juntos en clase, no
+hace falta traerlo hecho.</p>
+<hr />
+<h2 id="setup-en-clase">Setup en clase</h2>
+<h3 id="1-instalar-foundry">1. Instalar Foundry</h3>
 <div class="sourceCode" id="cb2"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Recargar el shell (zsh) o reabrir terminal</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="bu">source</span> ~/.zshenv      <span class="co"># zsh</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># source ~/.bashrc    # bash</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Bajar los binarios reales (forge, cast, anvil, chisel)</span></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="ex">foundryup</span></span></code></pre></div>
-<p><strong>Output esperado</strong> (1 min aprox):</p>
-<pre><code>foundryup: installing foundry (version stable, tag stable)
-foundryup: downloading forge, cast, anvil, and chisel for stable version
-forge
-cast
-anvil
-chisel
-foundryup: forge verified ✓
-foundryup: cast verified ✓
-foundryup: anvil verified ✓
-foundryup: chisel verified ✓</code></pre>
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">curl</span> <span class="at">-L</span> https://foundry.paradigm.xyz <span class="kw">|</span> <span class="fu">bash</span></span></code></pre></div>
+<p>Después de eso, reabrir terminal o:</p>
+<div class="sourceCode" id="cb3"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="bu">source</span> ~/.bashrc      <span class="co"># bash</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co"># source ~/.zshenv    # zsh</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="ex">foundryup</span></span></code></pre></div>
+<p>Verificar:</p>
 <div class="sourceCode" id="cb4"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Verificar que están en el PATH</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="ex">forge</span> <span class="at">--version</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="ex">cast</span> <span class="at">--version</span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="ex">anvil</span> <span class="at">--version</span></span></code></pre></div>
-<p><strong>Output</strong>:</p>
-<pre><code>forge Version: 1.5.1-stable
-cast Version: 1.5.1-stable
-anvil Version: 1.5.1-stable</code></pre>
-<blockquote>
-<p><strong>Plan B si falla</strong>: en Windows sin WSL, esto no anda.
-Solución: instalar WSL2. Mientras se instala, ese alumno hace Remix.</p>
-</blockquote>
-<h2 id="02--setup-del-proyecto-cosas-que-tuve-que-arreglar">0.2 — Setup
-del proyecto (cosas que tuve que arreglar)</h2>
-<p>El proyecto <code>module-2/simple-storage</code> venía limpio (sin
-<code>lib/</code> y sin <code>.git/</code>). Para que
-<code>forge install</code> funcione, hace falta un repo git
-inicializado:</p>
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">forge</span> <span class="at">--version</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="ex">cast</span> <span class="at">--version</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="ex">anvil</span> <span class="at">--version</span></span></code></pre></div>
+<h3 id="2-instalar-la-extensión-solidity-en-vs-code">2. Instalar la
+extensión Solidity en VS Code</h3>
+<div class="sourceCode" id="cb5"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">code</span> <span class="at">--install-extension</span> juanblanco.solidity</span></code></pre></div>
+<h3 id="3-clonar-el-repo-y-compilar">3. Clonar el repo y compilar</h3>
 <div class="sourceCode" id="cb6"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> /home/dp-note/code/teacher/blockchain-development/class-content/module-2/simple-storage</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> init <span class="at">-q</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="ex">forge</span> install foundry-rs/forge-std <span class="at">--shallow</span></span></code></pre></div>
-<p><strong>Output</strong>:</p>
-<pre><code>Installing forge-std in .../lib/forge-std (url: https://github.com/foundry-rs/forge-std)
-Cloning into &#39;.../lib/forge-std&#39;...
-    Installed forge-std</code></pre>
-<blockquote>
-<p><strong>Nota</strong>: la sintaxis vieja <code>--no-commit</code> ya
-no existe en Foundry 1.5+. Es <code>--shallow</code> ahora.</p>
-</blockquote>
-<h2 id="03--fix-necesario-en-foundrytoml">0.3 — Fix necesario en
-<code>foundry.toml</code></h2>
-<p>El <code>foundry.toml</code> original tenía dos cosas que rompían con
-Foundry 1.5+:</p>
-<ol type="1">
-<li><code>solc = "0.8.19"</code> — pero el test usa la sintaxis
-<code>SimpleStorage.NumberUpdated(...)</code> que requiere Solidity
-<strong>0.8.21+</strong></li>
-<li><code>fuzz_runs = 256</code> — la sintaxis vieja, ahora va en bloque
-<code>[fuzz]</code></li>
-</ol>
-<p><strong>Ya lo arreglé</strong>, queda así:</p>
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/dpetrocelli/diplo-unq-blockchain-clase2.git</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> diplo-unq-blockchain-clase2</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="ex">forge</span> install foundry-rs/forge-std <span class="at">--shallow</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="ex">forge</span> build</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="ex">forge</span> test</span></code></pre></div>
+<p>Tienen que ver <code>10 passed; 0 failed</code>.</p>
+<hr />
+<h2 id="comandos-clave-cheat-sheet">Comandos clave (cheat sheet)</h2>
+<h3 id="compilar-y-testear">Compilar y testear</h3>
+<div class="sourceCode" id="cb7"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">forge</span> build              <span class="co"># compilar contratos</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="ex">forge</span> test               <span class="co"># correr todos los tests</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="ex">forge</span> test <span class="at">-vvv</span>          <span class="co"># tests con output detallado</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="ex">forge</span> test <span class="at">--match-test</span> test_StoreNumber  <span class="co"># un test específico</span></span></code></pre></div>
+<h3 id="blockchain-local-con-anvil">Blockchain local con Anvil</h3>
+<p>Terminal 1 (dejarla abierta):</p>
 <div class="sourceCode" id="cb8"><pre
-class="sourceCode toml"><code class="sourceCode toml"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="kw">[profile.default]</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="dt">src</span> <span class="op">=</span> <span class="st">&quot;src&quot;</span></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="dt">out</span> <span class="op">=</span> <span class="st">&quot;out&quot;</span></span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="dt">libs</span> <span class="op">=</span> <span class="op">[</span><span class="st">&quot;lib&quot;</span><span class="op">]</span></span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="dt">solc</span> <span class="op">=</span> <span class="st">&quot;0.8.28&quot;</span></span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Optimizer settings</span></span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="dt">optimizer</span> <span class="op">=</span> <span class="cn">true</span></span>
-<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="dt">optimizer_runs</span> <span class="op">=</span> <span class="dv">200</span></span>
-<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Testing</span></span>
-<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a><span class="kw">[fuzz]</span></span>
-<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a><span class="dt">runs</span> <span class="op">=</span> <span class="dv">256</span></span></code></pre></div>
-<h2 id="04--verificación-final-del-proyecto">0.4 — Verificación final
-del proyecto</h2>
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">anvil</span></span></code></pre></div>
+<p>Terminal 2 (deploy + interacción):</p>
 <div class="sourceCode" id="cb9"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">forge</span> build</span></code></pre></div>
-<p><strong>Output</strong>:</p>
-<pre><code>Compiling 23 files with Solc 0.8.28
-Solc 0.8.28 finished in 908ms
-Compiler run successful!</code></pre>
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">forge</span> create src/SimpleStorage.sol:SimpleStorage <span class="dt">\</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">--rpc-url</span> http://localhost:8545 <span class="dt">\</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">--private-key</span> 0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80 <span class="dt">\</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">--broadcast</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Reemplazar $ADDR con la address que devolvió forge create</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="ex">cast</span> call <span class="va">$ADDR</span> <span class="st">&quot;favoriteNumber()&quot;</span> <span class="at">--rpc-url</span> http://localhost:8545 <span class="kw">|</span> <span class="ex">cast</span> <span class="at">--to-dec</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="ex">cast</span> send <span class="va">$ADDR</span> <span class="st">&quot;store(uint256)&quot;</span> 42 <span class="dt">\</span></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">--rpc-url</span> http://localhost:8545 <span class="dt">\</span></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">--private-key</span> 0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80</span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a><span class="ex">cast</span> call <span class="va">$ADDR</span> <span class="st">&quot;favoriteNumber()&quot;</span> <span class="at">--rpc-url</span> http://localhost:8545 <span class="kw">|</span> <span class="ex">cast</span> <span class="at">--to-dec</span></span></code></pre></div>
+<h3 id="deploy-real-a-sepolia">Deploy real a Sepolia</h3>
+<p>Importar la priv key de MetaMask como cast wallet (encriptada con
+password):</p>
+<div class="sourceCode" id="cb10"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ex">cast</span> wallet import dev-wallet <span class="at">--interactive</span></span></code></pre></div>
+<blockquote>
+<p>⚠️ <strong>Importante:</strong> usar una cuenta de MetaMask que
+<strong>solo tenga fondos de testnet</strong>. Nunca exponer la priv key
+de una cuenta con ETH real.</p>
+</blockquote>
+<p>Deploy:</p>
 <div class="sourceCode" id="cb11"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ex">forge</span> test</span></code></pre></div>
-<p><strong>Output</strong>:</p>
-<pre><code>Ran 10 tests for test/SimpleStorage.t.sol:SimpleStorageTest
-[PASS] testFuzz_IncrementNoOverflow(uint256) (runs: 256, μ: 35977, ~: 35977)
-[PASS] testFuzz_Store(uint256) (runs: 256, μ: 29577, ~: 30199)
-[PASS] test_AnyoneCanStore() (gas: 41137)
-[PASS] test_EventRecordsCorrectCaller() (gas: 36524)
-[PASS] test_Increment() (gas: 33023)
-[PASS] test_IncrementEmitsEvent() (gas: 36730)
-[PASS] test_InitialValueIsZero() (gas: 7570)
-[PASS] test_RetrieveMatchesFavoriteNumber() (gas: 30900)
-[PASS] test_StoreEmitsEvent() (gas: 33869)
-[PASS] test_StoreNumber() (gas: 30118)
-Suite result: ok. 10 passed; 0 failed; 0 skipped; finished in 29.06ms</code></pre>
-<blockquote>
-<p><strong>Nota</strong>: El repo público está limpio (10 tests, sin
-<code>test_DoubleIncrement</code>). Ese test lo escribimos en vivo con
-los alumnos en el bloque 3.4.</p>
-</blockquote>
-<h2 id="05--verificación-de-sepolia-sin-gastar-tokens">0.5 —
-Verificación de Sepolia (sin gastar tokens)</h2>
-<div class="sourceCode" id="cb13"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="ex">cast</span> chain-id <span class="at">--rpc-url</span> https://ethereum-sepolia-rpc.publicnode.com</span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 11155111</span></span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="ex">cast</span> block-number <span class="at">--rpc-url</span> https://ethereum-sepolia-rpc.publicnode.com</span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="co"># 10744491 (o el bloque actual)</span></span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a><span class="ex">cast</span> gas-price <span class="at">--rpc-url</span> https://ethereum-sepolia-rpc.publicnode.com</span>
-<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a><span class="co"># 36689734 (gwei en wei, ~36 gwei)</span></span></code></pre></div>
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ex">forge</span> create src/SimpleStorage.sol:SimpleStorage <span class="dt">\</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">--rpc-url</span> https://ethereum-sepolia-rpc.publicnode.com <span class="dt">\</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">--account</span> dev-wallet <span class="dt">\</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">--broadcast</span></span></code></pre></div>
+<p>Después de ~12 segundos van a poder ver el contrato en:</p>
+<pre><code>https://sepolia.etherscan.io/address/&lt;ADDRESS&gt;</code></pre>
 <hr />
-<h1 id="1-mapa-de-tiempos">1. Mapa de tiempos</h1>
-<table>
-<thead>
-<tr>
-<th>Slot</th>
-<th>Duración</th>
-<th>Quién</th>
-<th>Qué</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>18:00 – 18:15</td>
-<td>15 min</td>
-<td>David</td>
-<td>Intro + repaso clase 1 + Q&amp;A pendiente + check faucets</td>
-</tr>
-<tr>
-<td>18:15 – 19:00</td>
-<td>45 min</td>
-<td>David</td>
-<td>Foundry: install → build → tour SimpleStorage → tests</td>
-</tr>
-<tr>
-<td>19:00 – 19:05</td>
-<td>5 min</td>
-<td>—</td>
-<td>Break corto</td>
-</tr>
-<tr>
-<td>19:05 – 19:35</td>
-<td>30 min</td>
-<td>David</td>
-<td>Anvil + cast local → deploy a Sepolia → verify en Etherscan</td>
-</tr>
-<tr>
-<td>19:35 – fin</td>
-<td>—</td>
-<td>Ciro</td>
-<td>Cierre, anticipo Mod 3, dudas finales</td>
-</tr>
-</tbody>
-</table>
-<p><strong>Material base</strong>:
-<code>/home/dp-note/code/teacher/blockchain-development/class-content/module-2/</code></p>
-<p><strong>Decisión de stack</strong>: Foundry + VS Code +
-<strong>Sepolia</strong> (no Base Sepolia, para mantener continuidad con
-clase 1 de Ciro). Base Sepolia se introduce en Mod 3.</p>
-<hr />
-<h1 id="2-bloque-1--intro--repaso-1800--1815-15-min">2. Bloque 1 — Intro
-+ repaso (18:00 – 18:15, 15 min)</h1>
-<h2 id="21--saludo-2-min">2.1 — Saludo (2 min)</h2>
-<blockquote>
-<p><em>“Buenas, ¿cómo andan? Bienvenidos a la clase 2 del módulo de
-desarrollo de smart contracts. Soy David, hoy doy la primera parte y al
-final me toma la posta Ciro. Primero lo bueno: los foros del campus
-están arreglados, ya pueden postear. Si tuvieron algún problema con la
-faucet la semana pasada, en 5 minutos lo resolvemos. La idea de hoy es
-bajar de Remix a la línea de comandos, con la herramienta que se usa
-profesionalmente. Eso es Foundry.”</em></p>
-</blockquote>
-<h2 id="22--repaso-lightning-de-clase-1-3-min">2.2 — Repaso lightning de
-clase 1 (3 min)</h2>
-<blockquote>
-<p><em>“Recordemos qué hicieron la semana pasada con Ciro. Instalaron
-MetaMask, agregaron la red Sepolia, pidieron tokens a una faucet,
-abrieron Remix en el navegador, escribieron un contratito, lo
-desplegaron y le mandaron transacciones. Todo eso desde una interfaz
-gráfica.</em></p>
-<p><em>Hoy vamos a hacer exactamente lo mismo — escribir un contrato,
-deployarlo, interactuar — pero desde la terminal, con Foundry. ¿Por qué?
-Porque cuando tu proyecto crece, vas a querer tests automáticos, control
-de versiones, scripts reproducibles, integración con CI/CD. Eso Remix no
-te lo da. Foundry sí.“</em></p>
-</blockquote>
-<h2 id="23--qa-pendiente-5-min">2.3 — Q&amp;A pendiente (5 min)</h2>
-<p>Tres dudas que quedaron sin cerrar bien la semana pasada:</p>
-<h3
-id="pregunta-1--alfredo-qué-tipo-de-archivo-es-la-blockchain">Pregunta 1
-— Alfredo: “¿qué tipo de archivo es la blockchain?”</h3>
-<blockquote>
-<p><em>“Alfredo preguntó la semana pasada qué tipo de archivo es la
-blockchain. La respuesta corta: en cada nodo, la blockchain vive como
-una <strong>base de datos clave-valor en disco</strong>. El cliente Geth
-usa LevelDB, el cliente Erigon usa MDBX. No es un archivo de texto. Cada
-nodo tiene su copia, y se sincronizan entre sí por el algoritmo de
-consenso que vimos. Entonces cuando hablamos de ‘la blockchain’, es una
-BD distribuida, replicada en miles de nodos, con un mecanismo de
-consenso que asegura que todos vean lo mismo.”</em></p>
-</blockquote>
-<h3 id="pregunta-2--alfredo-ethereum-está-en-c-o-en-rust">Pregunta 2 —
-Alfredo: “¿Ethereum está en C++ o en Rust?”</h3>
-<blockquote>
-<p><em>“La trampa de esta pregunta es que <strong>Ethereum no es un
-programa, es una especificación</strong>. Lo que existe son varios
-programas distintos — los llamamos ‘clientes’ — que implementan esa
-especificación, cada uno en el lenguaje que quiso su equipo:</em></p>
-<ul>
-<li><em>Geth, en Go, es históricamente el más usado</em></li>
-<li><em>Reth, en Rust, está creciendo rápido</em></li>
-<li><em>Erigon en Go, Nethermind en .NET, Besu en Java</em></li>
-</ul>
-<p><em>Esto se llama <strong>client diversity</strong> y es clave para
-la seguridad: si todos los nodos corrieran el mismo software, un bug
-podría tirar Ethereum entera. Con varios clientes, un bug en uno solo no
-rompe la red.“</em></p>
-</blockquote>
-<h3
-id="pregunta-3--anónimo-el-contrato-queda-encriptado-en-la-blockchain">Pregunta
-3 — anónimo: “¿el contrato queda encriptado en la blockchain?”</h3>
-<blockquote>
-<p><em>“No, queda <strong>público y leíble</strong>. Lo que ven en
-Etherscan como hex largo es <strong>bytecode EVM</strong>, que NO es lo
-mismo que estar encriptado. Lo podés descompilar. Cualquiera puede. Lo
-que define cómo invocarlo se llama el <strong>ABI</strong> — el manual
-de uso del contrato. En 5 minutos, cuando hagamos
-<code>forge build</code>, les voy a mostrar exactamente eso: el bytecode
-y el ABI generados a partir del Solidity.”</em></p>
-</blockquote>
-<h2 id="24--check-operativo-5-min">2.4 — Check operativo (5 min)</h2>
-<blockquote>
-<p><em>“Antes de meternos: ¿quién todavía no tiene tokens en su MetaMask
-en Sepolia? Levanten la mano. La faucet que mejor anda hoy es
-esta:”</em></p>
-</blockquote>
-<pre><code>https://cloud.google.com/application/web3/faucet/ethereum/sepolia</code></pre>
-<blockquote>
-<p><em>“Logueás con cuenta de Google, pegás tu address de MetaMask y te
-tira 0.05 ETH de Sepolia. Mientras los rezagados piden tokens, el resto:
-abran VS Code y una terminal.”</em></p>
-</blockquote>
-<hr />
-<h1 id="3-bloque-2--foundry-install--build--tests-1815--1900-45-min">3.
-Bloque 2 — Foundry: install → build → tests (18:15 – 19:00, 45 min)</h1>
-<h2 id="31--instalación-de-foundry-y-extensión-solidity-10-min">3.1 —
-Instalación de Foundry y extensión Solidity (10 min)</h2>
-<blockquote>
-<p><em>“Foundry es un toolkit escrito en Rust, mucho más rápido que
-Hardhat, donde los tests se escriben en Solidity. Eso es importante: el
-mismo lenguaje del contrato es el lenguaje de los tests. No tenés que
-aprender otra cosa.</em></p>
-<p><em>Tres comandos que vamos a ver mucho hoy:</em></p>
-<ul>
-<li><em><code>forge</code>: compilar, testear, deployar</em></li>
-<li><em><code>cast</code>: hablar con la blockchain desde la
-terminal</em></li>
-<li><em><code>anvil</code>: blockchain local para desarrollo</em></li>
-</ul>
-<p><em>Tres pasos: instalar Foundry, instalar la extensión Solidity, y
-verificar.“</em></p>
-</blockquote>
-<h3 id="paso-1--foundry">Paso 1 — Foundry</h3>
-<div class="sourceCode" id="cb15"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="ex">curl</span> <span class="at">-L</span> https://foundry.paradigm.xyz <span class="kw">|</span> <span class="fu">bash</span></span></code></pre></div>
-<blockquote>
-<p><em>“Eso instala el gestor <code>foundryup</code>. Reabrimos la
-terminal o hacemos source:”</em></p>
-</blockquote>
-<div class="sourceCode" id="cb16"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="bu">source</span> ~/.bashrc      <span class="co"># bash</span></span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="co"># source ~/.zshenv    # zsh</span></span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="ex">foundryup</span></span></code></pre></div>
-<blockquote>
-<p><em>“Eso baja los binarios reales. Tarda menos de un
-minuto.”</em></p>
-</blockquote>
-<h3 id="paso-2--extensión-solidity-de-vs-code">Paso 2 — Extensión
-Solidity de VS Code</h3>
-<p>Una sola extensión, la mínima necesaria. Resaltado de sintaxis y
-autocompletado:</p>
-<div class="sourceCode" id="cb17"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="ex">code</span> <span class="at">--install-extension</span> juanblanco.solidity</span></code></pre></div>
-<blockquote>
-<p><em>“Si quieren más adelante pueden agregar
-<code>tamasfe.even-better-toml</code> para el foundry.toml y
-<code>esbenp.prettier-vscode</code> para formateo, pero hoy con esta una
-alcanza.”</em></p>
-</blockquote>
-<h3 id="paso-3--verificar">Paso 3 — Verificar</h3>
-<div class="sourceCode" id="cb18"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="ex">forge</span> <span class="at">--version</span></span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="ex">cast</span> <span class="at">--version</span></span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="ex">anvil</span> <span class="at">--version</span></span></code></pre></div>
-<p><strong>Output esperado</strong>:</p>
-<pre><code>forge Version: 1.5.1-stable
-cast Version: 1.5.1-stable
-anvil Version: 1.5.1-stable</code></pre>
-<blockquote>
-<p><em>“Si están en Windows sin WSL, esto va a fallar. La solución es
-instalar WSL2. Si alguien tiene ese problema, lo resolvemos individual y
-mientras tanto hace Remix.”</em></p>
-</blockquote>
-<h2 id="32--clonar-el-repo-del-ejercicio-y-forge-build-10-min">3.2 —
-Clonar el repo del ejercicio y <code>forge build</code> (10 min)</h2>
-<blockquote>
-<p><em>“Ahora clonamos el repo del ejercicio. Es público, está en mi
-GitHub, una sola línea:”</em></p>
-</blockquote>
-<div class="sourceCode" id="cb20"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/dpetrocelli/diplo-unq-blockchain-clase2.git</span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> diplo-unq-blockchain-clase2</span></code></pre></div>
-<div class="sourceCode" id="cb21"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span></span></code></pre></div>
-<p><strong>Output esperado</strong>:</p>
-<pre><code>README.md  foundry.toml  script  src  test</code></pre>
-<blockquote>
-<p><em>“Esa es la estructura clásica de un proyecto Foundry:</em></p>
-<ul>
-<li><em><code>src/</code> — los contratos</em></li>
-<li><em><code>test/</code> — los tests</em></li>
-<li><em><code>script/</code> — scripts de deploy</em></li>
-<li><em><code>foundry.toml</code> — configuración</em></li>
-</ul>
-<p><em>Antes de compilar tenemos que bajar la única dependencia que usa:
-<code>forge-std</code>, la librería estándar de Foundry para escribir
-tests.“</em></p>
-</blockquote>
-<div class="sourceCode" id="cb23"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="ex">forge</span> install foundry-rs/forge-std <span class="at">--shallow</span></span></code></pre></div>
-<p><strong>Output esperado</strong>:</p>
-<pre><code>Installing forge-std in lib/forge-std
-Cloning into &#39;lib/forge-std&#39;...
-    Installed forge-std</code></pre>
-<blockquote>
-<p><em>“Eso clona forge-std en <code>lib/</code>. Ahora
-compilamos:”</em></p>
-</blockquote>
-<div class="sourceCode" id="cb25"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="ex">forge</span> build</span></code></pre></div>
-<p><strong>Output esperado</strong>:</p>
-<pre><code>Compiling 23 files with Solc 0.8.28
-Solc 0.8.28 finished in 908ms
-Compiler run successful!</code></pre>
-<blockquote>
-<p><em>“23 archivos en menos de un segundo. Eso es Rust corriendo el
-compilador, mucho más rápido que Hardhat. Ahora les muestro algo
-importante. Esto compiló y dejó la salida en una carpeta
-<code>out/</code>.”</em></p>
-</blockquote>
-<div class="sourceCode" id="cb27"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> out/SimpleStorage.sol/</span></code></pre></div>
-<div class="sourceCode" id="cb28"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> out/SimpleStorage.sol/SimpleStorage.json <span class="kw">|</span> <span class="ex">jq</span> <span class="st">&#39;.bytecode.object&#39;</span> <span class="kw">|</span> <span class="fu">head</span> <span class="at">-c</span> 250</span></code></pre></div>
-<p><strong>Output esperado</strong>:</p>
-<pre><code>&quot;0x6080604052348015600e575f5ffd5b5061019d8061001c5f395ff3fe608060...</code></pre>
-<blockquote>
-<p><em>“Esto que ven es el <strong>bytecode</strong> del contrato. Esto
-es exactamente lo que se sube a la blockchain. Lo que está adentro de la
-EVM. ¿Se ve que es leíble? Es hex, pero hay disassemblers. No está
-encriptado. Esa era la duda que dejamos al aire.”</em></p>
-</blockquote>
-<div class="sourceCode" id="cb30"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> out/SimpleStorage.sol/SimpleStorage.json <span class="kw">|</span> <span class="ex">jq</span> <span class="st">&#39;.abi&#39;</span></span></code></pre></div>
-<p><strong>Output esperado</strong> (extracto):</p>
-<div class="sourceCode" id="cb31"><pre
-class="sourceCode json"><code class="sourceCode json"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="ot">[</span></span>
-<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">{</span></span>
-<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;type&quot;</span><span class="fu">:</span> <span class="st">&quot;function&quot;</span><span class="fu">,</span></span>
-<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;name&quot;</span><span class="fu">:</span> <span class="st">&quot;favoriteNumber&quot;</span><span class="fu">,</span></span>
-<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;inputs&quot;</span><span class="fu">:</span> <span class="ot">[]</span><span class="fu">,</span></span>
-<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;outputs&quot;</span><span class="fu">:</span> <span class="ot">[</span><span class="fu">{</span><span class="dt">&quot;name&quot;</span><span class="fu">:</span> <span class="st">&quot;&quot;</span><span class="fu">,</span> <span class="dt">&quot;type&quot;</span><span class="fu">:</span> <span class="st">&quot;uint256&quot;</span><span class="fu">}</span><span class="ot">]</span><span class="fu">,</span></span>
-<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;stateMutability&quot;</span><span class="fu">:</span> <span class="st">&quot;view&quot;</span></span>
-<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">}</span><span class="ot">,</span></span>
-<span id="cb31-9"><a href="#cb31-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">{</span></span>
-<span id="cb31-10"><a href="#cb31-10" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;type&quot;</span><span class="fu">:</span> <span class="st">&quot;function&quot;</span><span class="fu">,</span></span>
-<span id="cb31-11"><a href="#cb31-11" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;name&quot;</span><span class="fu">:</span> <span class="st">&quot;store&quot;</span><span class="fu">,</span></span>
-<span id="cb31-12"><a href="#cb31-12" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;inputs&quot;</span><span class="fu">:</span> <span class="ot">[</span><span class="fu">{</span><span class="dt">&quot;name&quot;</span><span class="fu">:</span> <span class="st">&quot;_number&quot;</span><span class="fu">,</span> <span class="dt">&quot;type&quot;</span><span class="fu">:</span> <span class="st">&quot;uint256&quot;</span><span class="fu">}</span><span class="ot">]</span><span class="fu">,</span></span>
-<span id="cb31-13"><a href="#cb31-13" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;outputs&quot;</span><span class="fu">:</span> <span class="ot">[]</span><span class="fu">,</span></span>
-<span id="cb31-14"><a href="#cb31-14" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;stateMutability&quot;</span><span class="fu">:</span> <span class="st">&quot;nonpayable&quot;</span></span>
-<span id="cb31-15"><a href="#cb31-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">}</span><span class="ot">,</span></span>
-<span id="cb31-16"><a href="#cb31-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">{</span></span>
-<span id="cb31-17"><a href="#cb31-17" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;type&quot;</span><span class="fu">:</span> <span class="st">&quot;event&quot;</span><span class="fu">,</span></span>
-<span id="cb31-18"><a href="#cb31-18" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;name&quot;</span><span class="fu">:</span> <span class="st">&quot;NumberUpdated&quot;</span><span class="fu">,</span></span>
-<span id="cb31-19"><a href="#cb31-19" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;inputs&quot;</span><span class="fu">:</span> <span class="ot">[</span></span>
-<span id="cb31-20"><a href="#cb31-20" aria-hidden="true" tabindex="-1"></a>      <span class="fu">{</span><span class="dt">&quot;name&quot;</span><span class="fu">:</span> <span class="st">&quot;oldNumber&quot;</span><span class="fu">,</span> <span class="dt">&quot;type&quot;</span><span class="fu">:</span> <span class="st">&quot;uint256&quot;</span><span class="fu">,</span> <span class="dt">&quot;indexed&quot;</span><span class="fu">:</span> <span class="kw">false</span><span class="fu">}</span><span class="ot">,</span></span>
-<span id="cb31-21"><a href="#cb31-21" aria-hidden="true" tabindex="-1"></a>      <span class="fu">{</span><span class="dt">&quot;name&quot;</span><span class="fu">:</span> <span class="st">&quot;newNumber&quot;</span><span class="fu">,</span> <span class="dt">&quot;type&quot;</span><span class="fu">:</span> <span class="st">&quot;uint256&quot;</span><span class="fu">,</span> <span class="dt">&quot;indexed&quot;</span><span class="fu">:</span> <span class="kw">false</span><span class="fu">}</span><span class="ot">,</span></span>
-<span id="cb31-22"><a href="#cb31-22" aria-hidden="true" tabindex="-1"></a>      <span class="fu">{</span><span class="dt">&quot;name&quot;</span><span class="fu">:</span> <span class="st">&quot;updatedBy&quot;</span><span class="fu">,</span> <span class="dt">&quot;type&quot;</span><span class="fu">:</span> <span class="st">&quot;address&quot;</span><span class="fu">,</span> <span class="dt">&quot;indexed&quot;</span><span class="fu">:</span> <span class="kw">true</span><span class="fu">}</span></span>
-<span id="cb31-23"><a href="#cb31-23" aria-hidden="true" tabindex="-1"></a>    <span class="ot">]</span></span>
-<span id="cb31-24"><a href="#cb31-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">}</span></span>
-<span id="cb31-25"><a href="#cb31-25" aria-hidden="true" tabindex="-1"></a><span class="ot">]</span></span></code></pre></div>
-<blockquote>
-<p><em>“Y esto es el <strong>ABI</strong>. Es el manual del contrato. Lo
-que un frontend, o cast, o Remix, usa para saber cómo llamar a
-<code>store(uint256)</code> o cómo decodificar el resultado de
-<code>favoriteNumber()</code>. Bytecode + ABI = todo lo que necesita el
-mundo para hablarle a este contrato.”</em></p>
-</blockquote>
-<h2 id="33--tour-de-simplestoragesol-10-min">3.3 — Tour de
-<code>SimpleStorage.sol</code> (10 min)</h2>
-<p>Abrir <code>src/SimpleStorage.sol</code> en VS Code y caminar línea
-por línea:</p>
-<pre class="solidity"><code>// SPDX-License-Identifier: MIT
-pragma solidity ^0.8.19;
-
-contract SimpleStorage {
-    uint256 public favoriteNumber;
-
-    event NumberUpdated(
-        uint256 oldNumber,
-        uint256 newNumber,
-        address indexed updatedBy
-    );
-
-    function store(uint256 _number) public {
-        uint256 oldNumber = favoriteNumber;
-        favoriteNumber = _number;
-        emit NumberUpdated(oldNumber, _number, msg.sender);
-    }
-
-    function retrieve() public view returns (uint256) {
-        return favoriteNumber;
-    }
-
-    function increment() public {
-        uint256 oldNumber = favoriteNumber;
-        favoriteNumber += 1;
-        emit NumberUpdated(oldNumber, favoriteNumber, msg.sender);
-    }
-}</code></pre>
-<p><strong>Línea 1-2 — license + pragma</strong>:</p>
-<blockquote>
-<p><em>“<code>SPDX-License-Identifier: MIT</code> — el compilador te
-exige declarar la licencia. Es metadata, no afecta la lógica.</em>
-<em><code>pragma solidity ^0.8.19</code> — versión mínima del
-compilador. El <code>^</code> significa ‘esta versión o cualquier 0.8.x
-posterior’. La <code>0.8</code> es importante: desde la 0.8 el
-compilador detecta overflow automáticamente, no como Solidity 0.7 donde
-te tenías que defender vos.“</em></p>
-</blockquote>
-<p><strong>Línea 14 — state variable</strong>:</p>
-<blockquote>
-<p><em>“<code>uint256 public favoriteNumber</code> — variable de estado,
-vive en el storage del contrato. Es persistente, sobrevive entre
-transacciones. El modificador <code>public</code> es magia: Solidity te
-genera automáticamente un getter llamado <code>favoriteNumber()</code>.
-Eso responde a la pregunta de cómo se interactúa con un contrato —
-algunas cosas son funciones explícitas, otras Solidity te las
-genera.”</em></p>
-</blockquote>
-<p><strong>Líneas 16-20 — event</strong>:</p>
-<blockquote>
-<p><em>“<code>event NumberUpdated(uint256 oldNumber, uint256 newNumber, address indexed updatedBy)</code>
-— esto es un log. Se queda en la blockchain pero no en el storage del
-contrato — vive aparte, en los receipts de las transacciones. Es mucho
-más barato que escribir storage. La palabra clave <code>indexed</code>
-permite filtrar por ese campo después. En 30 minutos vamos a ver esto
-exacto en Etherscan.”</em></p>
-</blockquote>
-<p><strong>Líneas 22-26 — store</strong>:</p>
-<blockquote>
-<p><em>“Una función pública que escribe estado y emite el evento.
-<code>msg.sender</code> es la address del que está llamando ahora. Cada
-vez que se llama una función, <code>msg.sender</code> cambia.”</em></p>
-</blockquote>
-<p><strong>Línea 28 — retrieve</strong>:</p>
-<blockquote>
-<p><em>“Función <code>view</code> — declara que solo lee, no modifica.
-Si la llamás desde fuera, no cuesta gas. Si la llamás desde otro
-contrato, sí cuesta porque ese otro contrato sí está pagando
-gas.”</em></p>
-</blockquote>
-<h2 id="34--tests-15-min">3.4 — Tests (15 min)</h2>
-<blockquote>
-<p><em>“Ahora la parte que Remix no les daba: tests
-automatizados.”</em></p>
-</blockquote>
-<div class="sourceCode" id="cb33"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="ex">forge</span> test</span></code></pre></div>
-<p><strong>Output esperado</strong>:</p>
-<pre><code>Ran 10 tests for test/SimpleStorage.t.sol:SimpleStorageTest
-[PASS] testFuzz_IncrementNoOverflow(uint256) (runs: 256, μ: 35977)
-[PASS] testFuzz_Store(uint256) (runs: 256, μ: 29577)
-[PASS] test_AnyoneCanStore() (gas: 41137)
-[PASS] test_EventRecordsCorrectCaller() (gas: 36524)
-[PASS] test_Increment() (gas: 33023)
-[PASS] test_IncrementEmitsEvent() (gas: 36730)
-[PASS] test_InitialValueIsZero() (gas: 7570)
-[PASS] test_RetrieveMatchesFavoriteNumber() (gas: 30900)
-[PASS] test_StoreEmitsEvent() (gas: 33869)
-[PASS] test_StoreNumber() (gas: 30118)
-Suite result: ok. 10 passed; 0 failed; 0 skipped</code></pre>
-<blockquote>
-<p><em>“10 tests, 30 milisegundos. En Remix esto era imposible. Vamos a
-abrir el archivo y entender qué hace cada uno.”</em></p>
-</blockquote>
-<p>Abrir <code>test/SimpleStorage.t.sol</code>:</p>
-<blockquote>
-<p><em>“<code>setUp()</code> — se ejecuta antes de <strong>cada</strong>
-test. Cada test arranca con un contrato limpio. Si test 1 cambia el
-favoriteNumber, test 2 no lo ve.</em></p>
-<p><em><code>assertEq(a, b)</code> — la aserción más usada. Si
-<code>a != b</code>, falla el test.</em></p>
-<p><em><code>vm.prank(alice)</code> — esto es magia de Foundry. La
-próxima llamada se hace <strong>como si</strong> la hiciera la address
-<code>alice</code>. Sirve para testear que solo el owner puede llamar
-<code>transferOwnership</code>, por ejemplo.</em></p>
-<p><em><code>vm.expectEmit(true, true, true, true)</code> — la próxima
-transacción debe emitir el evento exacto que viene después.</em></p>
-<p><em><code>testFuzz_Store(uint256 _number)</code> — esto se llama
-<strong>fuzz testing</strong>. Foundry te genera 256 valores random para
-<code>_number</code>, corre el test 256 veces, y si alguno falla te lo
-muestra. Encuentra bugs que vos nunca pensaste.“</em></p>
-</blockquote>
-<h3 id="ejercicio-en-vivo-agregar-test_doubleincrement-8-min">Ejercicio
-en vivo: agregar <code>test_DoubleIncrement</code> (8 min)</h3>
-<blockquote>
-<p><em>“Vamos a escribir un test juntos. La idea: si llamo
-<code>increment()</code> dos veces seguidas, el número tiene que
-aumentar en 2. ¿Cómo lo escribirían?”</em></p>
-</blockquote>
-<p>(Que un alumno dicte. Implementar esto al final del archivo, dentro
-del contract:)</p>
-<pre class="solidity"><code>function test_DoubleIncrement() public {
-    simpleStorage.store(5);
-    simpleStorage.increment();
-    simpleStorage.increment();
-    assertEq(simpleStorage.favoriteNumber(), 7);
-}</code></pre>
-<blockquote>
-<p><em>“Ese 7 es a propósito: arrancamos en 5, sumamos 1 dos veces, da
-7. Corrámoslo:”</em></p>
-</blockquote>
-<div class="sourceCode" id="cb36"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="ex">forge</span> test <span class="at">--match-test</span> test_DoubleIncrement <span class="at">-vvv</span></span></code></pre></div>
-<p><strong>Output esperado</strong>:</p>
-<pre><code>[PASS] test_DoubleIncrement() (gas: 35838)
-Suite result: ok. 1 passed; 0 failed</code></pre>
-<blockquote>
-<p><em>“Pasa. Ahora vamos a hacer algo educativo: lo rompemos a
-propósito. Cambien el 7 por un 8 y corran de nuevo.”</em></p>
-</blockquote>
-<div class="sourceCode" id="cb38"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="ex">forge</span> test <span class="at">--match-test</span> test_DoubleIncrement <span class="at">-vvv</span></span></code></pre></div>
-<p><strong>Output esperado</strong> (al fallar):</p>
-<pre><code>[FAIL: assertion failed: 7 != 8] test_DoubleIncrement()</code></pre>
-<blockquote>
-<p><em>“¿Ven? Te dice exactamente cuál fue el valor real (7) y cuál
-esperabas (8). Esto es un loop de feedback de
-<strong>milisegundos</strong>. Después de 5 fails sentís que estás en
-<code>pdb</code> con el contrato. Vuelvan a ponerlo en 7 y compilen para
-volver al verde.”</em></p>
-</blockquote>
-<hr />
-<h1 id="4-break-1900--1905-5-min">4. Break (19:00 – 19:05, 5 min)</h1>
-<blockquote>
-<p><em>“5 minutos, agua, estiren las piernas. Cuando volvemos, lo mejor:
-deploy real.”</em></p>
-</blockquote>
-<hr />
-<h1 id="5-bloque-3--anvil--deploy-real-1905--1935-30-min">5. Bloque 3 —
-Anvil + deploy real (19:05 – 19:35, 30 min)</h1>
-<h2 id="51--anvil-blockchain-local-instantánea-8-min">5.1 — Anvil:
-blockchain local instantánea (8 min)</h2>
-<blockquote>
-<p><em>“Antes de gastar nuestros tokens de Sepolia que tanto nos costó
-conseguir, vamos a probar todo en una blockchain local. Foundry trae una
-herramienta llamada <strong>anvil</strong> que es exactamente eso: una
-Ethereum local, en tu máquina, con cuentas pre-cargadas, transacciones
-instantáneas, gratis.”</em></p>
-</blockquote>
-<p><strong>Terminal 1</strong>:</p>
-<div class="sourceCode" id="cb40"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="ex">anvil</span></span></code></pre></div>
-<p><strong>Output esperado</strong>:</p>
-<pre><code>                             _   _
-                            (_) | |
-      __ _   _ __   __   __  _  | |
-     / _` | | &#39;_ \  \ \ / / | | | |
-    | (_| | | | | |  \ V /  | | | |
-     \__,_| |_| |_|   \_/   |_| |_|
-
-    1.5.1-stable
-
-Available Accounts
-==================
-(0) 0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266 (10000 ETH)
-(1) 0x70997970C51812dc3A010C7d01b50e0d17dc79C8 (10000 ETH)
-... (10 cuentas, todas con 10000 ETH)
-
-Private Keys
-==================
-(0) 0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80
-... (10 priv keys públicas, NO USAR EN MAINNET)
-
-Listening on 127.0.0.1:8545</code></pre>
-<blockquote>
-<p><em>“Tienen 10 cuentas con 10.000 ETH cada una. Estos private keys
-son <strong>públicos</strong>, todo el mundo los conoce,
-<strong>jamás</strong> usar en mainnet. Pero para desarrollo, oro puro.
-Esta blockchain corre en <code>localhost:8545</code>.”</em></p>
-</blockquote>
-<h2 id="52--deploy-local-con-forge-create-5-min">5.2 — Deploy local con
-<code>forge create</code> (5 min)</h2>
-<p><strong>Terminal 2</strong> (dejar anvil corriendo en la 1):</p>
-<div class="sourceCode" id="cb42"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> module-2/simple-storage</span></code></pre></div>
-<div class="sourceCode" id="cb43"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="ex">forge</span> create src/SimpleStorage.sol:SimpleStorage <span class="dt">\</span></span>
-<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">--rpc-url</span> http://localhost:8545 <span class="dt">\</span></span>
-<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">--private-key</span> 0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80 <span class="dt">\</span></span>
-<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">--broadcast</span></span></code></pre></div>
-<p><strong>Output esperado</strong>:</p>
-<pre><code>Deployer: 0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266
-Deployed to: 0x5FbDB2315678afecb367f032d93F642f64180aa3
-Transaction hash: 0x01f608d7772dd19b56596ff20e69c3893ca1fe6856487c186adc7c9720dcc7a9</code></pre>
-<blockquote>
-<p><em>“Listo, contrato deployado a <code>0x5FbD...0aa3</code>. Esa
-address es <strong>determinística</strong> en anvil — si reinician anvil
-y hacen el primer deploy, siempre les da la misma. Eso ayuda mucho
-cuando estás iterando.</em></p>
-<p><em>Guardamos la address en una variable para no copiarla cada
-vez:“</em></p>
-</blockquote>
-<div class="sourceCode" id="cb45"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">ADDR</span><span class="op">=</span>0x5FbDB2315678afecb367f032d93F642f64180aa3</span></code></pre></div>
-<h2 id="53--interactuar-con-cast-7-min">5.3 — Interactuar con
-<code>cast</code> (7 min)</h2>
-<blockquote>
-<p><em>“<code>cast</code> es como curl pero para blockchain. Vamos a
-leer el estado, escribirlo, y leer de nuevo.”</em></p>
-</blockquote>
-<p><strong>Leer el valor inicial</strong> (gratis, no manda
-transacción):</p>
-<div class="sourceCode" id="cb46"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="ex">cast</span> call <span class="va">$ADDR</span> <span class="st">&quot;favoriteNumber()&quot;</span> <span class="at">--rpc-url</span> http://localhost:8545 <span class="kw">|</span> <span class="ex">cast</span> <span class="at">--to-dec</span></span></code></pre></div>
-<p><strong>Output</strong>:</p>
-<pre><code>0</code></pre>
-<blockquote>
-<p><em>“Cero, perfecto, contrato recién deployado.
-<code>cast call</code> es free, no manda transacción, solo
-consulta.”</em></p>
-</blockquote>
-<p><strong>Escribir un valor</strong> (esto sí es transacción y gasta
-gas):</p>
-<div class="sourceCode" id="cb48"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="ex">cast</span> send <span class="va">$ADDR</span> <span class="st">&quot;store(uint256)&quot;</span> 42 <span class="dt">\</span></span>
-<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">--rpc-url</span> http://localhost:8545 <span class="dt">\</span></span>
-<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">--private-key</span> 0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80</span></code></pre></div>
-<p><strong>Output esperado</strong> (extracto):</p>
-<pre><code>blockNumber          2
-gasUsed              45277
-status               1 (success)
-transactionHash      0x6a201cdc4ea688550f8e088bf1a08ee7047480fb3a2cc7459860521c468fb7d5
-logs                 [{&quot;topics&quot;:[&quot;0x2b78c2c16beca88a8dce3d4d00cfce4cf73f6daca288a7fdc65f29c97d045fe6&quot;,&quot;0x000000000000000000000000f39fd6e51aad88f6f4ce6ab8827279cfffb92266&quot;],&quot;data&quot;:&quot;0x000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000002a&quot;}]</code></pre>
-<blockquote>
-<p><em>“Status 1 = éxito. Gas usado: 45.277. Y miren los
-<code>logs</code>: ahí está el evento <code>NumberUpdated</code>. Ese
-<code>2a</code> al final del data es <strong>42 en hex</strong>. El
-evento se emitió.</em></p>
-<p><em>Y no es una casualidad: el <code>topic[0]</code> que ven es el
-hash de la firma del evento. Lo podemos calcular:“</em></p>
-</blockquote>
-<div class="sourceCode" id="cb50"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="ex">cast</span> keccak <span class="st">&quot;NumberUpdated(uint256,uint256,address)&quot;</span></span></code></pre></div>
-<p><strong>Output</strong>:</p>
-<pre><code>0x2b78c2c16beca88a8dce3d4d00cfce4cf73f6daca288a7fdc65f29c97d045fe6</code></pre>
-<blockquote>
-<p><em>“Mismo número que el <code>topic[0]</code> del log. Eso es lo que
-permite a un frontend filtrar ‘dame todos los <code>NumberUpdated</code>
-de este contrato’.”</em></p>
-</blockquote>
-<p><strong>Leer de nuevo</strong>:</p>
-<div class="sourceCode" id="cb52"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="ex">cast</span> call <span class="va">$ADDR</span> <span class="st">&quot;favoriteNumber()&quot;</span> <span class="at">--rpc-url</span> http://localhost:8545 <span class="kw">|</span> <span class="ex">cast</span> <span class="at">--to-dec</span></span></code></pre></div>
-<p><strong>Output</strong>:</p>
-<pre><code>42</code></pre>
-<blockquote>
-<p><em>“42. Esto es lo mismo que hicieron en Remix la semana pasada con
-los botones azules. Mismo concepto, otra interfaz.”</em></p>
-</blockquote>
-<p><strong>Bonus — Increment</strong>:</p>
-<div class="sourceCode" id="cb54"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="ex">cast</span> send <span class="va">$ADDR</span> <span class="st">&quot;increment()&quot;</span> <span class="dt">\</span></span>
-<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">--rpc-url</span> http://localhost:8545 <span class="dt">\</span></span>
-<span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">--private-key</span> 0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80</span></code></pre></div>
-<div class="sourceCode" id="cb55"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="ex">cast</span> call <span class="va">$ADDR</span> <span class="st">&quot;favoriteNumber()&quot;</span> <span class="at">--rpc-url</span> http://localhost:8545 <span class="kw">|</span> <span class="ex">cast</span> <span class="at">--to-dec</span></span></code></pre></div>
-<p><strong>Output</strong>:</p>
-<pre><code>43</code></pre>
-<h2 id="54--deploy-a-sepolia--etherscan-10-min">5.4 — Deploy a Sepolia +
-Etherscan (10 min)</h2>
-<blockquote>
-<p><em>“Ahora lo subimos a la blockchain real. Sepolia. Misma red que la
-semana pasada con Remix. Antes de eso, una clave de seguridad:
-<strong>nunca expongan su private key en pantalla compartida si tiene
-fondos reales</strong>. Lo que vamos a usar es una cuenta de prueba,
-solo para Sepolia.”</em></p>
-</blockquote>
-<p><strong>Importar private key como cast wallet</strong> (recomendado,
-evita escribir la key en pantalla):</p>
-<div class="sourceCode" id="cb57"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="ex">cast</span> wallet import dev-wallet <span class="at">--interactive</span></span></code></pre></div>
-<blockquote>
-<p><em>“Te pide la priv key (la que copiaste de MetaMask) y una
-contraseña. La encripta y la guarda. Después usás
-<code>--account dev-wallet</code> y te pide la contraseña en cada
-deploy.”</em></p>
-</blockquote>
-<p><strong>Verificar Sepolia online</strong>:</p>
-<div class="sourceCode" id="cb58"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="ex">cast</span> chain-id <span class="at">--rpc-url</span> https://ethereum-sepolia-rpc.publicnode.com</span></code></pre></div>
-<p><strong>Output</strong>:</p>
-<pre><code>11155111</code></pre>
-<blockquote>
-<p><em>“11.155.111 es el chain ID oficial de Sepolia. Sirve también para
-responder la duda de la semana pasada: ‘¿cómo sé que es testnet?’.
-Porque chainlist.org te lista todas las redes con su chain ID y dice
-cuáles son testnet.”</em></p>
-</blockquote>
-<div class="sourceCode" id="cb60"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="ex">cast</span> block-number <span class="at">--rpc-url</span> https://ethereum-sepolia-rpc.publicnode.com</span></code></pre></div>
-<p><strong>Output</strong>: número de bloque actual (ej:
-<code>10744491</code>)</p>
-<div class="sourceCode" id="cb61"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a><span class="ex">cast</span> gas-price <span class="at">--rpc-url</span> https://ethereum-sepolia-rpc.publicnode.com</span></code></pre></div>
-<p><strong>Output</strong>: gas price actual en wei (ej:
-<code>36689734</code> = ~36 gwei)</p>
-<p><strong>Deploy real</strong> (esto SÍ gasta tokens de Sepolia):</p>
-<div class="sourceCode" id="cb62"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="ex">forge</span> create src/SimpleStorage.sol:SimpleStorage <span class="dt">\</span></span>
-<span id="cb62-2"><a href="#cb62-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">--rpc-url</span> https://ethereum-sepolia-rpc.publicnode.com <span class="dt">\</span></span>
-<span id="cb62-3"><a href="#cb62-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">--account</span> dev-wallet <span class="dt">\</span></span>
-<span id="cb62-4"><a href="#cb62-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">--broadcast</span></span></code></pre></div>
-<p><strong>Output esperado</strong> (~12 segundos):</p>
-<pre><code>Deployer: 0x... (tu cuenta)
-Deployed to: 0x... (nueva address en Sepolia)
-Transaction hash: 0x...</code></pre>
-<blockquote>
-<p><em>“Eso tarda 12 segundos porque Sepolia tiene bloques cada ~12
-segundos. Anvil era instantáneo, esto no.”</em></p>
-</blockquote>
-<p><strong>Abrir Etherscan</strong>:</p>
-<pre><code>https://sepolia.etherscan.io/address/[ADDRESS_AQUI]</code></pre>
-<blockquote>
-<p><em>“Esa es la address en la blockchain real. Si abren la transacción
-de creación, van a ver el bytecode — el mismo hex que vimos al principio
-en <code>out/</code>. Click en ‘Contract’ → ‘Code’ verán que dice
-‘Source code not verified’. Eso queda como tarea: verificarlo. Pero el
-bytecode ya está, es público, cualquiera puede llamar
-funciones.”</em></p>
-</blockquote>
-<p><strong>Mandar una transacción que emita evento</strong>:</p>
-<div class="sourceCode" id="cb65"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a><span class="ex">cast</span> send <span class="va">$ADDR</span> <span class="st">&quot;store(uint256)&quot;</span> 123 <span class="dt">\</span></span>
-<span id="cb65-2"><a href="#cb65-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">--rpc-url</span> https://ethereum-sepolia-rpc.publicnode.com <span class="dt">\</span></span>
-<span id="cb65-3"><a href="#cb65-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">--account</span> dev-wallet</span></code></pre></div>
-<blockquote>
-<p><em>“Esperan 12 segundos, recargan Etherscan y van al tab ‘Logs’. Van
-a ver el evento <code>NumberUpdated</code> decodificado:
-<code>oldNumber=0</code>, <code>newNumber=123</code>, y
-<code>updatedBy</code> con su address. Ese <code>indexed</code> que
-pusimos en el evento es lo que permite a Etherscan filtrar por la
-address que llamó. Eso cierra el loop completo: del Solidity al log
-decodificado en el explorador.”</em></p>
-</blockquote>
-<hr />
-<h1 id="6-handoff-a-ciro-1935">6. Handoff a Ciro (19:35)</h1>
-<p><strong>Resumen express para arrancar el cierre</strong>:</p>
-<blockquote>
-<p><em>“Para cerrar mi parte: hoy bajamos del Remix de la clase pasada a
-la línea de comandos. Instalamos Foundry, escribimos un contrato
-Solidity, lo testeamos con <code>forge test</code> y agregamos un test
-nuevo en vivo, lo deployamos local con anvil, y después lo deployamos
-real a Sepolia y vimos el evento decodificado en Etherscan. Esto es el
-flujo profesional. La próxima clase con Ciro arrancan con módulo 3:
-reemplazamos este <code>SimpleStorage</code> por un token ERC-20 con
-OpenZeppelin y le ponemos un frontend en React. Te paso, Ciro.”</em></p>
-</blockquote>
-<h2 id="tarea-para-la-próxima">Tarea para la próxima</h2>
+<h2 id="tarea-para-la-próxima-clase">Tarea para la próxima clase</h2>
 <ol type="1">
-<li>Agregar función <code>decrement()</code> con
-<code>require(favoriteNumber &gt; 0, "underflow")</code> en
-<code>SimpleStorage.sol</code></li>
-<li>Escribir test que valide el revert con
+<li>Agregar función <code>decrement()</code> al contrato con
+<code>require(favoriteNumber &gt; 0, "underflow")</code></li>
+<li>Escribir un test que valide el revert con
 <code>vm.expectRevert("underflow")</code></li>
-<li>Hacer deploy a Sepolia y postear el address en el foro</li>
-<li>(Opcional) Verificar el contrato en Etherscan con
+<li>Hacer deploy a Sepolia y postear el address en el foro del
+campus</li>
+<li><strong>(Opcional)</strong> Verificar el contrato en Etherscan con
 <code>forge verify-contract</code></li>
 </ol>
 <hr />
-<h1 id="7-riesgos-y-planes-b">7. Riesgos y planes B</h1>
+<h2 id="recursos">Recursos</h2>
 <table>
 <thead>
 <tr>
-<th>Riesgo</th>
-<th>Plan B en vivo</th>
+<th>Recurso</th>
+<th>URL</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><code>foundryup</code> falla en Windows sin WSL</td>
-<td>Que ese alumno siga con Remix por hoy. WSL2 install link al
-foro.</td>
+<td>Repo del ejercicio</td>
+<td><a
+href="https://github.com/dpetrocelli/diplo-unq-blockchain-clase2">https://github.com/dpetrocelli/diplo-unq-blockchain-clase2</a></td>
 </tr>
 <tr>
-<td><code>forge install forge-std</code> falla</td>
-<td>El proyecto ya tiene <code>lib/forge-std/</code> instalado</td>
+<td>Foundry Book</td>
+<td><a
+href="https://book.getfoundry.sh/">https://book.getfoundry.sh/</a></td>
 </tr>
 <tr>
-<td>Faucet no da tokens en vivo</td>
-<td>Pasar a Google Cloud faucet. Si igual no anda, deploy a anvil y
-mostrar Sepolia con un contrato pre-deployado tuyo</td>
+<td>Solidity Docs</td>
+<td><a
+href="https://docs.soliditylang.org/">https://docs.soliditylang.org/</a></td>
 </tr>
 <tr>
-<td>Alumno expone priv key real</td>
-<td>Cortar inmediatamente. Recordar que tiene que crear una cuenta nueva
-en MetaMask solo para esto</td>
+<td>OpenZeppelin Contracts</td>
+<td><a
+href="https://docs.openzeppelin.com/contracts/">https://docs.openzeppelin.com/contracts/</a></td>
 </tr>
 <tr>
-<td>RPC público de Sepolia rate-limited / lento</td>
-<td>Plan B URL: <code>https://rpc.sepolia.org</code> o
-<code>https://sepolia.gateway.tenderly.co</code></td>
+<td>Sepolia Etherscan</td>
+<td><a
+href="https://sepolia.etherscan.io">https://sepolia.etherscan.io</a></td>
 </tr>
 <tr>
-<td><code>forge create</code> tarda 30+ segundos en Sepolia</td>
-<td>Normal por congestión. Si pasan 60s sin confirmación, mostrar
-<code>cast tx &lt;hash&gt;</code> para chequear estado</td>
+<td>Faucet recomendada</td>
+<td><a
+href="https://cloud.google.com/application/web3/faucet/ethereum/sepolia">https://cloud.google.com/application/web3/faucet/ethereum/sepolia</a></td>
 </tr>
 <tr>
-<td>Algún test en vivo falla por typo</td>
-<td>Es educativo. Leer juntos el error de Foundry, arreglar, correr de
-nuevo</td>
+<td>Solidity by Example</td>
+<td><a
+href="https://solidity-by-example.org/">https://solidity-by-example.org/</a></td>
 </tr>
 </tbody>
 </table>
 <hr />
-<h1 id="8-checklist-final-pre-clase-chequear-10-min-antes">8. Checklist
-final pre-clase (chequear 10 min antes)</h1>
-<ul class="task-list">
-<li><label><input type="checkbox" /><code>forge --version</code>,
-<code>cast --version</code>, <code>anvil --version</code>
-funcionan</label></li>
-<li><label><input
-type="checkbox" /><code>git clone https://github.com/dpetrocelli/diplo-unq-blockchain-clase2.git</code>
-corre limpio</label></li>
-<li><label><input type="checkbox" />En el repo clonado:
-<code>forge install foundry-rs/forge-std --shallow &amp;&amp; forge build &amp;&amp; forge test</code>
-→ <strong>10 verde</strong></label></li>
-<li><label><input type="checkbox" /><code>anvil</code> arranca y muestra
-las 10 cuentas</label></li>
-<li><label><input
-type="checkbox" /><code>cast chain-id --rpc-url https://ethereum-sepolia-rpc.publicnode.com</code>
-devuelve <code>11155111</code></label></li>
-<li><label><input type="checkbox" />MetaMask abierta, en Sepolia, con
-saldo &gt; 0.01 ETH</label></li>
-<li><label><input type="checkbox" />VS Code con extensión Solidity
-(<code>juanblanco.solidity</code>) instalada</label></li>
-<li><label><input type="checkbox" />2 terminales abiertas (anvil +
-cast)</label></li>
-<li><label><input type="checkbox" />Etherscan Sepolia abierto en
-pestaña</label></li>
-<li><label><input type="checkbox" />Faucet de Google Cloud abierta en
-pestaña</label></li>
-<li><label><input type="checkbox" />Pantalla compartida testeada con
-fuente legible (sugerencia: VS Code zoom 1.5x, terminal
-16pt)</label></li>
-<li><label><input type="checkbox" />URL del repo a la mano para pegarla
-en el chat: <a
-href="https://github.com/dpetrocelli/diplo-unq-blockchain-clase2">https://github.com/dpetrocelli/diplo-unq-blockchain-clase2</a></label></li>
-</ul>
+<h2 id="si-algo-falla">Si algo falla</h2>
+<table>
+<thead>
+<tr>
+<th>Problema</th>
+<th>Solución</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>foundryup</code> falla en Windows</td>
+<td>Instalar <strong>WSL2</strong> primero, después correrlo dentro de
+WSL</td>
+</tr>
+<tr>
+<td><code>forge install</code> falla por proxy</td>
+<td>Probar con VPN o desde otra red</td>
+</tr>
+<tr>
+<td>Faucet no manda tokens</td>
+<td>Probar otra: Alchemy <a
+href="https://www.alchemy.com/faucets/ethereum-sepolia">https://www.alchemy.com/faucets/ethereum-sepolia</a></td>
+</tr>
+<tr>
+<td>RPC de Sepolia lento</td>
+<td>Cambiar a <code>https://rpc.sepolia.org</code></td>
+</tr>
+<tr>
+<td><code>forge test</code> falla con
+<code>Member "NumberUpdated" not found</code></td>
+<td>Verificar que <code>foundry.toml</code> tiene
+<code>solc = "0.8.28"</code> (no 0.8.19)</td>
+</tr>
+</tbody>
+</table>
+<p>Lo demás lo resolvemos en vivo o por el foro del campus.</p>
 
     <nav class="page-prev-next" aria-label="Navegación entre páginas">
       <a class="prev-link" href="#" data-slot="prev" hidden>
