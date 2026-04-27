@@ -1,23 +1,38 @@
 /* ==========================================================
    UNQ · Diplomatura Blockchain — Desarrollo de SC y dApps
-   Branding aligned with Universidad Nacional de Quilmes palette
+   Branding aligned with Universidad Nacional de Quilmes
+   "Normativa gráfica abreviada" (logo-UNQ.pdf, 2024).
+
+   Official palette:
+   - Pantone 187 C  → institutional crimson red
+   - Pantone 418 C  → warm olive-gray (used in secondary text)
+   - Black 100% / White
+   Typography: Modern 216 (primary, no web font), Trebuchet MS (secondary)
    ========================================================== */
 
 :root {
-  --navy: #003B5C;         /* UNQ dark blue */
-  --dark-blue: #00558C;
-  --mid-blue: #F47920;     /* UNQ primary orange (used as accent everywhere mid-blue was used) */
-  --light-blue: #FFF1E5;   /* light orange tint */
-  --unq-orange: #F47920;
-  --unq-orange-dark: #D9651A;
+  /* UNQ official */
+  --unq-red: #A6192E;          /* Pantone 187 C */
+  --unq-red-dark: #861425;     /* darker shade for hover/border */
+  --unq-red-light: #FCEBEE;    /* tint for backgrounds */
+  --unq-olive: #54533F;        /* Pantone 418 C — the institutional secondary */
+  --unq-olive-light: #8A8A6F;  /* lighter olive */
+  --unq-cream: #FAF9F6;        /* warm cream off-white */
+
+  /* Aliases used by sip2026 layout (kept so layout works) */
+  --navy: var(--unq-red);
+  --dark-blue: var(--unq-red-dark);
+  --mid-blue: var(--unq-red);
+  --light-blue: var(--unq-red-light);
+
   --white: #FFFFFF;
-  --off-white: #FAF8F5;
+  --off-white: var(--unq-cream);
   --gray: #6B7280;
-  --dark-gray: #1F2937;
+  --dark-gray: #2D2D2D;       /* body text — dark gray, not red/olive */
   --light-gray: #E5E7EB;
-  --accent: #F47920;
+  --accent: var(--unq-red);
   --green: #38A169;
-  --orange: #F47920;
+  --orange: var(--unq-olive-light);
   --purple: #805AD5;
 
   --content-max: 880px;
@@ -50,7 +65,7 @@ body {
   position: sticky;
   top: 0;
   z-index: 100;
-  box-shadow: 0 2px 12px rgba(30, 58, 95, 0.18);
+  box-shadow: 0 2px 12px rgba(166, 25, 46, 0.22);
 }
 
 .unq-header .brand {
@@ -326,8 +341,8 @@ pre {
 }
 
 pre:hover {
-  box-shadow: 0 2px 14px rgba(244, 121, 32, 0.25);
-  border-left-color: var(--unq-orange);
+  box-shadow: 0 2px 14px rgba(166, 25, 46, 0.28);
+  border-left-color: var(--unq-red);
 }
 
 pre::before {
