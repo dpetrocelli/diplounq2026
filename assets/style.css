@@ -1123,6 +1123,23 @@ a.task-card.task-home:hover {
 .flow-step.closed:hover {
   opacity: 1;
 }
+
+/* Próximamente — UNQ olive tint to signal "coming up" without competing
+   with the active red. Uses Pantone 418 C as the accent. */
+.flow-step[data-status="proximamente"] {
+  background: #F5F4ED;
+  border-color: var(--unq-olive);
+  border-left: 5px solid var(--unq-olive);
+}
+.flow-step[data-status="proximamente"] .step-num {
+  color: var(--unq-olive);
+}
+.flow-step[data-status="proximamente"] .step-name {
+  color: #2A2A1E;
+}
+.flow-step[data-status="proximamente"] .step-status {
+  color: var(--unq-olive);
+}
 .flow-arrow {
   align-self: center;
   font-size: 24px;
