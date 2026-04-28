@@ -91,8 +91,8 @@ body {
   flex-shrink: 0;
 }
 
-.unq-header .brand .logo.unlu { height: 60px; }
-.unq-header .brand .logo.dcb  { height: 50px; }
+.unq-header .brand .logo.unq { height: 56px; }
+.unq-header .brand .logo.dcb  { height: 50px; } /* legacy */
 
 .unq-header .brand-text {
   flex: 1;
@@ -563,7 +563,7 @@ img {
 }
 
 @media (max-width: 560px) {
-  .unq-header .brand .logo.unlu { height: 44px; }
+  .unq-header .brand .logo.unq { height: 44px; }
   .unq-header .brand .logo.dcb  { height: 38px; }
   .unq-header .brand-text { font-size: 13px; }
   .unq-header .institution { font-size: 14px; }
