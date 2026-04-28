@@ -32,7 +32,7 @@ Lo que escribieron en clase 3 (`AcademicCredentials`) es el **esqueleto** del TP
 
 ---
 
-## Parte 0 — Hook UNQ + Modelado de datos (10%)
+## Parte 0 — Hook UNQ + Modelado de datos (20%)
 
 > Esto va al **principio del README**, antes que cualquier otra cosa. Es lo primero que vamos a leer al evaluar.
 
@@ -46,7 +46,7 @@ En 1-2 párrafos, contestar:
 
 > No tiene que ser perfecto, pero sí mostrar que pensaron el sistema **integrado a la institución real**, no como ejercicio aislado.
 
-### 0.2 Modelado de datos / arquitectura (5%)
+### 0.2 Modelado de datos / arquitectura (15%)
 
 Diagrama + texto explicando:
 
@@ -144,7 +144,7 @@ event IssuerRevoked(address indexed account, address indexed by);
 
 ---
 
-## Parte 2 — Testing (20%)
+## Parte 2 — Testing (10%)
 
 ### Tests obligatorios
 
@@ -309,9 +309,9 @@ El README del repo tiene que tener:
 
 | Parte | Pts | Qué se evalúa |
 |---|---|---|
-| 0 — Hook UNQ + modelado | 10 | README arranca con contexto institucional + diagramas claros |
+| 0 — Hook UNQ + modelado | 20 | README arranca con contexto institucional + diagramas claros |
 | 1 — Smart contract | 35 | AccessControl + soulbound + struct + eventos + funciones obligatorias |
-| 2 — Testing | 20 | Coverage ≥ 80% + soulbound + fuzz + casos error |
+| 2 — Testing | 10 | Coverage ≥ 80% + soulbound + fuzz + casos error |
 | 3 — Seguridad | 10 | Slither documentado + checklist completo |
 | 4 — Frontend + Deploy L2 | 20 | 3 modos + Base Sepolia verificado + frontend online |
 | 5 — Video demo + README | 5 | Demo end-to-end de 3-5 min + README completo |
@@ -323,7 +323,6 @@ El README del repo tiene que tener:
 
 - **+10**: Multi-firma (un título solo se emite si firma decano + secretario, vía Gnosis Safe).
 - **+10**: QR code en el frontend que abre la verificación.
-- **+5**: ZK proof "tengo título de UNQ sin revelar cuál" (Noir o Circom).
 - **+5**: Indexer con The Graph.
 - **+5**: Integración con DID (W3C Decentralized Identifiers).
 - **+5**: Notificación on-chain → email/Slack vía Chainlink Functions.
