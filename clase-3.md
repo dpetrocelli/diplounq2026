@@ -4,11 +4,22 @@
 
 ## ¿Qué vamos a hacer?
 
-1. **Cerrar lo que quedó pendiente de clase 2**: levantar una blockchain local con Anvil, deployar `SimpleStorage`, interactuar con `cast`, y después llevarlo a Sepolia y verlo en Etherscan
-2. **Aprender qué es un NFT (ERC-721)** y por qué es el estándar correcto para representar títulos universitarios
-3. **Clonar y entender** el contrato `AcademicCredentials` — el esqueleto del TP final
-4. **Testear** el contrato con Foundry (14 tests)
-5. **Deployar a Sepolia** y **emitirse un título**, viéndolo aparecer como NFT en MetaMask
+### 🏫 En clase (en vivo con David + Ciro)
+
+1. **Cerrar lo que quedó pendiente de clase 2**: levantar una blockchain local con Anvil, deployar `SimpleStorage`, interactuar con `cast`, y después llevarlo a Sepolia y verlo en Etherscan.
+2. **Aprender qué es un NFT (ERC-721)** y por qué es el estándar correcto para representar títulos universitarios.
+3. **Clonar y entender** el contrato `AcademicCredentials` — el esqueleto del TP final.
+4. **Testear** el contrato con Foundry (14 tests).
+5. **Deployar a Sepolia** y **emitirse un título**, viéndolo aparecer como NFT en MetaMask.
+
+### 🏠 Tarea para entregar antes de clase 4
+
+1. Deployar tu propio `AcademicCredentials` en Sepolia (vos sos el issuer).
+2. Emitirte un título a vos mismo con un `tokenURI` placeholder.
+3. Postear en el foro del campus: address del contrato + `tokenId` + hash de la tx.
+4. (Opcional) Subir un JSON de metadata real a [Pinata](https://www.pinata.cloud/) y usar el CID como `tokenURI`.
+
+> El detalle completo de la tarea está al final de esta página. Acá te enseñamos a hacerlo todo en clase para que después lo repliques solo.
 
 ---
 
@@ -157,9 +168,9 @@ https://sepolia.etherscan.io/address/<TU_ADDRESS>
 ```
 
 Vas a ver:
-- La transacción de creación
-- El **bytecode** del contrato (mismo hex que vieron en `out/SimpleStorage.sol/SimpleStorage.json` cuando hicieron `forge build`)
-- Tab "Contract" → "Source code not verified" — eso queda como tarea para después
+- La transacción de creación.
+- El **bytecode** del contrato (mismo hex que vieron en `out/SimpleStorage.sol/SimpleStorage.json` cuando hicieron `forge build`).
+- Tab "Contract" → "Source code not verified" — eso queda como tarea para después.
 
 Mandá una transacción que emita evento:
 
@@ -185,16 +196,16 @@ NFT = Non-Fungible Token = "token no fungible".
 - **No fungible** (ERC-721): cada unidad es **única**, con su propia identidad. Como un cuadro, una escritura, un título universitario.
 
 Cada NFT tiene:
-- Un **`tokenId`** (número único)
-- Un **`ownerOf(tokenId)`** (la wallet que es dueña)
-- Un **`tokenURI(tokenId)`** (link a la metadata: nombre, descripción, imagen, atributos — usualmente en IPFS)
+- Un **`tokenId`** (número único).
+- Un **`ownerOf(tokenId)`** (la wallet que es dueña).
+- Un **`tokenURI(tokenId)`** (link a la metadata: nombre, descripción, imagen, atributos — usualmente en IPFS).
 
 ### ¿Por qué ERC-721 para títulos universitarios?
 
-- Cada título es **único**: tu Licenciatura en Sistemas no es la misma que la de otro alumno
-- Tiene **metadata propia**: tu nombre, fecha, materias, hash del PDF
-- Lo "tenés" en tu wallet — nadie te lo puede sacar (salvo que el emisor lo revoque)
-- Es **verificable públicamente**: cualquiera puede chequear `ownerOf(tokenId)` y `tokenURI(tokenId)` y validar que tu título existe
+- Cada título es **único**: tu Licenciatura en Sistemas no es la misma que la de otro alumno.
+- Tiene **metadata propia**: tu nombre, fecha, materias, hash del PDF.
+- Lo "tenés" en tu wallet — nadie te lo puede sacar (salvo que el emisor lo revoque).
+- Es **verificable públicamente**: cualquiera puede chequear `ownerOf(tokenId)` y `tokenURI(tokenId)` y validar que tu título existe.
 
 ---
 
@@ -269,8 +280,8 @@ constructor()
 ```
 
 Pasamos argumentos a los constructores de los contratos padre:
-- `ERC721("UNQ Academic Credential", "UNQ-CRED")` → name + symbol del NFT
-- `Ownable(msg.sender)` → la wallet que deploya queda como owner (el "issuer")
+- `ERC721("UNQ Academic Credential", "UNQ-CRED")` → name + symbol del NFT.
+- `Ownable(msg.sender)` → la wallet que deploya queda como owner (el "issuer").
 
 ### Función `issueCredential` (emitir un título)
 
@@ -285,10 +296,10 @@ function issueCredential(address student, uint256 tokenId, string memory metadat
 }
 ```
 
-- `onlyOwner`: solo el issuer (la universidad) puede llamarla
-- `_mint(student, tokenId)`: crea el NFT y lo asigna a la wallet del estudiante
-- `_setTokenURI(tokenId, metadataURI)`: guarda la URI con la metadata
-- `emit CredentialIssued(...)`: emite un evento que el frontend va a escuchar
+- `onlyOwner`: solo el issuer (la universidad) puede llamarla.
+- `_mint(student, tokenId)`: crea el NFT y lo asigna a la wallet del estudiante.
+- `_setTokenURI(tokenId, metadataURI)`: guarda la URI con la metadata.
+- `emit CredentialIssued(...)`: emite un evento que el frontend va a escuchar.
 
 ### Función `revoke`
 
@@ -320,11 +331,11 @@ forge test
 ```
 
 Los 14 tests cubren:
-- Nombre, símbolo, ownership inicial
-- Issue / revoke (camino feliz + casos de error)
-- Eventos (`CredentialIssued`, `CredentialRevoked`)
-- Verificación (`isValid`, `tokenURI`, `ownerOf`)
-- Fuzz tests (256 casos random)
+- Nombre, símbolo, ownership inicial.
+- Issue / revoke (camino feliz + casos de error).
+- Eventos (`CredentialIssued`, `CredentialRevoked`).
+- Verificación (`isValid`, `tokenURI`, `ownerOf`).
+- Fuzz tests (256 casos random).
 
 Para ver el detalle de un test:
 
@@ -399,11 +410,11 @@ En "Logs" vas a ver `CredentialIssued` con tus datos decodificados.
 
 ## Parte 8 — Verlo como NFT en MetaMask
 
-1. Abrí MetaMask
-2. Tab "NFTs"
-3. "Import NFT"
-4. Address: la address de tu contrato
-5. Token ID: `1`
+1. Abrí MetaMask.
+2. Tab "NFTs".
+3. "Import NFT".
+4. Address: la address de tu contrato.
+5. Token ID: `1`.
 
 Ahora MetaMask muestra que sos dueño de un NFT del contrato `UNQ-CRED`. Si la metadata estuviera en IPFS, también vería el JSON con tu nombre, fecha, materias.
 
@@ -415,26 +426,32 @@ Ahora MetaMask muestra que sos dueño de un NFT del contrato `UNQ-CRED`. Si la m
 
 Lo que escribimos hoy es el **esqueleto** del TP final. Para el trabajo final lo van a extender con:
 
-- **`AccessControl`** con roles `ISSUER_ROLE` (decanos) y `DEFAULT_ADMIN_ROLE` (rector)
-- **Soulbound**: que los títulos NO sean transferibles (override `_update` para revertir transfers)
-- **Estructura de datos** completa (`Credential` con nombre, fecha, hash del PDF)
-- **Frontend con dos modos**: panel admin para emitir + verificador público para que cualquiera consulte
-- **Metadata real** en IPFS con foto + firma digital
-- **`SECURITY.md`** con análisis de Slither
+- **`AccessControl`** con roles `ISSUER_ROLE` (decanos) y `DEFAULT_ADMIN_ROLE` (rector).
+- **Soulbound**: que los títulos NO sean transferibles (override `_update` para revertir transfers).
+- **Estructura de datos** completa (`Credential` con nombre, fecha, hash del PDF).
+- **Frontend con dos modos**: panel admin para emitir + verificador público para que cualquiera consulte.
+- **Metadata real** en IPFS con foto + firma digital.
+- **`SECURITY.md`** con análisis de Slither.
 
 El spec completo se va a publicar en el campus.
 
 ---
 
-## Tarea para clase 4
+## 🏠 Tarea para entregar antes de clase 4
 
-1. **Deployar tu propio `AcademicCredentials`** en Sepolia (vos sos el issuer)
-2. **Emitirte un título a vos mismo** con un `tokenURI` placeholder
+**Plazo**: lunes 11/05 a las 18:00 (antes de que arranque la clase siguiente).
+
+**Cómo se entrega**: postear en el foro del módulo en el campus.
+
+**Qué tienen que hacer**:
+
+1. **Deployar tu propio `AcademicCredentials`** en Sepolia (vos sos el issuer).
+2. **Emitirte un título a vos mismo** con un `tokenURI` placeholder.
 3. **Postear en el foro** del campus:
-   - La address de tu contrato
-   - El `tokenId` del título emitido
-   - El hash de la transacción de emisión
-4. **(Opcional)** Subir un JSON real a [Pinata](https://www.pinata.cloud/) (cuenta gratis), copiar el CID, y usarlo como `tokenURI`. La metadata queda como:
+   - La address de tu contrato.
+   - El `tokenId` del título emitido.
+   - El hash de la transacción de emisión.
+4. **(Opcional, suma puntos)** Subir un JSON real a [Pinata](https://www.pinata.cloud/) (cuenta gratis), copiar el CID, y usarlo como `tokenURI`. La metadata queda como:
 
 ```json
 {

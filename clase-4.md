@@ -4,12 +4,23 @@
 
 ## ¿Qué vamos a hacer?
 
-1. **Construir un frontend** en Next.js que se conecte al contrato `AcademicCredentials`
-2. **Conectar MetaMask** desde una webapp con RainbowKit + wagmi
-3. **Leer datos del contrato** desde React (balance, tokenURI, isValid)
-4. **Escribir transacciones** desde el browser (emitir un título)
-5. **Estudiar el bug de reentrancy**: cómo funciona el ataque y dos formas de defenderse
-6. **Correr Slither** — análisis estático automático de vulnerabilidades
+### 🏫 En clase (en vivo con David + Ciro)
+
+1. **Construir un frontend** en Next.js que se conecte al contrato `AcademicCredentials`.
+2. **Conectar MetaMask** desde una webapp con RainbowKit + wagmi.
+3. **Leer datos del contrato** desde React (balance, tokenURI, isValid).
+4. **Escribir transacciones** desde el browser (emitir un título).
+5. **Estudiar el bug de reentrancy**: cómo funciona el ataque y dos formas de defenderse.
+6. **Correr Slither** — análisis estático automático de vulnerabilidades.
+
+### 🏠 Tarea para entregar antes del trabajo final
+
+1. Completar el frontend con un botón "Revocar credencial" visible solo para el issuer.
+2. Listar todas las credenciales del usuario (no solo `tokenId 1`) leyendo eventos `CredentialIssued`.
+3. Correr Slither sobre `AcademicCredentials.sol` (de clase 3) y postear el output en el foro.
+4. Empezar a leer el spec del TP final cuando se publique en el campus.
+
+> El detalle completo de la tarea está al final de esta página.
 
 ---
 
@@ -28,9 +39,9 @@ A diferencia de una webapp tradicional (frontend + backend + base de datos), una
 
 La pieza nueva que aprendemos hoy es la **conexión entre el frontend y el contrato**. Para eso usamos:
 
-- **wagmi** — librería de React hooks para Ethereum (`useReadContract`, `useWriteContract`, `useAccount`)
-- **viem** — la librería de bajo nivel que usa wagmi por debajo (encoding/decoding de calldata, ABIs, etc)
-- **RainbowKit** — UI lista para "Connect Wallet" (botón + modal con todas las wallets soportadas)
+- **wagmi** — librería de React hooks para Ethereum (`useReadContract`, `useWriteContract`, `useAccount`).
+- **viem** — la librería de bajo nivel que usa wagmi por debajo (encoding/decoding de calldata, ABIs, etc).
+- **RainbowKit** — UI lista para "Connect Wallet" (botón + modal con todas las wallets soportadas).
 
 ---
 
@@ -59,11 +70,11 @@ npm install
 ```
 
 Esto baja:
-- `next` — framework de React
+- `next` — framework de React.
 - `react` y `react-dom`
-- `wagmi` y `viem` — conexión blockchain
-- `@rainbow-me/rainbowkit` — UI de Connect Wallet
-- `@tanstack/react-query` — cache y refetching (lo usa wagmi internamente)
+- `wagmi` y `viem` — conexión blockchain.
+- `@rainbow-me/rainbowkit` — UI de Connect Wallet.
+- `@tanstack/react-query` — cache y refetching (lo usa wagmi internamente).
 
 > Si esto falla con un error de Node, verificá que tengas Node.js 18+ con `node --version`. Si es más viejo, instalá [nvm](https://github.com/nvm-sh/nvm) y corré `nvm install 20`.
 
@@ -75,12 +86,12 @@ WalletConnect es el protocolo que conecta una DApp con la wallet del usuario (es
 
 ### 3.1 Conseguir el Project ID
 
-1. Ir a [https://cloud.walletconnect.com/](https://cloud.walletconnect.com/) (ahora se llama "Reown Cloud")
-2. Crear cuenta (con Google o email)
-3. Click en "Create Project"
-4. Nombre: lo que quieras (ej: "UNQ Credentials")
-5. Tipo: "AppKit" o "Browser App"
-6. Copiar el **Project ID** (un string como `a1b2c3d4e5f6...`)
+1. Ir a [https://cloud.walletconnect.com/](https://cloud.walletconnect.com/) (ahora se llama "Reown Cloud").
+2. Crear cuenta (con Google o email).
+3. Click en "Create Project".
+4. Nombre: lo que quieras (ej: "UNQ Credentials").
+5. Tipo: "AppKit" o "Browser App".
+6. Copiar el **Project ID** (un string como `a1b2c3d4e5f6...`).
 
 ### 3.2 Pegarlo en `wagmi.ts`
 
@@ -224,23 +235,23 @@ npm run dev
 
 Abrí [http://localhost:3000](http://localhost:3000):
 
-1. Click en "Connect Wallet" → seleccioná MetaMask
-2. MetaMask te pide aprobar la conexión
-3. Asegurate de estar en **Sepolia**
-4. Vas a ver tu balance de credenciales (debería ser `1` si te emitiste un título en clase 3)
-5. Si tu wallet es la del owner del contrato, vas a ver el formulario "Emitir credencial"
+1. Click en "Connect Wallet" → seleccioná MetaMask.
+2. MetaMask te pide aprobar la conexión.
+3. Asegurate de estar en **Sepolia**.
+4. Vas a ver tu balance de credenciales (debería ser `1` si te emitiste un título en clase 3).
+5. Si tu wallet es la del owner del contrato, vas a ver el formulario "Emitir credencial".
 
 ### Probá emitir un título a un compañero
 
-1. Pedile a alguien su address de MetaMask
+1. Pedile a alguien su address de MetaMask.
 2. En el formulario:
-   - Address del estudiante: la del compañero
-   - Token ID: `2` (o cualquier número que no usaste antes)
-   - Metadata URI: `ipfs://bafy.../titulo.json` (placeholder)
-3. Click en "Emitir credencial"
-4. Confirmá en MetaMask
-5. Esperá ~12 segundos
-6. Aparece el ✅ con link a Etherscan
+   - Address del estudiante: la del compañero.
+   - Token ID: `2` (o cualquier número que no usaste antes).
+   - Metadata URI: `ipfs://bafy.../titulo.json` (placeholder).
+3. Click en "Emitir credencial".
+4. Confirmá en MetaMask.
+5. Esperá ~12 segundos.
+6. Aparece el ✅ con link a Etherscan.
 
 El compañero importa el NFT en su MetaMask (Tab NFTs → Import NFT → address + tokenId 2) y ve el título emitido.
 
@@ -366,9 +377,9 @@ function withdraw() public {
 
 **Misma cantidad de líneas**, solo cambia el orden:
 
-1. **Checks**: validar (`require`)
-2. **Effects**: actualizar estado del contrato
-3. **Interactions**: llamar a contratos externos
+1. **Checks**: validar (`require`).
+2. **Effects**: actualizar estado del contrato.
+3. **Interactions**: llamar a contratos externos.
 
 Cuando el atacante reentra, su balance ya está en `0` → `require(balance > 0)` falla → revierte.
 
@@ -448,23 +459,29 @@ Slither **detectó automáticamente** la vulnerabilidad. Cuando corrés Slither 
 
 A partir del jueves se publica en el campus el **spec del trabajo final**: extender `AcademicCredentials` a un sistema completo de certificación de títulos UNQ. Va a incluir:
 
-1. **Smart contract** con `AccessControl` (roles ISSUER + ADMIN), soulbound (no transferible), estructura de datos completa
-2. **Tests** con coverage >= 80% + fuzz + un test que valide soulbound
-3. **`SECURITY.md`** con análisis de Slither + checklist completo
-4. **Frontend** con dos modos: panel admin (issuer) + verificador público
-5. **Deploy** en Sepolia + verificación en Etherscan
-6. **Demo en video** de 5–10 min
+1. **Smart contract** con `AccessControl` (roles ISSUER + ADMIN), soulbound (no transferible), estructura de datos completa.
+2. **Tests** con coverage >= 80% + fuzz + un test que valide soulbound.
+3. **`SECURITY.md`** con análisis de Slither + checklist completo.
+4. **Frontend** con dos modos: panel admin (issuer) + verificador público.
+5. **Deploy** en Sepolia + verificación en Etherscan.
+6. **Demo en video** de 5–10 min.
 
 **Plazo**: a definir con la coordinación de la diplomatura.
 
 ---
 
-## Tarea para esta semana
+## 🏠 Tarea para esta semana
 
-1. **Completar el frontend**: agregar un botón "Revocar credencial" visible solo para el issuer
-2. **Listar todas las credenciales del usuario**, no solo el `tokenId 1`. Pista: leer eventos `CredentialIssued` filtrando por `student`
-3. **Correr Slither** sobre `AcademicCredentials.sol` (de clase 3) y postear el output en el foro
-4. **Empezar a leer** el spec del TP final cuando se publique
+**Plazo**: a definir con la coordinación (antes de la entrega del TP final).
+
+**Cómo se entrega**: postear en el foro del módulo en el campus.
+
+**Qué tienen que hacer**:
+
+1. **Completar el frontend**: agregar un botón "Revocar credencial" visible solo para el issuer.
+2. **Listar todas las credenciales del usuario**, no solo el `tokenId 1`. Pista: leer eventos `CredentialIssued` filtrando por `student`.
+3. **Correr Slither** sobre `AcademicCredentials.sol` (de clase 3) y postear el output en el foro.
+4. **Empezar a leer** el spec del TP final cuando se publique.
 
 ---
 

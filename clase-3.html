@@ -104,7 +104,15 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
     3 — Cierre clase 2 + Credenciales académicas (ERC-721)</a>
     <ul>
     <li><a href="#qué-vamos-a-hacer" id="toc-qué-vamos-a-hacer">¿Qué
-    vamos a hacer?</a></li>
+    vamos a hacer?</a>
+    <ul>
+    <li><a href="#school-en-clase-en-vivo-con-david--ciro"
+    id="toc-school-en-clase-en-vivo-con-david--ciro">🏫 En clase (en
+    vivo con David + Ciro)</a></li>
+    <li><a href="#house-tarea-para-entregar-antes-de-clase-4"
+    id="toc-house-tarea-para-entregar-antes-de-clase-4">🏠 Tarea para
+    entregar antes de clase 4</a></li>
+    </ul></li>
     <li><a href="#parte-1--cierre-de-clase-2"
     id="toc-parte-1--cierre-de-clase-2">Parte 1 — Cierre de clase 2</a>
     <ul>
@@ -182,8 +190,9 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
     <li><a href="#parte-9--y-para-el-tp-final"
     id="toc-parte-9--y-para-el-tp-final">Parte 9 — ¿Y para el TP
     final?</a></li>
-    <li><a href="#tarea-para-clase-4" id="toc-tarea-para-clase-4">Tarea
-    para clase 4</a></li>
+    <li><a href="#house-tarea-para-entregar-antes-de-clase-4-1"
+    id="toc-house-tarea-para-entregar-antes-de-clase-4-1">🏠 Tarea para
+    entregar antes de clase 4</a></li>
     <li><a href="#si-algo-falla" id="toc-si-algo-falla">Si algo
     falla</a></li>
     </ul></li>
@@ -213,7 +222,15 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
       3 — Cierre clase 2 + Credenciales académicas (ERC-721)</a>
       <ul>
       <li><a href="#qué-vamos-a-hacer" id="toc-qué-vamos-a-hacer">¿Qué
-      vamos a hacer?</a></li>
+      vamos a hacer?</a>
+      <ul>
+      <li><a href="#school-en-clase-en-vivo-con-david--ciro"
+      id="toc-school-en-clase-en-vivo-con-david--ciro">🏫 En clase (en
+      vivo con David + Ciro)</a></li>
+      <li><a href="#house-tarea-para-entregar-antes-de-clase-4"
+      id="toc-house-tarea-para-entregar-antes-de-clase-4">🏠 Tarea para
+      entregar antes de clase 4</a></li>
+      </ul></li>
       <li><a href="#parte-1--cierre-de-clase-2"
       id="toc-parte-1--cierre-de-clase-2">Parte 1 — Cierre de clase
       2</a>
@@ -293,8 +310,9 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
       <li><a href="#parte-9--y-para-el-tp-final"
       id="toc-parte-9--y-para-el-tp-final">Parte 9 — ¿Y para el TP
       final?</a></li>
-      <li><a href="#tarea-para-clase-4"
-      id="toc-tarea-para-clase-4">Tarea para clase 4</a></li>
+      <li><a href="#house-tarea-para-entregar-antes-de-clase-4-1"
+      id="toc-house-tarea-para-entregar-antes-de-clase-4-1">🏠 Tarea
+      para entregar antes de clase 4</a></li>
       <li><a href="#si-algo-falla" id="toc-si-algo-falla">Si algo
       falla</a></li>
       </ul></li>
@@ -315,19 +333,39 @@ verificable on-chain”. Esto es la base del trabajo final de la
 diplomatura.</p>
 </blockquote>
 <h2 id="qué-vamos-a-hacer">¿Qué vamos a hacer?</h2>
+<h3 id="school-en-clase-en-vivo-con-david--ciro">🏫 En clase (en vivo
+con David + Ciro)</h3>
 <ol type="1">
 <li><strong>Cerrar lo que quedó pendiente de clase 2</strong>: levantar
 una blockchain local con Anvil, deployar <code>SimpleStorage</code>,
 interactuar con <code>cast</code>, y después llevarlo a Sepolia y verlo
-en Etherscan</li>
+en Etherscan.</li>
 <li><strong>Aprender qué es un NFT (ERC-721)</strong> y por qué es el
-estándar correcto para representar títulos universitarios</li>
+estándar correcto para representar títulos universitarios.</li>
 <li><strong>Clonar y entender</strong> el contrato
-<code>AcademicCredentials</code> — el esqueleto del TP final</li>
-<li><strong>Testear</strong> el contrato con Foundry (14 tests)</li>
+<code>AcademicCredentials</code> — el esqueleto del TP final.</li>
+<li><strong>Testear</strong> el contrato con Foundry (14 tests).</li>
 <li><strong>Deployar a Sepolia</strong> y <strong>emitirse un
-título</strong>, viéndolo aparecer como NFT en MetaMask</li>
+título</strong>, viéndolo aparecer como NFT en MetaMask.</li>
 </ol>
+<h3 id="house-tarea-para-entregar-antes-de-clase-4">🏠 Tarea para
+entregar antes de clase 4</h3>
+<ol type="1">
+<li>Deployar tu propio <code>AcademicCredentials</code> en Sepolia (vos
+sos el issuer).</li>
+<li>Emitirte un título a vos mismo con un <code>tokenURI</code>
+placeholder.</li>
+<li>Postear en el foro del campus: address del contrato +
+<code>tokenId</code> + hash de la tx.</li>
+<li>(Opcional) Subir un JSON de metadata real a <a
+href="https://www.pinata.cloud/">Pinata</a> y usar el CID como
+<code>tokenURI</code>.</li>
+</ol>
+<blockquote>
+<p>El detalle completo de la tarea está al final de esta página. Acá te
+enseñamos a hacerlo todo en clase para que después lo repliques
+solo.</p>
+</blockquote>
 <hr />
 <h2 id="parte-1--cierre-de-clase-2">Parte 1 — Cierre de clase 2</h2>
 <h3 id="11-qué-es-anvil-y-para-qué-sirve">1.1 ¿Qué es Anvil y para qué
@@ -477,12 +515,12 @@ address — única, real, en una blockchain pública.</p>
 <pre><code>https://sepolia.etherscan.io/address/&lt;TU_ADDRESS&gt;</code></pre>
 <p>Vas a ver:</p>
 <ul>
-<li>La transacción de creación</li>
+<li>La transacción de creación.</li>
 <li>El <strong>bytecode</strong> del contrato (mismo hex que vieron en
 <code>out/SimpleStorage.sol/SimpleStorage.json</code> cuando hicieron
-<code>forge build</code>)</li>
+<code>forge build</code>).</li>
 <li>Tab “Contract” → “Source code not verified” — eso queda como tarea
-para después</li>
+para después.</li>
 </ul>
 <p>Mandá una transacción que emita evento:</p>
 <div class="sourceCode" id="cb12"><pre
@@ -514,25 +552,25 @@ escritura, un título universitario.</li>
 </ul>
 <p>Cada NFT tiene:</p>
 <ul>
-<li>Un <strong><code>tokenId</code></strong> (número único)</li>
+<li>Un <strong><code>tokenId</code></strong> (número único).</li>
 <li>Un <strong><code>ownerOf(tokenId)</code></strong> (la wallet que es
-dueña)</li>
+dueña).</li>
 <li>Un <strong><code>tokenURI(tokenId)</code></strong> (link a la
 metadata: nombre, descripción, imagen, atributos — usualmente en
-IPFS)</li>
+IPFS).</li>
 </ul>
 <h3 id="por-qué-erc-721-para-títulos-universitarios">¿Por qué ERC-721
 para títulos universitarios?</h3>
 <ul>
 <li>Cada título es <strong>único</strong>: tu Licenciatura en Sistemas
-no es la misma que la de otro alumno</li>
+no es la misma que la de otro alumno.</li>
 <li>Tiene <strong>metadata propia</strong>: tu nombre, fecha, materias,
-hash del PDF</li>
+hash del PDF.</li>
 <li>Lo “tenés” en tu wallet — nadie te lo puede sacar (salvo que el
-emisor lo revoque)</li>
+emisor lo revoque).</li>
 <li>Es <strong>verificable públicamente</strong>: cualquiera puede
 chequear <code>ownerOf(tokenId)</code> y <code>tokenURI(tokenId)</code>
-y validar que tu título existe</li>
+y validar que tu título existe.</li>
 </ul>
 <hr />
 <h2 id="parte-3--openzeppelin">Parte 3 — OpenZeppelin</h2>
@@ -605,9 +643,9 @@ de los <strong>dos</strong> de OpenZeppelin.</p>
 <p>Pasamos argumentos a los constructores de los contratos padre:</p>
 <ul>
 <li><code>ERC721("UNQ Academic Credential", "UNQ-CRED")</code> → name +
-symbol del NFT</li>
+symbol del NFT.</li>
 <li><code>Ownable(msg.sender)</code> → la wallet que deploya queda como
-owner (el “issuer”)</li>
+owner (el “issuer”).</li>
 </ul>
 <h3 id="función-issuecredential-emitir-un-título">Función
 <code>issueCredential</code> (emitir un título)</h3>
@@ -621,13 +659,13 @@ owner (el “issuer”)</li>
 }</code></pre>
 <ul>
 <li><code>onlyOwner</code>: solo el issuer (la universidad) puede
-llamarla</li>
+llamarla.</li>
 <li><code>_mint(student, tokenId)</code>: crea el NFT y lo asigna a la
-wallet del estudiante</li>
+wallet del estudiante.</li>
 <li><code>_setTokenURI(tokenId, metadataURI)</code>: guarda la URI con
-la metadata</li>
+la metadata.</li>
 <li><code>emit CredentialIssued(...)</code>: emite un evento que el
-frontend va a escuchar</li>
+frontend va a escuchar.</li>
 </ul>
 <h3 id="función-revoke">Función <code>revoke</code></h3>
 <pre class="solidity"><code>function revoke(uint256 tokenId) public onlyOwner {
@@ -649,13 +687,13 @@ cuesta gas.</p>
 class="sourceCode bash"><code class="sourceCode bash"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="ex">forge</span> test</span></code></pre></div>
 <p>Los 14 tests cubren:</p>
 <ul>
-<li>Nombre, símbolo, ownership inicial</li>
-<li>Issue / revoke (camino feliz + casos de error)</li>
+<li>Nombre, símbolo, ownership inicial.</li>
+<li>Issue / revoke (camino feliz + casos de error).</li>
 <li>Eventos (<code>CredentialIssued</code>,
-<code>CredentialRevoked</code>)</li>
+<code>CredentialRevoked</code>).</li>
 <li>Verificación (<code>isValid</code>, <code>tokenURI</code>,
-<code>ownerOf</code>)</li>
-<li>Fuzz tests (256 casos random)</li>
+<code>ownerOf</code>).</li>
+<li>Fuzz tests (256 casos random).</li>
 </ul>
 <p>Para ver el detalle de un test:</p>
 <div class="sourceCode" id="cb23"><pre
@@ -709,11 +747,11 @@ decodificados.</p>
 <h2 id="parte-8--verlo-como-nft-en-metamask">Parte 8 — Verlo como NFT en
 MetaMask</h2>
 <ol type="1">
-<li>Abrí MetaMask</li>
-<li>Tab “NFTs”</li>
-<li>“Import NFT”</li>
-<li>Address: la address de tu contrato</li>
-<li>Token ID: <code>1</code></li>
+<li>Abrí MetaMask.</li>
+<li>Tab “NFTs”.</li>
+<li>“Import NFT”.</li>
+<li>Address: la address de tu contrato.</li>
+<li>Token ID: <code>1</code>.</li>
 </ol>
 <p>Ahora MetaMask muestra que sos dueño de un NFT del contrato
 <code>UNQ-CRED</code>. Si la metadata estuviera en IPFS, también vería
@@ -730,32 +768,39 @@ Para el trabajo final lo van a extender con:</p>
 <ul>
 <li><strong><code>AccessControl</code></strong> con roles
 <code>ISSUER_ROLE</code> (decanos) y <code>DEFAULT_ADMIN_ROLE</code>
-(rector)</li>
+(rector).</li>
 <li><strong>Soulbound</strong>: que los títulos NO sean transferibles
-(override <code>_update</code> para revertir transfers)</li>
+(override <code>_update</code> para revertir transfers).</li>
 <li><strong>Estructura de datos</strong> completa
-(<code>Credential</code> con nombre, fecha, hash del PDF)</li>
+(<code>Credential</code> con nombre, fecha, hash del PDF).</li>
 <li><strong>Frontend con dos modos</strong>: panel admin para emitir +
-verificador público para que cualquiera consulte</li>
-<li><strong>Metadata real</strong> en IPFS con foto + firma digital</li>
+verificador público para que cualquiera consulte.</li>
+<li><strong>Metadata real</strong> en IPFS con foto + firma
+digital.</li>
 <li><strong><code>SECURITY.md</code></strong> con análisis de
-Slither</li>
+Slither.</li>
 </ul>
 <p>El spec completo se va a publicar en el campus.</p>
 <hr />
-<h2 id="tarea-para-clase-4">Tarea para clase 4</h2>
+<h2 id="house-tarea-para-entregar-antes-de-clase-4-1">🏠 Tarea para
+entregar antes de clase 4</h2>
+<p><strong>Plazo</strong>: lunes 11/05 a las 18:00 (antes de que
+arranque la clase siguiente).</p>
+<p><strong>Cómo se entrega</strong>: postear en el foro del módulo en el
+campus.</p>
+<p><strong>Qué tienen que hacer</strong>:</p>
 <ol type="1">
 <li><strong>Deployar tu propio <code>AcademicCredentials</code></strong>
-en Sepolia (vos sos el issuer)</li>
+en Sepolia (vos sos el issuer).</li>
 <li><strong>Emitirte un título a vos mismo</strong> con un
-<code>tokenURI</code> placeholder</li>
+<code>tokenURI</code> placeholder.</li>
 <li><strong>Postear en el foro</strong> del campus:
 <ul>
-<li>La address de tu contrato</li>
-<li>El <code>tokenId</code> del título emitido</li>
-<li>El hash de la transacción de emisión</li>
+<li>La address de tu contrato.</li>
+<li>El <code>tokenId</code> del título emitido.</li>
+<li>El hash de la transacción de emisión.</li>
 </ul></li>
-<li><strong>(Opcional)</strong> Subir un JSON real a <a
+<li><strong>(Opcional, suma puntos)</strong> Subir un JSON real a <a
 href="https://www.pinata.cloud/">Pinata</a> (cuenta gratis), copiar el
 CID, y usarlo como <code>tokenURI</code>. La metadata queda como:</li>
 </ol>
