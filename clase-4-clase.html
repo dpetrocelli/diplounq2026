@@ -200,8 +200,18 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
     <li><a href="#otros-detectores-comunes"
     id="toc-otros-detectores-comunes">Otros detectores comunes</a></li>
     </ul></li>
-    <li><a href="#parte-10--trabajo-final"
-    id="toc-parte-10--trabajo-final">Parte 10 — Trabajo final</a></li>
+    <li><a href="#parte-10--deploy-a-base-sepolia-l2"
+    id="toc-parte-10--deploy-a-base-sepolia-l2">Parte 10 — Deploy a Base
+    Sepolia (L2)</a>
+    <ul>
+    <li><a href="#por-qué-l2" id="toc-por-qué-l2">¿Por qué L2?</a></li>
+    <li><a href="#lo-único-que-cambia" id="toc-lo-único-que-cambia">Lo
+    único que cambia</a></li>
+    <li><a href="#cómo-se-ve-en-el-código"
+    id="toc-cómo-se-ve-en-el-código">Cómo se ve en el código</a></li>
+    </ul></li>
+    <li><a href="#parte-11--trabajo-final"
+    id="toc-parte-11--trabajo-final">Parte 11 — Trabajo final</a></li>
     <li><a href="#después-de-clase" id="toc-después-de-clase">Después de
     clase</a></li>
     <li><a href="#si-algo-falla" id="toc-si-algo-falla">Si algo
@@ -332,8 +342,19 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
       id="toc-otros-detectores-comunes">Otros detectores
       comunes</a></li>
       </ul></li>
-      <li><a href="#parte-10--trabajo-final"
-      id="toc-parte-10--trabajo-final">Parte 10 — Trabajo final</a></li>
+      <li><a href="#parte-10--deploy-a-base-sepolia-l2"
+      id="toc-parte-10--deploy-a-base-sepolia-l2">Parte 10 — Deploy a
+      Base Sepolia (L2)</a>
+      <ul>
+      <li><a href="#por-qué-l2" id="toc-por-qué-l2">¿Por qué
+      L2?</a></li>
+      <li><a href="#lo-único-que-cambia" id="toc-lo-único-que-cambia">Lo
+      único que cambia</a></li>
+      <li><a href="#cómo-se-ve-en-el-código"
+      id="toc-cómo-se-ve-en-el-código">Cómo se ve en el código</a></li>
+      </ul></li>
+      <li><a href="#parte-11--trabajo-final"
+      id="toc-parte-11--trabajo-final">Parte 11 — Trabajo final</a></li>
       <li><a href="#después-de-clase" id="toc-después-de-clase">Después
       de clase</a></li>
       <li><a href="#si-algo-falla" id="toc-si-algo-falla">Si algo
@@ -371,6 +392,8 @@ título).</li>
 ataque y dos formas de defenderse.</li>
 <li><strong>Correr Slither</strong> — análisis estático automático de
 vulnerabilidades.</li>
+<li><strong>Deploy a Base Sepolia (L2)</strong> — qué cambia respecto de
+Sepolia y por qué importa para el TP.</li>
 </ol>
 <h3 id="house-tarea">🏠 Tarea</h3>
 <p>La tarea va en una página aparte: <a href="clase-4-tarea.html">ver
@@ -863,25 +886,111 @@ bien.</p>
 </tbody>
 </table>
 <hr />
-<h2 id="parte-10--trabajo-final">Parte 10 — Trabajo final</h2>
-<p>A partir del jueves se publica en el campus el <strong>spec del
-trabajo final</strong>: extender <code>AcademicCredentials</code> a un
-sistema completo de certificación de títulos UNQ. Va a incluir:</p>
+<h2 id="parte-10--deploy-a-base-sepolia-l2">Parte 10 — Deploy a Base
+Sepolia (L2)</h2>
+<p>Hasta acá deployamos siempre en <strong>Sepolia</strong> (Ethereum L1
+testnet). El TP final pide deploy en <strong>Base Sepolia</strong> (L2).
+El cambio es chico pero hay que entender qué cambia y qué no.</p>
+<h3 id="por-qué-l2">¿Por qué L2?</h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Sepolia (L1)</th>
+<th>Base Sepolia (L2)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Costo de tx</td>
+<td>~ centavos</td>
+<td><strong>~ fracción de centavo</strong></td>
+</tr>
+<tr>
+<td>Tiempo de bloque</td>
+<td>~ 12 s</td>
+<td>~ 2 s</td>
+</tr>
+<tr>
+<td>Compatibilidad EVM</td>
+<td>100%</td>
+<td>100% (es un rollup OP)</td>
+</tr>
+<tr>
+<td>Misma wallet / mismo Solidity</td>
+<td>✅</td>
+<td>✅</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Para el caso UNQ</strong>: emitir 5.000 títulos por año en L1
+= caro. En L2 = trivial. Misma seguridad eventual (los datos terminan en
+Ethereum).</p>
+<h3 id="lo-único-que-cambia">Lo único que cambia</h3>
 <ol type="1">
-<li><strong>Smart contract</strong> con <code>AccessControl</code>
-(roles ISSUER + ADMIN), soulbound (no transferible), estructura de datos
-completa.</li>
-<li><strong>Tests</strong> con coverage &gt;= 80% + fuzz + un test que
-valide soulbound.</li>
-<li><strong><code>SECURITY.md</code></strong> con análisis de Slither +
-checklist completo.</li>
-<li><strong>Frontend</strong> con dos modos: panel admin (issuer) +
-verificador público.</li>
-<li><strong>Deploy</strong> en Sepolia + verificación en Etherscan.</li>
-<li><strong>Demo en video</strong> de 5–10 min.</li>
+<li><p><strong>El RPC URL</strong>:</p>
+<ul>
+<li>Sepolia:
+<code>https://ethereum-sepolia-rpc.publicnode.com</code></li>
+<li>Base Sepolia: <code>https://sepolia.base.org</code></li>
+</ul></li>
+<li><p><strong>El Chain ID</strong>:</p>
+<ul>
+<li>Sepolia: <code>11155111</code></li>
+<li>Base Sepolia: <code>84532</code></li>
+</ul></li>
+<li><p><strong>El faucet</strong>: <a
+href="https://www.alchemy.com/faucets/base-sepolia">https://www.alchemy.com/faucets/base-sepolia</a>
+(necesitás ETH de Sepolia para puentear, o pedir directo)</p></li>
+<li><p><strong>El explorer</strong>: <a
+href="https://sepolia.basescan.org">https://sepolia.basescan.org</a> (no
+Etherscan)</p></li>
 </ol>
-<p><strong>Plazo</strong>: a definir con la coordinación de la
-diplomatura.</p>
+<h3 id="cómo-se-ve-en-el-código">Cómo se ve en el código</h3>
+<p><strong>Foundry</strong> — solo cambia <code>--rpc-url</code>:</p>
+<div class="sourceCode" id="cb22"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="ex">forge</span> create src/AcademicCredentials.sol:AcademicCredentials <span class="dt">\</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">--rpc-url</span> https://sepolia.base.org <span class="dt">\</span></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">--account</span> dev-wallet <span class="dt">\</span></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">--broadcast</span></span></code></pre></div>
+<p><strong>Frontend (wagmi)</strong> — cambia un import y nada más:</p>
+<div class="sourceCode" id="cb23"><pre
+class="sourceCode ts"><code class="sourceCode typescript"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co">// wagmi.ts</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> { baseSepolia } <span class="im">from</span> <span class="st">&#39;wagmi/chains&#39;</span><span class="op">;</span>   <span class="co">// ← antes: sepolia</span></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a><span class="im">export</span> <span class="kw">const</span> config <span class="op">=</span> <span class="fu">getDefaultConfig</span>({</span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>  appName<span class="op">:</span> <span class="st">&#39;UNQ Academic Credentials&#39;</span><span class="op">,</span></span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>  projectId<span class="op">:</span> <span class="st">&#39;TU_WALLETCONNECT_ID&#39;</span><span class="op">,</span></span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>  chains<span class="op">:</span> [baseSepolia]<span class="op">,</span>   <span class="co">// ← lo único que cambia</span></span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>  ssr<span class="op">:</span> <span class="kw">true</span><span class="op">,</span></span>
+<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a>})<span class="op">;</span></span></code></pre></div>
+<p><strong>MetaMask</strong>: la primera vez, la wallet te pide aprobar
+la red nueva. Aceptá.</p>
+<blockquote>
+<p><strong>🎯 TP final</strong>: el deploy en Base Sepolia vale 10
+puntos del TP. No es difícil — son 4 cambios. El que se queda en Sepolia
+pierde esos 10.</p>
+</blockquote>
+<hr />
+<h2 id="parte-11--trabajo-final">Parte 11 — Trabajo final</h2>
+<p>El <strong>spec completo del TP final</strong> ya está publicado: <a
+href="tp-final.html">tp-final.html</a>. Resumen:</p>
+<ol type="1">
+<li><strong>Hook UNQ + modelado de datos</strong> (20%) — diagramas +
+justificar qué va on-chain vs off-chain.</li>
+<li><strong>Smart contract</strong> con <code>AccessControl</code>
+(ISSUER + ADMIN), soulbound, struct <code>Credential</code>, 4 eventos
+(35%).</li>
+<li><strong>Testing</strong> — coverage ≥ 80% + soulbound + fuzz
+(10%).</li>
+<li><strong>Seguridad</strong> — Slither + <code>SECURITY.md</code>
+(10%).</li>
+<li><strong>Frontend</strong> con 3 modos (público / issuer /
+super-admin) + <strong>deploy a Base Sepolia</strong> (20%).</li>
+<li><strong>Video demo + README</strong> (5%).</li>
+</ol>
+<p><strong>Plazo</strong>: lunes <strong>08/06/2026 · 18:00</strong>.
+Pareja máximo 2 personas.</p>
 <hr />
 <hr />
 <h2 id="después-de-clase">Después de clase</h2>
