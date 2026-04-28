@@ -33,6 +33,17 @@ render() {
 
 # ============ Render targets ============
 
+# ---------- Clase 1 (Fundamentos + Remix) — dictada por Ciro ----------
+render "clase-1-clase.md" \
+  "clase-1-clase.html" \
+  "Clase 1 — Fundamentos de blockchain + Remix · En clase" \
+  "C1 · CLASE"
+
+render "clase-1-tarea.md" \
+  "clase-1-tarea.html" \
+  "Clase 1 — Fundamentos de blockchain + Remix · Tarea" \
+  "C1 · TAREA"
+
 # ---------- Clase 2 (Foundry + SimpleStorage) ----------
 render "clase-2-clase.md" \
   "clase-2-clase.html" \

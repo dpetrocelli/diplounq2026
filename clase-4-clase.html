@@ -1160,9 +1160,18 @@ Pareja máximo 2 personas.</p>
   // Map banner-num → { prev, next }
   // Each entry: { href, title } (or null if not present)
   const MAP = {
+    // ----- Clase 1 -----
+    'C1 · CLASE': {
+      prev: { href: 'index.html',         title: 'Menú principal' },
+      next: { href: 'clase-1-tarea.html', title: 'Tarea de clase 1' }
+    },
+    'C1 · TAREA': {
+      prev: { href: 'clase-1-clase.html', title: 'Material en clase 1' },
+      next: { href: 'clase-2-clase.html', title: 'Clase 2' }
+    },
     // ----- Clase 2 -----
     'C2 · CLASE': {
-      prev: { href: 'index.html',         title: 'Menú principal' },
+      prev: { href: 'clase-1-tarea.html', title: 'Tarea de clase 1' },
       next: { href: 'clase-2-tarea.html', title: 'Tarea de clase 2' }
     },
     'C2 · TAREA': {
