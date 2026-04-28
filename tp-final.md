@@ -24,7 +24,6 @@ Lo que escribieron en clase 3 (`AcademicCredentials`) es el **esqueleto** del TP
 | | |
 |---|---|
 | **Plazo de entrega** | Lunes **08/06/2026 · 18:00** |
-| **Defensa oral** | Semana del **15/06/2026** (15 min por grupo) |
 | **Grupos** | Individual o **pareja** (máximo 2 personas) |
 | **Alcance** | Solo **títulos finales** (Licenciatura, Tecnicatura, Profesorado). No incluye certificados de cursos / diplomas intermedios |
 | **Datos** | **Caso ficticio** — UNQ "Demo". Inventar 3-5 personas con DNI ficticios. **No usar datos reales de alumnos**. |
