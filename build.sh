@@ -66,6 +66,12 @@ render "clase-4-tarea.md" \
   "Clase 4 — Frontend NFT + Seguridad · Tarea" \
   "C4 · TAREA"
 
+# ---------- TP Final ----------
+render "tp-final.md" \
+  "tp-final.html" \
+  "Trabajo Final — Verificación de credenciales académicas UNQ" \
+  "TP FINAL"
+
 echo ""
 echo "Done. Open with:"
 echo "  xdg-open $DIR/index.html"
