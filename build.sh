@@ -39,6 +39,18 @@ render "clase-2.md" \
   "Clase 2 — Foundry + SimpleStorage" \
   "CLASE 2"
 
+# Clase 3 — Cierre clase 2 + AcademicCredentials (ERC-721)
+render "clase-3.md" \
+  "clase-3.html" \
+  "Clase 3 — Credenciales académicas (ERC-721)" \
+  "CLASE 3"
+
+# Clase 4 — Frontend NFT + Seguridad
+render "clase-4.md" \
+  "clase-4.html" \
+  "Clase 4 — Frontend NFT + Seguridad" \
+  "CLASE 4"
+
 echo ""
 echo "Done. Open with:"
 echo "  xdg-open $DIR/index.html"
