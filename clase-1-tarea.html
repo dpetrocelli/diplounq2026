@@ -1,32 +1,12 @@
-$if(lang)$<!DOCTYPE html>
-<html lang="$lang$">$else$<!DOCTYPE html>
-<html lang="es">$endif$
+<!DOCTYPE html>
+<html lang="es">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=2.0">
   <meta name="generator" content="pandoc + UNLu/DCB template">
-$for(author-meta)$
-  <meta name="author" content="$author-meta$">
-$endfor$
-$if(date-meta)$
-  <meta name="dcterms.date" content="$date-meta$">
-$endif$
-$if(keywords)$
-  <meta name="keywords" content="$for(keywords)$$keywords$$sep$, $endfor$">
-$endif$
-  <title>$if(title-prefix)$$title-prefix$ — $endif$$pagetitle$</title>
+  <title>Clase 1 — Fundamentos de blockchain + Remix · Tarea — UNQ Diplo
+Blockchain</title>
   <link rel="stylesheet" href="assets/style.css">
-$for(css)$
-  <link rel="stylesheet" href="$css$">
-$endfor$
-$if(highlighting-css)$
-  <style type="text/css">
-$highlighting-css$
-  </style>
-$endif$
-$for(header-includes)$
-  $header-includes$
-$endfor$
 </head>
 <body>
 
@@ -48,48 +28,155 @@ $endfor$
 <button type="button" id="sidebar-show" class="sidebar-toggle-btn sidebar-show" aria-label="Mostrar índice lateral" title="Mostrar índice lateral">☰</button>
 
 <div class="layout">
-$if(toc)$
   <aside class="toc-sidebar" id="toc-sidebar">
     <div class="toc-header">
       <div class="toc-title">Contenidos</div>
       <button type="button" id="sidebar-hide" class="sidebar-toggle-btn sidebar-hide" aria-label="Ocultar índice lateral" title="Ocultar índice lateral">×</button>
     </div>
-    $table-of-contents$
+    <ul>
+    <li><a
+    href="#clase-1--fundamentos-de-blockchain--tu-primer-contrato-en-remix"
+    id="toc-clase-1--fundamentos-de-blockchain--tu-primer-contrato-en-remix">Clase
+    1 — Fundamentos de blockchain + tu primer contrato en Remix</a>
+    <ul>
+    <li><a href="#tarea" id="toc-tarea">🏠 Tarea para entregar antes de
+    clase 2</a></li>
+    <li><a href="#volver" id="toc-volver">Volver</a></li>
+    <li><a href="#si-algo-falla" id="toc-si-algo-falla">Si algo
+    falla</a></li>
+    </ul></li>
+    </ul>
     <div style="margin-top:24px;padding-top:14px;border-top:1px solid var(--light-gray);font-size:12px;">
       <a href="index.html" style="color:var(--gray);">← Volver al índice</a>
     </div>
   </aside>
-$endif$
 
   <main class="content">
-$if(banner-num)$
     <nav class="page-breadcrumb" aria-label="Breadcrumb">
       <a href="index.html">Inicio</a>
       <span class="sep">›</span>
-      <span class="current">$banner-num$</span>
+      <span class="current">C1 · TAREA</span>
     </nav>
-$endif$
     <nav class="page-nav-top">
       <a href="index.html" class="back-to-menu">← Volver al menú principal</a>
-$if(title)$
-$if(banner-num)$
-      <span class="banner-pill">$banner-num$</span>
-$endif$
-$endif$
+      <span class="banner-pill">C1 · TAREA</span>
     </nav>
 
-$if(toc)$
     <details class="toc-inline" open>
       <summary>📑 Índice del documento</summary>
-      $table-of-contents$
+      <ul>
+      <li><a
+      href="#clase-1--fundamentos-de-blockchain--tu-primer-contrato-en-remix"
+      id="toc-clase-1--fundamentos-de-blockchain--tu-primer-contrato-en-remix">Clase
+      1 — Fundamentos de blockchain + tu primer contrato en Remix</a>
+      <ul>
+      <li><a href="#tarea" id="toc-tarea">🏠 Tarea para entregar antes
+      de clase 2</a></li>
+      <li><a href="#volver" id="toc-volver">Volver</a></li>
+      <li><a href="#si-algo-falla" id="toc-si-algo-falla">Si algo
+      falla</a></li>
+      </ul></li>
+      </ul>
       <div class="toc-controls">
         <button type="button" class="toc-btn" data-action="expand-all">Expandir todo</button>
         <button type="button" class="toc-btn" data-action="collapse-all">Colapsar todo</button>
       </div>
     </details>
-$endif$
 
-$body$
+<h1
+id="clase-1--fundamentos-de-blockchain--tu-primer-contrato-en-remix">Clase
+1 — Fundamentos de blockchain + tu primer contrato en Remix</h1>
+<h2 id="tarea">🏠 Tarea para entregar antes de clase 2</h2>
+<p><strong>Plazo</strong>: lunes 27/04 18:00 (antes de que arranque
+clase 2).</p>
+<p><strong>Cómo se entrega</strong>: postear en el foro del módulo en el
+campus.</p>
+<p><strong>Qué tienen que hacer</strong>:</p>
+<ol type="1">
+<li><p><strong>Instalar Metamask</strong> como extensión del navegador,
+crear una cuenta nueva y <strong>anotar la frase semilla en
+papel</strong> (no en formato digital, no compartirla con nadie).
+Activar la red de prueba <strong>Sepolia</strong> desde Settings →
+Advanced → “Show test networks”.</p></li>
+<li><p><strong>Pedir ETH de prueba a una faucet de Sepolia</strong> (al
+menos 0.05 ETH). Si una faucet no anda, probá con otra:</p>
+<ul>
+<li><a href="https://sepoliafaucet.com">sepoliafaucet.com</a>
+(Alchemy)</li>
+<li><a
+href="https://cloud.google.com/application/web3/faucet/ethereum/sepolia">cloud.google.com/application/web3/faucet/ethereum/sepolia</a></li>
+<li><a
+href="https://sepolia-faucet.pk910.de">sepolia-faucet.pk910.de</a></li>
+</ul></li>
+<li><p><strong>Verificar la transacción en <a
+href="https://sepolia.etherscan.io">sepolia.etherscan.io</a></strong>:
+pegá tu address y comprobá que ves el balance y la transacción de la
+faucet. Postear en el foro una captura del Etherscan mostrando tu
+address con balance &gt; 0.</p></li>
+<li><p><strong>Experimentar con Remix</strong>: abrir <a
+href="https://remix.ethereum.org">remix.ethereum.org</a>, copiar el
+contrato <code>SimpleStorage</code> que vimos en <a
+href="clase-1-clase.html">clase-1-clase.html#parte-11-remix-tu-primer-contrato</a>,
+compilarlo, deployarlo <strong>primero en la Remix VM</strong> y después
+<strong>en Sepolia con Metamask</strong>. Probar las funciones
+(<code>set</code> / <code>get</code>). Postear en el foro la address del
+contrato deployado en Sepolia para poder verlo en Etherscan.</p></li>
+<li><p><strong>(Opcional, recomendado)</strong> Si te quedó tiempo,
+instalar <a
+href="https://book.getfoundry.sh/getting-started/installation">Foundry</a>
+siguiendo la documentación oficial — vamos a usarlo desde clase
+2.</p></li>
+</ol>
+<hr />
+<h2 id="volver">Volver</h2>
+<p><a href="index.html">← Volver al menú principal</a> · <a
+href="clase-2-clase.html">→ Clase 2</a></p>
+<h2 id="si-algo-falla">Si algo falla</h2>
+<table>
+<thead>
+<tr>
+<th>Problema</th>
+<th>Solución</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Metamask no muestra Sepolia</td>
+<td>Settings → Advanced → activar “Show test networks”</td>
+</tr>
+<tr>
+<td>La faucet pide cuenta o no acepta mi address</td>
+<td>Probá con otra faucet (la lista de arriba). Algunas tienen rate
+limit por IP.</td>
+</tr>
+<tr>
+<td>No me llega el ETH</td>
+<td>Esperá 5-10 minutos. Si no llega, probá otra faucet.</td>
+</tr>
+<tr>
+<td>Etherscan dice “no transactions”</td>
+<td>Verificá que estés en <code>sepolia.etherscan.io</code> (no en
+<code>etherscan.io</code>, que es mainnet).</td>
+</tr>
+<tr>
+<td>Remix no se conecta a Metamask</td>
+<td>Desbloqueá Metamask antes de elegir “Injected Provider - MetaMask”
+en Remix.</td>
+</tr>
+<tr>
+<td>Deploy a Sepolia falla por gas</td>
+<td>Pedile más ETH a la faucet (un deploy consume más que una
+transferencia).</td>
+</tr>
+<tr>
+<td>Perdí la frase semilla</td>
+<td>Si nunca te conectaste a mainnet, no es grave: creá una wallet nueva
+y empezá de cero. <strong>Lección aprendida</strong>: la próxima,
+anotala en papel.</td>
+</tr>
+</tbody>
+</table>
+<p>Lo demás, foro del campus.</p>
 
     <nav class="page-prev-next" aria-label="Navegación entre páginas">
       <a class="prev-link" href="#" data-slot="prev" hidden>
