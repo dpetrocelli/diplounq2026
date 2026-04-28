@@ -12,6 +12,7 @@
 4. **Escribir transacciones** desde el browser (emitir un título).
 5. **Estudiar el bug de reentrancy**: cómo funciona el ataque y dos formas de defenderse.
 6. **Correr Slither** — análisis estático automático de vulnerabilidades.
+7. **Deploy a Base Sepolia (L2)** — qué cambia respecto de Sepolia y por qué importa para el TP.
 
 ### 🏠 Tarea
 
@@ -450,18 +451,78 @@ Slither **detectó automáticamente** la vulnerabilidad. Cuando corrés Slither 
 
 ---
 
-## Parte 10 — Trabajo final
+## Parte 10 — Deploy a Base Sepolia (L2)
 
-A partir del jueves se publica en el campus el **spec del trabajo final**: extender `AcademicCredentials` a un sistema completo de certificación de títulos UNQ. Va a incluir:
+Hasta acá deployamos siempre en **Sepolia** (Ethereum L1 testnet). El TP final pide deploy en **Base Sepolia** (L2). El cambio es chico pero hay que entender qué cambia y qué no.
 
-1. **Smart contract** con `AccessControl` (roles ISSUER + ADMIN), soulbound (no transferible), estructura de datos completa.
-2. **Tests** con coverage >= 80% + fuzz + un test que valide soulbound.
-3. **`SECURITY.md`** con análisis de Slither + checklist completo.
-4. **Frontend** con dos modos: panel admin (issuer) + verificador público.
-5. **Deploy** en Sepolia + verificación en Etherscan.
-6. **Demo en video** de 5–10 min.
+### ¿Por qué L2?
 
-**Plazo**: a definir con la coordinación de la diplomatura.
+| | Sepolia (L1) | Base Sepolia (L2) |
+|---|---|---|
+| Costo de tx | ~ centavos | **~ fracción de centavo** |
+| Tiempo de bloque | ~ 12 s | ~ 2 s |
+| Compatibilidad EVM | 100% | 100% (es un rollup OP) |
+| Misma wallet / mismo Solidity | ✅ | ✅ |
+
+**Para el caso UNQ**: emitir 5.000 títulos por año en L1 = caro. En L2 = trivial. Misma seguridad eventual (los datos terminan en Ethereum).
+
+### Lo único que cambia
+
+1. **El RPC URL**:
+   - Sepolia: `https://ethereum-sepolia-rpc.publicnode.com`
+   - Base Sepolia: `https://sepolia.base.org`
+
+2. **El Chain ID**:
+   - Sepolia: `11155111`
+   - Base Sepolia: `84532`
+
+3. **El faucet**: <https://www.alchemy.com/faucets/base-sepolia> (necesitás ETH de Sepolia para puentear, o pedir directo)
+
+4. **El explorer**: <https://sepolia.basescan.org> (no Etherscan)
+
+### Cómo se ve en el código
+
+**Foundry** — solo cambia `--rpc-url`:
+
+```bash
+forge create src/AcademicCredentials.sol:AcademicCredentials \
+  --rpc-url https://sepolia.base.org \
+  --account dev-wallet \
+  --broadcast
+```
+
+**Frontend (wagmi)** — cambia un import y nada más:
+
+```ts
+// wagmi.ts
+import { baseSepolia } from 'wagmi/chains';   // ← antes: sepolia
+
+export const config = getDefaultConfig({
+  appName: 'UNQ Academic Credentials',
+  projectId: 'TU_WALLETCONNECT_ID',
+  chains: [baseSepolia],   // ← lo único que cambia
+  ssr: true,
+});
+```
+
+**MetaMask**: la primera vez, la wallet te pide aprobar la red nueva. Aceptá.
+
+> **🎯 TP final**: el deploy en Base Sepolia vale 10 puntos del TP. No es difícil — son 4 cambios. El que se queda en Sepolia pierde esos 10.
+
+---
+
+## Parte 11 — Trabajo final
+
+El **spec completo del TP final** ya está publicado: [tp-final.html](tp-final.html). Resumen:
+
+1. **Hook UNQ + modelado de datos** (20%) — diagramas + justificar qué va on-chain vs off-chain.
+2. **Smart contract** con `AccessControl` (ISSUER + ADMIN), soulbound, struct `Credential`, 4 eventos (35%).
+3. **Testing** — coverage ≥ 80% + soulbound + fuzz (10%).
+4. **Seguridad** — Slither + `SECURITY.md` (10%).
+5. **Frontend** con 3 modos (público / issuer / super-admin) + **deploy a Base Sepolia** (20%).
+6. **Video demo + README** (5%).
+
+**Plazo**: lunes **08/06/2026 · 18:00**. Pareja máximo 2 personas.
 
 ---
 
