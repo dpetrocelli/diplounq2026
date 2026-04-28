@@ -33,23 +33,38 @@ render() {
 
 # ============ Render targets ============
 
-# Clase 2 — Foundry + SimpleStorage
-render "clase-2.md" \
-  "clase-2.html" \
-  "Clase 2 — Foundry + SimpleStorage" \
-  "CLASE 2"
+# ---------- Clase 2 (Foundry + SimpleStorage) ----------
+render "clase-2-clase.md" \
+  "clase-2-clase.html" \
+  "Clase 2 — Foundry + SimpleStorage · En clase" \
+  "C2 · CLASE"
 
-# Clase 3 — Cierre clase 2 + AcademicCredentials (ERC-721)
-render "clase-3.md" \
-  "clase-3.html" \
-  "Clase 3 — Credenciales académicas (ERC-721)" \
-  "CLASE 3"
+render "clase-2-tarea.md" \
+  "clase-2-tarea.html" \
+  "Clase 2 — Foundry + SimpleStorage · Tarea" \
+  "C2 · TAREA"
 
-# Clase 4 — Frontend NFT + Seguridad
-render "clase-4.md" \
-  "clase-4.html" \
-  "Clase 4 — Frontend NFT + Seguridad" \
-  "CLASE 4"
+# ---------- Clase 3 (AcademicCredentials ERC-721) ----------
+render "clase-3-clase.md" \
+  "clase-3-clase.html" \
+  "Clase 3 — Credenciales académicas (ERC-721) · En clase" \
+  "C3 · CLASE"
+
+render "clase-3-tarea.md" \
+  "clase-3-tarea.html" \
+  "Clase 3 — Credenciales académicas (ERC-721) · Tarea" \
+  "C3 · TAREA"
+
+# ---------- Clase 4 (Frontend NFT + Seguridad) ----------
+render "clase-4-clase.md" \
+  "clase-4-clase.html" \
+  "Clase 4 — Frontend NFT + Seguridad · En clase" \
+  "C4 · CLASE"
+
+render "clase-4-tarea.md" \
+  "clase-4-tarea.html" \
+  "Clase 4 — Frontend NFT + Seguridad · Tarea" \
+  "C4 · TAREA"
 
 echo ""
 echo "Done. Open with:"
