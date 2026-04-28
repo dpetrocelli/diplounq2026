@@ -1064,9 +1064,23 @@ a.task-card.task-home:hover {
   border-radius: 3px;
 }
 
-/* Inside the open (red) card, sub-cards stay light to be readable */
+/* Inside the open (red) card, make sub-cards solid white floating
+   on the red background, with strong shadow so they don't blend in. */
 .flow-step.open .task-card {
-  background: rgba(255, 255, 255, 0.96);
+  background: #fff;
+  border-color: #fff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.22);
+}
+.flow-step.open a.task-card:hover {
+  background: #FFF7F8;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.28);
+}
+.flow-step.open .task-text {
+  color: #1F1F1F;
+}
+.flow-step.open .task-text code {
+  background: #FCE8EB;
+  color: var(--unq-red);
 }
 .flow-step .step-num {
   font-size: 13px;
