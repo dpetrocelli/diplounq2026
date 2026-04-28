@@ -4,7 +4,7 @@
 
 ## 🏠 Tarea para esta semana {#tarea}
 
-**Plazo**: a definir con la coordinación (antes de la entrega del TP final).
+**Plazo**: lunes 08/06 · 18:00 (junto con la entrega del [TP final](tp-final.html)).
 
 **Cómo se entrega**: postear en el foro del módulo en el campus.
 
@@ -13,7 +13,7 @@
 1. **Completar el frontend**: agregar un botón "Revocar credencial" visible solo para el issuer.
 2. **Listar todas las credenciales del usuario**, no solo el `tokenId 1`. Pista: leer eventos `CredentialIssued` filtrando por `student`.
 3. **Correr Slither** sobre `AcademicCredentials.sol` (de clase 3) y postear el output en el foro.
-4. **Empezar a leer** el spec del TP final cuando se publique.
+4. **Empezar el [TP final](tp-final.html)** — el spec ya está publicado.
 
 ---
 
