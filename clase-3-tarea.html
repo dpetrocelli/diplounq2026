@@ -354,13 +354,32 @@ bien</td>
   // Map banner-num → { prev, next }
   // Each entry: { href, title } (or null if not present)
   const MAP = {
-    'CLASE 1': {
-      prev: null,
-      next: { href: 'clase-2.html', title: 'Clase 2 — Foundry + SimpleStorage' }
+    // ----- Clase 2 -----
+    'C2 · CLASE': {
+      prev: { href: 'index.html',         title: 'Menú principal' },
+      next: { href: 'clase-2-tarea.html', title: 'Tarea de clase 2' }
     },
-    'CLASE 2': {
-      prev: { href: 'clase-1.html', title: 'Clase 1 — Fundamentos + Remix' },
-      next: null
+    'C2 · TAREA': {
+      prev: { href: 'clase-2-clase.html', title: 'Material en clase 2' },
+      next: { href: 'index.html',         title: 'Menú principal' }
+    },
+    // ----- Clase 3 -----
+    'C3 · CLASE': {
+      prev: { href: 'index.html',         title: 'Menú principal' },
+      next: { href: 'clase-3-tarea.html', title: 'Tarea de clase 3' }
+    },
+    'C3 · TAREA': {
+      prev: { href: 'clase-3-clase.html', title: 'Material en clase 3' },
+      next: { href: 'index.html',         title: 'Menú principal' }
+    },
+    // ----- Clase 4 -----
+    'C4 · CLASE': {
+      prev: { href: 'index.html',         title: 'Menú principal' },
+      next: { href: 'clase-4-tarea.html', title: 'Tarea de clase 4' }
+    },
+    'C4 · TAREA': {
+      prev: { href: 'clase-4-clase.html', title: 'Material en clase 4' },
+      next: { href: 'index.html',         title: 'Menú principal' }
     }
   };
 
