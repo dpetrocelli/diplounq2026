@@ -974,7 +974,12 @@ details.section-collapsible > p:first-of-type {
 /* Arrows are noisy when each card is large; hide on the 2x2 grid layout */
 .flow-diagram .flow-arrow { display: none; }
 
+/* Default styling so cards without .open/.closed (e.g. "próximamente")
+   still get a visible background + border. */
 .flow-step {
+  background: #fff;
+  border: 2px solid var(--light-gray);
+  color: var(--dark-gray);
   min-width: 0;
   max-width: none;
   display: flex;

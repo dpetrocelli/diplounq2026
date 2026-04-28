@@ -12,14 +12,9 @@
 4. **Testear** el contrato con Foundry (14 tests).
 5. **Deployar a Sepolia** y **emitirse un título**, viéndolo aparecer como NFT en MetaMask.
 
-### 🏠 Tarea para entregar antes de clase 4
+### 🏠 Tarea
 
-1. Deployar tu propio `AcademicCredentials` en Sepolia (vos sos el issuer).
-2. Emitirte un título a vos mismo con un `tokenURI` placeholder.
-3. Postear en el foro del campus: address del contrato + `tokenId` + hash de la tx.
-4. (Opcional) Subir un JSON de metadata real a [Pinata](https://www.pinata.cloud/) y usar el CID como `tokenURI`.
-
-> El detalle completo de la tarea está al final de esta página. Acá te enseñamos a hacerlo todo en clase para que después lo repliques solo.
+La tarea va en una página aparte: [ver tarea de clase 3](clase-3-tarea.html).
 
 ---
 
@@ -437,33 +432,12 @@ El spec completo se va a publicar en el campus.
 
 ---
 
-## 🏠 Tarea para entregar antes de clase 4 {#tarea}
-
-**Plazo**: lunes 11/05 a las 18:00 (antes de que arranque la clase siguiente).
-
-**Cómo se entrega**: postear en el foro del módulo en el campus.
-
-**Qué tienen que hacer**:
-
-1. **Deployar tu propio `AcademicCredentials`** en Sepolia (vos sos el issuer).
-2. **Emitirte un título a vos mismo** con un `tokenURI` placeholder.
-3. **Postear en el foro** del campus:
-   - La address de tu contrato.
-   - El `tokenId` del título emitido.
-   - El hash de la transacción de emisión.
-4. **(Opcional, suma puntos)** Subir un JSON real a [Pinata](https://www.pinata.cloud/) (cuenta gratis), copiar el CID, y usarlo como `tokenURI`. La metadata queda como:
-
-```json
-{
-  "name": "Licenciatura en Sistemas de Información",
-  "description": "Título emitido por la Universidad Nacional de Quilmes",
-  "issueDate": "2026-04-27",
-  "studentName": "Tu Nombre",
-  "image": "ipfs://bafy.../tu-foto.png"
-}
-```
 
 ---
+
+## Después de clase
+
+La tarea de la semana → [tarea de clase 3](clase-3-tarea.html).
 
 ## Si algo falla
 

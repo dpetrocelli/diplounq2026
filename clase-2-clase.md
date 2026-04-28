@@ -13,13 +13,9 @@
 5. **Caminar por el contrato `SimpleStorage`** línea por línea para entender la sintaxis básica de Solidity.
 6. **Correr los 10 tests** con `forge test` y entender cómo funcionan los tests en Foundry.
 
-### 🏠 Tarea para entregar antes de clase 3
+### 🏠 Tarea
 
-1. Asegurarte de que `forge test` te devuelve **10 passed; 0 failed** en tu máquina.
-2. Si algo falla en la instalación, postearlo en el foro del campus para resolverlo antes de la próxima clase.
-3. Repasar el contrato `SimpleStorage.sol` y el archivo de tests para entender qué hace cada uno.
-
-> El detalle completo de la tarea está al final de esta página. La parte de deploy a Sepolia y verificación en Etherscan se ve en clase 3.
+La tarea va en una página aparte: [ver tarea de clase 2](clase-2-tarea.html).
 
 ---
 
@@ -317,19 +313,12 @@ En clase 3 vamos a usar todo lo de hoy más:
 
 ---
 
-## 🏠 Tarea para entregar antes de clase 3 {#tarea}
-
-**Plazo**: lunes 04/05 a las 18:00 (antes de que arranque clase 3).
-
-**Cómo se entrega**: postear en el foro del módulo en el campus.
-
-**Qué tienen que hacer**:
-
-1. **Verificar que `forge test` te devuelve `10 passed; 0 failed`** en tu máquina. Postear una captura del output como respuesta al hilo del módulo en el foro.
-2. **Postear en el foro cualquier problema de instalación** que no hayan podido resolver. Mejor que lo mandes hoy mismo así llegamos a clase 3 con todos preparados.
-3. **(Opcional, recomendado)** Leer `src/SimpleStorage.sol` y `test/SimpleStorage.t.sol` con calma. Probá modificar algo del contrato (por ejemplo, agregar una función `decrement()`) y ver si los tests siguen pasando.
 
 ---
+
+## Después de clase
+
+La tarea de la semana → [tarea de clase 2](clase-2-tarea.html).
 
 ## Si algo falla
 

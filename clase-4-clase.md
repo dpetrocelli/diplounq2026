@@ -13,14 +13,9 @@
 5. **Estudiar el bug de reentrancy**: cómo funciona el ataque y dos formas de defenderse.
 6. **Correr Slither** — análisis estático automático de vulnerabilidades.
 
-### 🏠 Tarea para entregar antes del trabajo final
+### 🏠 Tarea
 
-1. Completar el frontend con un botón "Revocar credencial" visible solo para el issuer.
-2. Listar todas las credenciales del usuario (no solo `tokenId 1`) leyendo eventos `CredentialIssued`.
-3. Correr Slither sobre `AcademicCredentials.sol` (de clase 3) y postear el output en el foro.
-4. Empezar a leer el spec del TP final cuando se publique en el campus.
-
-> El detalle completo de la tarea está al final de esta página.
+La tarea va en una página aparte: [ver tarea de clase 4](clase-4-tarea.html).
 
 ---
 
@@ -470,20 +465,12 @@ A partir del jueves se publica en el campus el **spec del trabajo final**: exten
 
 ---
 
-## 🏠 Tarea para esta semana {#tarea}
-
-**Plazo**: a definir con la coordinación (antes de la entrega del TP final).
-
-**Cómo se entrega**: postear en el foro del módulo en el campus.
-
-**Qué tienen que hacer**:
-
-1. **Completar el frontend**: agregar un botón "Revocar credencial" visible solo para el issuer.
-2. **Listar todas las credenciales del usuario**, no solo el `tokenId 1`. Pista: leer eventos `CredentialIssued` filtrando por `student`.
-3. **Correr Slither** sobre `AcademicCredentials.sol` (de clase 3) y postear el output en el foro.
-4. **Empezar a leer** el spec del TP final cuando se publique.
 
 ---
+
+## Después de clase
+
+La tarea de la semana → [tarea de clase 4](clase-4-tarea.html).
 
 ## Si algo falla
 
