@@ -103,20 +103,89 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
     id="toc-clase-3--cierre-clase-2--credenciales-académicas-erc-721">Clase
     3 — Cierre clase 2 + Credenciales académicas (ERC-721)</a>
     <ul>
-    <li><a href="#repo-del-ejercicio" id="toc-repo-del-ejercicio">Repo
-    del ejercicio</a></li>
-    <li><a href="#comandos-clave" id="toc-comandos-clave">Comandos
-    clave</a></li>
-    <li><a href="#deploy-local-con-anvil-corriendo"
-    id="toc-deploy-local-con-anvil-corriendo">Deploy local (con anvil
-    corriendo)</a></li>
-    <li><a href="#emitir-un-título-a-alice-cast"
-    id="toc-emitir-un-título-a-alice-cast">Emitir un título a alice
-    (cast)</a></li>
-    <li><a href="#verificar-el-título"
-    id="toc-verificar-el-título">Verificar el título</a></li>
-    <li><a href="#deploy-a-sepolia" id="toc-deploy-a-sepolia">Deploy a
-    Sepolia</a></li>
+    <li><a href="#qué-vamos-a-hacer" id="toc-qué-vamos-a-hacer">¿Qué
+    vamos a hacer?</a></li>
+    <li><a href="#parte-1--cierre-de-clase-2"
+    id="toc-parte-1--cierre-de-clase-2">Parte 1 — Cierre de clase 2</a>
+    <ul>
+    <li><a href="#11-qué-es-anvil-y-para-qué-sirve"
+    id="toc-11-qué-es-anvil-y-para-qué-sirve">1.1 ¿Qué es Anvil y para
+    qué sirve?</a></li>
+    <li><a href="#12-levantar-anvil" id="toc-12-levantar-anvil">1.2
+    Levantar Anvil</a></li>
+    <li><a href="#13-deploy-local-con-forge-create"
+    id="toc-13-deploy-local-con-forge-create">1.3 Deploy local con
+    <code>forge create</code></a></li>
+    <li><a href="#14-interactuar-con-cast"
+    id="toc-14-interactuar-con-cast">1.4 Interactuar con
+    <code>cast</code></a></li>
+    <li><a href="#15-deploy-a-sepolia-la-blockchain-real"
+    id="toc-15-deploy-a-sepolia-la-blockchain-real">1.5 Deploy a Sepolia
+    (la blockchain real)</a></li>
+    <li><a href="#16-verlo-en-etherscan"
+    id="toc-16-verlo-en-etherscan">1.6 Verlo en Etherscan</a></li>
+    </ul></li>
+    <li><a href="#parte-2--nfts-y-erc-721-conceptual"
+    id="toc-parte-2--nfts-y-erc-721-conceptual">Parte 2 — NFTs y ERC-721
+    (conceptual)</a>
+    <ul>
+    <li><a href="#qué-es-un-nft" id="toc-qué-es-un-nft">¿Qué es un
+    NFT?</a></li>
+    <li><a href="#por-qué-erc-721-para-títulos-universitarios"
+    id="toc-por-qué-erc-721-para-títulos-universitarios">¿Por qué
+    ERC-721 para títulos universitarios?</a></li>
+    </ul></li>
+    <li><a href="#parte-3--openzeppelin"
+    id="toc-parte-3--openzeppelin">Parte 3 — OpenZeppelin</a>
+    <ul>
+    <li><a href="#qué-es" id="toc-qué-es">¿Qué es?</a></li>
+    <li><a href="#los-contratos-que-vamos-a-usar"
+    id="toc-los-contratos-que-vamos-a-usar">Los contratos que vamos a
+    usar</a></li>
+    </ul></li>
+    <li><a href="#parte-4--setup-del-repo-de-clase-3"
+    id="toc-parte-4--setup-del-repo-de-clase-3">Parte 4 — Setup del repo
+    de clase 3</a></li>
+    <li><a href="#parte-5--tour-del-contrato-academiccredentials"
+    id="toc-parte-5--tour-del-contrato-academiccredentials">Parte 5 —
+    Tour del contrato <code>AcademicCredentials</code></a>
+    <ul>
+    <li><a href="#imports" id="toc-imports">Imports</a></li>
+    <li><a href="#herencia-múltiple" id="toc-herencia-múltiple">Herencia
+    múltiple</a></li>
+    <li><a href="#constructor" id="toc-constructor">Constructor</a></li>
+    <li><a href="#función-issuecredential-emitir-un-título"
+    id="toc-función-issuecredential-emitir-un-título">Función
+    <code>issueCredential</code> (emitir un título)</a></li>
+    <li><a href="#función-revoke" id="toc-función-revoke">Función
+    <code>revoke</code></a></li>
+    <li><a href="#función-isvalid" id="toc-función-isvalid">Función
+    <code>isValid</code></a></li>
+    </ul></li>
+    <li><a href="#parte-6--tests-con-foundry"
+    id="toc-parte-6--tests-con-foundry">Parte 6 — Tests con
+    Foundry</a></li>
+    <li><a href="#parte-7--deploy-a-sepolia--emitir-tu-primer-título"
+    id="toc-parte-7--deploy-a-sepolia--emitir-tu-primer-título">Parte 7
+    — Deploy a Sepolia + emitir tu primer título</a>
+    <ul>
+    <li><a href="#deploy" id="toc-deploy">Deploy</a></li>
+    <li><a href="#emitirte-un-título-a-vos-mismo"
+    id="toc-emitirte-un-título-a-vos-mismo">Emitirte un título a vos
+    mismo</a></li>
+    <li><a href="#verlo-en-etherscan" id="toc-verlo-en-etherscan">Verlo
+    en Etherscan</a></li>
+    </ul></li>
+    <li><a href="#parte-8--verlo-como-nft-en-metamask"
+    id="toc-parte-8--verlo-como-nft-en-metamask">Parte 8 — Verlo como
+    NFT en MetaMask</a></li>
+    <li><a href="#parte-9--y-para-el-tp-final"
+    id="toc-parte-9--y-para-el-tp-final">Parte 9 — ¿Y para el TP
+    final?</a></li>
+    <li><a href="#tarea-para-clase-4" id="toc-tarea-para-clase-4">Tarea
+    para clase 4</a></li>
+    <li><a href="#si-algo-falla" id="toc-si-algo-falla">Si algo
+    falla</a></li>
     </ul></li>
     </ul>
     <div style="margin-top:24px;padding-top:14px;border-top:1px solid var(--light-gray);font-size:12px;">
@@ -143,20 +212,91 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
       id="toc-clase-3--cierre-clase-2--credenciales-académicas-erc-721">Clase
       3 — Cierre clase 2 + Credenciales académicas (ERC-721)</a>
       <ul>
-      <li><a href="#repo-del-ejercicio" id="toc-repo-del-ejercicio">Repo
-      del ejercicio</a></li>
-      <li><a href="#comandos-clave" id="toc-comandos-clave">Comandos
-      clave</a></li>
-      <li><a href="#deploy-local-con-anvil-corriendo"
-      id="toc-deploy-local-con-anvil-corriendo">Deploy local (con anvil
-      corriendo)</a></li>
-      <li><a href="#emitir-un-título-a-alice-cast"
-      id="toc-emitir-un-título-a-alice-cast">Emitir un título a alice
-      (cast)</a></li>
-      <li><a href="#verificar-el-título"
-      id="toc-verificar-el-título">Verificar el título</a></li>
-      <li><a href="#deploy-a-sepolia" id="toc-deploy-a-sepolia">Deploy a
-      Sepolia</a></li>
+      <li><a href="#qué-vamos-a-hacer" id="toc-qué-vamos-a-hacer">¿Qué
+      vamos a hacer?</a></li>
+      <li><a href="#parte-1--cierre-de-clase-2"
+      id="toc-parte-1--cierre-de-clase-2">Parte 1 — Cierre de clase
+      2</a>
+      <ul>
+      <li><a href="#11-qué-es-anvil-y-para-qué-sirve"
+      id="toc-11-qué-es-anvil-y-para-qué-sirve">1.1 ¿Qué es Anvil y para
+      qué sirve?</a></li>
+      <li><a href="#12-levantar-anvil" id="toc-12-levantar-anvil">1.2
+      Levantar Anvil</a></li>
+      <li><a href="#13-deploy-local-con-forge-create"
+      id="toc-13-deploy-local-con-forge-create">1.3 Deploy local con
+      <code>forge create</code></a></li>
+      <li><a href="#14-interactuar-con-cast"
+      id="toc-14-interactuar-con-cast">1.4 Interactuar con
+      <code>cast</code></a></li>
+      <li><a href="#15-deploy-a-sepolia-la-blockchain-real"
+      id="toc-15-deploy-a-sepolia-la-blockchain-real">1.5 Deploy a
+      Sepolia (la blockchain real)</a></li>
+      <li><a href="#16-verlo-en-etherscan"
+      id="toc-16-verlo-en-etherscan">1.6 Verlo en Etherscan</a></li>
+      </ul></li>
+      <li><a href="#parte-2--nfts-y-erc-721-conceptual"
+      id="toc-parte-2--nfts-y-erc-721-conceptual">Parte 2 — NFTs y
+      ERC-721 (conceptual)</a>
+      <ul>
+      <li><a href="#qué-es-un-nft" id="toc-qué-es-un-nft">¿Qué es un
+      NFT?</a></li>
+      <li><a href="#por-qué-erc-721-para-títulos-universitarios"
+      id="toc-por-qué-erc-721-para-títulos-universitarios">¿Por qué
+      ERC-721 para títulos universitarios?</a></li>
+      </ul></li>
+      <li><a href="#parte-3--openzeppelin"
+      id="toc-parte-3--openzeppelin">Parte 3 — OpenZeppelin</a>
+      <ul>
+      <li><a href="#qué-es" id="toc-qué-es">¿Qué es?</a></li>
+      <li><a href="#los-contratos-que-vamos-a-usar"
+      id="toc-los-contratos-que-vamos-a-usar">Los contratos que vamos a
+      usar</a></li>
+      </ul></li>
+      <li><a href="#parte-4--setup-del-repo-de-clase-3"
+      id="toc-parte-4--setup-del-repo-de-clase-3">Parte 4 — Setup del
+      repo de clase 3</a></li>
+      <li><a href="#parte-5--tour-del-contrato-academiccredentials"
+      id="toc-parte-5--tour-del-contrato-academiccredentials">Parte 5 —
+      Tour del contrato <code>AcademicCredentials</code></a>
+      <ul>
+      <li><a href="#imports" id="toc-imports">Imports</a></li>
+      <li><a href="#herencia-múltiple"
+      id="toc-herencia-múltiple">Herencia múltiple</a></li>
+      <li><a href="#constructor"
+      id="toc-constructor">Constructor</a></li>
+      <li><a href="#función-issuecredential-emitir-un-título"
+      id="toc-función-issuecredential-emitir-un-título">Función
+      <code>issueCredential</code> (emitir un título)</a></li>
+      <li><a href="#función-revoke" id="toc-función-revoke">Función
+      <code>revoke</code></a></li>
+      <li><a href="#función-isvalid" id="toc-función-isvalid">Función
+      <code>isValid</code></a></li>
+      </ul></li>
+      <li><a href="#parte-6--tests-con-foundry"
+      id="toc-parte-6--tests-con-foundry">Parte 6 — Tests con
+      Foundry</a></li>
+      <li><a href="#parte-7--deploy-a-sepolia--emitir-tu-primer-título"
+      id="toc-parte-7--deploy-a-sepolia--emitir-tu-primer-título">Parte
+      7 — Deploy a Sepolia + emitir tu primer título</a>
+      <ul>
+      <li><a href="#deploy" id="toc-deploy">Deploy</a></li>
+      <li><a href="#emitirte-un-título-a-vos-mismo"
+      id="toc-emitirte-un-título-a-vos-mismo">Emitirte un título a vos
+      mismo</a></li>
+      <li><a href="#verlo-en-etherscan"
+      id="toc-verlo-en-etherscan">Verlo en Etherscan</a></li>
+      </ul></li>
+      <li><a href="#parte-8--verlo-como-nft-en-metamask"
+      id="toc-parte-8--verlo-como-nft-en-metamask">Parte 8 — Verlo como
+      NFT en MetaMask</a></li>
+      <li><a href="#parte-9--y-para-el-tp-final"
+      id="toc-parte-9--y-para-el-tp-final">Parte 9 — ¿Y para el TP
+      final?</a></li>
+      <li><a href="#tarea-para-clase-4"
+      id="toc-tarea-para-clase-4">Tarea para clase 4</a></li>
+      <li><a href="#si-algo-falla" id="toc-si-algo-falla">Si algo
+      falla</a></li>
       </ul></li>
       </ul>
       <div class="toc-controls">
@@ -167,52 +307,504 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 
 <h1 id="clase-3--cierre-clase-2--credenciales-académicas-erc-721">Clase
 3 — Cierre clase 2 + Credenciales académicas (ERC-721)</h1>
-<h2 id="repo-del-ejercicio">Repo del ejercicio</h2>
+<blockquote>
+<p><strong>Objetivo de hoy</strong>: pasar de “tengo un contrato
+testeado en mi máquina” a “tengo un contrato deployado en una blockchain
+real, lo veo en un explorador, y emito un primer título universitario
+verificable on-chain”. Esto es la base del trabajo final de la
+diplomatura.</p>
+</blockquote>
+<h2 id="qué-vamos-a-hacer">¿Qué vamos a hacer?</h2>
+<ol type="1">
+<li><strong>Cerrar lo que quedó pendiente de clase 2</strong>: levantar
+una blockchain local con Anvil, deployar <code>SimpleStorage</code>,
+interactuar con <code>cast</code>, y después llevarlo a Sepolia y verlo
+en Etherscan</li>
+<li><strong>Aprender qué es un NFT (ERC-721)</strong> y por qué es el
+estándar correcto para representar títulos universitarios</li>
+<li><strong>Clonar y entender</strong> el contrato
+<code>AcademicCredentials</code> — el esqueleto del TP final</li>
+<li><strong>Testear</strong> el contrato con Foundry (14 tests)</li>
+<li><strong>Deployar a Sepolia</strong> y <strong>emitirse un
+título</strong>, viéndolo aparecer como NFT en MetaMask</li>
+</ol>
+<hr />
+<h2 id="parte-1--cierre-de-clase-2">Parte 1 — Cierre de clase 2</h2>
+<h3 id="11-qué-es-anvil-y-para-qué-sirve">1.1 ¿Qué es Anvil y para qué
+sirve?</h3>
+<p><strong>Anvil</strong> es una blockchain Ethereum local que viene con
+Foundry. Corre en tu máquina, sin minería, sin gas real, transacciones
+instantáneas. Es el equivalente de “localhost:3000” pero para
+Ethereum.</p>
+<p>¿Por qué lo usamos antes de ir a Sepolia?</p>
+<ul>
+<li><strong>Velocidad</strong>: en anvil un deploy tarda milisegundos.
+En Sepolia, ~12 segundos por bloque.</li>
+<li><strong>Costo</strong>: testnet ETH es limitado por las faucets.
+Anvil te da 10 cuentas con 10.000 ETH cada una.</li>
+<li><strong>Iteración</strong>: si rompés algo, reiniciás anvil y
+arrancás de cero.</li>
+</ul>
+<h3 id="12-levantar-anvil">1.2 Levantar Anvil</h3>
+<p>Abrí dos terminales. En la primera:</p>
 <div class="sourceCode" id="cb1"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/dpetrocelli/diplo-unq-blockchain-clase3.git</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> diplo-unq-blockchain-clase3</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="ex">forge</span> install foundry-rs/forge-std <span class="at">--shallow</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="ex">forge</span> install OpenZeppelin/openzeppelin-contracts <span class="at">--shallow</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="ex">forge</span> build</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="ex">forge</span> test</span></code></pre></div>
-<p>Tienen que ver <code>14 passed; 0 failed</code>.</p>
-<h2 id="comandos-clave">Comandos clave</h2>
-<div class="sourceCode" id="cb2"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">forge</span> build              <span class="co"># compilar</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="ex">forge</span> test               <span class="co"># tests</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="ex">forge</span> test <span class="at">-vvv</span>          <span class="co"># con detalle</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="ex">anvil</span>                    <span class="co"># blockchain local</span></span></code></pre></div>
-<h2 id="deploy-local-con-anvil-corriendo">Deploy local (con anvil
-corriendo)</h2>
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> diplo-unq-blockchain-clase2</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">anvil</span></span></code></pre></div>
+<p>Vas a ver algo como:</p>
+<pre><code>Available Accounts
+==================
+(0) 0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266 (10000 ETH)
+(1) 0x70997970C51812dc3A010C7d01b50e0d17dc79C8 (10000 ETH)
+...
+
+Private Keys
+==================
+(0) 0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80
+...
+
+Listening on 127.0.0.1:8545</code></pre>
+<blockquote>
+<p>⚠️ <strong>Importante</strong>: estos private keys son públicos y
+conocidos por todo el mundo. NUNCA los uses en una red real, solo en
+anvil.</p>
+</blockquote>
+<p>Anvil queda corriendo. <strong>No la cierres</strong> — la dejamos en
+esa terminal y abrimos otra.</p>
+<h3 id="13-deploy-local-con-forge-create">1.3 Deploy local con
+<code>forge create</code></h3>
+<p>En la segunda terminal:</p>
 <div class="sourceCode" id="cb3"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">forge</span> create src/AcademicCredentials.sol:AcademicCredentials <span class="dt">\</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">--rpc-url</span> http://localhost:8545 <span class="dt">\</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">--private-key</span> 0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80 <span class="dt">\</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">--broadcast</span></span></code></pre></div>
-<h2 id="emitir-un-título-a-alice-cast">Emitir un título a alice
-(cast)</h2>
-<div class="sourceCode" id="cb4"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">ADDR</span><span class="op">=&lt;</span>address que devolvió forge create<span class="op">&gt;</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">ALICE</span><span class="op">=</span>0x70997970C51812dc3A010C7d01b50e0d17dc79C8</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="ex">cast</span> send <span class="va">$ADDR</span> <span class="dt">\</span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;issueCredential(address,uint256,string)&quot;</span> <span class="dt">\</span></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>  <span class="va">$ALICE</span> 1 <span class="st">&quot;ipfs://bafy.../titulo.json&quot;</span> <span class="dt">\</span></span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">--rpc-url</span> http://localhost:8545 <span class="dt">\</span></span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">--private-key</span> 0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80</span></code></pre></div>
-<h2 id="verificar-el-título">Verificar el título</h2>
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> diplo-unq-blockchain-clase2</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="ex">forge</span> create src/SimpleStorage.sol:SimpleStorage <span class="dt">\</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">--rpc-url</span> http://localhost:8545 <span class="dt">\</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">--private-key</span> 0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80 <span class="dt">\</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">--broadcast</span></span></code></pre></div>
+<p>¿Qué hace cada flag?</p>
+<table>
+<thead>
+<tr>
+<th>Flag</th>
+<th>Qué hace</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>src/SimpleStorage.sol:SimpleStorage</code></td>
+<td>Le decís a forge qué contrato deployar
+(<code>archivo:nombreContrato</code>)</td>
+</tr>
+<tr>
+<td><code>--rpc-url http://localhost:8545</code></td>
+<td>Apunta a tu anvil local</td>
+</tr>
+<tr>
+<td><code>--private-key 0xac09...</code></td>
+<td>Cuenta <code>(0)</code> de anvil — la “wallet” que paga el
+deploy</td>
+</tr>
+<tr>
+<td><code>--broadcast</code></td>
+<td>Manda la transacción real (sin esto solo simula)</td>
+</tr>
+</tbody>
+</table>
+<p>Output esperado:</p>
+<pre><code>Deployer: 0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266
+Deployed to: 0x5FbDB2315678afecb367f032d93F642f64180aa3
+Transaction hash: 0x...</code></pre>
+<blockquote>
+<p>💡 La address <code>0x5FbD...0aa3</code> es
+<strong>determinística</strong>: si reiniciás anvil y hacés el primer
+deploy, te va a dar siempre la misma. Eso ayuda mucho cuando estás
+iterando.</p>
+</blockquote>
+<p>Guardá la address en una variable:</p>
 <div class="sourceCode" id="cb5"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">cast</span> call <span class="va">$ADDR</span> <span class="st">&quot;ownerOf(uint256)&quot;</span> 1 <span class="at">--rpc-url</span> http://localhost:8545</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="ex">cast</span> call <span class="va">$ADDR</span> <span class="st">&quot;tokenURI(uint256)&quot;</span> 1 <span class="at">--rpc-url</span> http://localhost:8545</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="ex">cast</span> call <span class="va">$ADDR</span> <span class="st">&quot;isValid(uint256)&quot;</span> 1 <span class="at">--rpc-url</span> http://localhost:8545</span></code></pre></div>
-<h2 id="deploy-a-sepolia">Deploy a Sepolia</h2>
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">ADDR</span><span class="op">=</span>0x5FbDB2315678afecb367f032d93F642f64180aa3</span></code></pre></div>
+<h3 id="14-interactuar-con-cast">1.4 Interactuar con
+<code>cast</code></h3>
+<p><code>cast</code> es la herramienta de Foundry para hablar con la
+blockchain desde la terminal. Es como <code>curl</code> pero para
+Ethereum.</p>
+<p><strong>Leer</strong> una función <code>view</code> (gratis, no manda
+transacción):</p>
 <div class="sourceCode" id="cb6"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">cast</span> wallet import dev-wallet <span class="at">--interactive</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="ex">forge</span> create src/AcademicCredentials.sol:AcademicCredentials <span class="dt">\</span></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">--rpc-url</span> https://ethereum-sepolia-rpc.publicnode.com <span class="dt">\</span></span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">--account</span> dev-wallet <span class="dt">\</span></span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">--broadcast</span></span></code></pre></div>
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">cast</span> call <span class="va">$ADDR</span> <span class="st">&quot;favoriteNumber()&quot;</span> <span class="at">--rpc-url</span> http://localhost:8545 <span class="kw">|</span> <span class="ex">cast</span> <span class="at">--to-dec</span></span></code></pre></div>
+<p>Output: <code>0</code> (recién deployado, valor inicial)</p>
+<p><strong>Escribir</strong> (es transacción real, gasta gas):</p>
+<div class="sourceCode" id="cb7"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">cast</span> send <span class="va">$ADDR</span> <span class="st">&quot;store(uint256)&quot;</span> 42 <span class="dt">\</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">--rpc-url</span> http://localhost:8545 <span class="dt">\</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">--private-key</span> 0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80</span></code></pre></div>
+<p>Vas a ver un receipt con <code>status: 1 (success)</code>,
+<code>gasUsed: 45277</code>, y un campo <code>logs</code> que contiene
+el evento <code>NumberUpdated</code> que emitió el contrato.</p>
+<p><strong>Leer de nuevo</strong>:</p>
+<div class="sourceCode" id="cb8"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">cast</span> call <span class="va">$ADDR</span> <span class="st">&quot;favoriteNumber()&quot;</span> <span class="at">--rpc-url</span> http://localhost:8545 <span class="kw">|</span> <span class="ex">cast</span> <span class="at">--to-dec</span></span></code></pre></div>
+<p>Output: <code>42</code>. Funcionó.</p>
+<blockquote>
+<p>🎯 Esto es exactamente lo que hicieron en Remix la semana pasada con
+los botones azules. Mismo concepto, otra interfaz:
+<code>cast call</code> = leer, <code>cast send</code> = escribir.</p>
+</blockquote>
+<h3 id="15-deploy-a-sepolia-la-blockchain-real">1.5 Deploy a Sepolia (la
+blockchain real)</h3>
+<p>Sepolia es la testnet de Ethereum (chain ID <code>11155111</code>).
+Igual que mainnet pero con ETH falso. Necesitás que tu MetaMask esté
+conectada a Sepolia y tener algo de ETH de Sepolia.</p>
+<p><strong>Importar tu private key como cast wallet</strong> (encriptada
+con password):</p>
+<div class="sourceCode" id="cb9"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">cast</span> wallet import dev-wallet <span class="at">--interactive</span></span></code></pre></div>
+<p>Te va a pedir tu private key (la sacás de MetaMask → ⋮ → Detalles de
+la cuenta → Mostrar private key) y un password.</p>
+<blockquote>
+<p>⚠️ Solo usá una cuenta de MetaMask que <strong>no tenga fondos reales
+en mainnet</strong>. Para esto creá una cuenta nueva en MetaMask y mandá
+ahí el ETH de Sepolia.</p>
+</blockquote>
+<p><strong>Deployar</strong> a Sepolia:</p>
+<div class="sourceCode" id="cb10"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ex">forge</span> create src/SimpleStorage.sol:SimpleStorage <span class="dt">\</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">--rpc-url</span> https://ethereum-sepolia-rpc.publicnode.com <span class="dt">\</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">--account</span> dev-wallet <span class="dt">\</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">--broadcast</span></span></code></pre></div>
+<p>Esto tarda ~12 segundos (un bloque de Sepolia). Te devuelve una nueva
+address — única, real, en una blockchain pública.</p>
+<h3 id="16-verlo-en-etherscan">1.6 Verlo en Etherscan</h3>
+<p>Abrí en el browser:</p>
+<pre><code>https://sepolia.etherscan.io/address/&lt;TU_ADDRESS&gt;</code></pre>
+<p>Vas a ver:</p>
+<ul>
+<li>La transacción de creación</li>
+<li>El <strong>bytecode</strong> del contrato (mismo hex que vieron en
+<code>out/SimpleStorage.sol/SimpleStorage.json</code> cuando hicieron
+<code>forge build</code>)</li>
+<li>Tab “Contract” → “Source code not verified” — eso queda como tarea
+para después</li>
+</ul>
+<p>Mandá una transacción que emita evento:</p>
+<div class="sourceCode" id="cb12"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="ex">cast</span> send <span class="va">$ADDR</span> <span class="st">&quot;store(uint256)&quot;</span> 123 <span class="dt">\</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">--rpc-url</span> https://ethereum-sepolia-rpc.publicnode.com <span class="dt">\</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">--account</span> dev-wallet</span></code></pre></div>
+<p>Esperá 12 segundos, recargá Etherscan, y andá al tab
+<strong>“Logs”</strong>. Vas a ver el evento <code>NumberUpdated</code>
+decodificado: <code>oldNumber</code>, <code>newNumber</code>, y
+<code>updatedBy</code> con tu address.</p>
+<blockquote>
+<p>🎯 Ese <code>indexed</code> que pusimos en el evento
+(<code>address indexed updatedBy</code>) es lo que permite a Etherscan
+filtrar y mostrar quién llamó. Cierra el loop completo: del Solidity al
+log decodificado en el explorador.</p>
+</blockquote>
+<hr />
+<h2 id="parte-2--nfts-y-erc-721-conceptual">Parte 2 — NFTs y ERC-721
+(conceptual)</h2>
+<h3 id="qué-es-un-nft">¿Qué es un NFT?</h3>
+<p>NFT = Non-Fungible Token = “token no fungible”.</p>
+<ul>
+<li><strong>Fungible</strong> (ERC-20): cada unidad es <strong>idéntica
+e intercambiable</strong>. 1 USDC = 1 USDC. No tiene identidad propia,
+solo un balance.</li>
+<li><strong>No fungible</strong> (ERC-721): cada unidad es
+<strong>única</strong>, con su propia identidad. Como un cuadro, una
+escritura, un título universitario.</li>
+</ul>
+<p>Cada NFT tiene:</p>
+<ul>
+<li>Un <strong><code>tokenId</code></strong> (número único)</li>
+<li>Un <strong><code>ownerOf(tokenId)</code></strong> (la wallet que es
+dueña)</li>
+<li>Un <strong><code>tokenURI(tokenId)</code></strong> (link a la
+metadata: nombre, descripción, imagen, atributos — usualmente en
+IPFS)</li>
+</ul>
+<h3 id="por-qué-erc-721-para-títulos-universitarios">¿Por qué ERC-721
+para títulos universitarios?</h3>
+<ul>
+<li>Cada título es <strong>único</strong>: tu Licenciatura en Sistemas
+no es la misma que la de otro alumno</li>
+<li>Tiene <strong>metadata propia</strong>: tu nombre, fecha, materias,
+hash del PDF</li>
+<li>Lo “tenés” en tu wallet — nadie te lo puede sacar (salvo que el
+emisor lo revoque)</li>
+<li>Es <strong>verificable públicamente</strong>: cualquiera puede
+chequear <code>ownerOf(tokenId)</code> y <code>tokenURI(tokenId)</code>
+y validar que tu título existe</li>
+</ul>
+<hr />
+<h2 id="parte-3--openzeppelin">Parte 3 — OpenZeppelin</h2>
+<h3 id="qué-es">¿Qué es?</h3>
+<p><a href="https://www.openzeppelin.com/contracts">OpenZeppelin</a> es
+una librería de contratos auditados, usados en miles de proyectos
+productivos (Coinbase, Uniswap, Aave, etc). En lugar de escribir un
+ERC-721 desde cero — con todos los riesgos de seguridad que eso implica
+— <strong>heredás</strong> del contrato de OpenZeppelin.</p>
+<h3 id="los-contratos-que-vamos-a-usar">Los contratos que vamos a
+usar</h3>
+<table>
+<thead>
+<tr>
+<th>Contrato</th>
+<th>Qué da</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ERC721</code></td>
+<td>El estándar base: <code>mint</code>, <code>transfer</code>,
+<code>ownerOf</code>, <code>balanceOf</code>, <code>tokenURI</code></td>
+</tr>
+<tr>
+<td><code>ERC721URIStorage</code></td>
+<td>Extensión que permite asociar una URI distinta a cada
+<code>tokenId</code></td>
+</tr>
+<tr>
+<td><code>Ownable</code></td>
+<td>Control de acceso simple: una sola wallet puede llamar funciones
+marcadas <code>onlyOwner</code></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="parte-4--setup-del-repo-de-clase-3">Parte 4 — Setup del repo de
+clase 3</h2>
+<div class="sourceCode" id="cb13"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/dpetrocelli/diplo-unq-blockchain-clase3.git</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> diplo-unq-blockchain-clase3</span></code></pre></div>
+<p>Bajamos las dependencias:</p>
+<div class="sourceCode" id="cb14"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="ex">forge</span> install foundry-rs/forge-std <span class="at">--shallow</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="ex">forge</span> install OpenZeppelin/openzeppelin-contracts <span class="at">--shallow</span></span></code></pre></div>
+<p>Compilamos y testeamos:</p>
+<div class="sourceCode" id="cb15"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="ex">forge</span> build</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="ex">forge</span> test</span></code></pre></div>
+<p>Tienen que ver <code>14 passed; 0 failed</code>.</p>
+<hr />
+<h2 id="parte-5--tour-del-contrato-academiccredentials">Parte 5 — Tour
+del contrato <code>AcademicCredentials</code></h2>
+<p>Abran <code>src/AcademicCredentials.sol</code>. Repasamos las partes
+clave:</p>
+<h3 id="imports">Imports</h3>
+<pre class="solidity"><code>import {ERC721} from &quot;@openzeppelin/contracts/token/ERC721/ERC721.sol&quot;;
+import {ERC721URIStorage} from &quot;@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol&quot;;
+import {Ownable} from &quot;@openzeppelin/contracts/access/Ownable.sol&quot;;</code></pre>
+<h3 id="herencia-múltiple">Herencia múltiple</h3>
+<pre class="solidity"><code>contract AcademicCredentials is ERC721URIStorage, Ownable {</code></pre>
+<p>Solidity permite heredar de varios contratos a la vez. Acá heredamos
+de los <strong>dos</strong> de OpenZeppelin.</p>
+<h3 id="constructor">Constructor</h3>
+<pre class="solidity"><code>constructor()
+    ERC721(&quot;UNQ Academic Credential&quot;, &quot;UNQ-CRED&quot;)
+    Ownable(msg.sender)
+{}</code></pre>
+<p>Pasamos argumentos a los constructores de los contratos padre:</p>
+<ul>
+<li><code>ERC721("UNQ Academic Credential", "UNQ-CRED")</code> → name +
+symbol del NFT</li>
+<li><code>Ownable(msg.sender)</code> → la wallet que deploya queda como
+owner (el “issuer”)</li>
+</ul>
+<h3 id="función-issuecredential-emitir-un-título">Función
+<code>issueCredential</code> (emitir un título)</h3>
+<pre class="solidity"><code>function issueCredential(address student, uint256 tokenId, string memory metadataURI)
+    public
+    onlyOwner
+{
+    _mint(student, tokenId);
+    _setTokenURI(tokenId, metadataURI);
+    emit CredentialIssued(student, tokenId, metadataURI);
+}</code></pre>
+<ul>
+<li><code>onlyOwner</code>: solo el issuer (la universidad) puede
+llamarla</li>
+<li><code>_mint(student, tokenId)</code>: crea el NFT y lo asigna a la
+wallet del estudiante</li>
+<li><code>_setTokenURI(tokenId, metadataURI)</code>: guarda la URI con
+la metadata</li>
+<li><code>emit CredentialIssued(...)</code>: emite un evento que el
+frontend va a escuchar</li>
+</ul>
+<h3 id="función-revoke">Función <code>revoke</code></h3>
+<pre class="solidity"><code>function revoke(uint256 tokenId) public onlyOwner {
+    _burn(tokenId);
+    emit CredentialRevoked(tokenId);
+}</code></pre>
+<p>Si la universidad detecta un fraude o un error, puede revocar
+(quemar) el título. El NFT desaparece y <code>ownerOf(tokenId)</code>
+revierte.</p>
+<h3 id="función-isvalid">Función <code>isValid</code></h3>
+<pre class="solidity"><code>function isValid(uint256 tokenId) public view returns (bool) {
+    return _ownerOf(tokenId) != address(0);
+}</code></pre>
+<p>Helper para verificación pública. Cualquiera puede llamarla, no
+cuesta gas.</p>
+<hr />
+<h2 id="parte-6--tests-con-foundry">Parte 6 — Tests con Foundry</h2>
+<div class="sourceCode" id="cb22"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="ex">forge</span> test</span></code></pre></div>
+<p>Los 14 tests cubren:</p>
+<ul>
+<li>Nombre, símbolo, ownership inicial</li>
+<li>Issue / revoke (camino feliz + casos de error)</li>
+<li>Eventos (<code>CredentialIssued</code>,
+<code>CredentialRevoked</code>)</li>
+<li>Verificación (<code>isValid</code>, <code>tokenURI</code>,
+<code>ownerOf</code>)</li>
+<li>Fuzz tests (256 casos random)</li>
+</ul>
+<p>Para ver el detalle de un test:</p>
+<div class="sourceCode" id="cb23"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="ex">forge</span> test <span class="at">--match-test</span> test_IssuerCanIssue <span class="at">-vvvv</span></span></code></pre></div>
+<p>Vas a ver el call trace completo: deploy → mint event → setTokenURI →
+CredentialIssued event.</p>
+<blockquote>
+<p>💡 Para escribir tests propios: cada función que empieza con
+<code>test_</code> se ejecuta. Las que empiezan con
+<code>testFuzz_</code> reciben argumentos random y corren 256 veces.</p>
+</blockquote>
+<hr />
+<h2 id="parte-7--deploy-a-sepolia--emitir-tu-primer-título">Parte 7 —
+Deploy a Sepolia + emitir tu primer título</h2>
+<h3 id="deploy">Deploy</h3>
+<p>Asumiendo que ya importaste tu wallet en clase 2:</p>
+<div class="sourceCode" id="cb24"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="ex">forge</span> create src/AcademicCredentials.sol:AcademicCredentials <span class="dt">\</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">--rpc-url</span> https://ethereum-sepolia-rpc.publicnode.com <span class="dt">\</span></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">--account</span> dev-wallet <span class="dt">\</span></span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">--broadcast</span></span></code></pre></div>
+<p>Te devuelve la address del nuevo contrato. <strong>La wallet que
+deployó es el issuer</strong>.</p>
+<p>Guardala:</p>
+<div class="sourceCode" id="cb25"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">ADDR</span><span class="op">=&lt;</span>address que devolvió forge create<span class="op">&gt;</span></span></code></pre></div>
+<h3 id="emitirte-un-título-a-vos-mismo">Emitirte un título a vos
+mismo</h3>
+<p>Tomá tu address de MetaMask:</p>
+<div class="sourceCode" id="cb26"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">YOU</span><span class="op">=&lt;</span>tu address de MetaMask<span class="op">&gt;</span></span></code></pre></div>
+<p>Y emití:</p>
+<div class="sourceCode" id="cb27"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="ex">cast</span> send <span class="va">$ADDR</span> <span class="dt">\</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;issueCredential(address,uint256,string)&quot;</span> <span class="dt">\</span></span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>  <span class="va">$YOU</span> 1 <span class="st">&quot;ipfs://bafy.../titulo-licenciatura-sistemas.json&quot;</span> <span class="dt">\</span></span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">--rpc-url</span> https://ethereum-sepolia-rpc.publicnode.com <span class="dt">\</span></span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">--account</span> dev-wallet</span></code></pre></div>
+<p>Esperá 12 segundos. Verificá:</p>
+<div class="sourceCode" id="cb28"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="ex">cast</span> call <span class="va">$ADDR</span> <span class="st">&quot;ownerOf(uint256)&quot;</span> 1 <span class="at">--rpc-url</span> https://ethereum-sepolia-rpc.publicnode.com</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="ex">cast</span> call <span class="va">$ADDR</span> <span class="st">&quot;tokenURI(uint256)&quot;</span> 1 <span class="at">--rpc-url</span> https://ethereum-sepolia-rpc.publicnode.com</span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a><span class="ex">cast</span> call <span class="va">$ADDR</span> <span class="st">&quot;isValid(uint256)&quot;</span> 1 <span class="at">--rpc-url</span> https://ethereum-sepolia-rpc.publicnode.com</span></code></pre></div>
+<p>Tienen que devolver tu address, la URI que pusiste, y
+<code>true</code>.</p>
+<h3 id="verlo-en-etherscan">Verlo en Etherscan</h3>
+<pre><code>https://sepolia.etherscan.io/address/&lt;TU_ADDRESS_DE_CONTRATO&gt;</code></pre>
+<p>En “Logs” vas a ver <code>CredentialIssued</code> con tus datos
+decodificados.</p>
+<hr />
+<h2 id="parte-8--verlo-como-nft-en-metamask">Parte 8 — Verlo como NFT en
+MetaMask</h2>
+<ol type="1">
+<li>Abrí MetaMask</li>
+<li>Tab “NFTs”</li>
+<li>“Import NFT”</li>
+<li>Address: la address de tu contrato</li>
+<li>Token ID: <code>1</code></li>
+</ol>
+<p>Ahora MetaMask muestra que sos dueño de un NFT del contrato
+<code>UNQ-CRED</code>. Si la metadata estuviera en IPFS, también vería
+el JSON con tu nombre, fecha, materias.</p>
+<blockquote>
+<p>🎉 Eso es un título universitario verificable on-chain. Cualquier
+persona en el mundo, con la address de este contrato y tu tokenId, puede
+verificar que sos egresado UNQ.</p>
+</blockquote>
+<hr />
+<h2 id="parte-9--y-para-el-tp-final">Parte 9 — ¿Y para el TP final?</h2>
+<p>Lo que escribimos hoy es el <strong>esqueleto</strong> del TP final.
+Para el trabajo final lo van a extender con:</p>
+<ul>
+<li><strong><code>AccessControl</code></strong> con roles
+<code>ISSUER_ROLE</code> (decanos) y <code>DEFAULT_ADMIN_ROLE</code>
+(rector)</li>
+<li><strong>Soulbound</strong>: que los títulos NO sean transferibles
+(override <code>_update</code> para revertir transfers)</li>
+<li><strong>Estructura de datos</strong> completa
+(<code>Credential</code> con nombre, fecha, hash del PDF)</li>
+<li><strong>Frontend con dos modos</strong>: panel admin para emitir +
+verificador público para que cualquiera consulte</li>
+<li><strong>Metadata real</strong> en IPFS con foto + firma digital</li>
+<li><strong><code>SECURITY.md</code></strong> con análisis de
+Slither</li>
+</ul>
+<p>El spec completo se va a publicar en el campus.</p>
+<hr />
+<h2 id="tarea-para-clase-4">Tarea para clase 4</h2>
+<ol type="1">
+<li><strong>Deployar tu propio <code>AcademicCredentials</code></strong>
+en Sepolia (vos sos el issuer)</li>
+<li><strong>Emitirte un título a vos mismo</strong> con un
+<code>tokenURI</code> placeholder</li>
+<li><strong>Postear en el foro</strong> del campus:
+<ul>
+<li>La address de tu contrato</li>
+<li>El <code>tokenId</code> del título emitido</li>
+<li>El hash de la transacción de emisión</li>
+</ul></li>
+<li><strong>(Opcional)</strong> Subir un JSON real a <a
+href="https://www.pinata.cloud/">Pinata</a> (cuenta gratis), copiar el
+CID, y usarlo como <code>tokenURI</code>. La metadata queda como:</li>
+</ol>
+<div class="sourceCode" id="cb30"><pre
+class="sourceCode json"><code class="sourceCode json"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;name&quot;</span><span class="fu">:</span> <span class="st">&quot;Licenciatura en Sistemas de Información&quot;</span><span class="fu">,</span></span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;description&quot;</span><span class="fu">:</span> <span class="st">&quot;Título emitido por la Universidad Nacional de Quilmes&quot;</span><span class="fu">,</span></span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;issueDate&quot;</span><span class="fu">:</span> <span class="st">&quot;2026-04-27&quot;</span><span class="fu">,</span></span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;studentName&quot;</span><span class="fu">:</span> <span class="st">&quot;Tu Nombre&quot;</span><span class="fu">,</span></span>
+<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;image&quot;</span><span class="fu">:</span> <span class="st">&quot;ipfs://bafy.../tu-foto.png&quot;</span></span>
+<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code></pre></div>
+<hr />
+<h2 id="si-algo-falla">Si algo falla</h2>
+<table>
+<thead>
+<tr>
+<th>Problema</th>
+<th>Solución</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>forge install</code> lento o falla</td>
+<td>Probá con VPN o desde otra red</td>
+</tr>
+<tr>
+<td>Faucet de Sepolia no manda tokens</td>
+<td>Probar <a
+href="https://cloud.google.com/application/web3/faucet/ethereum/sepolia">Google
+Cloud Web3 Faucet</a></td>
+</tr>
+<tr>
+<td>RPC público lento</td>
+<td>Cambiar a <code>https://rpc.sepolia.org</code> o
+<code>https://sepolia.gateway.tenderly.co</code></td>
+</tr>
+<tr>
+<td><code>forge create</code> tarda &gt; 30 seg</td>
+<td>Normal por congestión. Si pasan 60s, revisar con
+<code>cast tx &lt;hash&gt;</code></td>
+</tr>
+<tr>
+<td>MetaMask no muestra mi NFT</td>
+<td>Verificá que estés en Sepolia y que la address del contrato esté
+bien</td>
+</tr>
+</tbody>
+</table>
+<p>Lo demás lo resolvemos en el foro del campus.</p>
 
     <nav class="page-prev-next" aria-label="Navegación entre páginas">
       <a class="prev-link" href="#" data-slot="prev" hidden>
