@@ -4,7 +4,7 @@
 
 ## ¿Qué vamos a hacer?
 
-### 🏫 En clase (en vivo con David + Ciro)
+### 🏫 En clase (en vivo con David + Ciro) {#en-clase}
 
 1. **Construir un frontend** en Next.js que se conecte al contrato `AcademicCredentials`.
 2. **Conectar MetaMask** desde una webapp con RainbowKit + wagmi.
@@ -470,7 +470,7 @@ A partir del jueves se publica en el campus el **spec del trabajo final**: exten
 
 ---
 
-## 🏠 Tarea para esta semana
+## 🏠 Tarea para esta semana {#tarea}
 
 **Plazo**: a definir con la coordinación (antes de la entrega del TP final).
 

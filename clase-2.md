@@ -4,7 +4,7 @@
 
 ## ¿Qué vamos a hacer?
 
-### 🏫 En clase (en vivo con David + Ciro)
+### 🏫 En clase (en vivo con David + Ciro) {#en-clase}
 
 1. **Instalar Foundry** (`forge`, `cast`, `anvil`) — el toolkit estándar para desarrollo de smart contracts.
 2. **Instalar la extensión de Solidity** en VS Code para tener resaltado de sintaxis y autocompletado.
@@ -317,7 +317,7 @@ En clase 3 vamos a usar todo lo de hoy más:
 
 ---
 
-## 🏠 Tarea para entregar antes de clase 3
+## 🏠 Tarea para entregar antes de clase 3 {#tarea}
 
 **Plazo**: lunes 04/05 a las 18:00 (antes de que arranque clase 3).
 

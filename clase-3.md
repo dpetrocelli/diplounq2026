@@ -4,7 +4,7 @@
 
 ## ¿Qué vamos a hacer?
 
-### 🏫 En clase (en vivo con David + Ciro)
+### 🏫 En clase (en vivo con David + Ciro) {#en-clase}
 
 1. **Cerrar lo que quedó pendiente de clase 2**: levantar una blockchain local con Anvil, deployar `SimpleStorage`, interactuar con `cast`, y después llevarlo a Sepolia y verlo en Etherscan.
 2. **Aprender qué es un NFT (ERC-721)** y por qué es el estándar correcto para representar títulos universitarios.
@@ -437,7 +437,7 @@ El spec completo se va a publicar en el campus.
 
 ---
 
-## 🏠 Tarea para entregar antes de clase 4
+## 🏠 Tarea para entregar antes de clase 4 {#tarea}
 
 **Plazo**: lunes 11/05 a las 18:00 (antes de que arranque la clase siguiente).
 
