@@ -18,7 +18,7 @@ render() {
   echo "   $out"
 
   pandoc "$src" \
-    --from=gfm+smart \
+    --from=gfm+smart+attributes \
     --to=html5 \
     --standalone \
     --template="$TEMPLATE" \
