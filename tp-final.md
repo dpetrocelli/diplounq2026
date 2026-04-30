@@ -36,15 +36,46 @@ Lo que escribieron en clase 3 (`AcademicCredentials`) es el **esqueleto** del TP
 
 > Esto va al **principio del README**, antes que cualquier otra cosa. Es lo primero que vamos a leer al evaluar.
 
-### 0.1 Hook UNQ (5%)
+### 0.1 Hook UNQ (5%) — por qué este TP
 
-En 1-2 párrafos, contestar:
+#### El problema real
 
-- **¿Qué área de UNQ usaría este sistema?** (rectorado, secretaría académica, oficina de alumnos, decanato de una facultad, etc.)
-- **¿Cómo encajaría en el flujo actual?** (¿reemplaza un proceso existente? ¿se suma como capa sobre lo que ya hay?)
-- **¿Quién es el usuario?** (¿el egresado? ¿un empleador que verifica? ¿la propia universidad?)
+En mayo de 2023, la Policía Federal desbarata la **"Operación Alejo"**: una red que había vendido más de **500 títulos secundarios y universitarios truchos**, principalmente para ejercer en **medicina y educación** ([Infobae, 2023](https://www.infobae.com/sociedad/2023/05/04/una-banda-de-falsificadores-vendio-titulos-secundarios-y-universitarios-truchos-a-mas-de-500-clientes/)). Dos años antes, en Río Cuarto, **un chico de 19 años se hizo pasar por médico durante la pandemia** usando una matrícula ajena, coordinó hisopados y reemplazó a profesionales en dispensarios ([La Nación, 2021](https://www.lanacion.com.ar/sociedad/escandalo-en-cordoba-el-medico-trucho-suma-antecedentes-y-hasta-lo-investigan-por-homicidio-nid10022021/)). En 2025, la Cámara Federal sigue procesando casos similares.
 
-> No tiene que ser perfecto, pero sí mostrar que pensaron el sistema **integrado a la institución real**, no como ejercicio aislado.
+El problema no es que falten sistemas — es que los que hay **no permiten verificar al instante** quién emitió el título, ni con qué autoridad. Hoy en Argentina:
+
+- **SIDCER** (Ministerio de Educación) digitalizó los diplomas, pero es **centralizado**: si el sistema cae o un dato se altera internamente, no hay verificación independiente.
+- **Apostillar un título argentino** para usarlo afuera cuesta **USD 30-40 y 20-30 días corridos** ([Cancillería, TAD](https://www.cancilleria.gob.ar/es/servicios/apostilla-legalizacion-con-validez-internacional-tad)).
+- Ninguna universidad nacional argentina (UBA, UNLP, UTN, ITBA, UNQ) emite títulos en blockchain de manera institucional.
+
+#### Lo que ya hicieron otras universidades
+
+| Año | Institución | Stack | Volumen |
+|---|---|---|---|
+| 2014 | **Universidad de Nicosia** (Chipre) | Bitcoin | Primera del mundo en emitir certificados blockchain |
+| 2017 | **MIT** | Blockcerts (BTC) | ~600 graduados en el primer año ([MIT News](https://news.mit.edu/2017/mit-debuts-secure-digital-diploma-using-bitcoin-blockchain-technology-1017)) |
+| 2018-19 | **Malta** | Blockcerts (BTC) | **País entero** — todas las instituciones educativas |
+| 2018 | **UE — EBSI** | Verifiable Credentials W3C | 25+ proyectos activos, diplomas transfronterizos |
+| 2018 | **Tec de Monterrey** (México) | IBM blockchain | 5.000-10.000 certificados/año |
+| 2019 | **Univ. Nacional de Colombia** | eTítulo | Primera pública latinoamericana |
+| 2025 | **W3C** | — | **Verifiable Credentials 2.0** [es estándar oficial](https://www.w3.org/press-releases/2025/verifiable-credentials-2-0/) |
+
+#### Por qué este TP importa
+
+UNQ tiene ~11.000 estudiantes activos, 18 carreras de grado, modalidad virtual desde 1999 (pionera nacional). El sistema que ustedes están armando, si funciona, **resuelve un problema real**: que cualquier RRHH del mundo pueda verificar un título de UNQ en 3 segundos pegando un `tokenId` en una web pública, en vez de esperar 30 días por una apostilla.
+
+Y el modelo es replicable. Argentina tiene **60+ universidades nacionales**, ~140.000 egresados/año (CONEAU/SPU). Existe infraestructura pública sin uso ([Blockchain Federal Argentina](https://bfa.ar/blockchain/casos-de-uso/titulos-academicos)) — falta el sistema que la consuma. **No están haciendo un toy project. Están prototipando una pieza de infraestructura.**
+
+#### Lo que les pedimos en esta sección
+
+En 2-3 párrafos en el README, justificar:
+
+- **¿Qué área de UNQ operaría el sistema?** (rectorado, secretaría académica, decanato de facultad)
+- **¿Cómo encaja en el flujo actual?** (¿reemplaza SIDCER? ¿corre en paralelo? ¿es una capa de verificación pública sobre lo que ya hay?)
+- **¿Quién es el usuario que se beneficia?** (egresado que aplica afuera, empleador que verifica, la propia universidad)
+- **¿Por qué blockchain y no una base de datos firmada?** (defender la elección — si una BD centralizada alcanza, decirlo)
+
+> Si no logran enmarcar el "para qué", pierden estos 5 puntos enteros. La parte técnica sin contexto vale poco.
 
 ### 0.2 Modelado de datos / arquitectura (15%)
 
@@ -206,23 +237,38 @@ Documentar **cada finding** en un archivo `SECURITY.md`:
 - [ ] No hay `selfdestruct`, `delegatecall` a addresses arbitrarias, ni `tx.origin` en checks de auth
 - [ ] El `documentHash` es `bytes32` (no `string` — gas + integridad)
 
+### Análisis propio (sección obligatoria del `SECURITY.md`)
+
+Slither detecta lo conocido. Lo más interesante es **lo que pensaste vos**. Agreguen una sección **"Análisis propio"** con 3-5 párrafos respondiendo:
+
+- **¿Qué pasa si el rector pierde la wallet del `DEFAULT_ADMIN_ROLE`?** ¿Cómo se recupera el sistema?
+- **¿Qué pasa si una wallet con `ISSUER_ROLE` se compromete?** ¿Cuántos títulos truchos se pueden emitir antes de detectarlo?
+- **¿Qué pasa si emiten una credencial por error** (al alumno equivocado, con datos errados)? ¿Cómo se corrige sin perder trazabilidad?
+- **¿Qué riesgo hay en el front-running** (alguien ve la tx en la mempool y…)?
+- **Privacidad**: el `studentNameHash` es público. ¿Se puede hacer ataque de diccionario contra él?
+
+No hace falta resolver todo — sí pensarlo. Una credencial buena viene con un análisis de amenazas honesto, no con "todo bien".
+
 ### Criterios
 
 - [ ] Slither corrió y todos los findings están documentados en `SECURITY.md`
 - [ ] El checklist está 100% cumplido
 - [ ] No hay High/Medium severity sin justificar
+- [ ] Sección **"Análisis propio"** completada en `SECURITY.md`
 
 ---
 
 ## Parte 4 — Frontend + Deploy a L2 (20%)
 
+> 🎁 **Starter repo**: les dejamos un frontend de partida ya cableado con wagmi + RainbowKit en <https://github.com/dpetrocelli/diplo-unq-blockchain-tp-final-starter>. Forkean, cambian la `CREDENTIALS_ADDRESS` y el ABI con el que generaron al deployar el contrato, y arrancan. **No tienen que armar el frontend desde cero** — el foco está en cablear los modos correctamente y entender qué hace cada llamada.
+
 ### 4.1 Frontend (10%)
 
-Tres modos según el rol del que está conectado:
+**Obligatorio** — dos modos:
 
 #### Modo público — verificador (cualquiera, sin login)
 - Form para ingresar `tokenId`
-- Muestra: ¿existe?, ¿está activo?, nombre del título, fecha de emisión, address del estudiante (corta), link al PDF (resuelto desde IPFS), `documentHash` para cotejar con el PDF físico
+- Muestra: ¿existe?, ¿está activo?, nombre del título, fecha de emisión, address del estudiante (corta), `documentHash` para cotejar con el PDF físico
 
 #### Modo issuer (`ISSUER_ROLE`)
 - Form para emitir credencial:
@@ -230,18 +276,23 @@ Tres modos según el rol del que está conectado:
   - tokenId (auto-incremental ideal, manual está OK)
   - Nombre del título (dropdown con las opciones de la facultad)
   - Datos del estudiante → el frontend hashea y manda solo el hash
-  - Upload PDF a IPFS (Pinata) → el frontend hashea el PDF y manda hash + CID como `metadataURI`
+  - `metadataURI` puede ser un string placeholder (ej. `ipfs://demo/cred-001.json`) — la integración real con IPFS es **opcional** (ver bonus)
 - Form para revocar credencial (con razón)
 
-#### Modo super-admin (`DEFAULT_ADMIN_ROLE`)
+**Opcional** — suma puntos como bonus:
+
+#### Modo super-admin (`DEFAULT_ADMIN_ROLE`) — **+5 bonus**
 - Form para agregar/quitar issuers
 
-### Stack obligatorio
+#### Integración real con IPFS (Pinata) — **+5 bonus**
+- Upload PDF a IPFS desde el navegador
+- El frontend hashea el PDF y manda hash + CID real como `metadataURI`
+
+### Stack obligatorio (ya cableado en el starter)
 
 - Next.js 14 (App Router)
 - wagmi v2 + viem
 - RainbowKit para conexión de wallet
-- (Bonus) Pinata SDK para subir a IPFS desde el navegador
 
 ### 4.2 Deploy a L2 (10%) — **OBLIGATORIO**
 
@@ -269,7 +320,6 @@ Pasos:
 - [ ] Verificación pública anda (modo lectura sin login)
 - [ ] Emisión anda con el `ISSUER_ROLE`
 - [ ] Maneja loading + errores con mensajes claros
-- [ ] Diseño responsive (funciona en mobile)
 - [ ] Contrato deployado en Base Sepolia y **verificado en Basescan**
 - [ ] Frontend deployado online (URL pública)
 - [ ] **3 credenciales emitidas reales** en la DApp deployada
@@ -313,7 +363,7 @@ El README del repo tiene que tener:
 | 1 — Smart contract | 35 | AccessControl + soulbound + struct + eventos + funciones obligatorias |
 | 2 — Testing | 10 | Coverage ≥ 80% + soulbound + fuzz + casos error |
 | 3 — Seguridad | 10 | Slither documentado + checklist completo |
-| 4 — Frontend + Deploy L2 | 20 | 3 modos + Base Sepolia verificado + frontend online |
+| 4 — Frontend + Deploy L2 | 20 | Verifier + issuer + Base Sepolia verificado + frontend online |
 | 5 — Video demo + README | 5 | Demo end-to-end de 3-5 min + README completo |
 | **Total** | **100** | |
 
@@ -321,6 +371,8 @@ El README del repo tiene que tener:
 
 ### Bonus (suman pero no son obligatorios)
 
+- **+5**: Modo super-admin en el frontend (`DEFAULT_ADMIN_ROLE`) — agregar/quitar issuers vía UI.
+- **+5**: Integración real con **Pinata/IPFS** — upload de PDF al emitir + hash on-chain.
 - **+10**: Multi-firma (un título solo se emite si firma decano + secretario, vía Gnosis Safe).
 - **+10**: QR code en el frontend que abre la verificación.
 - **+5**: Indexer con The Graph.

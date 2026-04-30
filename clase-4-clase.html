@@ -210,8 +210,13 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
     <li><a href="#cómo-se-ve-en-el-código"
     id="toc-cómo-se-ve-en-el-código">Cómo se ve en el código</a></li>
     </ul></li>
-    <li><a href="#parte-11--trabajo-final"
-    id="toc-parte-11--trabajo-final">Parte 11 — Trabajo final</a></li>
+    <li><a
+    href="#parte-11--mapa-del-tp-final-qué-ya-vimos-vs-qué-tienen-que-investigar"
+    id="toc-parte-11--mapa-del-tp-final-qué-ya-vimos-vs-qué-tienen-que-investigar">Parte
+    11 — Mapa del TP final: qué ya vimos vs qué tienen que
+    investigar</a></li>
+    <li><a href="#parte-12--trabajo-final"
+    id="toc-parte-12--trabajo-final">Parte 12 — Trabajo final</a></li>
     <li><a href="#después-de-clase" id="toc-después-de-clase">Después de
     clase</a></li>
     <li><a href="#si-algo-falla" id="toc-si-algo-falla">Si algo
@@ -353,8 +358,13 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
       <li><a href="#cómo-se-ve-en-el-código"
       id="toc-cómo-se-ve-en-el-código">Cómo se ve en el código</a></li>
       </ul></li>
-      <li><a href="#parte-11--trabajo-final"
-      id="toc-parte-11--trabajo-final">Parte 11 — Trabajo final</a></li>
+      <li><a
+      href="#parte-11--mapa-del-tp-final-qué-ya-vimos-vs-qué-tienen-que-investigar"
+      id="toc-parte-11--mapa-del-tp-final-qué-ya-vimos-vs-qué-tienen-que-investigar">Parte
+      11 — Mapa del TP final: qué ya vimos vs qué tienen que
+      investigar</a></li>
+      <li><a href="#parte-12--trabajo-final"
+      id="toc-parte-12--trabajo-final">Parte 12 — Trabajo final</a></li>
       <li><a href="#después-de-clase" id="toc-después-de-clase">Después
       de clase</a></li>
       <li><a href="#si-algo-falla" id="toc-si-algo-falla">Si algo
@@ -972,8 +982,77 @@ puntos del TP. No es difícil — son 4 cambios. El que se queda en Sepolia
 pierde esos 10.</p>
 </blockquote>
 <hr />
-<h2 id="parte-11--trabajo-final">Parte 11 — Trabajo final</h2>
-<p>El <strong>spec completo del TP final</strong> ya está publicado: <a
+<h2
+id="parte-11--mapa-del-tp-final-qué-ya-vimos-vs-qué-tienen-que-investigar">Parte
+11 — Mapa del TP final: qué ya vimos vs qué tienen que investigar</h2>
+<p>Antes de tirarles el spec, despejamos el “no nos enseñaron”. Esto es
+lo que el TP final pide y dónde están las herramientas para cada
+cosa:</p>
+<table>
+<thead>
+<tr>
+<th>Lo que pide el TP</th>
+<th>¿Dónde lo vimos?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ERC-721 base (<code>AcademicCredentials</code>)</td>
+<td>✅ <strong>Clase 3</strong> — hands-on con el contrato
+<code>Ownable</code></td>
+</tr>
+<tr>
+<td>Tests con Foundry (forge test + coverage + fuzz)</td>
+<td>✅ <strong>Clase 2</strong> + <strong>Clase 3</strong></td>
+</tr>
+<tr>
+<td>Frontend con wagmi + RainbowKit (modo lectura + escritura)</td>
+<td>✅ <strong>Clase 4</strong> (hoy)</td>
+</tr>
+<tr>
+<td>Slither + análisis estático</td>
+<td>✅ <strong>Clase 4</strong> (hoy)</td>
+</tr>
+<tr>
+<td>Deploy a <strong>Base Sepolia (L2)</strong></td>
+<td>✅ <strong>Clase 4</strong> Parte 10 (hoy)</td>
+</tr>
+<tr>
+<td><code>AccessControl</code> con ISSUER_ROLE + DEFAULT_ADMIN_ROLE</td>
+<td>🔍 <strong>OpenZeppelin docs</strong> — 1 página</td>
+</tr>
+<tr>
+<td>Soulbound (override <code>_update</code>)</td>
+<td>🔍 <strong>OpenZeppelin docs</strong> — 5 líneas de código</td>
+</tr>
+<tr>
+<td>Struct <code>Credential</code> con 5 campos + mapping</td>
+<td>🔍 Solidity básico — chequear sintaxis de structs</td>
+</tr>
+<tr>
+<td>Frontend con 2 modos según rol</td>
+<td>🔍 Extender lo de clase 4 + chequear <code>hasRole</code></td>
+</tr>
+<tr>
+<td><code>SECURITY.md</code> con análisis propio</td>
+<td>🔍 Pensar amenazas, no solo correr Slither</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>💡 <strong>Lo de clase no alcanza, lo de docs sí</strong>. Lo que
+tienen que investigar son lecturas cortas de OpenZeppelin. Si después de
+leer 30 min algo no cierra, <strong>al foro</strong> — no se traben
+solos.</p>
+</blockquote>
+<p><strong>Starter repo del frontend</strong>: les vamos a publicar un
+repo de partida ya cableado con wagmi + RainbowKit. Forkean, cambian la
+<code>CREDENTIALS_ADDRESS</code> y el ABI del contrato que generaron, y
+arrancan. <strong>No tienen que armar el frontend desde
+cero</strong>.</p>
+<hr />
+<h2 id="parte-12--trabajo-final">Parte 12 — Trabajo final</h2>
+<p>El <strong>spec completo del TP final</strong> está publicado: <a
 href="tp-final.html">tp-final.html</a>. Resumen:</p>
 <ol type="1">
 <li><strong>Hook UNQ + modelado de datos</strong> (20%) — diagramas +
@@ -983,10 +1062,10 @@ justificar qué va on-chain vs off-chain.</li>
 (35%).</li>
 <li><strong>Testing</strong> — coverage ≥ 80% + soulbound + fuzz
 (10%).</li>
-<li><strong>Seguridad</strong> — Slither + <code>SECURITY.md</code>
-(10%).</li>
-<li><strong>Frontend</strong> con 3 modos (público / issuer /
-super-admin) + <strong>deploy a Base Sepolia</strong> (20%).</li>
+<li><strong>Seguridad</strong> — Slither + <code>SECURITY.md</code> con
+análisis propio (10%).</li>
+<li><strong>Frontend</strong> (verifier + issuer obligatorio) +
+<strong>deploy a Base Sepolia</strong> (20%).</li>
 <li><strong>Video demo + README</strong> (5%).</li>
 </ol>
 <p><strong>Plazo</strong>: lunes <strong>08/06/2026 · 18:00</strong>.

@@ -511,15 +511,38 @@ export const config = getDefaultConfig({
 
 ---
 
-## Parte 11 — Trabajo final
+## Parte 11 — Mapa del TP final: qué ya vimos vs qué tienen que investigar
 
-El **spec completo del TP final** ya está publicado: [tp-final.html](tp-final.html). Resumen:
+Antes de tirarles el spec, despejamos el "no nos enseñaron". Esto es lo que el TP final pide y dónde están las herramientas para cada cosa:
+
+| Lo que pide el TP | ¿Dónde lo vimos? |
+|---|---|
+| ERC-721 base (`AcademicCredentials`) | ✅ **Clase 3** — hands-on con el contrato `Ownable` |
+| Tests con Foundry (forge test + coverage + fuzz) | ✅ **Clase 2** + **Clase 3** |
+| Frontend con wagmi + RainbowKit (modo lectura + escritura) | ✅ **Clase 4** (hoy) |
+| Slither + análisis estático | ✅ **Clase 4** (hoy) |
+| Deploy a **Base Sepolia (L2)** | ✅ **Clase 4** Parte 10 (hoy) |
+| `AccessControl` con ISSUER_ROLE + DEFAULT_ADMIN_ROLE | 🔍 **OpenZeppelin docs** — 1 página |
+| Soulbound (override `_update`) | 🔍 **OpenZeppelin docs** — 5 líneas de código |
+| Struct `Credential` con 5 campos + mapping | 🔍 Solidity básico — chequear sintaxis de structs |
+| Frontend con 2 modos según rol | 🔍 Extender lo de clase 4 + chequear `hasRole` |
+| `SECURITY.md` con análisis propio | 🔍 Pensar amenazas, no solo correr Slither |
+
+> 💡 **Lo de clase no alcanza, lo de docs sí**. Lo que tienen que investigar son lecturas cortas de OpenZeppelin. Si después de leer 30 min algo no cierra, **al foro** — no se traben solos.
+
+**Starter repo del frontend**: les vamos a publicar un repo de partida ya cableado con wagmi + RainbowKit. Forkean, cambian la `CREDENTIALS_ADDRESS` y el ABI del contrato que generaron, y arrancan. **No tienen que armar el frontend desde cero**.
+
+---
+
+## Parte 12 — Trabajo final
+
+El **spec completo del TP final** está publicado: [tp-final.html](tp-final.html). Resumen:
 
 1. **Hook UNQ + modelado de datos** (20%) — diagramas + justificar qué va on-chain vs off-chain.
 2. **Smart contract** con `AccessControl` (ISSUER + ADMIN), soulbound, struct `Credential`, 4 eventos (35%).
 3. **Testing** — coverage ≥ 80% + soulbound + fuzz (10%).
-4. **Seguridad** — Slither + `SECURITY.md` (10%).
-5. **Frontend** con 3 modos (público / issuer / super-admin) + **deploy a Base Sepolia** (20%).
+4. **Seguridad** — Slither + `SECURITY.md` con análisis propio (10%).
+5. **Frontend** (verifier + issuer obligatorio) + **deploy a Base Sepolia** (20%).
 6. **Video demo + README** (5%).
 
 **Plazo**: lunes **08/06/2026 · 18:00**. Pareja máximo 2 personas.
