@@ -66,6 +66,18 @@ UNQ tiene ~11.000 estudiantes activos, 18 carreras de grado, modalidad virtual d
 
 Y el modelo es replicable. Argentina tiene **60+ universidades nacionales**, ~140.000 egresados/año (CONEAU/SPU). Existe infraestructura pública sin uso ([Blockchain Federal Argentina](https://bfa.ar/blockchain/casos-de-uso/titulos-academicos)) — falta el sistema que la consuma. **No están haciendo un toy project. Están prototipando una pieza de infraestructura.**
 
+#### Referencias académicas
+
+Si en su README quieren citar literatura para defender decisiones de diseño (lo que un buen TP hace), estas tres fuentes son las más citadas del área:
+
+- **Grech, A. & Camilleri, A. F. (2017)**. *Blockchain in Education*. Joint Research Centre, European Commission. Luxembourg: Publications Office of the EU. EUR 28778 EN, doi:[10.2760/60649](https://publications.jrc.ec.europa.eu/repository/handle/JRC108255). Reporte fundacional del JRC sobre adopción de blockchain en educación, propone **8 escenarios de uso** (de los cuales el de credenciales académicas es el más maduro) y discute implicancias de privacidad y gobernanza. ~180 citas en Google Scholar.
+
+- **Turkanović, M., Hölbl, M., Košič, K., Heričko, M. & Kamišalić, A. (2018)**. *EduCTX: A Blockchain-Based Higher Education Credit Platform*. IEEE Access, 6, 5112-5127. doi:[10.1109/ACCESS.2018.2789929](https://ieeexplore.ieee.org/document/8247166). Diseño de referencia para credenciales académicas distribuidas inspirado en ECTS europeo. Propone el patrón de **token por crédito** y discute trade-offs on-chain vs off-chain — directamente aplicable al modelado del struct `Credential`.
+
+- **Nasir, A., Rasheed, M. et al. (2025)**. *A Systematic Review of Blockchain-Based Initiatives in Comparison to Best Practices Used in Higher Education Institutions*. Computers (MDPI), 14(4), 141. doi:[10.3390/computers14040141](https://www.mdpi.com/2073-431X/14/4/141). Revisión sistemática reciente — útil para identificar **best practices** y los gaps que su TP puede cubrir. Mención explícita de Blockcerts y EBSI como benchmarks.
+
+> Si justifican una decisión técnica (ej. "elegimos hash on-chain + PDF en IPFS porque [paper X] muestra que…"), suma puntos en la rúbrica de modelado (parte 0.2).
+
 #### Lo que les pedimos en esta sección
 
 En 2-3 párrafos en el README, justificar:
