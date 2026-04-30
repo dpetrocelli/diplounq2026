@@ -68,15 +68,27 @@ Y el modelo es replicable. Argentina tiene **60+ universidades nacionales**, ~14
 
 #### Referencias académicas
 
-Si en su README quieren citar literatura para defender decisiones de diseño (lo que un buen TP hace), estas tres fuentes son las más citadas del área:
+Si en su README quieren citar literatura para defender decisiones de diseño (lo que un buen TP hace), estas son las fuentes más citadas y aplicables al TP:
 
-- **Grech, A. & Camilleri, A. F. (2017)**. *Blockchain in Education*. Joint Research Centre, European Commission. Luxembourg: Publications Office of the EU. EUR 28778 EN, doi:[10.2760/60649](https://publications.jrc.ec.europa.eu/repository/handle/JRC108255). Reporte fundacional del JRC sobre adopción de blockchain en educación, propone **8 escenarios de uso** (de los cuales el de credenciales académicas es el más maduro) y discute implicancias de privacidad y gobernanza. ~180 citas en Google Scholar.
+##### Fundacionales / conceptuales
 
-- **Turkanović, M., Hölbl, M., Košič, K., Heričko, M. & Kamišalić, A. (2018)**. *EduCTX: A Blockchain-Based Higher Education Credit Platform*. IEEE Access, 6, 5112-5127. doi:[10.1109/ACCESS.2018.2789929](https://ieeexplore.ieee.org/document/8247166). Diseño de referencia para credenciales académicas distribuidas inspirado en ECTS europeo. Propone el patrón de **token por crédito** y discute trade-offs on-chain vs off-chain — directamente aplicable al modelado del struct `Credential`.
+- **Grech, A. & Camilleri, A. F. (2017)**. *Blockchain in Education*. Joint Research Centre, European Commission. Luxembourg: Publications Office of the EU. EUR 28778 EN, doi:[10.2760/60649](https://publications.jrc.ec.europa.eu/repository/handle/JRC108255). Reporte fundacional del JRC sobre adopción de blockchain en educación. Propone **8 escenarios de uso** y discute privacidad y gobernanza. ~180 citas Scholar.
 
-- **Nasir, A., Rasheed, M. et al. (2025)**. *A Systematic Review of Blockchain-Based Initiatives in Comparison to Best Practices Used in Higher Education Institutions*. Computers (MDPI), 14(4), 141. doi:[10.3390/computers14040141](https://www.mdpi.com/2073-431X/14/4/141). Revisión sistemática reciente — útil para identificar **best practices** y los gaps que su TP puede cubrir. Mención explícita de Blockcerts y EBSI como benchmarks.
+- **Ohlhaver, P., Weyl, E. G. & Buterin, V. (2022)**. *Decentralized Society: Finding Web3's Soul*. SSRN [4105763](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4105763). **Paper que define el concepto de Soulbound Tokens (SBTs)** — credenciales no transferibles atadas a una identidad. Es exactamente el diseño que ustedes están implementando con el override de `_update`. Si alguien pregunta "¿por qué no transferible?" en la defensa, este es el paper a citar. Uno de los más descargados de SSRN.
 
-> Si justifican una decisión técnica (ej. "elegimos hash on-chain + PDF en IPFS porque [paper X] muestra que…"), suma puntos en la rúbrica de modelado (parte 0.2).
+##### Diseño / arquitectura
+
+- **Turkanović, M., Hölbl, M., Košič, K., Heričko, M. & Kamišalić, A. (2018)**. *EduCTX: A Blockchain-Based Higher Education Credit Platform*. IEEE Access, 6, 5112-5127. doi:[10.1109/ACCESS.2018.2789929](https://ieeexplore.ieee.org/document/8247166). Diseño de referencia para credenciales académicas distribuidas inspirado en ECTS europeo. Patrón **token por crédito** + trade-offs on-chain vs off-chain — directamente aplicable al modelado del struct `Credential`.
+
+##### Implementación reciente
+
+- **Tiwari, A. et al. (2025)**. *Blockchain ensuring academic integrity with a degree verification prototype*. **Scientific Reports** (Nature), 15, 7943. doi:[10.1038/s41598-025-93913-6](https://www.nature.com/articles/s41598-025-93913-6). Prototipo de verificación de **títulos universitarios** con red blockchain híbrida y nodos Docker. **Nature, 2025** — el más reciente y el de stack más cercano al que van a usar (Ethereum-like + Docker).
+
+##### Estado del arte
+
+- **Nasir, A., Rasheed, M. et al. (2025)**. *A Systematic Review of Blockchain-Based Initiatives in Comparison to Best Practices Used in Higher Education Institutions*. Computers (MDPI), 14(4), 141. doi:[10.3390/computers14040141](https://www.mdpi.com/2073-431X/14/4/141). Revisión sistemática reciente — best practices y gaps. Menciona Blockcerts y EBSI como benchmarks.
+
+> Si justifican una decisión técnica con un paper (ej. "elegimos soulbound siguiendo Ohlhaver, Weyl & Buterin 2022" o "el patrón hash on-chain + PDF off-chain está validado en Tiwari et al. 2025"), suma puntos en la rúbrica de modelado (parte 0.2).
 
 #### Lo que les pedimos en esta sección
 
