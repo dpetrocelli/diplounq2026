@@ -1,6 +1,6 @@
 # Trabajo Final — Sistema de Verificación de Credenciales Académicas (UNQ)
 
-> **Objetivo**: construir un sistema que permita a la UNQ emitir títulos universitarios verificables on-chain, sin pasar por la oficina de alumnos y sin depender de servidores centralizados. Es el TP final de la diplomatura.
+> **Objetivo**: construir un sistema que permita a la UNQ emitir títulos universitarios verificables on-chain, sin pasar por la oficina de alumnos y sin depender de servidores centralizados. Es el **TP final de la materia Desarrollo de Smart Contracts y DApps** (una de las materias de la diplomatura).
 
 ## ¿Por qué este TP?
 
