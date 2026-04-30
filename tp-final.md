@@ -46,7 +46,7 @@ El problema no es que falten sistemas — es que los que hay **no permiten verif
 
 - **SIDCER** (Ministerio de Educación) digitalizó los diplomas, pero es **centralizado**: si el sistema cae o un dato se altera internamente, no hay verificación independiente.
 - **Apostillar un título argentino** para usarlo afuera cuesta **USD 30-40 y 20-30 días corridos** ([Cancillería, TAD](https://www.cancilleria.gob.ar/es/servicios/apostilla-legalizacion-con-validez-internacional-tad)).
-- Ninguna universidad nacional argentina (UBA, UNLP, UTN, ITBA, UNQ) emite títulos en blockchain de manera institucional.
+- En Argentina hay un precedente: la **[Universidad Nacional de Córdoba](https://www.unc.edu.ar/inform%C3%A1tica/blockchain-y-educaci%C3%B3n-la-unc-premiada-por-su-innovaci%C3%B3n-en-gesti%C3%B3n-acad%C3%A9mica)** implementó un Sistema de Validación Académica con smart contracts sobre blockchain, integrado a SIU Guaraní. Redujo el trámite de **4 meses a 2 semanas** y ganó el **Premio Internacional MetaRed TIC 2025** (categoría Tecnología para la Gestión Universitaria). El resto del sistema universitario nacional (UBA, UNLP, UTN, ITBA, UNQ) todavía no tiene nada institucional — UNC es el caso a estudiar y a emular.
 
 #### Lo que ya hicieron otras universidades
 
