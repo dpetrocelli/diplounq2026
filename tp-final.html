@@ -499,39 +499,66 @@ están haciendo un toy project. Están prototipando una pieza de
 infraestructura.</strong></p>
 <h4 id="referencias-académicas">Referencias académicas</h4>
 <p>Si en su README quieren citar literatura para defender decisiones de
-diseño (lo que un buen TP hace), estas tres fuentes son las más citadas
-del área:</p>
+diseño (lo que un buen TP hace), estas son las fuentes más citadas y
+aplicables al TP:</p>
+<h5 id="fundacionales--conceptuales">Fundacionales / conceptuales</h5>
 <ul>
 <li><p><strong>Grech, A. &amp; Camilleri, A. F. (2017)</strong>.
 <em>Blockchain in Education</em>. Joint Research Centre, European
 Commission. Luxembourg: Publications Office of the EU. EUR 28778 EN,
 doi:<a
 href="https://publications.jrc.ec.europa.eu/repository/handle/JRC108255">10.2760/60649</a>.
-Reporte fundacional del JRC sobre adopción de blockchain en educación,
-propone <strong>8 escenarios de uso</strong> (de los cuales el de
-credenciales académicas es el más maduro) y discute implicancias de
-privacidad y gobernanza. ~180 citas en Google Scholar.</p></li>
-<li><p><strong>Turkanović, M., Hölbl, M., Košič, K., Heričko, M. &amp;
+Reporte fundacional del JRC sobre adopción de blockchain en educación.
+Propone <strong>8 escenarios de uso</strong> y discute privacidad y
+gobernanza. ~180 citas Scholar.</p></li>
+<li><p><strong>Ohlhaver, P., Weyl, E. G. &amp; Buterin, V.
+(2022)</strong>. <em>Decentralized Society: Finding Web3’s Soul</em>.
+SSRN <a
+href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4105763">4105763</a>.
+<strong>Paper que define el concepto de Soulbound Tokens (SBTs)</strong>
+— credenciales no transferibles atadas a una identidad. Es exactamente
+el diseño que ustedes están implementando con el override de
+<code>_update</code>. Si alguien pregunta “¿por qué no transferible?” en
+la defensa, este es el paper a citar. Uno de los más descargados de
+SSRN.</p></li>
+</ul>
+<h5 id="diseño--arquitectura">Diseño / arquitectura</h5>
+<ul>
+<li><strong>Turkanović, M., Hölbl, M., Košič, K., Heričko, M. &amp;
 Kamišalić, A. (2018)</strong>. <em>EduCTX: A Blockchain-Based Higher
 Education Credit Platform</em>. IEEE Access, 6, 5112-5127. doi:<a
 href="https://ieeexplore.ieee.org/document/8247166">10.1109/ACCESS.2018.2789929</a>.
 Diseño de referencia para credenciales académicas distribuidas inspirado
-en ECTS europeo. Propone el patrón de <strong>token por crédito</strong>
-y discute trade-offs on-chain vs off-chain — directamente aplicable al
-modelado del struct <code>Credential</code>.</p></li>
-<li><p><strong>Nasir, A., Rasheed, M. et al. (2025)</strong>. <em>A
+en ECTS europeo. Patrón <strong>token por crédito</strong> + trade-offs
+on-chain vs off-chain — directamente aplicable al modelado del struct
+<code>Credential</code>.</li>
+</ul>
+<h5 id="implementación-reciente">Implementación reciente</h5>
+<ul>
+<li><strong>Tiwari, A. et al. (2025)</strong>. <em>Blockchain ensuring
+academic integrity with a degree verification prototype</em>.
+<strong>Scientific Reports</strong> (Nature), 15, 7943. doi:<a
+href="https://www.nature.com/articles/s41598-025-93913-6">10.1038/s41598-025-93913-6</a>.
+Prototipo de verificación de <strong>títulos universitarios</strong> con
+red blockchain híbrida y nodos Docker. <strong>Nature, 2025</strong> —
+el más reciente y el de stack más cercano al que van a usar
+(Ethereum-like + Docker).</li>
+</ul>
+<h5 id="estado-del-arte">Estado del arte</h5>
+<ul>
+<li><strong>Nasir, A., Rasheed, M. et al. (2025)</strong>. <em>A
 Systematic Review of Blockchain-Based Initiatives in Comparison to Best
 Practices Used in Higher Education Institutions</em>. Computers (MDPI),
 14(4), 141. doi:<a
 href="https://www.mdpi.com/2073-431X/14/4/141">10.3390/computers14040141</a>.
-Revisión sistemática reciente — útil para identificar <strong>best
-practices</strong> y los gaps que su TP puede cubrir. Mención explícita
-de Blockcerts y EBSI como benchmarks.</p></li>
+Revisión sistemática reciente — best practices y gaps. Menciona
+Blockcerts y EBSI como benchmarks.</li>
 </ul>
 <blockquote>
-<p>Si justifican una decisión técnica (ej. “elegimos hash on-chain + PDF
-en IPFS porque [paper X] muestra que…”), suma puntos en la rúbrica de
-modelado (parte 0.2).</p>
+<p>Si justifican una decisión técnica con un paper (ej. “elegimos
+soulbound siguiendo Ohlhaver, Weyl &amp; Buterin 2022” o “el patrón hash
+on-chain + PDF off-chain está validado en Tiwari et al. 2025”), suma
+puntos en la rúbrica de modelado (parte 0.2).</p>
 </blockquote>
 <h4 id="lo-que-les-pedimos-en-esta-sección">Lo que les pedimos en esta
 sección</h4>
