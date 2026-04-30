@@ -350,20 +350,30 @@ Pasos:
 
 ---
 
-## Parte 5 — Video demo + entregables finales (5%)
+## Parte 5 — Demo + entregables finales (5%)
 
-### Video demo (3-5 min)
+### Demo end-to-end
 
-Tiene que mostrar **en este orden** (sin cortes ni post-producción rara):
+Pueden entregar **una de las dos opciones**:
 
-1. La URL del verificador público funcionando (verificar 1-2 títulos).
-2. Login con la wallet del rector → agregar un issuer en vivo.
-3. Login con la wallet del decano → emitir un título a una wallet → mostrar el evento en Basescan.
-4. Login con la wallet del egresado → mostrar el NFT en MetaMask.
-5. Intento de transfer en MetaMask → falla (soulbound).
-6. Decano revoca el título → la verificación pública pasa de ✅ a ❌.
+#### Opción A — Video demo (3-5 min)
 
-> Subir a YouTube unlisted, Google Drive con link, o adjuntar al campus.
+Sin cortes ni post-producción rara. Subir a YouTube unlisted, Google Drive con link público, o adjuntar al campus.
+
+#### Opción B — App deployada (URL pública)
+
+El frontend online + el contrato en Base Sepolia con 3 credenciales reales emitidas, listas para verificar. Se evalúa probando la URL.
+
+#### Cubrir este flujo (en cualquiera de las dos opciones)
+
+1. Verificación pública de un título (`tokenId` → muestra los datos).
+2. Wallet con `DEFAULT_ADMIN_ROLE` agrega un issuer.
+3. Wallet con `ISSUER_ROLE` emite un título → evento en Basescan.
+4. El egresado ve el NFT en MetaMask.
+5. Intento de transfer → falla (soulbound).
+6. El issuer revoca el título → la verificación pública pasa de ✅ a ❌.
+
+> Si eligen video y se animan, lo pueden hacer también en vivo el día de la corrección — pero el TP entregable formal es uno de los dos de arriba.
 
 ### README
 
@@ -388,7 +398,7 @@ El README del repo tiene que tener:
 | 2 — Testing | 10 | Coverage ≥ 80% + soulbound + fuzz + casos error |
 | 3 — Seguridad | 10 | Slither documentado + checklist completo |
 | 4 — Frontend + Deploy L2 | 20 | Verifier + issuer + Base Sepolia verificado + frontend online |
-| 5 — Video demo + README | 5 | Demo end-to-end de 3-5 min + README completo |
+| 5 — Demo + README | 5 | Video demo (3-5 min) **o** app deployada con flujo end-to-end + README completo |
 | **Total** | **100** | |
 
 **Aprueba con 60 puntos.**

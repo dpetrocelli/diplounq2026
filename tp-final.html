@@ -168,12 +168,12 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
     <li><a href="#criterios-de-la-parte-4"
     id="toc-criterios-de-la-parte-4">Criterios de la parte 4</a></li>
     </ul></li>
-    <li><a href="#parte-5--video-demo--entregables-finales-5"
-    id="toc-parte-5--video-demo--entregables-finales-5">Parte 5 — Video
-    demo + entregables finales (5%)</a>
+    <li><a href="#parte-5--demo--entregables-finales-5"
+    id="toc-parte-5--demo--entregables-finales-5">Parte 5 — Demo +
+    entregables finales (5%)</a>
     <ul>
-    <li><a href="#video-demo-3-5-min" id="toc-video-demo-3-5-min">Video
-    demo (3-5 min)</a></li>
+    <li><a href="#demo-end-to-end" id="toc-demo-end-to-end">Demo
+    end-to-end</a></li>
     <li><a href="#readme" id="toc-readme">README</a></li>
     </ul></li>
     <li><a href="#resumen-de-la-rúbrica"
@@ -276,12 +276,12 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
       <li><a href="#criterios-de-la-parte-4"
       id="toc-criterios-de-la-parte-4">Criterios de la parte 4</a></li>
       </ul></li>
-      <li><a href="#parte-5--video-demo--entregables-finales-5"
-      id="toc-parte-5--video-demo--entregables-finales-5">Parte 5 —
-      Video demo + entregables finales (5%)</a>
+      <li><a href="#parte-5--demo--entregables-finales-5"
+      id="toc-parte-5--demo--entregables-finales-5">Parte 5 — Demo +
+      entregables finales (5%)</a>
       <ul>
-      <li><a href="#video-demo-3-5-min"
-      id="toc-video-demo-3-5-min">Video demo (3-5 min)</a></li>
+      <li><a href="#demo-end-to-end" id="toc-demo-end-to-end">Demo
+      end-to-end</a></li>
       <li><a href="#readme" id="toc-readme">README</a></li>
       </ul></li>
       <li><a href="#resumen-de-la-rúbrica"
@@ -950,25 +950,35 @@ online</label></li>
 reales</strong> en Base Sepolia (visibles en Basescan)</label></li>
 </ul>
 <hr />
-<h2 id="parte-5--video-demo--entregables-finales-5">Parte 5 — Video demo
-+ entregables finales (5%)</h2>
-<h3 id="video-demo-3-5-min">Video demo (3-5 min)</h3>
-<p>Tiene que mostrar <strong>en este orden</strong> (sin cortes ni
-post-producción rara):</p>
+<h2 id="parte-5--demo--entregables-finales-5">Parte 5 — Demo +
+entregables finales (5%)</h2>
+<h3 id="demo-end-to-end">Demo end-to-end</h3>
+<p>Pueden entregar <strong>una de las dos opciones</strong>:</p>
+<h4 id="opción-a--video-demo-3-5-min">Opción A — Video demo (3-5
+min)</h4>
+<p>Sin cortes ni post-producción rara. Subir a YouTube unlisted, Google
+Drive con link público, o adjuntar al campus.</p>
+<h4 id="opción-b--app-deployada-url-pública">Opción B — App deployada
+(URL pública)</h4>
+<p>El frontend online + el contrato en Base Sepolia con 3 credenciales
+reales emitidas, listas para verificar. Se evalúa probando la URL.</p>
+<h4 id="cubrir-este-flujo-en-cualquiera-de-las-dos-opciones">Cubrir este
+flujo (en cualquiera de las dos opciones)</h4>
 <ol type="1">
-<li>La URL del verificador público funcionando (verificar 1-2
-títulos).</li>
-<li>Login con la wallet del rector → agregar un issuer en vivo.</li>
-<li>Login con la wallet del decano → emitir un título a una wallet →
-mostrar el evento en Basescan.</li>
-<li>Login con la wallet del egresado → mostrar el NFT en MetaMask.</li>
-<li>Intento de transfer en MetaMask → falla (soulbound).</li>
-<li>Decano revoca el título → la verificación pública pasa de ✅ a
+<li>Verificación pública de un título (<code>tokenId</code> → muestra
+los datos).</li>
+<li>Wallet con <code>DEFAULT_ADMIN_ROLE</code> agrega un issuer.</li>
+<li>Wallet con <code>ISSUER_ROLE</code> emite un título → evento en
+Basescan.</li>
+<li>El egresado ve el NFT en MetaMask.</li>
+<li>Intento de transfer → falla (soulbound).</li>
+<li>El issuer revoca el título → la verificación pública pasa de ✅ a
 ❌.</li>
 </ol>
 <blockquote>
-<p>Subir a YouTube unlisted, Google Drive con link, o adjuntar al
-campus.</p>
+<p>Si eligen video y se animan, lo pueden hacer también en vivo el día
+de la corrección — pero el TP entregable formal es uno de los dos de
+arriba.</p>
 </blockquote>
 <h3 id="readme">README</h3>
 <p>El README del repo tiene que tener:</p>
@@ -1026,9 +1036,10 @@ obligatorias</td>
 <td>Verifier + issuer + Base Sepolia verificado + frontend online</td>
 </tr>
 <tr>
-<td>5 — Video demo + README</td>
+<td>5 — Demo + README</td>
 <td>5</td>
-<td>Demo end-to-end de 3-5 min + README completo</td>
+<td>Video demo (3-5 min) <strong>o</strong> app deployada con flujo
+end-to-end + README completo</td>
 </tr>
 <tr>
 <td><strong>Total</strong></td>
