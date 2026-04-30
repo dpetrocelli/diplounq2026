@@ -28,7 +28,7 @@ Lo que escribieron en clase 3 (`AcademicCredentials`) es el **esqueleto** del TP
 | **Alcance** | Solo **títulos finales** (Licenciatura, Tecnicatura, Profesorado). No incluye certificados de cursos / diplomas intermedios |
 | **Datos** | **Caso ficticio** — UNQ "Demo". Inventar 3-5 personas con DNI ficticios. **No usar datos reales de alumnos**. |
 | **Nota mínima** | 60 / 100 |
-| **Cómo se entrega** | Repositorio Git (público o privado con permisos a los docentes) + video demo + URL pública del frontend deployado |
+| **Cómo se entrega** | Repositorio Git (público o privado con permisos a los docentes) + video demo **o** URL pública de la aplicación funcional |
 
 ---
 
@@ -334,7 +334,7 @@ Pasos:
 4. `forge verify-contract` para que aparezca el código fuente en Basescan.
 5. Cambiar el frontend de Sepolia → Base Sepolia (`wagmi.ts`).
 6. Emitir 3 credenciales de prueba reales en Base Sepolia.
-7. La página pública del verificador tiene que estar **deployada también** (Vercel free tier o GitHub Pages) para que cualquiera pueda probarla con una URL.
+7. **(Opcional, recomendado)** Deployar el frontend del verificador online (Vercel free tier o GitHub Pages) para que cualquiera pueda probarlo con una URL. Si no logran deployarlo, el video demo cumple la misma función — pero la URL pública suma puntos.
 
 ### Criterios de la parte 4
 
@@ -345,8 +345,8 @@ Pasos:
 - [ ] Emisión anda con el `ISSUER_ROLE`
 - [ ] Maneja loading + errores con mensajes claros
 - [ ] Contrato deployado en Base Sepolia y **verificado en Basescan**
-- [ ] Frontend deployado online (URL pública)
-- [ ] **3 credenciales emitidas reales** en la DApp deployada
+- [ ] **Video demo** mostrando la app funcionando **o** frontend deployado online
+- [ ] **3 credenciales emitidas reales** en Base Sepolia (visibles en Basescan)
 
 ---
 
@@ -374,7 +374,7 @@ El README del repo tiene que tener:
 3. **Direcciones deployadas**:
    - Address del contrato en Base Sepolia.
    - Link a Basescan verificado.
-   - URL del frontend deployado.
+   - URL del frontend deployado (si lo deployaron) **o** link al video demo.
 4. **Cómo se evalúa la rúbrica** (linkear a esta página).
 
 ---
