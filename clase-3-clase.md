@@ -2,21 +2,15 @@
 
 > **Objetivo de hoy**: pasar de "tengo un contrato testeado en mi máquina" a "tengo un contrato deployado en una blockchain real, lo veo en un explorador, y emito un primer título universitario verificable on-chain". Esto es la base del TP final de la materia.
 
-## ¿Qué vamos a hacer?
+<div style="background: linear-gradient(135deg, #fff4e6 0%, #ffe9cc 100%); border: 2px solid #f59e0b; border-left: 8px solid #d97706; padding: 20px 24px; margin: 28px 0; border-radius: 8px; box-shadow: 0 2px 8px rgba(217, 119, 6, 0.15);">
+<div style="font-size: 1.25em; font-weight: 700; color: #92400e; margin-bottom: 10px;">🚨 ANTES DE VENIR A CLASE — preparar setup</div>
 
-### 🏫 En clase (en vivo con David + Ciro) {#en-clase}
+<p style="margin: 6px 0; color: #422006;">Esta clase tiene <strong>pre-requisitos obligatorios</strong>: instalar <strong>Foundry</strong> + <strong>jq</strong>, configurar <strong>MetaMask</strong> con una cuenta dedicada en la red <strong>Sepolia</strong>, conseguir <strong>Sepolia ETH</strong> desde un faucet, y sacar una <strong>API key de Etherscan</strong>.</p>
 
-1. **Cerrar lo que quedó pendiente de clase 2**: levantar una blockchain local con Anvil, deployar `SimpleStorage`, interactuar con `cast`, y después llevarlo a Sepolia y verlo en Etherscan.
-2. **Aprender qué es un NFT (ERC-721)** y por qué es el estándar correcto para representar títulos universitarios.
-3. **Clonar y entender** el contrato `AcademicCredentials` — el esqueleto del TP final.
-4. **Testear** el contrato con Foundry (14 tests).
-5. **Deployar a Sepolia** y **emitirse un título**, viéndolo aparecer como NFT en MetaMask.
+<p style="margin: 10px 0 4px; color: #422006;">⚠️ Si llegás sin esto, <strong>no vas a poder seguir la parte de Sepolia</strong>. Tarda 15–20 minutos hacerlo entero. Hacelo <strong>antes</strong>, en casa, con tiempo.</p>
 
-### 🏠 Tarea
-
-La tarea va en una página aparte: [ver tarea de clase 3](clase-3-tarea.html).
-
----
+<p style="margin: 12px 0 0;"><a href="#prerequisitos" style="display: inline-block; background: #d97706; color: white; padding: 8px 16px; border-radius: 6px; text-decoration: none; font-weight: 600;">👉 Ir al checklist de pre-requisitos</a></p>
+</div>
 
 ## Pre-requisitos {#prerequisitos}
 
@@ -67,6 +61,22 @@ Gratis en <https://etherscan.io/myapikey> (pide registro con email). La usamos e
 - [ ] Red Sepolia visible y seleccionada
 - [ ] La cuenta `unq-dev` tiene > 0 SepoliaETH
 - [ ] API key de Etherscan en mano
+
+---
+
+## ¿Qué vamos a hacer?
+
+### 🏫 En clase (en vivo con David + Ciro) {#en-clase}
+
+1. **Cerrar lo que quedó pendiente de clase 2**: levantar una blockchain local con Anvil, deployar `SimpleStorage`, interactuar con `cast`, y después llevarlo a Sepolia y verlo en Etherscan.
+2. **Aprender qué es un NFT (ERC-721)** y por qué es el estándar correcto para representar títulos universitarios.
+3. **Clonar y entender** el contrato `AcademicCredentials` — el esqueleto del TP final.
+4. **Testear** el contrato con Foundry (14 tests).
+5. **Deployar a Sepolia** y **emitirse un título**, viéndolo aparecer como NFT en MetaMask.
+
+### 🏠 Tarea
+
+La tarea va en una página aparte: [ver tarea de clase 3](clase-3-tarea.html).
 
 ---
 
