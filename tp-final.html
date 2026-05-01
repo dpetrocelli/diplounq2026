@@ -533,25 +533,59 @@ SSRN.</p></li>
 </ul>
 <h5 id="diseño--arquitectura">Diseño / arquitectura</h5>
 <ul>
-<li><strong>Turkanović, M., Hölbl, M., Košič, K., Heričko, M. &amp;
+<li><p><strong>Turkanović, M., Hölbl, M., Košič, K., Heričko, M. &amp;
 Kamišalić, A. (2018)</strong>. <em>EduCTX: A Blockchain-Based Higher
 Education Credit Platform</em>. IEEE Access, 6, 5112-5127. doi:<a
 href="https://ieeexplore.ieee.org/document/8247166">10.1109/ACCESS.2018.2789929</a>.
 Diseño de referencia para credenciales académicas distribuidas inspirado
 en ECTS europeo. Patrón <strong>token por crédito</strong> + trade-offs
 on-chain vs off-chain — directamente aplicable al modelado del struct
-<code>Credential</code>.</li>
+<code>Credential</code>.</p></li>
+<li><p><strong>Pericàs-Gornals, R., Mut-Puigserver, M., Payeras-Capellà,
+M. M., Cabot-Nadal, M. À. &amp; Ramis, J. (2024)</strong>. <em>Digital
+credentials management system using rejectable soulbound tokens</em>.
+Annals of Telecommunications (Springer), 79, 843-855. doi:<a
+href="https://link.springer.com/article/10.1007/s12243-024-01032-6">10.1007/s12243-024-01032-6</a>.
+Extensión académica directa del concepto SBT: <strong>implementación en
+Solidity de “Rejectable Soulbound Tokens”</strong> (RejSBT) que resuelve
+un agujero del SBT original — el receptor puede rechazar la credencial
+antes de que se le adjudique (no-repudio + consentimiento explícito,
+requisito GDPR). Cierra el gap teoría→código entre Buterin (2022) y un
+contrato real.</p></li>
+<li><p><strong>Farabi, A., Khandaker, I., Ahsan, J., Shanto, I. K.,
+Jahan, N. &amp; Khan, M. J. (2025)</strong>. <em>ShikkhaChain: A
+Blockchain-Powered Academic Credential Verification System for
+Bangladesh</em>. arXiv preprint, <a
+href="https://arxiv.org/abs/2508.05334">arXiv:2508.05334</a>.
+<strong>Implementación completa con role-based access control de 4 roles
+distintos</strong> (gobierno, reguladores, instituciones emisoras,
+verificadores públicos) — exactamente el patrón que están implementando
+con <code>AccessControl</code> de OpenZeppelin. Hay <strong>código en
+GitHub</strong>: <a
+href="https://github.com/TheAhsanFarabi/ShikkhaChain">TheAhsanFarabi/ShikkhaChain</a>
+— útil para comparar arquitectura.</p></li>
 </ul>
 <h5 id="implementación-reciente">Implementación reciente</h5>
 <ul>
-<li><strong>Tiwari, A. et al. (2025)</strong>. <em>Blockchain ensuring
-academic integrity with a degree verification prototype</em>.
+<li><p><strong>Tiwari, A. et al. (2025)</strong>. <em>Blockchain
+ensuring academic integrity with a degree verification prototype</em>.
 <strong>Scientific Reports</strong> (Nature), 15, 7943. doi:<a
 href="https://www.nature.com/articles/s41598-025-93913-6">10.1038/s41598-025-93913-6</a>.
 Prototipo de verificación de <strong>títulos universitarios</strong> con
 red blockchain híbrida y nodos Docker. <strong>Nature, 2025</strong> —
 el más reciente y el de stack más cercano al que van a usar
-(Ethereum-like + Docker).</li>
+(Ethereum-like + Docker).</p></li>
+<li><p><strong>Fartitchou, M., Lamaakal, I., El Makkaoui, K., El Allali,
+Z. &amp; Maleh, Y. (2024)</strong>. <em>BlockMEDC: Blockchain Smart
+Contracts for Securing Moroccan Higher Education Digital
+Certificates</em>. arXiv preprint, <a
+href="https://arxiv.org/abs/2410.07258">arXiv:2410.07258</a>.
+<strong>Caso de país en desarrollo comparable a Argentina</strong> —
+sistema universitario público, presupuesto acotado, fraude documental.
+Stack idéntico al del TP: <strong>Ethereum + Solidity + IPFS</strong>,
+alineado a una estrategia nacional de digitalización (“Maroc Digital
+2030”). El argumento “esto se puede aplicar acá” tiene precedente con
+este paper.</p></li>
 </ul>
 <h5 id="estado-del-arte">Estado del arte</h5>
 <ul>
@@ -564,10 +598,17 @@ Revisión sistemática reciente — best practices y gaps. Menciona
 Blockcerts y EBSI como benchmarks.</li>
 </ul>
 <blockquote>
-<p>Si justifican una decisión técnica con un paper (ej. “elegimos
-soulbound siguiendo Ohlhaver, Weyl &amp; Buterin 2022” o “el patrón hash
-on-chain + PDF off-chain está validado en Tiwari et al. 2025”), suma
-puntos en la rúbrica de modelado (parte 0.2).</p>
+<p>Si justifican una decisión técnica con un paper, suma puntos en la
+rúbrica de modelado (parte 0.2). Ejemplos:</p>
+<ul>
+<li>“Elegimos soulbound siguiendo Ohlhaver, Weyl &amp; Buterin (2022),
+agregando el flujo de aceptación explícita propuesto por Pericàs-Gornals
+et al. (2024)…”</li>
+<li>“La separación de roles entre admin e issuer replica el modelo de
+Farabi et al. (2025) en ShikkhaChain…”</li>
+<li>“El patrón hash on-chain + PDF off-chain está validado en Tiwari et
+al. (2025)…”</li>
+</ul>
 </blockquote>
 <h4 id="lo-que-les-pedimos-en-esta-sección">Lo que les pedimos en esta
 sección</h4>
