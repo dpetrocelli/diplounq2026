@@ -18,6 +18,57 @@ La tarea va en una página aparte: [ver tarea de clase 3](clase-3-tarea.html).
 
 ---
 
+## Pre-requisitos {#prerequisitos}
+
+Antes de empezar, tenés que tener todo esto listo. Si llegás a clase sin esto, **no vas a poder seguir la parte de Sepolia**.
+
+### 🔧 Herramientas de línea de comandos
+
+- **Foundry** (`forge`, `cast`, `anvil`):
+  ```bash
+  curl -L https://foundry.paradigm.xyz | bash && foundryup
+  ```
+- **jq** (parsear JSON desde bash): `sudo apt install jq` (Linux) o `brew install jq` (Mac)
+
+Verificá:
+
+```bash
+forge --version && cast --version && anvil --version && jq --version
+```
+
+### 🦊 MetaMask configurado
+
+1. **Instalar la extensión** desde [metamask.io/download](https://metamask.io/download/) en Chrome / Brave / Firefox.
+2. **Crear una wallet nueva** desde la extensión. Te muestra una **frase de recuperación de 12 palabras** → anotala en papel y guardala. Sin esa frase no se recupera nada.
+3. **Crear una cuenta dedicada para la diplo** (no uses tu cuenta personal):
+   - Avatar arriba a la derecha → **"Add account or hardware wallet"** → **"Add a new account"** → nombrala `unq-dev`.
+   - Cambiá a `unq-dev` (queda seleccionada).
+4. **Activar la red Sepolia**:
+   - Click en el selector de red (arriba a la izquierda, dice "Ethereum Mainnet").
+   - Si **Sepolia** no aparece: ⚙️ Settings → **Advanced** → activar **"Show test networks"** → volvé al selector y elegí Sepolia.
+   - El banner ahora dice "Sepolia" y el balance es `0 SepoliaETH`.
+5. **Conseguir Sepolia ETH** desde un faucet — copiá la address de `unq-dev` (click en el nombre la copia al portapapeles) y pegala en alguno de:
+   - <https://sepoliafaucet.com> (Alchemy)
+   - <https://www.infura.io/faucet/sepolia>
+   - <https://cloud.google.com/application/web3/faucet/ethereum/sepolia>
+   - Esperá 30–60s, refrescá MetaMask: deberías ver `~0.05 SepoliaETH`.
+
+> ⚠️ **Usá una wallet de desarrollo dedicada.** No importes a Foundry la private key de una cuenta con fondos reales en mainnet. La frase de recuperación + private key son las claves de tus fondos: si las publicás (git, Slack, chats con LLMs, screenshots) cualquiera puede vaciarte la wallet.
+
+### 🔑 API key de Etherscan
+
+Gratis en <https://etherscan.io/myapikey> (pide registro con email). La usamos en la sección de verificación del contrato.
+
+### ✅ Checklist antes de la clase
+
+- [ ] `forge`, `cast`, `anvil`, `jq` corren desde la terminal
+- [ ] MetaMask instalada con cuenta dedicada `unq-dev`
+- [ ] Red Sepolia visible y seleccionada
+- [ ] La cuenta `unq-dev` tiene > 0 SepoliaETH
+- [ ] API key de Etherscan en mano
+
+---
+
 ## Parte 1 — Cierre de clase 2
 
 ### 1.1 ¿Qué es Anvil y para qué sirve?
@@ -131,17 +182,22 @@ Output: `42`. Funcionó.
 
 ### 1.5 Deploy a Sepolia (la blockchain real)
 
-Sepolia es la testnet de Ethereum (chain ID `11155111`). Igual que mainnet pero con ETH falso. Necesitás que tu MetaMask esté conectada a Sepolia y tener algo de ETH de Sepolia.
+Sepolia es la testnet de Ethereum (chain ID `11155111`). Igual que mainnet pero con ETH falso.
 
-**Importar tu private key como cast wallet** (encriptada con password):
+> 📋 Asumimos que ya seguiste los [Pre-requisitos](#prerequisitos): MetaMask con cuenta `unq-dev`, red Sepolia activa, y SepoliaETH en la wallet.
+
+**Importar tu private key como cast wallet** (queda encriptada en disco con un password local — así no la repetís en la línea de comandos cada vez):
 
 ```bash
 cast wallet import dev-wallet --interactive
 ```
 
-Te va a pedir tu private key (la sacás de MetaMask → ⋮ → Detalles de la cuenta → Mostrar private key) y un password.
+Te va a pedir:
 
-> ⚠️ Solo usá una cuenta de MetaMask que **no tenga fondos reales en mainnet**. Para esto creá una cuenta nueva en MetaMask y mandá ahí el ETH de Sepolia.
+1. **La private key de `unq-dev`** — la sacás desde MetaMask: ⋮ al lado del nombre de la cuenta → *Account details* → *Show private key* → contraseña de MetaMask → copiar.
+2. **Un password local** (lo elegís vos) — Foundry lo va a pedir cada vez que firmes algo con `--account dev-wallet`.
+
+⚠️ La private key se pega una sola vez acá. **No la subas a git, no la pegues en chats**. Después de este paso ya no la necesitás más — usás `--account dev-wallet` y listo.
 
 **Deployar** a Sepolia:
 
