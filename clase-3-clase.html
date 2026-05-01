@@ -104,13 +104,6 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
     id="toc-clase-3--cierre-clase-2--credenciales-académicas-erc-721">Clase
     3 — Cierre clase 2 + Credenciales académicas (ERC-721)</a>
     <ul>
-    <li><a href="#qué-vamos-a-hacer" id="toc-qué-vamos-a-hacer">¿Qué
-    vamos a hacer?</a>
-    <ul>
-    <li><a href="#en-clase" id="toc-en-clase">🏫 En clase (en vivo con
-    David + Ciro)</a></li>
-    <li><a href="#house-tarea" id="toc-house-tarea">🏠 Tarea</a></li>
-    </ul></li>
     <li><a href="#prerequisitos"
     id="toc-prerequisitos">Pre-requisitos</a>
     <ul>
@@ -125,6 +118,13 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
     <li><a href="#white_check_mark-checklist-antes-de-la-clase"
     id="toc-white_check_mark-checklist-antes-de-la-clase">✅ Checklist
     antes de la clase</a></li>
+    </ul></li>
+    <li><a href="#qué-vamos-a-hacer" id="toc-qué-vamos-a-hacer">¿Qué
+    vamos a hacer?</a>
+    <ul>
+    <li><a href="#en-clase" id="toc-en-clase">🏫 En clase (en vivo con
+    David + Ciro)</a></li>
+    <li><a href="#house-tarea" id="toc-house-tarea">🏠 Tarea</a></li>
     </ul></li>
     <li><a href="#parte-1--cierre-de-clase-2"
     id="toc-parte-1--cierre-de-clase-2">Parte 1 — Cierre de clase 2</a>
@@ -233,13 +233,6 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
       id="toc-clase-3--cierre-clase-2--credenciales-académicas-erc-721">Clase
       3 — Cierre clase 2 + Credenciales académicas (ERC-721)</a>
       <ul>
-      <li><a href="#qué-vamos-a-hacer" id="toc-qué-vamos-a-hacer">¿Qué
-      vamos a hacer?</a>
-      <ul>
-      <li><a href="#en-clase" id="toc-en-clase">🏫 En clase (en vivo con
-      David + Ciro)</a></li>
-      <li><a href="#house-tarea" id="toc-house-tarea">🏠 Tarea</a></li>
-      </ul></li>
       <li><a href="#prerequisitos"
       id="toc-prerequisitos">Pre-requisitos</a>
       <ul>
@@ -254,6 +247,13 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
       <li><a href="#white_check_mark-checklist-antes-de-la-clase"
       id="toc-white_check_mark-checklist-antes-de-la-clase">✅ Checklist
       antes de la clase</a></li>
+      </ul></li>
+      <li><a href="#qué-vamos-a-hacer" id="toc-qué-vamos-a-hacer">¿Qué
+      vamos a hacer?</a>
+      <ul>
+      <li><a href="#en-clase" id="toc-en-clase">🏫 En clase (en vivo con
+      David + Ciro)</a></li>
+      <li><a href="#house-tarea" id="toc-house-tarea">🏠 Tarea</a></li>
       </ul></li>
       <li><a href="#parte-1--cierre-de-clase-2"
       id="toc-parte-1--cierre-de-clase-2">Parte 1 — Cierre de clase
@@ -354,25 +354,16 @@ testeado en mi máquina” a “tengo un contrato deployado en una blockchain
 real, lo veo en un explorador, y emito un primer título universitario
 verificable on-chain”. Esto es la base del TP final de la materia.</p>
 </blockquote>
-<h2 id="qué-vamos-a-hacer">¿Qué vamos a hacer?</h2>
-<h3 id="en-clase">🏫 En clase (en vivo con David + Ciro)</h3>
-<ol type="1">
-<li><strong>Cerrar lo que quedó pendiente de clase 2</strong>: levantar
-una blockchain local con Anvil, deployar <code>SimpleStorage</code>,
-interactuar con <code>cast</code>, y después llevarlo a Sepolia y verlo
-en Etherscan.</li>
-<li><strong>Aprender qué es un NFT (ERC-721)</strong> y por qué es el
-estándar correcto para representar títulos universitarios.</li>
-<li><strong>Clonar y entender</strong> el contrato
-<code>AcademicCredentials</code> — el esqueleto del TP final.</li>
-<li><strong>Testear</strong> el contrato con Foundry (14 tests).</li>
-<li><strong>Deployar a Sepolia</strong> y <strong>emitirse un
-título</strong>, viéndolo aparecer como NFT en MetaMask.</li>
-</ol>
-<h3 id="house-tarea">🏠 Tarea</h3>
-<p>La tarea va en una página aparte: <a href="clase-3-tarea.html">ver
-tarea de clase 3</a>.</p>
-<hr />
+<div style="background: linear-gradient(135deg, #fff4e6 0%, #ffe9cc 100%); border: 2px solid #f59e0b; border-left: 8px solid #d97706; padding: 20px 24px; margin: 28px 0; border-radius: 8px; box-shadow: 0 2px 8px rgba(217, 119, 6, 0.15);">
+<div style="font-size: 1.25em; font-weight: 700; color: #92400e; margin-bottom: 10px;">🚨 ANTES DE VENIR A CLASE — preparar setup</div>
+
+<p style="margin: 6px 0; color: #422006;">Esta clase tiene <strong>pre-requisitos obligatorios</strong>: instalar <strong>Foundry</strong> + <strong>jq</strong>, configurar <strong>MetaMask</strong> con una cuenta dedicada en la red <strong>Sepolia</strong>, conseguir <strong>Sepolia ETH</strong> desde un faucet, y sacar una <strong>API key de Etherscan</strong>.</p>
+
+<p style="margin: 10px 0 4px; color: #422006;">⚠️ Si llegás sin esto, <strong>no vas a poder seguir la parte de Sepolia</strong>. Tarda 15–20 minutos hacerlo entero. Hacelo <strong>antes</strong>, en casa, con tiempo.</p>
+
+<p style="margin: 12px 0 0;"><a href="#prerequisitos" style="display: inline-block; background: #d97706; color: white; padding: 8px 16px; border-radius: 6px; text-decoration: none; font-weight: 600;">👉 Ir al checklist de pre-requisitos</a></p>
+</div>
+
 <h2 id="prerequisitos">Pre-requisitos</h2>
 <p>Antes de empezar, tenés que tener todo esto listo. Si llegás a clase
 sin esto, <strong>no vas a poder seguir la parte de
@@ -467,6 +458,25 @@ seleccionada</label></li>
 <li><label><input type="checkbox" />API key de Etherscan en
 mano</label></li>
 </ul>
+<hr />
+<h2 id="qué-vamos-a-hacer">¿Qué vamos a hacer?</h2>
+<h3 id="en-clase">🏫 En clase (en vivo con David + Ciro)</h3>
+<ol type="1">
+<li><strong>Cerrar lo que quedó pendiente de clase 2</strong>: levantar
+una blockchain local con Anvil, deployar <code>SimpleStorage</code>,
+interactuar con <code>cast</code>, y después llevarlo a Sepolia y verlo
+en Etherscan.</li>
+<li><strong>Aprender qué es un NFT (ERC-721)</strong> y por qué es el
+estándar correcto para representar títulos universitarios.</li>
+<li><strong>Clonar y entender</strong> el contrato
+<code>AcademicCredentials</code> — el esqueleto del TP final.</li>
+<li><strong>Testear</strong> el contrato con Foundry (14 tests).</li>
+<li><strong>Deployar a Sepolia</strong> y <strong>emitirse un
+título</strong>, viéndolo aparecer como NFT en MetaMask.</li>
+</ol>
+<h3 id="house-tarea">🏠 Tarea</h3>
+<p>La tarea va en una página aparte: <a href="clase-3-tarea.html">ver
+tarea de clase 3</a>.</p>
 <hr />
 <h2 id="parte-1--cierre-de-clase-2">Parte 1 — Cierre de clase 2</h2>
 <h3 id="11-qué-es-anvil-y-para-qué-sirve">1.1 ¿Qué es Anvil y para qué
