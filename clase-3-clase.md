@@ -47,11 +47,12 @@ forge --version && cast --version && anvil --version && jq --version
    - Click en el selector de red (arriba a la izquierda, dice "Ethereum Mainnet").
    - Si **Sepolia** no aparece: ⚙️ Settings → **Advanced** → activar **"Show test networks"** → volvé al selector y elegí Sepolia.
    - El banner ahora dice "Sepolia" y el balance es `0 SepoliaETH`.
-5. **Conseguir Sepolia ETH** desde un faucet — copiá la address de `unq-dev` (click en el nombre la copia al portapapeles) y pegala en alguno de:
-   - <https://sepoliafaucet.com> (Alchemy)
-   - <https://www.infura.io/faucet/sepolia>
-   - <https://cloud.google.com/application/web3/faucet/ethereum/sepolia>
-   - Esperá 30–60s, refrescá MetaMask: deberías ver `~0.05 SepoliaETH`.
+5. **Conseguir Sepolia ETH** desde un faucet — copiá la address de tu cuenta dedicada (click en el ícono 📋 al lado de la fila de **Ethereum** en *Direcciones* — Sepolia comparte la misma address que Ethereum, son ambas EVM) y pegala en:
+   - ✅ **<https://cloud.google.com/application/web3/faucet/ethereum/sepolia>** — la **recomendada** (login con cuenta Google, sin fricción, suele andar siempre).
+   - Alternativas si la de Google falla:
+     - <https://www.infura.io/faucet/sepolia> (login con cuenta Infura/MetaMask)
+     - <https://sepoliafaucet.com> (Alchemy, requiere cuenta y a veces tiene cooldown largo)
+   - Esperá 30–60s, refrescá MetaMask. Deberías ver `~0.05 SepoliaETH` (en la vista multi-red aparece como una entrada de "Ethereum" con un puntito rosa/magenta — ese punto es el indicador de Sepolia).
 
 > ⚠️ **Usá una wallet de desarrollo dedicada.** No importes a Foundry la private key de una cuenta con fondos reales en mainnet. La frase de recuperación + private key son las claves de tus fondos: si las publicás (git, Slack, chats con LLMs, screenshots) cualquiera puede vaciarte la wallet.
 
