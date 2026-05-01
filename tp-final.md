@@ -80,15 +80,24 @@ Si en su README quieren citar literatura para defender decisiones de diseño (lo
 
 - **Turkanović, M., Hölbl, M., Košič, K., Heričko, M. & Kamišalić, A. (2018)**. *EduCTX: A Blockchain-Based Higher Education Credit Platform*. IEEE Access, 6, 5112-5127. doi:[10.1109/ACCESS.2018.2789929](https://ieeexplore.ieee.org/document/8247166). Diseño de referencia para credenciales académicas distribuidas inspirado en ECTS europeo. Patrón **token por crédito** + trade-offs on-chain vs off-chain — directamente aplicable al modelado del struct `Credential`.
 
+- **Pericàs-Gornals, R., Mut-Puigserver, M., Payeras-Capellà, M. M., Cabot-Nadal, M. À. & Ramis, J. (2024)**. *Digital credentials management system using rejectable soulbound tokens*. Annals of Telecommunications (Springer), 79, 843-855. doi:[10.1007/s12243-024-01032-6](https://link.springer.com/article/10.1007/s12243-024-01032-6). Extensión académica directa del concepto SBT: **implementación en Solidity de "Rejectable Soulbound Tokens"** (RejSBT) que resuelve un agujero del SBT original — el receptor puede rechazar la credencial antes de que se le adjudique (no-repudio + consentimiento explícito, requisito GDPR). Cierra el gap teoría→código entre Buterin (2022) y un contrato real.
+
+- **Farabi, A., Khandaker, I., Ahsan, J., Shanto, I. K., Jahan, N. & Khan, M. J. (2025)**. *ShikkhaChain: A Blockchain-Powered Academic Credential Verification System for Bangladesh*. arXiv preprint, [arXiv:2508.05334](https://arxiv.org/abs/2508.05334). **Implementación completa con role-based access control de 4 roles distintos** (gobierno, reguladores, instituciones emisoras, verificadores públicos) — exactamente el patrón que están implementando con `AccessControl` de OpenZeppelin. Hay **código en GitHub**: [TheAhsanFarabi/ShikkhaChain](https://github.com/TheAhsanFarabi/ShikkhaChain) — útil para comparar arquitectura.
+
 ##### Implementación reciente
 
 - **Tiwari, A. et al. (2025)**. *Blockchain ensuring academic integrity with a degree verification prototype*. **Scientific Reports** (Nature), 15, 7943. doi:[10.1038/s41598-025-93913-6](https://www.nature.com/articles/s41598-025-93913-6). Prototipo de verificación de **títulos universitarios** con red blockchain híbrida y nodos Docker. **Nature, 2025** — el más reciente y el de stack más cercano al que van a usar (Ethereum-like + Docker).
+
+- **Fartitchou, M., Lamaakal, I., El Makkaoui, K., El Allali, Z. & Maleh, Y. (2024)**. *BlockMEDC: Blockchain Smart Contracts for Securing Moroccan Higher Education Digital Certificates*. arXiv preprint, [arXiv:2410.07258](https://arxiv.org/abs/2410.07258). **Caso de país en desarrollo comparable a Argentina** — sistema universitario público, presupuesto acotado, fraude documental. Stack idéntico al del TP: **Ethereum + Solidity + IPFS**, alineado a una estrategia nacional de digitalización ("Maroc Digital 2030"). El argumento "esto se puede aplicar acá" tiene precedente con este paper.
 
 ##### Estado del arte
 
 - **Nasir, A., Rasheed, M. et al. (2025)**. *A Systematic Review of Blockchain-Based Initiatives in Comparison to Best Practices Used in Higher Education Institutions*. Computers (MDPI), 14(4), 141. doi:[10.3390/computers14040141](https://www.mdpi.com/2073-431X/14/4/141). Revisión sistemática reciente — best practices y gaps. Menciona Blockcerts y EBSI como benchmarks.
 
-> Si justifican una decisión técnica con un paper (ej. "elegimos soulbound siguiendo Ohlhaver, Weyl & Buterin 2022" o "el patrón hash on-chain + PDF off-chain está validado en Tiwari et al. 2025"), suma puntos en la rúbrica de modelado (parte 0.2).
+> Si justifican una decisión técnica con un paper, suma puntos en la rúbrica de modelado (parte 0.2). Ejemplos:
+> - "Elegimos soulbound siguiendo Ohlhaver, Weyl & Buterin (2022), agregando el flujo de aceptación explícita propuesto por Pericàs-Gornals et al. (2024)…"
+> - "La separación de roles entre admin e issuer replica el modelo de Farabi et al. (2025) en ShikkhaChain…"
+> - "El patrón hash on-chain + PDF off-chain está validado en Tiwari et al. (2025)…"
 
 #### Lo que les pedimos en esta sección
 
