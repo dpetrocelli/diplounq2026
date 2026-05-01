@@ -1,6 +1,6 @@
 # Clase 3 — Cierre clase 2 + Credenciales académicas (ERC-721)
 
-> **Objetivo de hoy**: pasar de "tengo un contrato testeado en mi máquina" a "tengo un contrato deployado en una blockchain real, lo veo en un explorador, y emito un primer título universitario verificable on-chain". Esto es la base del trabajo final de la diplomatura.
+> **Objetivo de hoy**: pasar de "tengo un contrato testeado en mi máquina" a "tengo un contrato deployado en una blockchain real, lo veo en un explorador, y emito un primer título universitario verificable on-chain". Esto es la base del TP final de la materia.
 
 ## ¿Qué vamos a hacer?
 
