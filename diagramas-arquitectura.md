@@ -12,8 +12,6 @@ Lo más fundamental: del archivo `.sol` que escribís en tu disco, al contrato d
 
 ![Ciclo completo](assets/diagramas/01-ciclo-completo.png)
 
-📐 [Editar en draw.io](assets/diagramas/01-ciclo-completo.drawio)
-
 ---
 
 ## 2 · Read vs Write — la distinción crítica
@@ -22,8 +20,6 @@ La confusión #1 de todo principiante. `cast call` y `cast send` se ven idéntic
 
 ![Read vs Write](assets/diagramas/02-read-vs-write.png)
 
-📐 [Editar en draw.io](assets/diagramas/02-read-vs-write.drawio)
-
 ---
 
 ## 3 · Qué vive dónde — público vs privado
@@ -31,8 +27,6 @@ La confusión #1 de todo principiante. `cast call` y `cast send` se ven idéntic
 Mapa mental para saber qué se puede compartir y qué nunca. Todo lo que está del lado rojo (private key, frase BIP-39, `.env`) es secreto. Todo lo del lado verde (address, txs, bytecode, storage, source verificado) es **público por diseño** — cualquiera lo lee.
 
 ![Qué vive dónde](assets/diagramas/03-que-vive-donde.png)
-
-📐 [Editar en draw.io](assets/diagramas/03-que-vive-donde.drawio)
 
 ---
 
