@@ -915,12 +915,22 @@ Diagramas para fijar el modelo mental</h2>
 <p>Antes de cerrar, <strong>abrir la página de <a
 href="diagramas-arquitectura.html">diagramas de
 arquitectura</a></strong> y recorrerla en vivo. Son 5 visualizaciones
-que vamos a usar como referencia toda la diplomatura:</p>
+que vamos a usar como referencia toda la diplomatura, en orden de
+zoom-out → zoom-in → tactical:</p>
 <ol type="1">
 <li><strong>El ciclo de un smart contract</strong> — del
 <code>.sol</code> que escribís en tu disco al contrato deployado y al
 usuario en el browser. Tres swim-lanes (tu máquina · blockchain ·
 Etherscan).</li>
+<li><strong>Las 3 capas — mapa global</strong> — el modelo mental de más
+alto nivel: edge (browser + wallet) · web2 (backend, indexer, Postgres,
+IPFS, observabilidad) · on-chain (contrato + roles + state). Regla
+práctica: si necesitan firma + gas → es on-chain; si no, es web2.</li>
+<li><strong>Arquitectura real del sistema de credenciales</strong> — el
+zoom-in del anterior: Frontend (Vercel) + Backend Web2 +
+<code>AcademicCredentials.sol</code> en Sepolia + IPFS para PDFs/fotos +
+indexer + observabilidad. <strong>Es la referencia que van a usar para
+el TP final.</strong></li>
 <li><strong>Read vs Write — <code>cast call</code> vs
 <code>cast send</code></strong> — la confusión #1 de todo principiante.
 Misma sintaxis, comportamiento radicalmente distinto.</li>
@@ -928,15 +938,6 @@ Misma sintaxis, comportamiento radicalmente distinto.</li>
 compartir y qué nunca: lo rojo (private key, frase BIP-39,
 <code>.env</code>) es secreto, lo verde (address, txs, bytecode,
 storage) es público por diseño.</li>
-<li><strong>Arquitectura real del sistema de credenciales</strong> —
-cómo se enchufa todo lo que vimos hoy en un sistema completo: Frontend
-(Vercel) + Backend Web2 + <code>AcademicCredentials.sol</code> en
-Sepolia + IPFS para PDFs/fotos + indexer + observabilidad. <strong>Es la
-referencia que van a necesitar para el TP final.</strong></li>
-<li><strong>Las 3 capas — mapa global</strong> — el mapa mental de más
-alto nivel: edge (browser + wallet) · web2 (backend, indexer, Postgres,
-IPFS, observabilidad) · on-chain (contrato + roles + state). Regla
-práctica: si necesitan firma + gas → es on-chain; si no, es web2.</li>
 </ol>
 <blockquote>
 <p>📐 <a href="diagramas-arquitectura.html">Abrir diagramas de

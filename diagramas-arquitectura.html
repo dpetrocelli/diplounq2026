@@ -43,18 +43,18 @@ real — UNQ Diplo Blockchain</title>
     <li><a href="#1--el-ciclo-de-un-smart-contract"
     id="toc-1--el-ciclo-de-un-smart-contract">1 · El ciclo de un smart
     contract</a></li>
-    <li><a href="#2--read-vs-write--la-distinción-crítica"
-    id="toc-2--read-vs-write--la-distinción-crítica">2 · Read vs Write —
-    la distinción crítica</a></li>
-    <li><a href="#3--qué-vive-dónde--público-vs-privado"
-    id="toc-3--qué-vive-dónde--público-vs-privado">3 · Qué vive dónde —
-    público vs privado</a></li>
-    <li><a href="#4--arquitectura-real-del-sistema-de-credenciales"
-    id="toc-4--arquitectura-real-del-sistema-de-credenciales">4 ·
-    Arquitectura real del sistema de credenciales</a></li>
-    <li><a href="#5--las-3-capas--mapa-global-del-sistema"
-    id="toc-5--las-3-capas--mapa-global-del-sistema">5 · Las 3 capas —
+    <li><a href="#2--las-3-capas--mapa-global-del-sistema"
+    id="toc-2--las-3-capas--mapa-global-del-sistema">2 · Las 3 capas —
     mapa global del sistema</a></li>
+    <li><a href="#3--arquitectura-real-del-sistema-de-credenciales"
+    id="toc-3--arquitectura-real-del-sistema-de-credenciales">3 ·
+    Arquitectura real del sistema de credenciales</a></li>
+    <li><a href="#4--read-vs-write--la-distinción-crítica"
+    id="toc-4--read-vs-write--la-distinción-crítica">4 · Read vs Write —
+    la distinción crítica</a></li>
+    <li><a href="#5--qué-vive-dónde--público-vs-privado"
+    id="toc-5--qué-vive-dónde--público-vs-privado">5 · Qué vive dónde —
+    público vs privado</a></li>
     <li><a href="#material-relacionado"
     id="toc-material-relacionado">Material relacionado</a></li>
     </ul></li>
@@ -87,18 +87,18 @@ real — UNQ Diplo Blockchain</title>
       <li><a href="#1--el-ciclo-de-un-smart-contract"
       id="toc-1--el-ciclo-de-un-smart-contract">1 · El ciclo de un smart
       contract</a></li>
-      <li><a href="#2--read-vs-write--la-distinción-crítica"
-      id="toc-2--read-vs-write--la-distinción-crítica">2 · Read vs Write
-      — la distinción crítica</a></li>
-      <li><a href="#3--qué-vive-dónde--público-vs-privado"
-      id="toc-3--qué-vive-dónde--público-vs-privado">3 · Qué vive dónde
-      — público vs privado</a></li>
-      <li><a href="#4--arquitectura-real-del-sistema-de-credenciales"
-      id="toc-4--arquitectura-real-del-sistema-de-credenciales">4 ·
-      Arquitectura real del sistema de credenciales</a></li>
-      <li><a href="#5--las-3-capas--mapa-global-del-sistema"
-      id="toc-5--las-3-capas--mapa-global-del-sistema">5 · Las 3 capas —
+      <li><a href="#2--las-3-capas--mapa-global-del-sistema"
+      id="toc-2--las-3-capas--mapa-global-del-sistema">2 · Las 3 capas —
       mapa global del sistema</a></li>
+      <li><a href="#3--arquitectura-real-del-sistema-de-credenciales"
+      id="toc-3--arquitectura-real-del-sistema-de-credenciales">3 ·
+      Arquitectura real del sistema de credenciales</a></li>
+      <li><a href="#4--read-vs-write--la-distinción-crítica"
+      id="toc-4--read-vs-write--la-distinción-crítica">4 · Read vs Write
+      — la distinción crítica</a></li>
+      <li><a href="#5--qué-vive-dónde--público-vs-privado"
+      id="toc-5--qué-vive-dónde--público-vs-privado">5 · Qué vive dónde
+      — público vs privado</a></li>
       <li><a href="#material-relacionado"
       id="toc-material-relacionado">Material relacionado</a></li>
       </ul></li>
@@ -118,6 +118,14 @@ polidas que cubren todo el camino conceptual de la diplomatura — desde
 “qué es un smart contract” hasta “cómo se construye el sistema de
 credenciales académicas UNQ”.</p>
 </blockquote>
+<blockquote>
+<p><strong>Cómo leer esta página</strong>: arrancamos en lo más simple
+(el ciclo de un contrato), subimos al <strong>mapa global de 3
+capas</strong> para tener el modelo mental, bajamos al <strong>sistema
+real completo</strong> con todas sus piezas, y cerramos con dos
+referencias tácticas para el día a día — cómo leer/escribir y qué es
+secreto vs público.</p>
+</blockquote>
 <hr />
 <h2 id="1--el-ciclo-de-un-smart-contract">1 · El ciclo de un smart
 contract</h2>
@@ -129,51 +137,15 @@ ellas.</p>
 <p><img src="assets/diagramas/01-ciclo-completo.png"
 alt="Ciclo completo" /></p>
 <hr />
-<h2 id="2--read-vs-write--la-distinción-crítica">2 · Read vs Write — la
-distinción crítica</h2>
-<p>La confusión #1 de todo principiante. <code>cast call</code> y
-<code>cast send</code> se ven idénticos en el código pero hacen cosas
-radicalmente distintas. <strong>Regla mnemotécnica</strong>: si la
-función Solidity dice <code>view</code> o <code>pure</code> →
-<code>cast call</code>. Cualquier otra cosa →
-<code>cast send</code>.</p>
-<p><img src="assets/diagramas/02-read-vs-write.png"
-alt="Read vs Write" /></p>
-<hr />
-<h2 id="3--qué-vive-dónde--público-vs-privado">3 · Qué vive dónde —
-público vs privado</h2>
-<p>Mapa mental para saber qué se puede compartir y qué nunca. Todo lo
-que está del lado rojo (private key, frase BIP-39, <code>.env</code>) es
-secreto. Todo lo del lado verde (address, txs, bytecode, storage, source
-verificado) es <strong>público por diseño</strong> — cualquiera lo
-lee.</p>
-<p><img src="assets/diagramas/03-que-vive-donde.png"
-alt="Qué vive dónde" /></p>
-<hr />
-<h2 id="4--arquitectura-real-del-sistema-de-credenciales">4 ·
-Arquitectura real del sistema de credenciales</h2>
-<p><strong>El sistema completo</strong>: Frontend (Vercel) + Backend
-Web2 (k3s) + <code>AcademicCredentials.sol</code> (Sepolia → más
-adelante Base/Polygon) + IPFS para PDFs y fotos + indexer The Graph +
-observabilidad (Tenderly + Sentry).</p>
-<blockquote>
-<p><strong>El contrato es UNA pieza</strong> del sistema, no es todo. Es
-el “servicio de credenciales” en una app tradicional. El resto (UI, API,
-BD, login admin, monitoreo) sigue siendo lo de siempre.</p>
-</blockquote>
-<p><img src="assets/diagramas/04-sistema-real.png"
-alt="Arquitectura del sistema" /></p>
-<hr />
-<h2 id="5--las-3-capas--mapa-global-del-sistema">5 · Las 3 capas — mapa
+<h2 id="2--las-3-capas--mapa-global-del-sistema">2 · Las 3 capas — mapa
 global del sistema</h2>
-<p>El mapa mental de más alto nivel sobre el que se apoya todo el
-sistema: <strong>edge / cliente</strong> (browser del
-decano/estudiante/verificador + frontend en Vercel + MetaMask) ·
+<p>El modelo mental más alto: <strong>edge / cliente</strong> (browser
+del decano/estudiante/verificador + frontend en Vercel + MetaMask) ·
 <strong>web2 infra</strong> (backend, indexer, Postgres, IPFS,
 observabilidad — la app web tradicional) · <strong>on-chain</strong>
 (<code>AcademicCredentials.sol</code> + roles + state inmutable de las
 credenciales en Sepolia).</p>
-<p><img src="assets/diagramas/05-tres-capas.png"
+<p><img src="assets/diagramas/02-tres-capas.png"
 alt="Las 3 capas" /></p>
 <blockquote>
 <p><strong>Regla práctica</strong>: si lo pueden romper sin pedirle
@@ -187,6 +159,49 @@ la vida” — un Next.js, un FastAPI, un Postgres. Lo de abajo (verde) es
 el contrato — la única pieza que <strong>no controlan</strong> una vez
 deployada.</p>
 </blockquote>
+<hr />
+<h2 id="3--arquitectura-real-del-sistema-de-credenciales">3 ·
+Arquitectura real del sistema de credenciales</h2>
+<p>Ahora bajemos al detalle. <strong>El sistema completo</strong>:
+Frontend (Vercel) + Backend Web2 (k3s) +
+<code>AcademicCredentials.sol</code> (Sepolia → más adelante
+Base/Polygon) + IPFS para PDFs y fotos + indexer The Graph +
+observabilidad (Tenderly + Sentry).</p>
+<blockquote>
+<p><strong>Para el TP final no necesitan TODOS estos
+componentes</strong> — esto es la referencia de cómo se ve un sistema de
+credenciales en producción. Lo mínimo son: frontend + contrato + IPFS
+para el PDF. The Graph, Auth0, Cloudflare CDN, Sentry y Tenderly son
+enchufables después.</p>
+</blockquote>
+<blockquote>
+<p><strong>El contrato es UNA pieza</strong> del sistema, no es todo. Es
+el “servicio de credenciales” en una app tradicional. El resto (UI, API,
+BD, login admin, monitoreo) sigue siendo lo de siempre.</p>
+</blockquote>
+<p><img src="assets/diagramas/03-sistema-real.png"
+alt="Arquitectura del sistema" /></p>
+<hr />
+<h2 id="4--read-vs-write--la-distinción-crítica">4 · Read vs Write — la
+distinción crítica</h2>
+<p>La confusión #1 de todo principiante. <code>cast call</code> y
+<code>cast send</code> se ven idénticos en el código pero hacen cosas
+radicalmente distintas. <strong>Regla mnemotécnica</strong>: si la
+función Solidity dice <code>view</code> o <code>pure</code> →
+<code>cast call</code>. Cualquier otra cosa →
+<code>cast send</code>.</p>
+<p><img src="assets/diagramas/04-read-vs-write.png"
+alt="Read vs Write" /></p>
+<hr />
+<h2 id="5--qué-vive-dónde--público-vs-privado">5 · Qué vive dónde —
+público vs privado</h2>
+<p>Mapa mental para saber qué se puede compartir y qué nunca. Todo lo
+que está del lado rojo (private key, frase BIP-39, <code>.env</code>) es
+secreto. Todo lo del lado verde (address, txs, bytecode, storage, source
+verificado) es <strong>público por diseño</strong> — cualquiera lo
+lee.</p>
+<p><img src="assets/diagramas/05-que-vive-donde.png"
+alt="Qué vive dónde" /></p>
 <hr />
 <h2 id="material-relacionado">Material relacionado</h2>
 <ul>
