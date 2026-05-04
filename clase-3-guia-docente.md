@@ -1,6 +1,8 @@
+<head><meta name="robots" content="noindex,nofollow"></head>
+
 # Guía docente — Clase 3 (Credenciales académicas / ERC-721)
 
-> **Audiencia**: Dr. David Petrocelli + Esp. Ciro Romero. Esta guía NO es para los pibes — es el script con el que damos la clase.
+> **Audiencia**: Dr. David Petrocelli + Esp. Ciro Romero. Esta guía NO es para los pibes — es el script con el que damos la clase. Página unlisted: no está en el index, no se indexa en buscadores.
 
 > **Duración**: 4 horas (240 min). Hay 25 min de buffer para pausas / preguntas / un alumno trabado.
 
