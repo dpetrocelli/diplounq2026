@@ -89,6 +89,18 @@ render "diagramas-arquitectura.md" \
   "Diagramas de arquitectura — del ciclo del contrato al sistema real" \
   "DIAGRAMAS"
 
+# ---------- Glosario de términos (transversal) ----------
+render "glosario.md" \
+  "glosario.html" \
+  "Glosario — términos del día a día" \
+  "GLOSARIO"
+
+# ---------- Cheat sheet de comandos (transversal) ----------
+render "cheat-sheet.md" \
+  "cheat-sheet.html" \
+  "Cheat sheet — comandos del día a día" \
+  "CHEAT-SHEET"
+
 echo ""
 echo "Done. Open with:"
 echo "  xdg-open $DIR/index.html"
