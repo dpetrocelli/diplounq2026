@@ -2,8 +2,6 @@
 
 > **Para qué sirve esta página**: tener visualizaciones polidas que cubren todo el camino conceptual de la diplomatura — desde "qué es un smart contract" hasta "cómo se construye el sistema de credenciales académicas UNQ".
 
-> **Formato**: cada diagrama está como PNG embebido (acá) y como `.drawio` editable (linkeado debajo). Para regenerar las PNGs después de editar: doble click en el `.drawio` con la extensión [hediet.vscode-drawio](https://marketplace.visualstudio.com/items?itemName=hediet.vscode-drawio) → File → Export As → PNG.
-
 ---
 
 ## 1 · El ciclo de un smart contract
@@ -37,6 +35,18 @@ Mapa mental para saber qué se puede compartir y qué nunca. Todo lo que está d
 > **El contrato es UNA pieza** del sistema, no es todo. Es el "servicio de credenciales" en una app tradicional. El resto (UI, API, BD, login admin, monitoreo) sigue siendo lo de siempre.
 
 ![Arquitectura del sistema](assets/diagramas/04-sistema-real.png)
+
+---
+
+## 5 · Las 3 capas — mapa global del sistema
+
+El mapa mental de más alto nivel sobre el que se apoya todo el sistema: **edge / cliente** (browser del decano/estudiante/verificador + frontend en Vercel + MetaMask) · **web2 infra** (backend, indexer, Postgres, IPFS, observabilidad — la app web tradicional) · **on-chain** (`AcademicCredentials.sol` + roles + state inmutable de las credenciales en Sepolia).
+
+![Las 3 capas](assets/diagramas/05-tres-capas.png)
+
+> **Regla práctica**: si lo pueden romper sin pedirle permiso a nadie → es suyo (web2). Si necesitan firma + gas → es on-chain.
+
+> **Cómo leer este diagrama**: lo de arriba (naranja) es lo que ve y toca el usuario. Lo del medio (azul) es la app web "de toda la vida" — un Next.js, un FastAPI, un Postgres. Lo de abajo (verde) es el contrato — la única pieza que **no controlan** una vez deployada.
 
 ---
 
