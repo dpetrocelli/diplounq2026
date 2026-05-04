@@ -559,7 +559,7 @@ seguir la práctica. Pero lo ideal es que cada uno deploye el suyo.</p>
 <h3 id="52-wagmits--configuración-de-redes">5.2 <code>wagmi.ts</code> —
 configuración de redes</h3>
 <div class="sourceCode" id="cb7"><pre class="sourceCode ts"><code class="sourceCode typescript"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">export</span> <span class="kw">const</span> config <span class="op">=</span> <span class="fu">getDefaultConfig</span>({</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  appName<span class="op">:</span> <span class="st">&#39;MyToken DApp&#39;</span><span class="op">,</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  appName<span class="op">:</span> <span class="st">&#39;UNQ Academic Credentials&#39;</span><span class="op">,</span></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  projectId<span class="op">,</span></span>
 <span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  chains<span class="op">:</span> [sepolia]<span class="op">,</span></span>
 <span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>  ssr<span class="op">:</span> <span class="kw">true</span><span class="op">,</span></span>
@@ -1002,8 +1002,15 @@ cosa:</p>
 <code>Ownable</code></td>
 </tr>
 <tr>
-<td>Tests con Foundry (forge test + coverage + fuzz)</td>
-<td>✅ <strong>Clase 2</strong> + <strong>Clase 3</strong></td>
+<td>Tests con Foundry (<code>forge test</code> +
+<code>forge coverage</code> + fuzz)</td>
+<td>✅ <strong>Clase 2</strong> (test básico) + <strong>Clase 3</strong>
+(14 tests + coverage + fuzz)</td>
+</tr>
+<tr>
+<td>Verificación del contrato en Etherscan/Basescan
+(<code>forge verify-contract</code>)</td>
+<td>✅ <strong>Clase 3</strong> Parte 7</td>
 </tr>
 <tr>
 <td>Frontend con wagmi + RainbowKit (modo lectura + escritura)</td>
