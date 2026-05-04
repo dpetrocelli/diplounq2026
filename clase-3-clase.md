@@ -409,6 +409,23 @@ Vas a ver el call trace completo: deploy → mint event → setTokenURI → Cred
 
 > 💡 Para escribir tests propios: cada función que empieza con `test_` se ejecuta. Las que empiezan con `testFuzz_` reciben argumentos random y corren 256 veces.
 
+### Coverage — qué tan testeado está el contrato
+
+```bash
+forge coverage --report summary
+```
+
+Te muestra qué porcentaje de líneas / branches / funciones del contrato están ejecutadas por algún test. Para el TP final pedimos **≥ 80% de coverage**, así que conviene chequearlo desde ahora.
+
+Si querés un reporte detallado para subir a herramientas como Codecov:
+
+```bash
+forge coverage --report lcov
+# genera lcov.info en la raíz del proyecto
+```
+
+> 💡 Si el coverage te baja después de agregar funciones nuevas, agregá tests para esas funciones. La idea no es alcanzar 100% sin sentido — es asegurar que las funciones críticas (`issueCredential`, `revoke`, `isValid`) tienen al menos un test del camino feliz y otro de error.
+
 ---
 
 ## Parte 7 — Deploy a Sepolia + emitir tu primer título
@@ -468,6 +485,35 @@ https://sepolia.etherscan.io/address/<TU_ADDRESS_DE_CONTRATO>
 
 En "Logs" vas a ver `CredentialIssued` con tus datos decodificados.
 
+### Verificar el código fuente en Etherscan
+
+Por defecto, Etherscan muestra el bytecode del contrato (ilegible). Para que muestre tu código Solidity con sintaxis y permita interactuar desde la web, hay que **verificar**.
+
+Si querés que el deploy verifique automáticamente, agregá el flag `--verify` al `forge create`:
+
+```bash
+forge create src/AcademicCredentials.sol:AcademicCredentials \
+  --rpc-url https://ethereum-sepolia-rpc.publicnode.com \
+  --account dev-wallet \
+  --etherscan-api-key $ETHERSCAN_API_KEY \
+  --verify \
+  --broadcast
+```
+
+Si ya deployaste sin el flag (o falló la verificación), corré después por separado:
+
+```bash
+forge verify-contract \
+  --chain sepolia \
+  --etherscan-api-key $ETHERSCAN_API_KEY \
+  $ADDR \
+  src/AcademicCredentials.sol:AcademicCredentials
+```
+
+Refrescá Etherscan: ahora la pestaña "Contract" muestra ✅ verde y aparece el código fuente. **En el TP final exigimos contratos verificados** (queremos que cualquiera pueda leer el código desde Basescan, no solo el bytecode).
+
+> 💡 La API key de Etherscan que conseguiste en los prerrequisitos **sirve también para Basescan** (Etherscan multi-chain). Misma key, distinto `--chain`.
+
 ---
 
 ## Parte 8 — Verlo como NFT en MetaMask
@@ -495,7 +541,7 @@ Lo que escribimos hoy es el **esqueleto** del TP final. Para el trabajo final lo
 - **Metadata real** en IPFS con foto + firma digital.
 - **`SECURITY.md`** con análisis de Slither.
 
-El spec completo se va a publicar en el campus.
+El spec completo está en la página del [Trabajo Final](tp-final.html).
 
 ---
 

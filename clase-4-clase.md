@@ -143,7 +143,7 @@ Tres "providers" envuelven toda la app:
 
 ```ts
 export const config = getDefaultConfig({
-  appName: 'MyToken DApp',
+  appName: 'UNQ Academic Credentials',
   projectId,
   chains: [sepolia],
   ssr: true,
@@ -518,7 +518,8 @@ Antes de tirarles el spec, despejamos el "no nos enseñaron". Esto es lo que el 
 | Lo que pide el TP | ¿Dónde lo vimos? |
 |---|---|
 | ERC-721 base (`AcademicCredentials`) | ✅ **Clase 3** — hands-on con el contrato `Ownable` |
-| Tests con Foundry (forge test + coverage + fuzz) | ✅ **Clase 2** + **Clase 3** |
+| Tests con Foundry (`forge test` + `forge coverage` + fuzz) | ✅ **Clase 2** (test básico) + **Clase 3** (14 tests + coverage + fuzz) |
+| Verificación del contrato en Etherscan/Basescan (`forge verify-contract`) | ✅ **Clase 3** Parte 7 |
 | Frontend con wagmi + RainbowKit (modo lectura + escritura) | ✅ **Clase 4** (hoy) |
 | Slither + análisis estático | ✅ **Clase 4** (hoy) |
 | Deploy a **Base Sepolia (L2)** | ✅ **Clase 4** Parte 10 (hoy) |

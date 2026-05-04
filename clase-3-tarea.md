@@ -35,8 +35,9 @@
 
 ## Volver
 
-- [Material de la clase 3](clase-3-clase.html)
-- [Volver al índice](index.html)
+- [← Material de la clase 3](clase-3-clase.html)
+- [← Volver al índice](index.html)
+- [→ Clase 4](clase-4-clase.html)
 
 ## Si algo falla
 

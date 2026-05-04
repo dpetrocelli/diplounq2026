@@ -17,7 +17,7 @@
 
 3. **Verificar la transacción en [sepolia.etherscan.io](https://sepolia.etherscan.io)**: pegá tu address y comprobá que ves el balance y la transacción de la faucet. Postear en el foro una captura del Etherscan mostrando tu address con balance > 0.
 
-4. **Experimentar con Remix**: abrir [remix.ethereum.org](https://remix.ethereum.org), copiar el contrato `SimpleStorage` que vimos en [clase-1-clase.html#parte-11-remix-tu-primer-contrato](clase-1-clase.html), compilarlo, deployarlo **primero en la Remix VM** y después **en Sepolia con Metamask**. Probar las funciones (`set` / `get`). Postear en el foro la address del contrato deployado en Sepolia para poder verlo en Etherscan.
+4. **Experimentar con Remix**: abrir [remix.ethereum.org](https://remix.ethereum.org), copiar el contrato `SimpleStorage` que vimos en [clase 1 — Parte 5 (Remix)](clase-1-clase.html#parte-5--remix-tu-primer-contrato), compilarlo, deployarlo **primero en la Remix VM** y después **en Sepolia con Metamask**. Probar las funciones (`set` / `get`). Postear en el foro la address del contrato deployado en Sepolia para poder verlo en Etherscan.
 
 5. **(Opcional, recomendado)** Si te quedó tiempo, instalar [Foundry](https://book.getfoundry.sh/getting-started/installation) siguiendo la documentación oficial — vamos a usarlo desde clase 2.
 

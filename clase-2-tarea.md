@@ -21,8 +21,9 @@
 
 ## Volver
 
-- [Material de la clase 2](clase-2-clase.html)
-- [Volver al índice](index.html)
+- [← Material de la clase 2](clase-2-clase.html)
+- [← Volver al índice](index.html)
+- [→ Clase 3](clase-3-clase.html)
 
 ## Si algo falla
 
