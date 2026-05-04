@@ -124,6 +124,8 @@ Diagrama + texto explicando:
 
 > Aceptamos diagramas en draw.io, Excalidraw, Mermaid (en el README), o foto de papel/pizarra si está prolijo.
 
+> 📐 **Material de referencia**: revisar [los diagramas de arquitectura de la cátedra](diagramas-arquitectura.html) — especialmente el #2 (las 3 capas: edge / web2 / on-chain) y el #3 (arquitectura real del sistema). No tienen que copiarlo tal cual: les da un piso del nivel de detalle que esperamos en sus propios diagramas.
+
 ---
 
 ## Parte 1 — Smart contract (35%)
@@ -388,7 +390,7 @@ El frontend online + el contrato en Base Sepolia con 3 credenciales reales emiti
 
 El README del repo tiene que tener:
 
-1. **Hook UNQ** + **diagramas de arquitectura** (parte 0).
+1. **Hook UNQ** + [**diagramas de arquitectura**](diagramas-arquitectura.html) (parte 0).
 2. **Cómo correr local** (`forge install`, `forge test`, `npm install`, `npm run dev`).
 3. **Direcciones deployadas**:
    - Address del contrato en Base Sepolia.
