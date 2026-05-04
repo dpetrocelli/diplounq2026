@@ -52,6 +52,9 @@ real — UNQ Diplo Blockchain</title>
     <li><a href="#4--arquitectura-real-del-sistema-de-credenciales"
     id="toc-4--arquitectura-real-del-sistema-de-credenciales">4 ·
     Arquitectura real del sistema de credenciales</a></li>
+    <li><a href="#5--las-3-capas--mapa-global-del-sistema"
+    id="toc-5--las-3-capas--mapa-global-del-sistema">5 · Las 3 capas —
+    mapa global del sistema</a></li>
     <li><a href="#material-relacionado"
     id="toc-material-relacionado">Material relacionado</a></li>
     </ul></li>
@@ -93,6 +96,9 @@ real — UNQ Diplo Blockchain</title>
       <li><a href="#4--arquitectura-real-del-sistema-de-credenciales"
       id="toc-4--arquitectura-real-del-sistema-de-credenciales">4 ·
       Arquitectura real del sistema de credenciales</a></li>
+      <li><a href="#5--las-3-capas--mapa-global-del-sistema"
+      id="toc-5--las-3-capas--mapa-global-del-sistema">5 · Las 3 capas —
+      mapa global del sistema</a></li>
       <li><a href="#material-relacionado"
       id="toc-material-relacionado">Material relacionado</a></li>
       </ul></li>
@@ -111,14 +117,6 @@ de arquitectura — del ciclo del contrato al sistema de credenciales</h1>
 polidas que cubren todo el camino conceptual de la diplomatura — desde
 “qué es un smart contract” hasta “cómo se construye el sistema de
 credenciales académicas UNQ”.</p>
-</blockquote>
-<blockquote>
-<p><strong>Formato</strong>: cada diagrama está como PNG embebido (acá)
-y como <code>.drawio</code> editable (linkeado debajo). Para regenerar
-las PNGs después de editar: doble click en el <code>.drawio</code> con
-la extensión <a
-href="https://marketplace.visualstudio.com/items?itemName=hediet.vscode-drawio">hediet.vscode-drawio</a>
-→ File → Export As → PNG.</p>
 </blockquote>
 <hr />
 <h2 id="1--el-ciclo-de-un-smart-contract">1 · El ciclo de un smart
@@ -165,6 +163,30 @@ BD, login admin, monitoreo) sigue siendo lo de siempre.</p>
 </blockquote>
 <p><img src="assets/diagramas/04-sistema-real.png"
 alt="Arquitectura del sistema" /></p>
+<hr />
+<h2 id="5--las-3-capas--mapa-global-del-sistema">5 · Las 3 capas — mapa
+global del sistema</h2>
+<p>El mapa mental de más alto nivel sobre el que se apoya todo el
+sistema: <strong>edge / cliente</strong> (browser del
+decano/estudiante/verificador + frontend en Vercel + MetaMask) ·
+<strong>web2 infra</strong> (backend, indexer, Postgres, IPFS,
+observabilidad — la app web tradicional) · <strong>on-chain</strong>
+(<code>AcademicCredentials.sol</code> + roles + state inmutable de las
+credenciales en Sepolia).</p>
+<p><img src="assets/diagramas/05-tres-capas.png"
+alt="Las 3 capas" /></p>
+<blockquote>
+<p><strong>Regla práctica</strong>: si lo pueden romper sin pedirle
+permiso a nadie → es suyo (web2). Si necesitan firma + gas → es
+on-chain.</p>
+</blockquote>
+<blockquote>
+<p><strong>Cómo leer este diagrama</strong>: lo de arriba (naranja) es
+lo que ve y toca el usuario. Lo del medio (azul) es la app web “de toda
+la vida” — un Next.js, un FastAPI, un Postgres. Lo de abajo (verde) es
+el contrato — la única pieza que <strong>no controlan</strong> una vez
+deployada.</p>
+</blockquote>
 <hr />
 <h2 id="material-relacionado">Material relacionado</h2>
 <ul>
