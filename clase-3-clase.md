@@ -499,6 +499,16 @@ El spec completo se va a publicar en el campus.
 
 ---
 
+## Parte 10 — Diagramas para fijar el modelo mental
+
+Antes de cerrar, **abrir la página de [diagramas de arquitectura](diagramas-arquitectura.html)** y recorrerla en vivo. Son 4 visualizaciones que vamos a usar como referencia toda la diplomatura:
+
+1. **El ciclo de un smart contract** — del `.sol` que escribís en tu disco al contrato deployado y al usuario en el browser. Tres swim-lanes (tu máquina · blockchain · Etherscan).
+2. **Read vs Write — `cast call` vs `cast send`** — la confusión #1 de todo principiante. Misma sintaxis, comportamiento radicalmente distinto.
+3. **Qué vive dónde — público vs privado** — qué pueden compartir y qué nunca: lo rojo (private key, frase BIP-39, `.env`) es secreto, lo verde (address, txs, bytecode, storage) es público por diseño.
+4. **Arquitectura real del sistema de credenciales** — cómo se enchufa todo lo que vimos hoy en un sistema completo: Frontend (Vercel) + Backend Web2 + `AcademicCredentials.sol` en Sepolia + IPFS para PDFs/fotos + indexer + observabilidad. **Es la referencia que van a necesitar para el TP final.**
+
+> 📐 [Abrir diagramas de arquitectura](diagramas-arquitectura.html)
 
 ---
 

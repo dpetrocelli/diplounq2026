@@ -203,6 +203,9 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
     <li><a href="#parte-9--y-para-el-tp-final"
     id="toc-parte-9--y-para-el-tp-final">Parte 9 — ¿Y para el TP
     final?</a></li>
+    <li><a href="#parte-10--diagramas-para-fijar-el-modelo-mental"
+    id="toc-parte-10--diagramas-para-fijar-el-modelo-mental">Parte 10 —
+    Diagramas para fijar el modelo mental</a></li>
     <li><a href="#después-de-clase" id="toc-después-de-clase">Después de
     clase</a></li>
     <li><a href="#si-algo-falla" id="toc-si-algo-falla">Si algo
@@ -334,6 +337,9 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
       <li><a href="#parte-9--y-para-el-tp-final"
       id="toc-parte-9--y-para-el-tp-final">Parte 9 — ¿Y para el TP
       final?</a></li>
+      <li><a href="#parte-10--diagramas-para-fijar-el-modelo-mental"
+      id="toc-parte-10--diagramas-para-fijar-el-modelo-mental">Parte 10
+      — Diagramas para fijar el modelo mental</a></li>
       <li><a href="#después-de-clase" id="toc-después-de-clase">Después
       de clase</a></li>
       <li><a href="#si-algo-falla" id="toc-si-algo-falla">Si algo
@@ -904,6 +910,34 @@ Slither.</li>
 </ul>
 <p>El spec completo se va a publicar en el campus.</p>
 <hr />
+<h2 id="parte-10--diagramas-para-fijar-el-modelo-mental">Parte 10 —
+Diagramas para fijar el modelo mental</h2>
+<p>Antes de cerrar, <strong>abrir la página de <a
+href="diagramas-arquitectura.html">diagramas de
+arquitectura</a></strong> y recorrerla en vivo. Son 4 visualizaciones
+que vamos a usar como referencia toda la diplomatura:</p>
+<ol type="1">
+<li><strong>El ciclo de un smart contract</strong> — del
+<code>.sol</code> que escribís en tu disco al contrato deployado y al
+usuario en el browser. Tres swim-lanes (tu máquina · blockchain ·
+Etherscan).</li>
+<li><strong>Read vs Write — <code>cast call</code> vs
+<code>cast send</code></strong> — la confusión #1 de todo principiante.
+Misma sintaxis, comportamiento radicalmente distinto.</li>
+<li><strong>Qué vive dónde — público vs privado</strong> — qué pueden
+compartir y qué nunca: lo rojo (private key, frase BIP-39,
+<code>.env</code>) es secreto, lo verde (address, txs, bytecode,
+storage) es público por diseño.</li>
+<li><strong>Arquitectura real del sistema de credenciales</strong> —
+cómo se enchufa todo lo que vimos hoy en un sistema completo: Frontend
+(Vercel) + Backend Web2 + <code>AcademicCredentials.sol</code> en
+Sepolia + IPFS para PDFs/fotos + indexer + observabilidad. <strong>Es la
+referencia que van a necesitar para el TP final.</strong></li>
+</ol>
+<blockquote>
+<p>📐 <a href="diagramas-arquitectura.html">Abrir diagramas de
+arquitectura</a></p>
+</blockquote>
 <hr />
 <h2 id="después-de-clase">Después de clase</h2>
 <p>La tarea de la semana → <a href="clase-3-tarea.html">tarea de clase
