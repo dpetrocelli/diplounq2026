@@ -66,6 +66,11 @@ render "clase-3-tarea.md" \
   "Clase 3 — Credenciales académicas (ERC-721) · Tarea" \
   "C3 · TAREA"
 
+render "clase-3-guia-docente.md" \
+  "clase-3-guia-docente.html" \
+  "Clase 3 — Credenciales académicas (ERC-721) · Guía docente" \
+  "GUIA DOCENTE — C3"
+
 # ---------- Clase 4 (Frontend NFT + Seguridad) ----------
 render "clase-4-clase.md" \
   "clase-4-clase.html" \

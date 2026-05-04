@@ -1,0 +1,1923 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=2.0">
+  <meta name="generator" content="pandoc + UNLu/DCB template">
+  <title>Clase 3 — Credenciales académicas (ERC-721) · Guía docente —
+UNQ Diplo Blockchain</title>
+  <link rel="stylesheet" href="assets/style.css">
+  <style type="text/css">
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  background-color: #f8f8f8; }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ef2929; } /* Alert */
+code span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #204a87; } /* Attribute */
+code span.bn { color: #0000cf; } /* BaseN */
+code span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4e9a06; } /* Char */
+code span.cn { color: #8f5902; } /* Constant */
+code span.co { color: #8f5902; font-style: italic; } /* Comment */
+code span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
+code span.dt { color: #204a87; } /* DataType */
+code span.dv { color: #0000cf; } /* DecVal */
+code span.er { color: #a40000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #0000cf; } /* Float */
+code span.fu { color: #204a87; font-weight: bold; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #204a87; font-weight: bold; } /* Keyword */
+code span.op { color: #ce5c00; font-weight: bold; } /* Operator */
+code span.ot { color: #8f5902; } /* Other */
+code span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
+code span.sc { color: #ce5c00; font-weight: bold; } /* SpecialChar */
+code span.ss { color: #4e9a06; } /* SpecialString */
+code span.st { color: #4e9a06; } /* String */
+code span.va { color: #000000; } /* Variable */
+code span.vs { color: #4e9a06; } /* VerbatimString */
+code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+</head>
+<body>
+
+<header class="unq-header">
+  <a href="index.html" class="brand" title="Volver al menú principal">
+    <img src="assets/unq-logo-white.png" alt="Universidad Nacional de Quilmes" class="logo unq">
+    <div class="brand-text">
+      <div class="institution">Universidad Nacional de Quilmes</div>
+      <div class="department">Diplomatura en Blockchain</div>
+    </div>
+  </a>
+  <div class="course-bar">
+    <span class="course">Desarrollo de Smart Contracts y dApps</span>
+    <span class="year">2026</span>
+    <span class="instructor">Dr. David Petrocelli &amp; Esp. Ciro Romero</span>
+  </div>
+</header>
+
+<button type="button" id="sidebar-show" class="sidebar-toggle-btn sidebar-show" aria-label="Mostrar índice lateral" title="Mostrar índice lateral">☰</button>
+
+<div class="layout">
+  <aside class="toc-sidebar" id="toc-sidebar">
+    <div class="toc-header">
+      <div class="toc-title">Contenidos</div>
+      <button type="button" id="sidebar-hide" class="sidebar-toggle-btn sidebar-hide" aria-label="Ocultar índice lateral" title="Ocultar índice lateral">×</button>
+    </div>
+    <ul>
+    <li><a
+    href="#guía-docente--clase-3-credenciales-académicas--erc-721"
+    id="toc-guía-docente--clase-3-credenciales-académicas--erc-721">Guía
+    docente — Clase 3 (Credenciales académicas / ERC-721)</a>
+    <ul>
+    <li><a href="#pre-clase--15-min-antes-de-empezar"
+    id="toc-pre-clase--15-min-antes-de-empezar">Pre-clase · 15 min antes
+    de empezar</a>
+    <ul>
+    <li><a href="#setup-técnico" id="toc-setup-técnico">Setup
+    técnico</a></li>
+    <li><a href="#lo-que-probablemente-vamos-a-romper-anticiparlo"
+    id="toc-lo-que-probablemente-vamos-a-romper-anticiparlo">Lo que
+    probablemente vamos a romper (anticiparlo)</a></li>
+    </ul></li>
+    <li><a href="#apertura--5-min" id="toc-apertura--5-min">Apertura · 5
+    min</a></li>
+    <li><a
+    href="#bloque-1--diagramas-para-fijar-el-mental-model--20-min"
+    id="toc-bloque-1--diagramas-para-fijar-el-mental-model--20-min">Bloque
+    1 · Diagramas para fijar el mental model · 20 min</a>
+    <ul>
+    <li><a href="#diagrama-1--el-ciclo-del-contrato--4-min"
+    id="toc-diagrama-1--el-ciclo-del-contrato--4-min">Diagrama 1 — El
+    ciclo del contrato · 4 min</a></li>
+    <li><a href="#diagrama-2--las-3-capas--mapa-global--5-min"
+    id="toc-diagrama-2--las-3-capas--mapa-global--5-min">Diagrama 2 —
+    Las 3 capas — mapa global · 5 min</a></li>
+    <li><a href="#diagrama-3--arquitectura-real-del-sistema--6-min"
+    id="toc-diagrama-3--arquitectura-real-del-sistema--6-min">Diagrama 3
+    — Arquitectura real del sistema · 6 min</a></li>
+    <li><a
+    href="#diagrama-4--read-vs-write-cast-call-vs-cast-send--3-min"
+    id="toc-diagrama-4--read-vs-write-cast-call-vs-cast-send--3-min">Diagrama
+    4 — Read vs Write (cast call vs cast send) · 3 min</a></li>
+    <li><a href="#diagrama-5--qué-vive-dónde--2-min"
+    id="toc-diagrama-5--qué-vive-dónde--2-min">Diagrama 5 — Qué vive
+    dónde · 2 min</a></li>
+    <li><a href="#cierre-del-bloque--1-min"
+    id="toc-cierre-del-bloque--1-min">Cierre del bloque · 1 min</a></li>
+    </ul></li>
+    <li><a
+    href="#bloque-2--cierre-de-clase-2--anvil--cast--sepolia--30-min"
+    id="toc-bloque-2--cierre-de-clase-2--anvil--cast--sepolia--30-min">Bloque
+    2 · Cierre de clase 2 — Anvil + cast + Sepolia · 30 min</a>
+    <ul>
+    <li><a href="#21-qué-es-anvil--3-min"
+    id="toc-21-qué-es-anvil--3-min">2.1 ¿Qué es Anvil? · 3 min</a></li>
+    <li><a href="#22-levantar-anvil--5-min"
+    id="toc-22-levantar-anvil--5-min">2.2 Levantar Anvil · 5
+    min</a></li>
+    <li><a href="#23-deploy-local-con-forge-create--5-min"
+    id="toc-23-deploy-local-con-forge-create--5-min">2.3 Deploy local
+    con <code>forge create</code> · 5 min</a></li>
+    <li><a href="#24-interactuar-con-cast--7-min"
+    id="toc-24-interactuar-con-cast--7-min">2.4 Interactuar con
+    <code>cast</code> · 7 min</a></li>
+    <li><a href="#25-deploy-a-sepolia--7-min"
+    id="toc-25-deploy-a-sepolia--7-min">2.5 Deploy a Sepolia · 7
+    min</a></li>
+    <li><a href="#26-verlo-en-etherscan--3-min"
+    id="toc-26-verlo-en-etherscan--3-min">2.6 Verlo en Etherscan · 3
+    min</a></li>
+    </ul></li>
+    <li><a href="#bloque-3--erc-721-conceptual--15-min"
+    id="toc-bloque-3--erc-721-conceptual--15-min">Bloque 3 · ERC-721
+    conceptual · 15 min</a>
+    <ul>
+    <li><a href="#parte-2--qué-es-un-nft--8-min"
+    id="toc-parte-2--qué-es-un-nft--8-min">Parte 2 — Qué es un NFT · 8
+    min</a></li>
+    <li><a href="#parte-3--openzeppelin--7-min"
+    id="toc-parte-3--openzeppelin--7-min">Parte 3 — OpenZeppelin · 7
+    min</a></li>
+    </ul></li>
+    <li><a href="#bloque-4--setup--tour-del-contrato--25-min"
+    id="toc-bloque-4--setup--tour-del-contrato--25-min">Bloque 4 · Setup
+    + tour del contrato · 25 min</a>
+    <ul>
+    <li><a href="#parte-4--setup-del-repo--5-min"
+    id="toc-parte-4--setup-del-repo--5-min">Parte 4 — Setup del repo · 5
+    min</a></li>
+    <li><a href="#parte-5--tour-de-academiccredentials--20-min"
+    id="toc-parte-5--tour-de-academiccredentials--20-min">Parte 5 — Tour
+    de <code>AcademicCredentials</code> · 20 min</a></li>
+    </ul></li>
+    <li><a href="#pausa--10-min" id="toc-pausa--10-min">Pausa · 10
+    min</a></li>
+    <li><a href="#bloque-5--tests--coverage--25-min"
+    id="toc-bloque-5--tests--coverage--25-min">Bloque 5 · Tests +
+    Coverage · 25 min</a>
+    <ul>
+    <li><a href="#parte-6--tests-con-foundry--15-min"
+    id="toc-parte-6--tests-con-foundry--15-min">Parte 6 — Tests con
+    Foundry · 15 min</a></li>
+    <li><a href="#parte-65--coverage--10-min"
+    id="toc-parte-65--coverage--10-min">Parte 6.5 — Coverage · 10
+    min</a></li>
+    </ul></li>
+    <li><a href="#bloque-6--deploy-a-sepolia--verify--30-min"
+    id="toc-bloque-6--deploy-a-sepolia--verify--30-min">Bloque 6 ·
+    Deploy a Sepolia + Verify · 30 min</a>
+    <ul>
+    <li><a href="#parte-7--deploy-del-contrato--12-min"
+    id="toc-parte-7--deploy-del-contrato--12-min">Parte 7 — Deploy del
+    contrato · 12 min</a></li>
+    <li><a href="#parte-75--forge-verify-contract--8-min"
+    id="toc-parte-75--forge-verify-contract--8-min">Parte 7.5 —
+    <code>forge verify-contract</code> · 8 min</a></li>
+    <li><a href="#emitirse-un-título--7-min"
+    id="toc-emitirse-un-título--7-min">Emitirse un título · 7
+    min</a></li>
+    <li><a href="#verlo-en-etherscan--3-min"
+    id="toc-verlo-en-etherscan--3-min">Verlo en Etherscan · 3
+    min</a></li>
+    </ul></li>
+    <li><a href="#bloque-7--verlo-como-nft-en-metamask--10-min"
+    id="toc-bloque-7--verlo-como-nft-en-metamask--10-min">Bloque 7 ·
+    Verlo como NFT en MetaMask · 10 min</a></li>
+    <li><a href="#bloque-8--tp-final--cierre--15-min"
+    id="toc-bloque-8--tp-final--cierre--15-min">Bloque 8 · TP final +
+    cierre · 15 min</a>
+    <ul>
+    <li><a href="#parte-9--y-para-el-tp-final--8-min"
+    id="toc-parte-9--y-para-el-tp-final--8-min">Parte 9 — Y para el TP
+    final · 8 min</a></li>
+    <li><a href="#parte-10--repaso-diagramas-y-qa--5-min"
+    id="toc-parte-10--repaso-diagramas-y-qa--5-min">Parte 10 — Repaso
+    diagramas y Q&amp;A · 5 min</a></li>
+    <li><a href="#tarea--cierre--2-min"
+    id="toc-tarea--cierre--2-min">Tarea + cierre · 2 min</a></li>
+    </ul></li>
+    <li><a href="#tabla-de-tiempos-consolidada"
+    id="toc-tabla-de-tiempos-consolidada">Tabla de tiempos
+    (consolidada)</a></li>
+    <li><a href="#si-algo-se-rompe--playbook"
+    id="toc-si-algo-se-rompe--playbook">Si algo se rompe —
+    playbook</a></li>
+    <li><a href="#después-de-clase" id="toc-después-de-clase">Después de
+    clase</a></li>
+    </ul></li>
+    </ul>
+    <div style="margin-top:24px;padding-top:14px;border-top:1px solid var(--light-gray);font-size:12px;">
+      <a href="index.html" style="color:var(--gray);">← Volver al índice</a>
+    </div>
+  </aside>
+
+  <main class="content">
+    <nav class="page-breadcrumb" aria-label="Breadcrumb">
+      <a href="index.html">Inicio</a>
+      <span class="sep">›</span>
+      <span class="current">GUIA DOCENTE — C3</span>
+    </nav>
+    <nav class="page-nav-top">
+      <a href="index.html" class="back-to-menu">← Volver al menú principal</a>
+      <span class="banner-pill">GUIA DOCENTE — C3</span>
+    </nav>
+
+    <details class="toc-inline" open>
+      <summary>📑 Índice del documento</summary>
+      <ul>
+      <li><a
+      href="#guía-docente--clase-3-credenciales-académicas--erc-721"
+      id="toc-guía-docente--clase-3-credenciales-académicas--erc-721">Guía
+      docente — Clase 3 (Credenciales académicas / ERC-721)</a>
+      <ul>
+      <li><a href="#pre-clase--15-min-antes-de-empezar"
+      id="toc-pre-clase--15-min-antes-de-empezar">Pre-clase · 15 min
+      antes de empezar</a>
+      <ul>
+      <li><a href="#setup-técnico" id="toc-setup-técnico">Setup
+      técnico</a></li>
+      <li><a href="#lo-que-probablemente-vamos-a-romper-anticiparlo"
+      id="toc-lo-que-probablemente-vamos-a-romper-anticiparlo">Lo que
+      probablemente vamos a romper (anticiparlo)</a></li>
+      </ul></li>
+      <li><a href="#apertura--5-min" id="toc-apertura--5-min">Apertura ·
+      5 min</a></li>
+      <li><a
+      href="#bloque-1--diagramas-para-fijar-el-mental-model--20-min"
+      id="toc-bloque-1--diagramas-para-fijar-el-mental-model--20-min">Bloque
+      1 · Diagramas para fijar el mental model · 20 min</a>
+      <ul>
+      <li><a href="#diagrama-1--el-ciclo-del-contrato--4-min"
+      id="toc-diagrama-1--el-ciclo-del-contrato--4-min">Diagrama 1 — El
+      ciclo del contrato · 4 min</a></li>
+      <li><a href="#diagrama-2--las-3-capas--mapa-global--5-min"
+      id="toc-diagrama-2--las-3-capas--mapa-global--5-min">Diagrama 2 —
+      Las 3 capas — mapa global · 5 min</a></li>
+      <li><a href="#diagrama-3--arquitectura-real-del-sistema--6-min"
+      id="toc-diagrama-3--arquitectura-real-del-sistema--6-min">Diagrama
+      3 — Arquitectura real del sistema · 6 min</a></li>
+      <li><a
+      href="#diagrama-4--read-vs-write-cast-call-vs-cast-send--3-min"
+      id="toc-diagrama-4--read-vs-write-cast-call-vs-cast-send--3-min">Diagrama
+      4 — Read vs Write (cast call vs cast send) · 3 min</a></li>
+      <li><a href="#diagrama-5--qué-vive-dónde--2-min"
+      id="toc-diagrama-5--qué-vive-dónde--2-min">Diagrama 5 — Qué vive
+      dónde · 2 min</a></li>
+      <li><a href="#cierre-del-bloque--1-min"
+      id="toc-cierre-del-bloque--1-min">Cierre del bloque · 1
+      min</a></li>
+      </ul></li>
+      <li><a
+      href="#bloque-2--cierre-de-clase-2--anvil--cast--sepolia--30-min"
+      id="toc-bloque-2--cierre-de-clase-2--anvil--cast--sepolia--30-min">Bloque
+      2 · Cierre de clase 2 — Anvil + cast + Sepolia · 30 min</a>
+      <ul>
+      <li><a href="#21-qué-es-anvil--3-min"
+      id="toc-21-qué-es-anvil--3-min">2.1 ¿Qué es Anvil? · 3
+      min</a></li>
+      <li><a href="#22-levantar-anvil--5-min"
+      id="toc-22-levantar-anvil--5-min">2.2 Levantar Anvil · 5
+      min</a></li>
+      <li><a href="#23-deploy-local-con-forge-create--5-min"
+      id="toc-23-deploy-local-con-forge-create--5-min">2.3 Deploy local
+      con <code>forge create</code> · 5 min</a></li>
+      <li><a href="#24-interactuar-con-cast--7-min"
+      id="toc-24-interactuar-con-cast--7-min">2.4 Interactuar con
+      <code>cast</code> · 7 min</a></li>
+      <li><a href="#25-deploy-a-sepolia--7-min"
+      id="toc-25-deploy-a-sepolia--7-min">2.5 Deploy a Sepolia · 7
+      min</a></li>
+      <li><a href="#26-verlo-en-etherscan--3-min"
+      id="toc-26-verlo-en-etherscan--3-min">2.6 Verlo en Etherscan · 3
+      min</a></li>
+      </ul></li>
+      <li><a href="#bloque-3--erc-721-conceptual--15-min"
+      id="toc-bloque-3--erc-721-conceptual--15-min">Bloque 3 · ERC-721
+      conceptual · 15 min</a>
+      <ul>
+      <li><a href="#parte-2--qué-es-un-nft--8-min"
+      id="toc-parte-2--qué-es-un-nft--8-min">Parte 2 — Qué es un NFT · 8
+      min</a></li>
+      <li><a href="#parte-3--openzeppelin--7-min"
+      id="toc-parte-3--openzeppelin--7-min">Parte 3 — OpenZeppelin · 7
+      min</a></li>
+      </ul></li>
+      <li><a href="#bloque-4--setup--tour-del-contrato--25-min"
+      id="toc-bloque-4--setup--tour-del-contrato--25-min">Bloque 4 ·
+      Setup + tour del contrato · 25 min</a>
+      <ul>
+      <li><a href="#parte-4--setup-del-repo--5-min"
+      id="toc-parte-4--setup-del-repo--5-min">Parte 4 — Setup del repo ·
+      5 min</a></li>
+      <li><a href="#parte-5--tour-de-academiccredentials--20-min"
+      id="toc-parte-5--tour-de-academiccredentials--20-min">Parte 5 —
+      Tour de <code>AcademicCredentials</code> · 20 min</a></li>
+      </ul></li>
+      <li><a href="#pausa--10-min" id="toc-pausa--10-min">Pausa · 10
+      min</a></li>
+      <li><a href="#bloque-5--tests--coverage--25-min"
+      id="toc-bloque-5--tests--coverage--25-min">Bloque 5 · Tests +
+      Coverage · 25 min</a>
+      <ul>
+      <li><a href="#parte-6--tests-con-foundry--15-min"
+      id="toc-parte-6--tests-con-foundry--15-min">Parte 6 — Tests con
+      Foundry · 15 min</a></li>
+      <li><a href="#parte-65--coverage--10-min"
+      id="toc-parte-65--coverage--10-min">Parte 6.5 — Coverage · 10
+      min</a></li>
+      </ul></li>
+      <li><a href="#bloque-6--deploy-a-sepolia--verify--30-min"
+      id="toc-bloque-6--deploy-a-sepolia--verify--30-min">Bloque 6 ·
+      Deploy a Sepolia + Verify · 30 min</a>
+      <ul>
+      <li><a href="#parte-7--deploy-del-contrato--12-min"
+      id="toc-parte-7--deploy-del-contrato--12-min">Parte 7 — Deploy del
+      contrato · 12 min</a></li>
+      <li><a href="#parte-75--forge-verify-contract--8-min"
+      id="toc-parte-75--forge-verify-contract--8-min">Parte 7.5 —
+      <code>forge verify-contract</code> · 8 min</a></li>
+      <li><a href="#emitirse-un-título--7-min"
+      id="toc-emitirse-un-título--7-min">Emitirse un título · 7
+      min</a></li>
+      <li><a href="#verlo-en-etherscan--3-min"
+      id="toc-verlo-en-etherscan--3-min">Verlo en Etherscan · 3
+      min</a></li>
+      </ul></li>
+      <li><a href="#bloque-7--verlo-como-nft-en-metamask--10-min"
+      id="toc-bloque-7--verlo-como-nft-en-metamask--10-min">Bloque 7 ·
+      Verlo como NFT en MetaMask · 10 min</a></li>
+      <li><a href="#bloque-8--tp-final--cierre--15-min"
+      id="toc-bloque-8--tp-final--cierre--15-min">Bloque 8 · TP final +
+      cierre · 15 min</a>
+      <ul>
+      <li><a href="#parte-9--y-para-el-tp-final--8-min"
+      id="toc-parte-9--y-para-el-tp-final--8-min">Parte 9 — Y para el TP
+      final · 8 min</a></li>
+      <li><a href="#parte-10--repaso-diagramas-y-qa--5-min"
+      id="toc-parte-10--repaso-diagramas-y-qa--5-min">Parte 10 — Repaso
+      diagramas y Q&amp;A · 5 min</a></li>
+      <li><a href="#tarea--cierre--2-min"
+      id="toc-tarea--cierre--2-min">Tarea + cierre · 2 min</a></li>
+      </ul></li>
+      <li><a href="#tabla-de-tiempos-consolidada"
+      id="toc-tabla-de-tiempos-consolidada">Tabla de tiempos
+      (consolidada)</a></li>
+      <li><a href="#si-algo-se-rompe--playbook"
+      id="toc-si-algo-se-rompe--playbook">Si algo se rompe —
+      playbook</a></li>
+      <li><a href="#después-de-clase" id="toc-después-de-clase">Después
+      de clase</a></li>
+      </ul></li>
+      </ul>
+      <div class="toc-controls">
+        <button type="button" class="toc-btn" data-action="expand-all">Expandir todo</button>
+        <button type="button" class="toc-btn" data-action="collapse-all">Colapsar todo</button>
+      </div>
+    </details>
+
+<h1 id="guía-docente--clase-3-credenciales-académicas--erc-721">Guía
+docente — Clase 3 (Credenciales académicas / ERC-721)</h1>
+<blockquote>
+<p><strong>Audiencia</strong>: Dr. David Petrocelli + Esp. Ciro Romero.
+Esta guía NO es para los pibes — es el script con el que damos la
+clase.</p>
+</blockquote>
+<blockquote>
+<p><strong>Duración</strong>: 4 horas (240 min). Hay 25 min de buffer
+para pausas / preguntas / un alumno trabado.</p>
+</blockquote>
+<blockquote>
+<p><strong>Material del alumno</strong>: <a
+href="clase-3-clase.html">clase-3-clase.html</a> + <a
+href="diagramas-arquitectura.html">diagramas-arquitectura.html</a>. El
+profe abre AMBAS en pestañas separadas para alternar.</p>
+</blockquote>
+<hr />
+<h2 id="pre-clase--15-min-antes-de-empezar">Pre-clase · 15 min antes de
+empezar</h2>
+<h3 id="setup-técnico">Setup técnico</h3>
+<ul class="task-list">
+<li><label><input type="checkbox" />Verificar conexión a Sepolia:
+<code>cast block-number --rpc-url https://ethereum-sepolia-rpc.publicnode.com</code>
+(tiene que devolver un número alto y reciente).</label></li>
+<li><label><input type="checkbox" />MetaMask con <code>0.05+ ETH</code>
+en Sepolia (cuenta dedicada <code>unq-dev-prof</code>). Si está bajo, ir
+al <a
+href="https://cloud.google.com/application/web3/faucet/ethereum/sepolia">Google
+Cloud Faucet</a> <strong>antes</strong> de empezar.</label></li>
+<li><label><input type="checkbox" />API key de Etherscan exportada en la
+terminal: <code>export ETHERSCAN_API_KEY=...</code></label></li>
+<li><label><input type="checkbox" />Repo
+<code>diplo-unq-blockchain-clase3</code> clonado local +
+<code>forge install</code> + <code>forge build</code> +
+<code>forge test</code> pasa los 14 tests.</label></li>
+<li><label><input type="checkbox" />Anvil disponible (probar
+<code>anvil --help</code> por si la instalación quedó rota desde clase
+2).</label></li>
+<li><label><input type="checkbox" />Pestañas abiertas en el
+browser:</label>
+<ul>
+<li><code>clase-3-clase.html</code></li>
+<li><code>diagramas-arquitectura.html</code></li>
+<li><code>https://sepolia.etherscan.io/</code></li>
+<li>MetaMask en Sepolia</li>
+</ul></li>
+<li><label><input type="checkbox" />Terminal en modo “demo” (zoom 130%,
+fondo negro, tamaño legible para los del fondo del aula).</label></li>
+<li><label><input type="checkbox" />Cerrar Slack, mail, todo lo que tire
+notificaciones en pantalla.</label></li>
+<li><label><input type="checkbox" />Backup: si Sepolia se cae a mitad de
+clase, deployamos en Anvil local — tener un script
+<code>anvil-fallback.sh</code> listo.</label></li>
+</ul>
+<h3 id="lo-que-probablemente-vamos-a-romper-anticiparlo">Lo que
+probablemente vamos a romper (anticiparlo)</h3>
+<ul>
+<li>⚠️ Faucet sin ETH → tener un secondary listo (segunda cuenta
+<code>unq-dev-prof-2</code> con balance).</li>
+<li>⚠️ Sepolia con bloque lento → el <code>forge create</code> puede
+tardar 30-60s, <strong>NO entrar en pánico</strong> ni cancelar la tx,
+decirles a los alumnos “esperen, esto es normal”.</li>
+<li>⚠️ Algún alumno sin MetaMask configurado → mandarlo a la sección
+“Pre-requisitos” de <a href="clase-3-clase.html">clase-3-clase.html</a>
+y que la haga en vivo mientras seguimos. Si pierde 20 min, la recupera
+con la tarea.</li>
+<li>⚠️ <code>forge install</code> falla en alguna red corporativa →
+preparar un tarball <code>vendored-deps.tar.gz</code> con
+<code>lib/</code> ya populado, copiar y <code>tar xzf</code>.</li>
+<li>⚠️ <code>cast wallet import</code> pide password y nadie lo anota →
+recordarles ANTES de importar: “elijan un password fácil que se
+acuerden, no es el de MetaMask, es local”.</li>
+</ul>
+<hr />
+<h2 id="apertura--5-min">Apertura · 5 min</h2>
+<p>Cuando entran al aula y se acomodan:</p>
+<blockquote>
+<p>“Buenas. La clase pasada terminamos con <code>SimpleStorage</code>
+testeado en sus máquinas. Levantamos la mano: ¿quién logró correr
+<code>forge test</code> y vio los 10 tests pasar en verde?”</p>
+</blockquote>
+<p>(Esperar a ver manos. Si menos de la mitad las levanta, ahí ya hay un
+problema de prerrequisitos. Si es así, dedicar 3 min extra al final del
+Bloque 2 para revisar.)</p>
+<blockquote>
+<p>“Hoy hacemos dos saltos grandes. <strong>Primero</strong>, terminamos
+lo que quedó pendiente de clase 2: levantamos una blockchain local con
+Anvil, hablamos con el contrato desde la terminal con <code>cast</code>,
+y después llevamos eso mismo a Sepolia y lo vemos en Etherscan.
+<strong>Segundo</strong>, pasamos del juguete <code>SimpleStorage</code>
+al contrato real del TP final: un NFT ERC-721 que representa un título
+universitario.”</p>
+</blockquote>
+<blockquote>
+<p>“Al final de hoy van a tener un contrato suyo, deployado en una
+blockchain pública, emitiéndoles un título académico que pueden ver en
+MetaMask. Eso es la <strong>base</strong> del TP final — todo lo que
+viene después es extender esto.”</p>
+</blockquote>
+<blockquote>
+<p>“Antes de tirar comandos, vamos a pasar 20 minutos en una página de
+diagramas para fijar el modelo mental. Si entendemos el mapa primero,
+después escribir código es solo seguir el mapa.”</p>
+</blockquote>
+<p>(Cambiar de pestaña a <code>diagramas-arquitectura.html</code>.)</p>
+<hr />
+<h2 id="bloque-1--diagramas-para-fijar-el-mental-model--20-min">Bloque 1
+· Diagramas para fijar el mental model · 20 min</h2>
+<blockquote>
+<p><strong>Por qué arrancar acá</strong>: si vamos directo al código,
+los pibes mueven líneas pero no saben qué están deployando “dónde”. Los
+4 minutos por diagrama son el seguro pedagógico contra eso.</p>
+</blockquote>
+<blockquote>
+<p><strong>Cómo presentarlo</strong>: abrir <a
+href="diagramas-arquitectura.html">diagramas-arquitectura.html</a>,
+hacer scroll desde arriba, parar en cada uno, narrar. NO leer el texto
+al pie del diagrama — eso lo leen ellos en casa. Acá narramos.</p>
+</blockquote>
+<h3 id="diagrama-1--el-ciclo-del-contrato--4-min">Diagrama 1 — El ciclo
+del contrato · 4 min</h3>
+<p><strong>Mostrar</strong>: scroll al diagrama #1 (“El ciclo de un
+smart contract”).</p>
+<p><strong>Decir</strong> (apuntando con el cursor):</p>
+<blockquote>
+<p>“Tres carriles de natación. <strong>Tu máquina</strong> a la
+izquierda — donde escribís el <code>.sol</code>, donde corre
+<code>forge build</code>, donde testeás. <strong>Blockchain</strong> en
+el medio — Sepolia, mainnet, Base, da igual. Es donde el contrato vive
+una vez deployado. <strong>Etherscan</strong> a la derecha — es solo un
+<em>visor</em> de la blockchain, no es la blockchain.”</p>
+</blockquote>
+<p><strong>Apuntar al <code>forge create</code></strong>:</p>
+<blockquote>
+<p>“Esta flecha — <code>forge create</code> — es la bisagra. A la
+izquierda escribiste código humano. A la derecha hay bytecode corriendo
+en una EVM. Esa flecha es el momento donde tu código sale de tu disco y
+entra a la red pública.”</p>
+</blockquote>
+<p><strong>Preguntar al aula</strong> (para verificar comprensión):</p>
+<blockquote>
+<p>“¿Etherscan <strong>es</strong> la blockchain o <strong>lee</strong>
+la blockchain?”</p>
+</blockquote>
+<p>(Respuesta esperada: la lee. Si alguien dice “es”, aclarar: Etherscan
+es una empresa privada que indexa datos públicos. Si Etherscan se cae,
+la blockchain sigue. Hay alternativas: Blockscout, Tenderly, etc.)</p>
+<p><strong>Anticipación de confusión</strong>: alguno seguro pregunta
+“¿el contrato está en mi máquina o en Etherscan?”. Respuesta: ni uno ni
+otro — está en <strong>miles de nodos</strong> que corren la red. Tu
+máquina y Etherscan solo son <strong>clientes</strong> que le
+hablan.</p>
+<h3 id="diagrama-2--las-3-capas--mapa-global--5-min">Diagrama 2 — Las 3
+capas — mapa global · 5 min</h3>
+<p><strong>Mostrar</strong>: diagrama #2 (“Las 3 capas”).</p>
+<p><strong>Decir</strong>:</p>
+<blockquote>
+<p>“Este es el mapa más importante de toda la diplomatura. Tres capas de
+arriba para abajo: <strong>edge</strong> — lo que ve el usuario
+(browser, wallet, frontend). <strong>Web2</strong> — la app de toda la
+vida (Next.js, FastAPI, Postgres, IPFS). <strong>On-chain</strong> — el
+contrato. Lo único de lo tres que <strong>no controlamos</strong> una
+vez deployado.”</p>
+</blockquote>
+<p><strong>Apuntar a la línea naranja arriba</strong>:</p>
+<blockquote>
+<p>“Acá viven los decanos, los estudiantes, los empleadores. No saben
+Solidity. Solo abren un navegador.”</p>
+</blockquote>
+<p><strong>Apuntar a la capa azul (web2)</strong>:</p>
+<blockquote>
+<p>“Esto es lo que ya saben hacer. Un Next.js, un Postgres. NO
+desaparece porque uses blockchain. La blockchain <em>no reemplaza</em> a
+la web — la <strong>complementa</strong>.”</p>
+</blockquote>
+<p><strong>Apuntar a la verde (on-chain)</strong>:</p>
+<blockquote>
+<p>“Acá vive el contrato. Una sola pieza, chiquita comparada con todo lo
+demás. Pero es la única <strong>inmutable</strong> — la que no se puede
+borrar ni alterar.”</p>
+</blockquote>
+<p><strong>Regla práctica que tienen que llevarse</strong>:</p>
+<blockquote>
+<p>“Si necesitan <strong>firma + gas</strong> → es on-chain. Si no → es
+web2. Esa es la regla. Cuando estén diseñando el TP final, cada vez que
+se pregunten ‘¿esto va al contrato?’ — háganse esa pregunta.”</p>
+</blockquote>
+<p><strong>Preguntar</strong>:</p>
+<blockquote>
+<p>“Login con email y password — ¿en qué capa va?” → web2. “Emisión de
+un título” → on-chain (firma + gas). “Mostrar la lista de títulos
+emitidos en una página” → mixto: el dato vive on-chain, pero el frontend
+lo lee y lo renderiza.</p>
+</blockquote>
+<h3 id="diagrama-3--arquitectura-real-del-sistema--6-min">Diagrama 3 —
+Arquitectura real del sistema · 6 min</h3>
+<p><strong>Mostrar</strong>: diagrama #3 (“Arquitectura del sistema de
+credenciales”).</p>
+<p><strong>Decir</strong> (con énfasis):</p>
+<blockquote>
+<p>“Este es el sistema completo que vamos a construir entre clase 3,
+clase 4 y el TP final. Frontend en Vercel, backend opcional, contrato
+<code>AcademicCredentials</code> en Sepolia primero y Base Sepolia para
+el TP final, IPFS para los PDFs y las fotos, indexer para queries
+rápidas, observabilidad.”</p>
+</blockquote>
+<p><strong>⚠️ Aclarar fuerte para que no entren en pánico</strong>:</p>
+<blockquote>
+<p>“<strong>No necesitan TODO esto para el TP</strong>. Esto es la
+versión <strong>producción aspiracional</strong>. Lo mínimo del TP es:
+frontend + contrato + IPFS. The Graph, Tenderly, Sentry, Cloudflare —
+todo eso es enchufable después y suma como bonus, pero no aprueba ni
+desaprueba.”</p>
+</blockquote>
+<p><strong>Apuntar al contrato en el diagrama</strong>:</p>
+<blockquote>
+<p>“Vean el tamaño relativo del contrato vs todo lo demás. Es
+<strong>una pieza</strong> del sistema. La gente cree que blockchain
+reemplaza la app entera y no — el contrato es el equivalente al
+microservicio de credenciales en una app tradicional. Todo lo demás
+sigue siendo lo de siempre.”</p>
+</blockquote>
+<p><strong>Mencionar el split issuer/verifier</strong> (apuntando):</p>
+<blockquote>
+<p>“Vean cómo el frontend tiene <strong>dos modos</strong>: el del
+decano que emite títulos (necesita wallet con <code>ISSUER_ROLE</code>)
+y el del verificador público que entra desde afuera y solo lee. Esto es
+lo que les vamos a pedir en el TP final, parte 4.”</p>
+</blockquote>
+<h3
+id="diagrama-4--read-vs-write-cast-call-vs-cast-send--3-min">Diagrama 4
+— Read vs Write (cast call vs cast send) · 3 min</h3>
+<p><strong>Mostrar</strong>: diagrama #4.</p>
+<p><strong>Decir</strong>:</p>
+<blockquote>
+<p>“Esta es la <strong>confusión #1</strong> de todo principiante en
+Ethereum. Mismo prefijo <code>cast</code>, comportamiento radicalmente
+distinto.”</p>
+</blockquote>
+<p><strong>Mnemonic device</strong>:</p>
+<blockquote>
+<p>“Si la función Solidity dice <code>view</code> o <code>pure</code> →
+<code>cast call</code>. <strong>Lectura, gratis, instantánea, no firma
+nada.</strong> Cualquier otra cosa → <code>cast send</code>.
+<strong>Modifica state, gasta gas, firma con la wallet, espera un
+bloque.</strong>”</p>
+</blockquote>
+<p><strong>Quiz al aula</strong>:</p>
+<blockquote>
+<p>“Si la función es <code>view returns (uint256)</code> —
+¿<code>call</code> o <code>send</code>?” → call.</p>
+<p>“Si la función modifica un mapping — ¿qué uso?” → send.</p>
+<p>“Si llamo a <code>ownerOf(tokenId)</code> — ¿qué uso?” → call (es
+view).</p>
+<p>“Si llamo a <code>issueCredential(...)</code> — ¿qué uso?” → send
+(mintea).</p>
+</blockquote>
+<p><strong>Anticipación</strong>: alguno va a hacer
+<code>cast call</code> cuando debería hacer <code>cast send</code>, no
+va a ver error pero tampoco va a ver cambio en la blockchain.
+Avisar:</p>
+<blockquote>
+<p>“Si hacen <code>cast call</code> a una función que escribe,
+<strong>simula la ejecución localmente</strong>. Les devuelve el
+resultado pero NO lo manda a la red. Es un error silencioso muy común.
+Si después ven que <code>ownerOf</code> devuelve <code>0x0</code>,
+revisen si usaron <code>send</code> o <code>call</code>.”</p>
+</blockquote>
+<h3 id="diagrama-5--qué-vive-dónde--2-min">Diagrama 5 — Qué vive dónde ·
+2 min</h3>
+<p><strong>Mostrar</strong>: diagrama #5.</p>
+<p><strong>Decir</strong> (corto, ya lo saben de clase 1):</p>
+<blockquote>
+<p>“Repaso rápido — esto ya lo cubrimos en clase 1, pero lo refrescamos
+porque hoy van a estar exportando private keys de MetaMask y la pueden
+cagar.”</p>
+</blockquote>
+<p><strong>Apuntar al lado rojo</strong>:</p>
+<blockquote>
+<p>“Rojo = secreto. Private key, frase BIP-39 de 12 palabras, archivo
+<code>.env</code>. <strong>NUNCA</strong> va a git, NUNCA a Slack, NUNCA
+a un screenshot en un chat con un LLM.”</p>
+</blockquote>
+<p><strong>Apuntar al lado verde</strong>:</p>
+<blockquote>
+<p>“Verde = público por diseño. Address, txs, bytecode, storage del
+contrato. Cualquiera lo lee. NO intenten ‘esconder’ algo poniéndolo
+on-chain pensando que es privado — es lo opuesto.”</p>
+</blockquote>
+<h3 id="cierre-del-bloque--1-min">Cierre del bloque · 1 min</h3>
+<blockquote>
+<p>“Listo. Tenemos el mapa. Ahora bajamos al teclado.”</p>
+</blockquote>
+<p>(Cambiar de pestaña a <code>clase-3-clase.html</code>.)</p>
+<hr />
+<h2
+id="bloque-2--cierre-de-clase-2--anvil--cast--sepolia--30-min">Bloque 2
+· Cierre de clase 2 — Anvil + cast + Sepolia · 30 min</h2>
+<blockquote>
+<p><strong>Cómo dictar este bloque</strong>: el profe tipea en su
+terminal proyectada, los alumnos tipean en la suya. Cada subsección
+termina con un punto de sincronización: “esperen 30 segundos a que todos
+lleguen acá”.</p>
+</blockquote>
+<h3 id="21-qué-es-anvil--3-min">2.1 ¿Qué es Anvil? · 3 min</h3>
+<p><strong>Demo en pantalla</strong>: solo abrir <a
+href="clase-3-clase.html">clase-3-clase.html#11-qué-es-anvil-y-para-qué-sirve</a>
+y leer la tabla de “Velocidad / Costo / Iteración”.</p>
+<p><strong>Decir</strong>:</p>
+<blockquote>
+<p>“Piensen en Anvil como <code>localhost:3000</code> para Ethereum. Es
+una blockchain de juguete que corre en su máquina, sin minería, sin gas
+real. La usamos para iterar rápido. Cuando ya funciona, recién ahí vamos
+a Sepolia.”</p>
+</blockquote>
+<p><strong>No tipear nada todavía</strong> — es conceptual.</p>
+<h3 id="22-levantar-anvil--5-min">2.2 Levantar Anvil · 5 min</h3>
+<p><strong>Demo en pantalla</strong>:</p>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> diplo-unq-blockchain-clase2</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">anvil</span></span></code></pre></div>
+<p><strong>Decir</strong> mientras se llena la pantalla:</p>
+<blockquote>
+<p>“Vean las 10 cuentas, cada una con 10.000 ETH falsos. Las private
+keys están <strong>publicadas</strong> en el output — es a propósito.
+Estas keys son conocidas por todo el mundo, <strong>NUNCA las usen en
+una red real</strong>.”</p>
+</blockquote>
+<p>⚠️ <strong>Pausa de sincronización</strong>:</p>
+<blockquote>
+<p>“Esperen, no cierren esa terminal. Anvil tiene que seguir corriendo.
+Abran una <strong>segunda terminal</strong> y vengan al mismo
+directorio.”</p>
+</blockquote>
+<p>(Esperar 30s. Mirar al aula. Preguntar: “¿todos tienen Anvil
+corriendo en una terminal y otra terminal lista?”. Si alguien levanta la
+mano, ayudarlo.)</p>
+<h3 id="23-deploy-local-con-forge-create--5-min">2.3 Deploy local con
+<code>forge create</code> · 5 min</h3>
+<p><strong>Demo en pantalla</strong> — copiar y pegar el comando
+completo de <a
+href="clase-3-clase.html">clase-3-clase.html#13-deploy-local-con-forge-create</a>:</p>
+<div class="sourceCode" id="cb2"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">forge</span> create src/SimpleStorage.sol:SimpleStorage <span class="dt">\</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">--rpc-url</span> http://localhost:8545 <span class="dt">\</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">--private-key</span> 0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80 <span class="dt">\</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">--broadcast</span></span></code></pre></div>
+<p><strong>Decir</strong> mientras corre:</p>
+<blockquote>
+<p>“Cuatro flags: qué deployar, contra qué RPC, con qué cuenta firma, y
+<code>--broadcast</code> que dice ‘mandalo de verdad, no simules’. Sin
+<code>--broadcast</code> es un dry-run.”</p>
+</blockquote>
+<blockquote>
+<p>“La address que les devuelve — <code>0x5FbDB...0aa3</code> — es
+<strong>determinística</strong> en Anvil. Si reinician Anvil y hacen el
+primer deploy, les va a dar siempre la misma. Eso facilita iterar.”</p>
+</blockquote>
+<p><strong>Demo</strong>: exportar la variable y mostrarla:</p>
+<div class="sourceCode" id="cb3"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">ADDR</span><span class="op">=</span>0x5FbDB2315678afecb367f032d93F642f64180aa3</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="va">$ADDR</span></span></code></pre></div>
+<p>⚠️ <strong>Pausa</strong>: “¿todos tienen una address deployada?”
+Esperar.</p>
+<h3 id="24-interactuar-con-cast--7-min">2.4 Interactuar con
+<code>cast</code> · 7 min</h3>
+<p><strong>Aquí aplica el diagrama #4 que vimos antes</strong>.
+Avisar:</p>
+<blockquote>
+<p>“Volvemos al diagrama de read vs write. Vamos a hacer las dos.”</p>
+</blockquote>
+<p><strong>Demo lectura</strong> (call):</p>
+<div class="sourceCode" id="cb4"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">cast</span> call <span class="va">$ADDR</span> <span class="st">&quot;favoriteNumber()&quot;</span> <span class="at">--rpc-url</span> http://localhost:8545 <span class="kw">|</span> <span class="ex">cast</span> <span class="at">--to-dec</span></span></code></pre></div>
+<p><strong>Decir</strong>:</p>
+<blockquote>
+<p>“Devolvió <code>0</code>. Recién deployamos, valor inicial.
+<strong>No firmamos nada, no gastamos gas.</strong> Esto es
+<code>view</code>.”</p>
+</blockquote>
+<p><strong>Demo escritura</strong> (send):</p>
+<div class="sourceCode" id="cb5"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">cast</span> send <span class="va">$ADDR</span> <span class="st">&quot;store(uint256)&quot;</span> 42 <span class="dt">\</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">--rpc-url</span> http://localhost:8545 <span class="dt">\</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">--private-key</span> 0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80</span></code></pre></div>
+<p><strong>Decir</strong> mostrando el receipt:</p>
+<blockquote>
+<p>“Vean: <code>status: 1</code>, <code>gasUsed: 45277</code>. Ese es el
+costo en gas de modificar storage. Y vean el campo <code>logs</code> —
+ahí está el evento <code>NumberUpdated</code> que emitió el contrato.
+<strong>Eso es lo que vamos a aprovechar después con
+Etherscan.</strong>”</p>
+</blockquote>
+<p><strong>Demo confirmación</strong>:</p>
+<div class="sourceCode" id="cb6"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">cast</span> call <span class="va">$ADDR</span> <span class="st">&quot;favoriteNumber()&quot;</span> <span class="at">--rpc-url</span> http://localhost:8545 <span class="kw">|</span> <span class="ex">cast</span> <span class="at">--to-dec</span></span></code></pre></div>
+<blockquote>
+<p>“Ahora dice <code>42</code>. Se modificó. Cerramos el loop.”</p>
+</blockquote>
+<p><strong>Pregunta al aula</strong>:</p>
+<blockquote>
+<p>“Si quiero leer un mapping con <code>cast call</code>, ¿qué le paso?”
+(Respuesta: <code>cast call $ADDR "miMapping(uint256)" 5</code> — la
+firma se pasa con tipos, los argumentos después.)</p>
+</blockquote>
+<p>⚠️ <strong>Pausa de 1 min</strong>: “todos hagan los tres comandos.
+Si les funciona, miran al pizarrón. Si no, levantan la mano.”</p>
+<h3 id="25-deploy-a-sepolia--7-min">2.5 Deploy a Sepolia · 7 min</h3>
+<blockquote>
+<p><strong>El primer momento crítico de la clase</strong>. Si Sepolia
+anda lenta, esto puede tirar 5 min más.</p>
+</blockquote>
+<p><strong>Decir antes de tipear</strong>:</p>
+<blockquote>
+<p>“Ahora pasamos a la blockchain real. Sepolia. Chain ID
+<code>11155111</code>. Las transacciones tardan ~12 segundos cada una.
+<strong>Sin pánico</strong> si parece colgado.”</p>
+</blockquote>
+<p><strong>Demo importar wallet</strong> (proyectar):</p>
+<div class="sourceCode" id="cb7"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">cast</span> wallet import dev-wallet <span class="at">--interactive</span></span></code></pre></div>
+<blockquote>
+<p>“Les va a pedir DOS cosas: la private key (la sacan de MetaMask: ⋮ →
+Account details → Show private key) y un password local. <strong>El
+password lo eligen ustedes y lo van a tener que tipear cada vez que
+firmen algo.</strong> No es el password de MetaMask.”</p>
+</blockquote>
+<p>⚠️ <strong>Pausa larga</strong> (2 min): este paso es donde todos se
+quedan atorados. Caminar entre las filas, ver pantallas, ayudar al que
+no encuentra “Show private key” en MetaMask.</p>
+<p><strong>Demo deploy</strong> a Sepolia:</p>
+<div class="sourceCode" id="cb8"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">forge</span> create src/SimpleStorage.sol:SimpleStorage <span class="dt">\</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">--rpc-url</span> https://ethereum-sepolia-rpc.publicnode.com <span class="dt">\</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">--account</span> dev-wallet <span class="dt">\</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">--broadcast</span></span></code></pre></div>
+<blockquote>
+<p>“Va a pedir el password. Después tarda ~12 segundos.
+<strong>Esperen</strong>, no cancelen. Si pasan 60s sin respuesta,
+<em>ahí</em> sí me llaman.”</p>
+</blockquote>
+<p>(Mientras corre, contar: “esto está construyendo la transacción,
+firmándola con tu private key encriptada, mandándola al nodo público de
+Sepolia, y esperando que entre en un bloque.”)</p>
+<p><strong>Cuando vuelve</strong>:</p>
+<blockquote>
+<p>“Esa address — diferente a la de Anvil — es ahora <strong>única en
+Sepolia</strong>. Existe en una blockchain pública. Pueden mandarle el
+link a su mamá y verlo desde otra computadora.”</p>
+</blockquote>
+<p><strong>Exportar</strong>:</p>
+<div class="sourceCode" id="cb9"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">ADDR_SEPOLIA</span><span class="op">=</span>0x...</span></code></pre></div>
+<h3 id="26-verlo-en-etherscan--3-min">2.6 Verlo en Etherscan · 3
+min</h3>
+<p><strong>Demo en browser</strong>: abrir
+<code>https://sepolia.etherscan.io/address/$ADDR_SEPOLIA</code>.</p>
+<p><strong>Mostrar</strong>:</p>
+<ul>
+<li>La transacción de creación (tab “Transactions”).</li>
+<li>El bytecode (tab “Contract” → “Source code not verified” — apuntar:
+“esto lo arreglamos al final de clase con
+<code>forge verify-contract</code>”).</li>
+<li>El campo “Logs” → “no hay logs todavía porque no llamamos
+<code>store</code>”.</li>
+</ul>
+<p><strong>Decir</strong>:</p>
+<blockquote>
+<p>“Cierra el loop completo: del <code>.sol</code> que escribieron en su
+disco al log decodificado en el explorador público. Son las 3 capas del
+diagrama #1 conectadas.”</p>
+</blockquote>
+<p>⚠️ <strong>Pausa</strong>: “¿todos tienen address en Etherscan? Foto
+a la pantalla, lo van a necesitar para la tarea de clase 2.”</p>
+<hr />
+<h2 id="bloque-3--erc-721-conceptual--15-min">Bloque 3 · ERC-721
+conceptual · 15 min</h2>
+<blockquote>
+<p><strong>Aquí baja la intensidad de tipeo</strong>. Más pizarrón,
+menos teclado. Si hay pizarra física, dibujar. Si no, podés compartir un
+Excalidraw o dibujar en el iPad y compartir.</p>
+</blockquote>
+<h3 id="parte-2--qué-es-un-nft--8-min">Parte 2 — Qué es un NFT · 8
+min</h3>
+<p><strong>Decir</strong> (con whiteboard):</p>
+<blockquote>
+<p>“Hasta ahora trabajamos con <code>uint256 favoriteNumber</code>. Una
+variable. Un número. Si yo y otra persona ponemos <code>42</code>, el
+state es <strong>el mismo número</strong>. No tiene identidad.”</p>
+</blockquote>
+<p><strong>Dibujar</strong>:</p>
+<pre><code>ERC-20 (fungible)             ERC-721 (no fungible)
+┌─────────────┐               ┌─────────────────────┐
+│ alice: 100  │               │ tokenId 1 → alice   │
+│ bob:    50  │               │ tokenId 2 → bob     │
+│ carol:   3  │               │ tokenId 3 → alice   │
+└─────────────┘               └─────────────────────┘
+balances → cantidad           ownerOf → identidad</code></pre>
+<p><strong>Decir</strong>:</p>
+<blockquote>
+<p>“Un USDC es igual a otro USDC. Eso es ERC-20. Pero un título de Lic
+en Sistemas de Juan no es igual al de María — tienen DNIs distintos,
+fechas distintas, foto distinta. Cada uno es <strong>único e
+identificable</strong>. Eso es ERC-721.”</p>
+</blockquote>
+<p><strong>Pregunta al aula</strong>:</p>
+<blockquote>
+<p>“¿Un dólar es fungible o no fungible?” (Fungible.) “¿Una entrada al
+Lollapalooza con butaca asignada?” (No fungible — cada una tiene un
+asiento.)</p>
+</blockquote>
+<p><strong>Tres campos</strong> que tiene todo NFT:</p>
+<blockquote>
+<p>“<code>tokenId</code> — el número único.
+<code>ownerOf(tokenId)</code> — quién es dueño hoy.
+<code>tokenURI(tokenId)</code> — link a la metadata: nombre, foto,
+atributos. Esa metadata vive <strong>fuera</strong> de la chain,
+normalmente en IPFS, porque guardar JSON on-chain es carísimo.”</p>
+</blockquote>
+<blockquote>
+<p>“Para un título universitario: <code>tokenId = 12345</code>,
+<code>ownerOf(12345) = address de Juan Pérez</code>,
+<code>tokenURI(12345) = ipfs://bafy.../titulo-juan.json</code>.”</p>
+</blockquote>
+<h3 id="parte-3--openzeppelin--7-min">Parte 3 — OpenZeppelin · 7
+min</h3>
+<p><strong>Decir</strong>:</p>
+<blockquote>
+<p>“Si tuviéramos que escribir un ERC-721 desde cero, son ~400 líneas de
+Solidity con un montón de edge cases. Mintear, transferir, aprobar,
+balance tracking, token URIs… Y cada línea es una oportunidad de bug que
+cuesta dinero real.”</p>
+</blockquote>
+<blockquote>
+<p>“OpenZeppelin es una librería de contratos <strong>auditados, usados
+en producción por Coinbase, Uniswap, Aave</strong>. Heredamos de ellos
+en lugar de reescribir.”</p>
+</blockquote>
+<p><strong>Mostrar la tabla</strong> de <a
+href="clase-3-clase.html">clase-3-clase.html#parte-3—openzeppelin</a>:</p>
+<table>
+<thead>
+<tr>
+<th>Contrato</th>
+<th>Qué da</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ERC721</code></td>
+<td>El estándar base</td>
+</tr>
+<tr>
+<td><code>ERC721URIStorage</code></td>
+<td>Permite URI distinta por tokenId</td>
+</tr>
+<tr>
+<td><code>Ownable</code></td>
+<td>Control de acceso simple — <code>onlyOwner</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Decir</strong>:</p>
+<blockquote>
+<p>“Heredamos de los <strong>dos primeros</strong> para tener el NFT con
+metadata por token. Y de <code>Ownable</code> para que solo la wallet
+del ‘rector’ pueda emitir títulos.”</p>
+</blockquote>
+<blockquote>
+<p>“En el TP final van a cambiar <code>Ownable</code> por
+<code>AccessControl</code> — porque queremos múltiples emisores (varios
+decanos), no uno solo. Pero para hoy, <code>Ownable</code> alcanza.”</p>
+</blockquote>
+<hr />
+<h2 id="bloque-4--setup--tour-del-contrato--25-min">Bloque 4 · Setup +
+tour del contrato · 25 min</h2>
+<h3 id="parte-4--setup-del-repo--5-min">Parte 4 — Setup del repo · 5
+min</h3>
+<p><strong>Demo en pantalla</strong> — comandos de <a
+href="clase-3-clase.html">clase-3-clase.html#parte-4—setup-del-repo-de-clase-3</a>:</p>
+<div class="sourceCode" id="cb11"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/dpetrocelli/diplo-unq-blockchain-clase3.git</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> diplo-unq-blockchain-clase3</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="ex">forge</span> install foundry-rs/forge-std <span class="at">--shallow</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="ex">forge</span> install OpenZeppelin/openzeppelin-contracts <span class="at">--shallow</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="ex">forge</span> build</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="ex">forge</span> test</span></code></pre></div>
+<p><strong>Decir</strong>:</p>
+<blockquote>
+<p>“El <code>--shallow</code> baja solo el último commit, no toda la
+historia git. Para una librería que solo consumimos, es mucho más
+rápido.”</p>
+</blockquote>
+<p>⚠️ <strong>Pausa de 2 min</strong> mientras todos clonan e instalan.
+Esto es donde se cae la red corporativa de la sede. Si alguien falla
+<code>forge install</code>, ofrecer el tarball de fallback.</p>
+<p><strong>Esperar</strong> que todos vean
+<code>14 passed; 0 failed</code>. Esto es el go/no-go del bloque
+siguiente.</p>
+<h3 id="parte-5--tour-de-academiccredentials--20-min">Parte 5 — Tour de
+<code>AcademicCredentials</code> · 20 min</h3>
+<p><strong>Abrir</strong> <code>src/AcademicCredentials.sol</code> en VS
+Code y proyectarlo.</p>
+<p><strong>Recorrer en orden</strong> (<a
+href="clase-3-clase.html">clase-3-clase.html#parte-5—tour-del-contrato-academiccredentials</a>):</p>
+<h4 id="51-imports--3-min">5.1 Imports · 3 min</h4>
+<blockquote>
+<p>“Tres imports. <code>ERC721</code>, <code>ERC721URIStorage</code> y
+<code>Ownable</code> — los tres de OpenZeppelin. La sintaxis
+<code>@openzeppelin/...</code> viene del archivo
+<code>remappings.txt</code> que mapea ese alias a
+<code>lib/openzeppelin-contracts/...</code>.”</p>
+</blockquote>
+<p><strong>Pregunta</strong>:</p>
+<blockquote>
+<p>“¿Por qué importan <code>ERC721URIStorage</code> y no
+<code>ERC721</code> solo?” (Respuesta: porque queremos <strong>distinta
+URI por tokenId</strong>, no una URI base. Cada título tiene su JSON
+propio.)</p>
+</blockquote>
+<h4 id="52-herencia-múltiple--3-min">5.2 Herencia múltiple · 3 min</h4>
+<pre class="solidity"><code>contract AcademicCredentials is ERC721URIStorage, Ownable {</code></pre>
+<p><strong>Decir</strong>:</p>
+<blockquote>
+<p>“Solidity permite herencia múltiple. Acá heredamos
+<code>ERC721URIStorage</code> (que ya hereda de <code>ERC721</code>) y
+<code>Ownable</code>. Si después en el TP cambian <code>Ownable</code>
+por <code>AccessControl</code>, solo cambian esa palabra y se trae todo
+el sistema de roles.”</p>
+</blockquote>
+<h4 id="53-constructor--3-min">5.3 Constructor · 3 min</h4>
+<pre class="solidity"><code>constructor()
+    ERC721(&quot;UNQ Academic Credential&quot;, &quot;UNQ-CRED&quot;)
+    Ownable(msg.sender)
+{}</code></pre>
+<p><strong>Decir</strong>:</p>
+<blockquote>
+<p>“Le pasamos argumentos a los constructores de los padres.
+<code>ERC721</code> quiere name y symbol — eso es lo que va a aparecer
+en MetaMask cuando importen el NFT. <code>Ownable(msg.sender)</code>
+deja como dueño a la wallet que deployó.”</p>
+</blockquote>
+<p><strong>Pregunta</strong>:</p>
+<blockquote>
+<p>“Si yo deployo este contrato desde mi wallet — ¿quién es el
+<code>owner</code>?” (Yo, el que firmó el deploy.)</p>
+</blockquote>
+<h4 id="54-issuecredential--4-min">5.4 issueCredential · 4 min</h4>
+<pre class="solidity"><code>function issueCredential(address student, uint256 tokenId, string memory metadataURI)
+    public onlyOwner
+{
+    _mint(student, tokenId);
+    _setTokenURI(tokenId, metadataURI);
+    emit CredentialIssued(student, tokenId, metadataURI);
+}</code></pre>
+<p><strong>Decir línea por línea</strong>:</p>
+<blockquote>
+<p>“<code>onlyOwner</code> — modifier de <code>Ownable</code>. Si llamás
+esta función desde una wallet que no es el owner,
+<strong>revierte</strong>. Esa es la primera capa de seguridad.”</p>
+</blockquote>
+<blockquote>
+<p>“<code>_mint(student, tokenId)</code> — guion bajo adelante = función
+interna heredada de <code>ERC721</code>. Crea el NFT y lo asigna a la
+address <code>student</code>.”</p>
+</blockquote>
+<blockquote>
+<p>“<code>_setTokenURI(...)</code> — guarda la URI con la metadata. Eso
+lo trae <code>ERC721URIStorage</code>.”</p>
+</blockquote>
+<blockquote>
+<p>“<code>emit CredentialIssued(...)</code> — un log on-chain que el
+frontend va a usar para enterarse que pasó algo. <strong>Sin emit, el
+frontend no sabe que hubo un mint</strong> — tendría que estar haciendo
+polling, que es ineficiente y caro.”</p>
+</blockquote>
+<p><strong>Pregunta</strong>:</p>
+<blockquote>
+<p>“¿Por qué <code>_mint</code> y no <code>_safeMint</code>?” (Respuesta
+corta: para el TP, <code>_mint</code> evita un edge case del fuzzer. En
+producción usarían <code>_safeMint</code>. Es una decisión deliberada de
+este repo, no un bug.)</p>
+</blockquote>
+<h4 id="55-revoke--3-min">5.5 revoke · 3 min</h4>
+<pre class="solidity"><code>function revoke(uint256 tokenId) public onlyOwner {
+    _burn(tokenId);
+    emit CredentialRevoked(tokenId);
+}</code></pre>
+<p><strong>Decir</strong>:</p>
+<blockquote>
+<p>“Si la universidad detecta fraude o emisión por error,
+<strong>quema</strong> el token. Después de esto,
+<code>ownerOf(tokenId)</code> revierte y <code>isValid</code> devuelve
+<code>false</code>.”</p>
+</blockquote>
+<p><strong>Pregunta importante</strong> (filosófica):</p>
+<blockquote>
+<p>“¿Por qué la universidad puede revocar? ¿No se supone que blockchain
+es ‘inmutable’?”</p>
+</blockquote>
+<p>(Respuesta: blockchain hace que <strong>cualquier mutación quede
+registrada y firmada</strong> — eso es lo inmutable. Pero si el contrato
+dice “el owner puede burnear”, el owner puede burnear. La inmutabilidad
+es del <strong>registro de las acciones</strong>, no de las acciones en
+sí. Esto va a ser tema de discusión en el TP final.)</p>
+<h4 id="56-isvalid--2-min">5.6 isValid · 2 min</h4>
+<pre class="solidity"><code>function isValid(uint256 tokenId) public view returns (bool) {
+    return _ownerOf(tokenId) != address(0);
+}</code></pre>
+<p><strong>Decir</strong>:</p>
+<blockquote>
+<p>“Helper de verificación pública. Cualquiera, sin gas, sin login,
+puede llamar esto y saber si el título existe. Esa es la magia:
+<strong>la universidad no media en la verificación</strong>.”</p>
+</blockquote>
+<h4 id="57-cierre-del-tour--2-min">5.7 Cierre del tour · 2 min</h4>
+<blockquote>
+<p>“Ese es todo el contrato. ~50 líneas. La razón por la que es tan
+corto es porque OpenZeppelin nos dio el 95% del código gratis. Nosotros
+solo escribimos las funciones específicas del dominio: emitir, revocar,
+verificar.”</p>
+</blockquote>
+<blockquote>
+<p>“En el TP final esto se va a triplicar — agregando
+<code>AccessControl</code>, struct <code>Credential</code> con metadata
+estructurada, soulbound (no transferible). Pero el esqueleto es
+éste.”</p>
+</blockquote>
+<hr />
+<h2 id="pausa--10-min">Pausa · 10 min</h2>
+<blockquote>
+<p>“Vuelvan a las <strong>XX:XX</strong>” (calcular en vivo: hora actual
++ 10 min). “<strong>No más</strong>, sino no llegamos al deploy a
+Sepolia y se quedan sin la parte buena.”</p>
+</blockquote>
+<p>(Aprovechar para tomar agua, revisar Sepolia, refrescar Etherscan,
+mirar el balance de la wallet.)</p>
+<hr />
+<h2 id="bloque-5--tests--coverage--25-min">Bloque 5 · Tests + Coverage ·
+25 min</h2>
+<h3 id="parte-6--tests-con-foundry--15-min">Parte 6 — Tests con Foundry
+· 15 min</h3>
+<p><strong>Demo en pantalla</strong>:</p>
+<div class="sourceCode" id="cb17"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="ex">forge</span> test</span></code></pre></div>
+<p><strong>Mostrar el output</strong> y comentar:</p>
+<blockquote>
+<p>“14 tests pasan. Cubren: el camino feliz (issuer mintea, verify
+devuelve true), casos de error (no-issuer no puede mintear, tokenId
+duplicado falla), eventos (<code>vm.expectEmit</code>), y fuzz tests
+(256 casos random).”</p>
+</blockquote>
+<p><strong>Demo con verbose</strong> (<a
+href="clase-3-clase.html">clase-3-clase.html#parte-6—tests-con-foundry</a>):</p>
+<div class="sourceCode" id="cb18"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="ex">forge</span> test <span class="at">--match-test</span> test_IssuerCanIssue <span class="at">-vvvv</span></span></code></pre></div>
+<p><strong>Decir</strong> mostrando el call trace:</p>
+<blockquote>
+<p>“Vean el árbol completo: el <code>setUp</code> deploya un contrato
+fresco, después <code>prank</code> cambia el msg.sender, después
+<code>issueCredential</code>, después emit del evento. Cada línea con su
+gas. Si quieren entender qué está haciendo un test, este es el
+comando.”</p>
+</blockquote>
+<p><strong>Demo de un fuzz test</strong>:</p>
+<div class="sourceCode" id="cb19"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="ex">forge</span> test <span class="at">--match-test</span> testFuzz <span class="at">-vv</span></span></code></pre></div>
+<blockquote>
+<p>“Vean <code>runs: 256</code>. Foundry generó 256 valores random para
+los argumentos y los corrió todos. Si <strong>uno solo</strong> falla,
+te muestra el counterexample y podés reproducir el bug exacto.”</p>
+</blockquote>
+<p><strong>Pregunta</strong>:</p>
+<blockquote>
+<p>“¿Cuál es la diferencia entre <code>vm.prank(alice)</code> y
+<code>vm.startPrank(alice) ... vm.stopPrank()</code>?”
+(<code>prank</code> solo aplica a la siguiente call.
+<code>startPrank/stopPrank</code> aplica a todas hasta el stop.)</p>
+</blockquote>
+<h3 id="parte-65--coverage--10-min">Parte 6.5 — Coverage · 10 min</h3>
+<p><strong>Demo</strong>:</p>
+<div class="sourceCode" id="cb20"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="ex">forge</span> coverage <span class="at">--report</span> summary</span></code></pre></div>
+<p><strong>Mostrar</strong> la tabla con porcentajes por archivo.</p>
+<p><strong>Decir</strong>:</p>
+<blockquote>
+<p>“Coverage = qué porcentaje de líneas / branches / funciones del
+contrato están <strong>ejecutadas por al menos un test</strong>. No mide
+calidad de los tests — mide superficie cubierta.”</p>
+</blockquote>
+<blockquote>
+<p>“<strong>Para el TP final pedimos ≥ 80%</strong>. No 100% — porque
+buscar el último 20% lleva a tests vacíos que no agregan valor. 80% es
+un piso razonable que asegura que las funciones críticas están
+cubiertas.”</p>
+</blockquote>
+<p><strong>Demo lcov</strong>:</p>
+<div class="sourceCode" id="cb21"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="ex">forge</span> coverage <span class="at">--report</span> lcov</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> lcov.info</span></code></pre></div>
+<blockquote>
+<p>“Si suben el repo a GitHub, este <code>lcov.info</code> lo pueden
+subir a Codecov o Coveralls y les muestra heatmaps de qué líneas están
+cubiertas. No es obligatorio para el TP, pero queda lindo en el
+README.”</p>
+</blockquote>
+<p><strong>Pregunta</strong>:</p>
+<blockquote>
+<p>“Si yo tengo una función <code>revoke()</code> y NO le escribo ningún
+test — ¿qué pasa con coverage?” (Baja. Específicamente: las líneas de
+<code>revoke</code> aparecen en rojo.)</p>
+</blockquote>
+<blockquote>
+<p>“Si después de agregar funciones nuevas el coverage baja, la solución
+es <strong>agregar tests</strong>, no quitar la función.”</p>
+</blockquote>
+<hr />
+<h2 id="bloque-6--deploy-a-sepolia--verify--30-min">Bloque 6 · Deploy a
+Sepolia + Verify · 30 min</h2>
+<blockquote>
+<p><strong>El momento de la verdad</strong>. Acá se cae todo si la red
+está congestionada. Tener Plan B (Anvil) listo. Antes de empezar, hacer
+<code>cast block-number</code> para confirmar que Sepolia responde.</p>
+</blockquote>
+<h3 id="parte-7--deploy-del-contrato--12-min">Parte 7 — Deploy del
+contrato · 12 min</h3>
+<p><strong>Decir</strong> antes de tipear:</p>
+<blockquote>
+<p>“Ya importaron <code>dev-wallet</code> en clase 2 (o al principio de
+hoy). Si no, tienen 2 minutos para hacerlo ahora —
+<code>cast wallet import dev-wallet --interactive</code>. Si ya está,
+esperan.”</p>
+</blockquote>
+<p><strong>Demo</strong> (<a
+href="clase-3-clase.html">clase-3-clase.html#deploy</a>):</p>
+<div class="sourceCode" id="cb22"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="ex">forge</span> create src/AcademicCredentials.sol:AcademicCredentials <span class="dt">\</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">--rpc-url</span> https://ethereum-sepolia-rpc.publicnode.com <span class="dt">\</span></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">--account</span> dev-wallet <span class="dt">\</span></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">--broadcast</span></span></code></pre></div>
+<p><strong>Esperar</strong> los ~12 segundos. Mientras tanto,
+contar:</p>
+<blockquote>
+<p>“Esto está compilando localmente, generando el bytecode, construyendo
+la transacción de deploy, firmándola con la private key encriptada,
+mandándola al RPC público de Sepolia, esperando que un validador la
+incluya en un bloque.”</p>
+</blockquote>
+<p><strong>Cuando devuelve</strong>:</p>
+<div class="sourceCode" id="cb23"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">ADDR</span><span class="op">=</span>0x...   <span class="co"># la address devuelta</span></span></code></pre></div>
+<p>⚠️ <strong>Pausa de 3 min</strong>: este es el paso que más se cae.
+Caminar por el aula. Si a alguien le falla:</p>
+<ul>
+<li>Faucet vacío → mandar a Google Cloud faucet.</li>
+<li>RPC timeout → cambiar a <code>https://rpc.sepolia.org</code>.</li>
+<li>Tx rechazada por nonce →
+<code>cast wallet address --account dev-wallet</code> y revisar
+saldo.</li>
+</ul>
+<h3 id="parte-75--forge-verify-contract--8-min">Parte 7.5 —
+<code>forge verify-contract</code> · 8 min</h3>
+<p><strong>Decir</strong>:</p>
+<blockquote>
+<p>“Por defecto Etherscan ve solo el bytecode — ilegible. Para que
+muestre el código Solidity y permita interactuar desde la web, hay que
+<strong>verificar</strong>. Esto es <strong>obligatorio para el TP
+final</strong>.”</p>
+</blockquote>
+<p><strong>Demo</strong> (<a
+href="clase-3-clase.html">clase-3-clase.html#verificar-el-código-fuente-en-etherscan</a>):</p>
+<div class="sourceCode" id="cb24"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="ex">forge</span> verify-contract <span class="dt">\</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">--chain</span> sepolia <span class="dt">\</span></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">--etherscan-api-key</span> <span class="va">$ETHERSCAN_API_KEY</span> <span class="dt">\</span></span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>  <span class="va">$ADDR</span> <span class="dt">\</span></span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>  src/AcademicCredentials.sol:AcademicCredentials</span></code></pre></div>
+<blockquote>
+<p>“Tarda 30-90 segundos. Detrás de escena: Foundry sube el código
+fuente a Etherscan, Etherscan lo recompila y compara el bytecode con el
+deployado. Si coincide → ✅ verificado.”</p>
+</blockquote>
+<p><strong>Mostrar en browser</strong>: refrescar la página de Etherscan
+del contrato. La tab “Contract” ahora tiene el código fuente y dos
+sub-tabs: “Read Contract” y “Write Contract”.</p>
+<p><strong>Decir</strong>:</p>
+<blockquote>
+<p>“Vean los tabs: <strong>Read</strong> muestra todas las funciones
+<code>view</code> con un botón para llamarlas sin gas.
+<strong>Write</strong> muestra las que modifican state, conecta
+MetaMask, y firma desde el browser. <strong>Esto es lo que su frontend
+del TP va a hacer</strong> — pero hecho a mano por Etherscan.”</p>
+</blockquote>
+<p><strong>Mencionar el truco</strong>:</p>
+<blockquote>
+<p>“La misma API key de Etherscan sirve para Basescan, Polygonscan,
+Arbiscan — todos son del mismo grupo. Solo cambia
+<code>--chain</code>.”</p>
+</blockquote>
+<h3 id="emitirse-un-título--7-min">Emitirse un título · 7 min</h3>
+<p><strong>Demo</strong> (<a
+href="clase-3-clase.html">clase-3-clase.html#emitirte-un-título-a-vos-mismo</a>):</p>
+<div class="sourceCode" id="cb25"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">YOU</span><span class="op">=</span><span class="va">$(</span><span class="ex">cast</span> wallet address <span class="at">--account</span> dev-wallet<span class="va">)</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="va">$YOU</span></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a><span class="ex">cast</span> send <span class="va">$ADDR</span> <span class="dt">\</span></span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;issueCredential(address,uint256,string)&quot;</span> <span class="dt">\</span></span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>  <span class="va">$YOU</span> 1 <span class="st">&quot;ipfs://bafybeigdyrztktc.../titulo-prof.json&quot;</span> <span class="dt">\</span></span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">--rpc-url</span> https://ethereum-sepolia-rpc.publicnode.com <span class="dt">\</span></span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">--account</span> dev-wallet</span></code></pre></div>
+<p><strong>Decir</strong>:</p>
+<blockquote>
+<p>“Le emito el <code>tokenId 1</code> a mí mismo. La URI es placeholder
+— para el TP la van a generar real con Pinata.”</p>
+</blockquote>
+<p><strong>Verificar</strong> (volver a usar el diagrama de read vs
+write):</p>
+<div class="sourceCode" id="cb26"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="ex">cast</span> call <span class="va">$ADDR</span> <span class="st">&quot;ownerOf(uint256)&quot;</span> 1 <span class="at">--rpc-url</span> https://ethereum-sepolia-rpc.publicnode.com</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="ex">cast</span> call <span class="va">$ADDR</span> <span class="st">&quot;tokenURI(uint256)&quot;</span> 1 <span class="at">--rpc-url</span> https://ethereum-sepolia-rpc.publicnode.com</span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="ex">cast</span> call <span class="va">$ADDR</span> <span class="st">&quot;isValid(uint256)&quot;</span> 1 <span class="at">--rpc-url</span> https://ethereum-sepolia-rpc.publicnode.com</span></code></pre></div>
+<p><strong>Decir</strong>:</p>
+<blockquote>
+<p>“<code>ownerOf</code> devuelve mi address. <code>tokenURI</code>
+devuelve la URI. <code>isValid</code> devuelve <code>true</code>.
+<strong>El título existe on-chain.</strong>”</p>
+</blockquote>
+<h3 id="verlo-en-etherscan--3-min">Verlo en Etherscan · 3 min</h3>
+<p><strong>Browser</strong>: refrescar Etherscan, tab “Logs”.</p>
+<p><strong>Mostrar</strong> el evento <code>CredentialIssued</code>
+decodificado:</p>
+<blockquote>
+<p>“Vean: <code>student</code>, <code>tokenId</code>,
+<code>metadataURI</code>. Todos los campos del evento decodificados
+porque el contrato está verificado. Si no estuviera verificado, verían
+solo el hex crudo. <strong>Por eso verificar es
+importante.</strong>”</p>
+</blockquote>
+<p><strong>Mostrar</strong> también el tab “Contract → Read”:</p>
+<blockquote>
+<p>“Apreten ‘Read Contract’ → <code>ownerOf</code> → ingresen
+<code>1</code> → click. Devuelve mi address. <strong>Cualquiera en el
+mundo puede hacer esto.</strong> Eso es la verificación pública.”</p>
+</blockquote>
+<p>⚠️ <strong>Pausa</strong>: “tomen captura de la página de Etherscan
+con su address y su título. Eso lo van a postear en el foro como
+tarea.”</p>
+<hr />
+<h2 id="bloque-7--verlo-como-nft-en-metamask--10-min">Bloque 7 · Verlo
+como NFT en MetaMask · 10 min</h2>
+<blockquote>
+<p><strong>El momento mágico</strong>. Pausen. Dejen que lo vean. Es el
+primer “wow” de la diplomatura.</p>
+</blockquote>
+<p><strong>Decir</strong>:</p>
+<blockquote>
+<p>“Última cosa antes del cierre. Vamos a importar el NFT en MetaMask
+para que aparezca <strong>como un NFT real</strong>, igual que un Bored
+Ape o un CryptoKitty.”</p>
+</blockquote>
+<p><strong>Demo en browser</strong> (MetaMask abierto, Sepolia
+activa):</p>
+<ol type="1">
+<li>Click en tab <strong>“NFTs”</strong>.</li>
+<li><strong>“Import NFT”</strong>.</li>
+<li>Address: pegar <code>$ADDR</code>.</li>
+<li>Token ID: <code>1</code>.</li>
+<li>Click “Import”.</li>
+</ol>
+<p><strong>Esperar</strong> unos segundos. MetaMask muestra:</p>
+<ul>
+<li>Nombre: <code>UNQ Academic Credential #1</code>.</li>
+<li>Symbol: <code>UNQ-CRED</code>.</li>
+<li>Si la metadata estuviera real en IPFS, mostraría también la imagen y
+el JSON.</li>
+</ul>
+<p><strong>Decir</strong>:</p>
+<blockquote>
+<p>“<strong>Eso es un título universitario en su wallet.</strong> No
+vive en un servidor de la UNQ. Si la UNQ se cae mañana, el título sigue
+existiendo. Cualquier RRHH del mundo, pegando
+<code>address + tokenId</code> en una página web pública, lo verifica en
+3 segundos.”</p>
+</blockquote>
+<p><strong>Pausa para asimilar</strong> (1 min). Dejarlos jugar —
+refrescar, mirar.</p>
+<p><strong>Pregunta filosófica</strong>:</p>
+<blockquote>
+<p>“¿Quién es el dueño de tu título universitario hoy, en el mundo
+real?” (La universidad guarda el registro maestro, vos tenés el papel —
+pero la fuente de verdad es la oficina de alumnos.)</p>
+<p>“¿Y con esto?” (El estudiante. Vos tenés el NFT en tu wallet. La
+universidad emitió, pero no controla el record — todos los nodos de
+Ethereum lo controlan.)</p>
+</blockquote>
+<hr />
+<h2 id="bloque-8--tp-final--cierre--15-min">Bloque 8 · TP final + cierre
+· 15 min</h2>
+<h3 id="parte-9--y-para-el-tp-final--8-min">Parte 9 — Y para el TP final
+· 8 min</h3>
+<p><strong>Cambiar de pestaña</strong> a <a
+href="tp-final.html">tp-final.html</a>.</p>
+<p><strong>Mostrar la rúbrica</strong> (parte 5 — tabla de puntos).</p>
+<p><strong>Decir</strong>:</p>
+<blockquote>
+<p>“Lo que escribimos hoy es el <strong>20% del TP final</strong>. La
+parte 1 (smart contract, 35 puntos) extiende esto con:”</p>
+</blockquote>
+<ul>
+<li><code>AccessControl</code> con dos roles → quitamos
+<code>Ownable</code>.</li>
+<li><strong>Soulbound</strong> — los títulos NO se pueden transferir.
+Override <code>_update</code> para revertir transfers.</li>
+<li><strong>Struct <code>Credential</code></strong> completo con
+<code>degreeName</code>, <code>studentNameHash</code>,
+<code>documentHash</code>, <code>issueDate</code>,
+<code>active</code>.</li>
+<li><strong>4 eventos indexados</strong> (no 2).</li>
+<li><strong>5 funciones obligatorias</strong>: <code>grantIssuer</code>,
+<code>revokeIssuer</code>, <code>issueCredential</code> extendido,
+<code>revoke</code> con razón, <code>verify</code> que devuelve struct +
+bool.</li>
+</ul>
+<p><strong>Mencionar también las otras partes</strong>:</p>
+<blockquote>
+<p>“Parte 2 — testing 80% coverage. Parte 3 — Slither + análisis propio
+en <code>SECURITY.md</code>. Parte 4 — frontend con dos modos (issuer +
+verifier público) y deploy a <strong>Base Sepolia</strong> (no a Sepolia
+— costos más bajos).”</p>
+</blockquote>
+<p><strong>Mencionar el starter</strong>:</p>
+<blockquote>
+<p>“Para el frontend les dejamos un repo starter con wagmi + RainbowKit
+ya cableado. Forkean, cambian la address y el ABI, y arrancan.
+<strong>No tienen que armar el frontend desde cero.</strong>”</p>
+</blockquote>
+<p><strong>Plazo y modalidad</strong>:</p>
+<blockquote>
+<p>“Plazo: <strong>lunes 08/06/2026 a las 18:00</strong>. Pueden
+trabajar <strong>individual o en pareja</strong> (máx 2). Aprueban con
+60/100.”</p>
+</blockquote>
+<h3 id="parte-10--repaso-diagramas-y-qa--5-min">Parte 10 — Repaso
+diagramas y Q&amp;A · 5 min</h3>
+<p><strong>Volver a <code>diagramas-arquitectura.html</code></strong>,
+scrollear rápido por los 5 diagramas:</p>
+<blockquote>
+<p>“Tres capas, ciclo del contrato, sistema real, read vs write, qué
+vive dónde. Estos cinco diagramas son la cheat sheet conceptual de toda
+la diplomatura. <strong>Vuelvan a esta página cada vez que dudan dónde
+poner algo.</strong>”</p>
+</blockquote>
+<p><strong>Q&amp;A abierto</strong> (~3 min). Anticipar:</p>
+<ul>
+<li>“¿Pinata es obligatorio?” → No, es opcional/bonus. Para hoy, URI
+placeholder está bien.</li>
+<li>“¿Por qué Base Sepolia y no mainnet?” → Costos. Mainnet cuesta
+dólares reales por tx.</li>
+<li>“¿Puedo usar Polygon en vez de Base?” → Sí, EVM-compatible, mismo
+Solidity, solo cambia chain ID y RPC.</li>
+<li>“¿Y si pierdo la private key?” → Se pierde el contrato (ya no podés
+llamar <code>onlyOwner</code>). En el TP con <code>AccessControl</code>
+hay un admin que puede regenerar issuers.</li>
+</ul>
+<h3 id="tarea--cierre--2-min">Tarea + cierre · 2 min</h3>
+<p><strong>Mostrar</strong> <a
+href="clase-3-tarea.html">clase-3-tarea.html</a>.</p>
+<p><strong>Decir</strong>:</p>
+<blockquote>
+<p>“La tarea para entregar antes de clase 4 (lunes 11/05 a las
+18:00):”</p>
+</blockquote>
+<ol type="1">
+<li>Deployar tu propio <code>AcademicCredentials</code> en Sepolia.</li>
+<li>Emitirte un título.</li>
+<li>Postear en el foro: address del contrato, tokenId, hash de la
+tx.</li>
+<li>Bonus: subir un JSON real a Pinata como <code>tokenURI</code>.</li>
+</ol>
+<blockquote>
+<p>“El próximo jueves arrancamos clase 4 con frontend + seguridad. Van a
+conectar lo de hoy a una página web. Suerte.”</p>
+</blockquote>
+<p>(Cierre. No hace falta despedida elaborada — ellos ya están guardando
+MetaMask y Etherscan.)</p>
+<hr />
+<h2 id="tabla-de-tiempos-consolidada">Tabla de tiempos
+(consolidada)</h2>
+<table>
+<thead>
+<tr>
+<th>Bloque</th>
+<th>Min</th>
+<th>Acumulado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Apertura</td>
+<td>5</td>
+<td>5</td>
+</tr>
+<tr>
+<td>Diagramas</td>
+<td>20</td>
+<td>25</td>
+</tr>
+<tr>
+<td>Cierre clase 2 + Anvil + cast + Sepolia</td>
+<td>30</td>
+<td>55</td>
+</tr>
+<tr>
+<td>ERC-721 conceptual</td>
+<td>15</td>
+<td>70</td>
+</tr>
+<tr>
+<td>Setup + tour contrato</td>
+<td>25</td>
+<td>95</td>
+</tr>
+<tr>
+<td>Pausa</td>
+<td>10</td>
+<td>105</td>
+</tr>
+<tr>
+<td>Tests + Coverage</td>
+<td>25</td>
+<td>130</td>
+</tr>
+<tr>
+<td>Deploy Sepolia + Verify</td>
+<td>30</td>
+<td>160</td>
+</tr>
+<tr>
+<td>NFT en MetaMask</td>
+<td>10</td>
+<td>170</td>
+</tr>
+<tr>
+<td>TP final + cierre</td>
+<td>15</td>
+<td>185</td>
+</tr>
+<tr>
+<td><strong>Buffer / preguntas</strong></td>
+<td><strong>55</strong></td>
+<td><strong>240</strong></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>El buffer de 55 min se reparte: ~15 min para preguntas distribuidas,
+~20 min para alumnos trabados en setup, ~20 min de margen para la parte
+de Sepolia que es la más impredecible.</p>
+</blockquote>
+<hr />
+<h2 id="si-algo-se-rompe--playbook">Si algo se rompe — playbook</h2>
+<table>
+<thead>
+<tr>
+<th>Problema</th>
+<th>Plan B en clase</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Sepolia no responde</td>
+<td>Demo en Anvil. Deploy en Sepolia se hace de tarea. Mostrar nuestro
+contrato del prof ya deployado en Etherscan para cerrar el loop
+visualmente.</td>
+</tr>
+<tr>
+<td>Faucet sin ETH</td>
+<td>Mandar al <a
+href="https://cloud.google.com/application/web3/faucet/ethereum/sepolia">Google
+Cloud faucet</a>. Si falla, transferir 0.01 ETH desde la wallet del prof
+a la del alumno
+(<code>cast send &lt;addr&gt; --value 0.01ether --account dev-wallet --rpc-url ...</code>).</td>
+</tr>
+<tr>
+<td>Etherscan verify falla</td>
+<td>Skipear <code>--verify</code> y verificar standalone con
+<code>forge verify-contract</code> después de clase. Mostrar uno ya
+verificado del prof.</td>
+</tr>
+<tr>
+<td>Un alumno sin MetaMask</td>
+<td>Lo derivamos a la sección “Pre-requisitos” de <a
+href="clase-3-clase.html">clase-3-clase.html</a> mientras seguimos. Que
+se ponga al día durante la pausa.</td>
+</tr>
+<tr>
+<td>Internet de la sede caído</td>
+<td>Demo todo en Anvil, screenshots de Sepolia desde mi máquina con
+tethering 4G. Plan C: cancelar la parte de Sepolia y empujarla a clase
+4.</td>
+</tr>
+<tr>
+<td><code>forge install</code> falla por proxy corporativo</td>
+<td>Tarball <code>vendored-deps.tar.gz</code> listo en USB / Drive.
+<code>tar xzf</code> adentro del repo.</td>
+</tr>
+<tr>
+<td><code>cast wallet import</code> no encuentra el comando</td>
+<td>Versión vieja de Foundry. <code>foundryup</code> para actualizar. Si
+no hay tiempo, deployar con <code>--private-key</code> directo (peor,
+pero funciona en testnet).</td>
+</tr>
+<tr>
+<td>Algún alumno olvidó el password de <code>dev-wallet</code></td>
+<td>Re-importar con otro nombre:
+<code>cast wallet import dev-wallet-2 --interactive</code>.</td>
+</tr>
+<tr>
+<td>RPC público lento (&gt;60s para deploy)</td>
+<td>Cambiar a <code>https://rpc.sepolia.org</code> o
+<code>https://sepolia.gateway.tenderly.co</code>.</td>
+</tr>
+<tr>
+<td>Coverage tira error raro</td>
+<td><code>forge clean &amp;&amp; forge build &amp;&amp; forge coverage</code>.
+Si sigue, pasar el ejercicio de coverage como demo del prof.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="después-de-clase">Después de clase</h2>
+<ul class="task-list">
+<li><label><input type="checkbox" />Confirmar que la tarea de clase 3
+quedó publicada (<code>clase-3-tarea.html</code>
+accesible).</label></li>
+<li><label><input type="checkbox" />Postear en el foro: address del
+contrato del profe (referencia para los alumnos).</label></li>
+<li><label><input type="checkbox" />Postear screenshot del contrato
+verificado en Etherscan como “así tiene que verse el suyo”.</label></li>
+<li><label><input type="checkbox" />Revisar respuestas en el foro
+durante la semana — al menos 2 pasadas (martes + viernes).</label></li>
+<li><label><input type="checkbox" />Preparar clase 4: revisar
+<code>clase-4-clase.md</code> un par de días antes. Confirmar que el
+frontend starter compila.</label></li>
+<li><label><input type="checkbox" />Si hubo más de 2 alumnos trabados en
+algo específico (ej. import de wallet), agregar nota a la apertura de
+clase 4 para repasarlo.</label></li>
+<li><label><input type="checkbox" />Si Sepolia se cayó durante clase,
+postear instrucciones específicas en el foro para que terminen la parte
+de Sepolia en casa.</label></li>
+<li><label><input type="checkbox" />Anotar en
+<code>~/.claude/projects/diplomatura-blockchain/memory/learnings.md</code>
+qué cosas funcionaron y qué no para la próxima edición.</label></li>
+</ul>
+
+    <nav class="page-prev-next" aria-label="Navegación entre páginas">
+      <a class="prev-link" href="#" data-slot="prev" hidden>
+        <span class="arrow">←</span>
+        <span class="nav-meta">
+          <span class="nav-label">Anterior</span>
+          <span class="nav-title" data-slot="prev-title"></span>
+        </span>
+      </a>
+      <a class="next-link" href="#" data-slot="next" hidden>
+        <span class="nav-meta">
+          <span class="nav-label">Siguiente</span>
+          <span class="nav-title" data-slot="next-title"></span>
+        </span>
+        <span class="arrow">→</span>
+      </a>
+    </nav>
+
+    <nav class="page-nav-bottom">
+      <a href="index.html" class="back-to-menu">← Volver al menú principal</a>
+    </nav>
+  </main>
+</div>
+
+<footer class="unq-footer">
+  <div>
+    UNQ · Diplomatura en Blockchain · Desarrollo de Smart Contracts y dApps <strong>2026</strong>
+    · Dr. David Petrocelli &amp; Esp. Ciro Romero
+  </div>
+</footer>
+
+<script>
+// Sidebar show/hide toggle (preference persisted in localStorage)
+(function () {
+  const sidebar = document.getElementById('toc-sidebar');
+  const layout = document.querySelector('.layout');
+  const hideBtn = document.getElementById('sidebar-hide');
+  const showBtn = document.getElementById('sidebar-show');
+  if (!sidebar || !layout || !hideBtn || !showBtn) return;
+
+  const KEY = 'unlu.dcb.sidebar.hidden';
+
+  function apply(hidden) {
+    layout.classList.toggle('sidebar-hidden', hidden);
+    showBtn.classList.toggle('visible', hidden);
+  }
+
+  apply(localStorage.getItem(KEY) === '1');
+
+  hideBtn.addEventListener('click', () => {
+    localStorage.setItem(KEY, '1');
+    apply(true);
+  });
+  showBtn.addEventListener('click', () => {
+    localStorage.removeItem(KEY);
+    apply(false);
+  });
+})();
+
+// Wrap each H2 (and its following content until the next H2) in a <details open>
+// element so users can collapse/expand sections.
+(function () {
+  const main = document.querySelector('main.content');
+  if (!main) return;
+
+  // Collect direct-child H2 headings so we don't touch nested ones (e.g., inside details we'll create)
+  const headings = Array.from(main.children).filter(el => el.tagName === 'H2');
+
+  headings.forEach(h2 => {
+    const details = document.createElement('details');
+    details.open = true;
+    details.className = 'section-collapsible';
+
+    const summary = document.createElement('summary');
+    // Move heading content (incl. anchor) into the summary so anchors keep working
+    summary.innerHTML = h2.innerHTML;
+    if (h2.id) summary.id = h2.id;
+    details.appendChild(summary);
+
+    // Move siblings until next H2 into details
+    const parent = h2.parentNode;
+    let next = h2.nextSibling;
+    parent.replaceChild(details, h2);
+    while (next && !(next.nodeType === 1 && next.tagName === 'H2')) {
+      const node = next;
+      next = next.nextSibling;
+      details.appendChild(node);
+    }
+  });
+
+  // If there's a hash in the URL, ensure the target's <details> is open
+  function openDetailsForHash(hash) {
+    if (!hash) return;
+    const target = document.getElementById(hash.replace(/^#/, ''));
+    if (!target) return;
+    let p = target.closest('details');
+    while (p) { p.open = true; p = p.parentElement && p.parentElement.closest('details'); }
+    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+  openDetailsForHash(window.location.hash);
+  window.addEventListener('hashchange', () => openDetailsForHash(window.location.hash));
+
+  // Wire up "Expand all" / "Collapse all" controls in the inline TOC
+  document.querySelectorAll('.toc-controls [data-action]').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      const action = btn.getAttribute('data-action');
+      const open = action === 'expand-all';
+      document.querySelectorAll('details.section-collapsible').forEach(d => { d.open = open; });
+    });
+  });
+})();
+
+// Populate prev/next navigation based on the current page's banner-num
+(function () {
+  const pill = document.querySelector('.banner-pill');
+  const nav = document.querySelector('.page-prev-next');
+  if (!pill || !nav) return;
+
+  const key = (pill.textContent || '').trim().toUpperCase();
+
+  // Map banner-num → { prev, next }
+  // Each entry: { href, title } (or null if not present)
+  const MAP = {
+    // ----- Clase 1 -----
+    'C1 · CLASE': {
+      prev: { href: 'index.html',         title: 'Menú principal' },
+      next: { href: 'clase-1-tarea.html', title: 'Tarea de clase 1' }
+    },
+    'C1 · TAREA': {
+      prev: { href: 'clase-1-clase.html', title: 'Material en clase 1' },
+      next: { href: 'clase-2-clase.html', title: 'Clase 2' }
+    },
+    // ----- Clase 2 -----
+    'C2 · CLASE': {
+      prev: { href: 'clase-1-tarea.html', title: 'Tarea de clase 1' },
+      next: { href: 'clase-2-tarea.html', title: 'Tarea de clase 2' }
+    },
+    'C2 · TAREA': {
+      prev: { href: 'clase-2-clase.html', title: 'Material en clase 2' },
+      next: { href: 'index.html',         title: 'Menú principal' }
+    },
+    // ----- Clase 3 -----
+    'C3 · CLASE': {
+      prev: { href: 'index.html',         title: 'Menú principal' },
+      next: { href: 'clase-3-tarea.html', title: 'Tarea de clase 3' }
+    },
+    'C3 · TAREA': {
+      prev: { href: 'clase-3-clase.html', title: 'Material en clase 3' },
+      next: { href: 'index.html',         title: 'Menú principal' }
+    },
+    // ----- Clase 4 -----
+    'C4 · CLASE': {
+      prev: { href: 'index.html',         title: 'Menú principal' },
+      next: { href: 'clase-4-tarea.html', title: 'Tarea de clase 4' }
+    },
+    'C4 · TAREA': {
+      prev: { href: 'clase-4-clase.html', title: 'Material en clase 4' },
+      next: { href: 'tp-final.html',      title: 'Trabajo final' }
+    },
+    // ----- TP final -----
+    'TP FINAL': {
+      prev: { href: 'clase-4-tarea.html', title: 'Tarea de clase 4' },
+      next: { href: 'index.html',         title: 'Menú principal' }
+    },
+    // ----- Material transversal -----
+    'DIAGRAMAS': {
+      prev: { href: 'index.html',  title: 'Menú principal' },
+      next: { href: 'glosario.html', title: 'Glosario' }
+    },
+    'GLOSARIO': {
+      prev: { href: 'diagramas-arquitectura.html', title: 'Diagramas' },
+      next: { href: 'cheat-sheet.html',            title: 'Cheat sheet' }
+    },
+    'CHEAT-SHEET': {
+      prev: { href: 'glosario.html', title: 'Glosario' },
+      next: { href: 'index.html',    title: 'Menú principal' }
+    }
+  };
+
+  const entry = MAP[key];
+  if (!entry) return;
+
+  const prevLink = nav.querySelector('[data-slot="prev"]');
+  const nextLink = nav.querySelector('[data-slot="next"]');
+  const prevTitle = nav.querySelector('[data-slot="prev-title"]');
+  const nextTitle = nav.querySelector('[data-slot="next-title"]');
+
+  if (entry.prev && prevLink && prevTitle) {
+    prevLink.setAttribute('href', entry.prev.href);
+    prevTitle.textContent = entry.prev.title;
+    prevLink.hidden = false;
+  }
+  if (entry.next && nextLink && nextTitle) {
+    nextLink.setAttribute('href', entry.next.href);
+    nextTitle.textContent = entry.next.title;
+    nextLink.hidden = false;
+  }
+
+  // If neither slot is shown, hide the whole nav
+  if ((!entry.prev) && (!entry.next)) {
+    nav.style.display = 'none';
+  }
+})();
+
+// Click-to-copy on every <pre> code block
+(function () {
+  document.querySelectorAll('pre').forEach(pre => {
+    pre.addEventListener('click', async (e) => {
+      // Don't trigger if user is selecting text
+      const sel = window.getSelection();
+      if (sel && sel.toString().length > 0 && pre.contains(sel.anchorNode)) return;
+
+      const code = pre.querySelector('code') || pre;
+      const text = code.innerText.trim();
+      try {
+        await navigator.clipboard.writeText(text);
+        pre.classList.add('copied');
+        setTimeout(() => pre.classList.remove('copied'), 1400);
+      } catch (err) {
+        // Fallback: select all
+        const range = document.createRange();
+        range.selectNodeContents(code);
+        const sel2 = window.getSelection();
+        sel2.removeAllRanges();
+        sel2.addRange(range);
+      }
+    });
+  });
+})();
+
+// Open all external links in a new tab (preserves the current page).
+// Internal anchors (#hash), relative links and same-origin links stay in-tab.
+(function () {
+  const here = window.location.hostname;
+  document.querySelectorAll('a[href]').forEach(a => {
+    const href = a.getAttribute('href');
+    if (!href) return;
+    // Skip anchors and pure relative links
+    if (href.startsWith('#') || href.startsWith('/') || !/^https?:\/\//i.test(href)) return;
+    try {
+      const url = new URL(href);
+      if (url.hostname && url.hostname !== here) {
+        a.setAttribute('target', '_blank');
+        a.setAttribute('rel', 'noopener noreferrer');
+      }
+    } catch (_) {
+      // Malformed URL — ignore
+    }
+  });
+})();
+</script>
+
+</body>
+</html>
