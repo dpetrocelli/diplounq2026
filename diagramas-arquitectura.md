@@ -30,6 +30,16 @@ Mapa mental para saber qué se puede compartir y qué nunca. Todo lo que está d
 
 ---
 
+## 4 · Arquitectura real del sistema de credenciales
+
+**El sistema completo**: Frontend (Vercel) + Backend Web2 (k3s) + `AcademicCredentials.sol` (Sepolia → más adelante Base/Polygon) + IPFS para PDFs y fotos + indexer The Graph + observabilidad (Tenderly + Sentry).
+
+> **El contrato es UNA pieza** del sistema, no es todo. Es el "servicio de credenciales" en una app tradicional. El resto (UI, API, BD, login admin, monitoreo) sigue siendo lo de siempre.
+
+![Arquitectura del sistema](assets/diagramas/04-sistema-real.png)
+
+---
+
 ## Material relacionado
 
 - [Clase 3 — Cierre de Clase 2 + Credenciales académicas](clase-3-clase.html) — la clase donde se introducen estos conceptos
