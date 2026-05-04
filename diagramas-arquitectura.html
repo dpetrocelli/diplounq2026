@@ -49,6 +49,9 @@ real — UNQ Diplo Blockchain</title>
     <li><a href="#3--qué-vive-dónde--público-vs-privado"
     id="toc-3--qué-vive-dónde--público-vs-privado">3 · Qué vive dónde —
     público vs privado</a></li>
+    <li><a href="#4--arquitectura-real-del-sistema-de-credenciales"
+    id="toc-4--arquitectura-real-del-sistema-de-credenciales">4 ·
+    Arquitectura real del sistema de credenciales</a></li>
     <li><a href="#material-relacionado"
     id="toc-material-relacionado">Material relacionado</a></li>
     </ul></li>
@@ -87,6 +90,9 @@ real — UNQ Diplo Blockchain</title>
       <li><a href="#3--qué-vive-dónde--público-vs-privado"
       id="toc-3--qué-vive-dónde--público-vs-privado">3 · Qué vive dónde
       — público vs privado</a></li>
+      <li><a href="#4--arquitectura-real-del-sistema-de-credenciales"
+      id="toc-4--arquitectura-real-del-sistema-de-credenciales">4 ·
+      Arquitectura real del sistema de credenciales</a></li>
       <li><a href="#material-relacionado"
       id="toc-material-relacionado">Material relacionado</a></li>
       </ul></li>
@@ -145,6 +151,20 @@ verificado) es <strong>público por diseño</strong> — cualquiera lo
 lee.</p>
 <p><img src="assets/diagramas/03-que-vive-donde.png"
 alt="Qué vive dónde" /></p>
+<hr />
+<h2 id="4--arquitectura-real-del-sistema-de-credenciales">4 ·
+Arquitectura real del sistema de credenciales</h2>
+<p><strong>El sistema completo</strong>: Frontend (Vercel) + Backend
+Web2 (k3s) + <code>AcademicCredentials.sol</code> (Sepolia → más
+adelante Base/Polygon) + IPFS para PDFs y fotos + indexer The Graph +
+observabilidad (Tenderly + Sentry).</p>
+<blockquote>
+<p><strong>El contrato es UNA pieza</strong> del sistema, no es todo. Es
+el “servicio de credenciales” en una app tradicional. El resto (UI, API,
+BD, login admin, monitoreo) sigue siendo lo de siempre.</p>
+</blockquote>
+<p><img src="assets/diagramas/04-sistema-real.png"
+alt="Arquitectura del sistema" /></p>
 <hr />
 <h2 id="material-relacionado">Material relacionado</h2>
 <ul>
