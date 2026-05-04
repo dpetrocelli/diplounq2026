@@ -83,6 +83,12 @@ render "tp-final.md" \
   "Trabajo Final — Verificación de credenciales académicas UNQ" \
   "TP FINAL"
 
+# ---------- Diagramas de arquitectura (transversal a todas las clases) ----------
+render "diagramas-arquitectura.md" \
+  "diagramas-arquitectura.html" \
+  "Diagramas de arquitectura — del ciclo del contrato al sistema real" \
+  "DIAGRAMAS"
+
 echo ""
 echo "Done. Open with:"
 echo "  xdg-open $DIR/index.html"
