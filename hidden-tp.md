@@ -11,7 +11,7 @@ Les damos un **template funcionando end-to-end** (contrato + API + front) y su t
 3. **Extender** con **al menos 3 de las 4 features** del bloque "Extensiones obligatorias".
 4. **Demostrar** que funciona end-to-end con un video o una URL pública.
 
-No se trata de escribir desde cero, sino de **modificar código que ya funciona** — que es lo que van a hacer en cualquier laburo real. La complejidad está en entender lo que ya está, no en pelearse con un IDE en blanco.
+No se trata de escribir desde cero, sino de **modificar código que ya funciona** — que es lo que ocurre en cualquier proceso de desarrollo profesional. La complejidad está en comprender la base existente y extenderla con criterio, no en partir de un editor en blanco.
 
 ---
 
