@@ -88,6 +88,12 @@ render "tp-final.md" \
   "Trabajo Final — Verificación de credenciales académicas UNQ" \
   "TP FINAL"
 
+# ---------- TP Final V2 (unlisted: alcance acotado, no enlazado desde el index) ----------
+render "hidden-tp.md" \
+  "hidden-tp.html" \
+  "Trabajo Final V2 — Diploma NFT UNQ (alcance acotado)" \
+  "TP V2 · UNLISTED"
+
 # ---------- Diagramas de arquitectura (transversal a todas las clases) ----------
 render "diagramas-arquitectura.md" \
   "diagramas-arquitectura.html" \

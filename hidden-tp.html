@@ -1,0 +1,1172 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=2.0">
+  <meta name="generator" content="pandoc + UNLu/DCB template">
+  <title>Trabajo Final V2 — Diploma NFT UNQ (alcance acotado) — UNQ
+Diplo Blockchain</title>
+  <link rel="stylesheet" href="assets/style.css">
+  <style type="text/css">
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  background-color: #f8f8f8; }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ef2929; } /* Alert */
+code span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #204a87; } /* Attribute */
+code span.bn { color: #0000cf; } /* BaseN */
+code span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4e9a06; } /* Char */
+code span.cn { color: #8f5902; } /* Constant */
+code span.co { color: #8f5902; font-style: italic; } /* Comment */
+code span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
+code span.dt { color: #204a87; } /* DataType */
+code span.dv { color: #0000cf; } /* DecVal */
+code span.er { color: #a40000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #0000cf; } /* Float */
+code span.fu { color: #204a87; font-weight: bold; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #204a87; font-weight: bold; } /* Keyword */
+code span.op { color: #ce5c00; font-weight: bold; } /* Operator */
+code span.ot { color: #8f5902; } /* Other */
+code span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
+code span.sc { color: #ce5c00; font-weight: bold; } /* SpecialChar */
+code span.ss { color: #4e9a06; } /* SpecialString */
+code span.st { color: #4e9a06; } /* String */
+code span.va { color: #000000; } /* Variable */
+code span.vs { color: #4e9a06; } /* VerbatimString */
+code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+</head>
+<body>
+
+<header class="unq-header">
+  <a href="index.html" class="brand" title="Volver al menú principal">
+    <img src="assets/unq-logo-white.png" alt="Universidad Nacional de Quilmes" class="logo unq">
+    <div class="brand-text">
+      <div class="institution">Universidad Nacional de Quilmes</div>
+      <div class="department">Diplomatura en Blockchain</div>
+    </div>
+  </a>
+  <div class="course-bar">
+    <span class="course">Desarrollo de Smart Contracts y dApps</span>
+    <span class="year">2026</span>
+    <span class="instructor">Dr. David Petrocelli &amp; Esp. Ciro Romero</span>
+  </div>
+</header>
+
+<button type="button" id="sidebar-show" class="sidebar-toggle-btn sidebar-show" aria-label="Mostrar índice lateral" title="Mostrar índice lateral">☰</button>
+
+<div class="layout">
+  <aside class="toc-sidebar" id="toc-sidebar">
+    <div class="toc-header">
+      <div class="toc-title">Contenidos</div>
+      <button type="button" id="sidebar-hide" class="sidebar-toggle-btn sidebar-hide" aria-label="Ocultar índice lateral" title="Ocultar índice lateral">×</button>
+    </div>
+    <ul>
+    <li><a href="#trabajo-final--v2--diploma-nft-unq-alcance-acotado"
+    id="toc-trabajo-final--v2--diploma-nft-unq-alcance-acotado">Trabajo
+    Final · V2 — Diploma NFT UNQ (alcance acotado)</a>
+    <ul>
+    <li><a href="#filosofía-de-esta-v2"
+    id="toc-filosofía-de-esta-v2">Filosofía de esta V2</a></li>
+    <li><a href="#punto-de-partida--por-qué-un-sistema-así"
+    id="toc-punto-de-partida--por-qué-un-sistema-así">Punto de partida —
+    ¿Por qué un sistema así?</a></li>
+    <li><a href="#reglas" id="toc-reglas">Reglas</a></li>
+    <li><a href="#stack-del-mvp-lo-que-les-damos-cocinado"
+    id="toc-stack-del-mvp-lo-que-les-damos-cocinado">Stack del MVP (lo
+    que les damos cocinado)</a>
+    <ul>
+    <li><a href="#contratos-contracts"
+    id="toc-contratos-contracts">Contratos
+    (<code>contracts/</code>)</a></li>
+    <li><a href="#api-api" id="toc-api-api">API
+    (<code>api/</code>)</a></li>
+    <li><a href="#frontend-web" id="toc-frontend-web">Frontend
+    (<code>web/</code>)</a></li>
+    <li><a href="#red" id="toc-red">Red</a></li>
+    </ul></li>
+    <li><a href="#parte-1--entender-y-desplegar-el-mvp-30"
+    id="toc-parte-1--entender-y-desplegar-el-mvp-30">Parte 1 — Entender
+    y desplegar el MVP (30%)</a>
+    <ul>
+    <li><a href="#11-setup-local-10" id="toc-11-setup-local-10">1.1
+    Setup local (10%)</a></li>
+    <li><a href="#12-despliegue-a-sepolia-10"
+    id="toc-12-despliegue-a-sepolia-10">1.2 Despliegue a Sepolia
+    (10%)</a></li>
+    <li><a href="#13-documentación-inicial-10"
+    id="toc-13-documentación-inicial-10">1.3 Documentación inicial
+    (10%)</a></li>
+    </ul></li>
+    <li><a href="#parte-2--extensiones-obligatorias-50"
+    id="toc-parte-2--extensiones-obligatorias-50">Parte 2 — Extensiones
+    obligatorias (50%)</a>
+    <ul>
+    <li><a href="#extensión-a--soulbound-token-sbt"
+    id="toc-extensión-a--soulbound-token-sbt">Extensión A — Soulbound
+    Token (SBT)</a></li>
+    <li><a href="#extensión-b--verificación-pública-sin-wallet"
+    id="toc-extensión-b--verificación-pública-sin-wallet">Extensión B —
+    Verificación pública sin wallet</a></li>
+    <li><a href="#extensión-c--cache-de-eventos-en-la-api"
+    id="toc-extensión-c--cache-de-eventos-en-la-api">Extensión C — Cache
+    de eventos en la API</a></li>
+    <li><a href="#extensión-d--migración-a-base-sepolia-l2"
+    id="toc-extensión-d--migración-a-base-sepolia-l2">Extensión D —
+    Migración a Base Sepolia (L2)</a></li>
+    </ul></li>
+    <li><a href="#parte-3--demo--entrega-final-20"
+    id="toc-parte-3--demo--entrega-final-20">Parte 3 — Demo + Entrega
+    final (20%)</a>
+    <ul>
+    <li><a href="#31-demo-10" id="toc-31-demo-10">3.1 Demo
+    (10%)</a></li>
+    <li><a href="#32-readme-final-10" id="toc-32-readme-final-10">3.2
+    README final (10%)</a></li>
+    </ul></li>
+    <li><a href="#rúbrica-resumen" id="toc-rúbrica-resumen">Rúbrica
+    resumen</a></li>
+    <li><a href="#lo-que-no-les-pedimos-en-esta-v2-vs-v1"
+    id="toc-lo-que-no-les-pedimos-en-esta-v2-vs-v1">Lo que NO les
+    pedimos en esta V2 (vs. V1)</a></li>
+    <li><a href="#preguntas-frecuentes"
+    id="toc-preguntas-frecuentes">Preguntas frecuentes</a></li>
+    <li><a href="#referencias" id="toc-referencias">Referencias</a></li>
+    </ul></li>
+    </ul>
+    <div style="margin-top:24px;padding-top:14px;border-top:1px solid var(--light-gray);font-size:12px;">
+      <a href="index.html" style="color:var(--gray);">← Volver al índice</a>
+    </div>
+  </aside>
+
+  <main class="content">
+    <nav class="page-breadcrumb" aria-label="Breadcrumb">
+      <a href="index.html">Inicio</a>
+      <span class="sep">›</span>
+      <span class="current">TP V2 · UNLISTED</span>
+    </nav>
+    <nav class="page-nav-top">
+      <a href="index.html" class="back-to-menu">← Volver al menú principal</a>
+      <span class="banner-pill">TP V2 · UNLISTED</span>
+    </nav>
+
+    <details class="toc-inline" open>
+      <summary>📑 Índice del documento</summary>
+      <ul>
+      <li><a href="#trabajo-final--v2--diploma-nft-unq-alcance-acotado"
+      id="toc-trabajo-final--v2--diploma-nft-unq-alcance-acotado">Trabajo
+      Final · V2 — Diploma NFT UNQ (alcance acotado)</a>
+      <ul>
+      <li><a href="#filosofía-de-esta-v2"
+      id="toc-filosofía-de-esta-v2">Filosofía de esta V2</a></li>
+      <li><a href="#punto-de-partida--por-qué-un-sistema-así"
+      id="toc-punto-de-partida--por-qué-un-sistema-así">Punto de partida
+      — ¿Por qué un sistema así?</a></li>
+      <li><a href="#reglas" id="toc-reglas">Reglas</a></li>
+      <li><a href="#stack-del-mvp-lo-que-les-damos-cocinado"
+      id="toc-stack-del-mvp-lo-que-les-damos-cocinado">Stack del MVP (lo
+      que les damos cocinado)</a>
+      <ul>
+      <li><a href="#contratos-contracts"
+      id="toc-contratos-contracts">Contratos
+      (<code>contracts/</code>)</a></li>
+      <li><a href="#api-api" id="toc-api-api">API
+      (<code>api/</code>)</a></li>
+      <li><a href="#frontend-web" id="toc-frontend-web">Frontend
+      (<code>web/</code>)</a></li>
+      <li><a href="#red" id="toc-red">Red</a></li>
+      </ul></li>
+      <li><a href="#parte-1--entender-y-desplegar-el-mvp-30"
+      id="toc-parte-1--entender-y-desplegar-el-mvp-30">Parte 1 —
+      Entender y desplegar el MVP (30%)</a>
+      <ul>
+      <li><a href="#11-setup-local-10" id="toc-11-setup-local-10">1.1
+      Setup local (10%)</a></li>
+      <li><a href="#12-despliegue-a-sepolia-10"
+      id="toc-12-despliegue-a-sepolia-10">1.2 Despliegue a Sepolia
+      (10%)</a></li>
+      <li><a href="#13-documentación-inicial-10"
+      id="toc-13-documentación-inicial-10">1.3 Documentación inicial
+      (10%)</a></li>
+      </ul></li>
+      <li><a href="#parte-2--extensiones-obligatorias-50"
+      id="toc-parte-2--extensiones-obligatorias-50">Parte 2 —
+      Extensiones obligatorias (50%)</a>
+      <ul>
+      <li><a href="#extensión-a--soulbound-token-sbt"
+      id="toc-extensión-a--soulbound-token-sbt">Extensión A — Soulbound
+      Token (SBT)</a></li>
+      <li><a href="#extensión-b--verificación-pública-sin-wallet"
+      id="toc-extensión-b--verificación-pública-sin-wallet">Extensión B
+      — Verificación pública sin wallet</a></li>
+      <li><a href="#extensión-c--cache-de-eventos-en-la-api"
+      id="toc-extensión-c--cache-de-eventos-en-la-api">Extensión C —
+      Cache de eventos en la API</a></li>
+      <li><a href="#extensión-d--migración-a-base-sepolia-l2"
+      id="toc-extensión-d--migración-a-base-sepolia-l2">Extensión D —
+      Migración a Base Sepolia (L2)</a></li>
+      </ul></li>
+      <li><a href="#parte-3--demo--entrega-final-20"
+      id="toc-parte-3--demo--entrega-final-20">Parte 3 — Demo + Entrega
+      final (20%)</a>
+      <ul>
+      <li><a href="#31-demo-10" id="toc-31-demo-10">3.1 Demo
+      (10%)</a></li>
+      <li><a href="#32-readme-final-10" id="toc-32-readme-final-10">3.2
+      README final (10%)</a></li>
+      </ul></li>
+      <li><a href="#rúbrica-resumen" id="toc-rúbrica-resumen">Rúbrica
+      resumen</a></li>
+      <li><a href="#lo-que-no-les-pedimos-en-esta-v2-vs-v1"
+      id="toc-lo-que-no-les-pedimos-en-esta-v2-vs-v1">Lo que NO les
+      pedimos en esta V2 (vs. V1)</a></li>
+      <li><a href="#preguntas-frecuentes"
+      id="toc-preguntas-frecuentes">Preguntas frecuentes</a></li>
+      <li><a href="#referencias"
+      id="toc-referencias">Referencias</a></li>
+      </ul></li>
+      </ul>
+      <div class="toc-controls">
+        <button type="button" class="toc-btn" data-action="expand-all">Expandir todo</button>
+        <button type="button" class="toc-btn" data-action="collapse-all">Colapsar todo</button>
+      </div>
+    </details>
+
+<head><meta name="robots" content="noindex,nofollow"></head>
+
+<h1 id="trabajo-final--v2--diploma-nft-unq-alcance-acotado">Trabajo
+Final · V2 — Diploma NFT UNQ (alcance acotado)</h1>
+<blockquote>
+<p><strong>Audiencia</strong>: alumnos de la cohorte 2026 que necesitan
+un alcance más manejable que la versión completa. La V1 sigue disponible
+en <a href="tp-final.html">tp-final.html</a> — esta V2 reemplaza esa
+entrega para quien la elija.</p>
+<p><strong>Página unlisted</strong>: no está enlazada desde el índice
+del sitio ni indexada en buscadores. Se comparte por mensaje directo del
+docente.</p>
+</blockquote>
+<hr />
+<h2 id="filosofía-de-esta-v2">Filosofía de esta V2</h2>
+<p>A diferencia del TP original, donde tenían que construir todo el
+sistema desde cero, acá les damos <strong>el MVP cocinado y
+funcionando</strong>. Su trabajo consiste en:</p>
+<ol type="1">
+<li><strong>Entender</strong> el código del template (contrato, API,
+front).</li>
+<li><strong>Desplegar</strong> la versión base a Sepolia y verificarla
+en Etherscan.</li>
+<li><strong>Extender</strong> con <strong>al menos 3 de las 4
+features</strong> del bloque “Extensiones obligatorias”.</li>
+<li><strong>Demostrar</strong> que funciona end-to-end con un video o
+una URL pública.</li>
+</ol>
+<p>No se trata de escribir menos código, sino de <strong>modificar
+código que ya funciona</strong> — que es lo que van a hacer en cualquier
+laburo real.</p>
+<hr />
+<h2 id="punto-de-partida--por-qué-un-sistema-así">Punto de partida —
+¿Por qué un sistema así?</h2>
+<p>Esta sección es la misma que la V1 porque el problema <strong>no se
+simplifica</strong>. Lo que se simplifica es la solución.</p>
+<p>En mayo de 2023, la Policía Federal desbarata la <strong>“Operación
+Alejo”</strong>: una red que vendió más de <strong>500 títulos
+secundarios y universitarios truchos</strong>, principalmente para
+ejercer en medicina y educación (<a
+href="https://www.infobae.com/sociedad/2023/05/04/una-banda-de-falsificadores-vendio-titulos-secundarios-y-universitarios-truchos-a-mas-de-500-clientes/">Infobae,
+2023</a>).</p>
+<p>En 2025, la <strong><a
+href="https://www.unc.edu.ar/inform%C3%A1tica/blockchain-y-educaci%C3%B3n-la-unc-premiada-por-su-innovaci%C3%B3n-en-gesti%C3%B3n-acad%C3%A9mica">Universidad
+Nacional de Córdoba</a></strong> ganó el Premio MetaRed TIC con un
+sistema de validación académica con smart contracts integrado a SIU
+Guaraní. Redujo el trámite de <strong>4 meses a 2 semanas</strong>.</p>
+<table>
+<thead>
+<tr>
+<th>Problema</th>
+<th>Cómo lo resuelve blockchain</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>El servidor central se rompe / se hackea / se borra</td>
+<td>Estado replicado en miles de nodos, inmutable</td>
+</tr>
+<tr>
+<td>Un PDF se puede falsificar</td>
+<td>El emisor firma criptográficamente, cualquiera verifica</td>
+</tr>
+<tr>
+<td>Verificar un título = llamar y esperar días</td>
+<td><code>tokenId</code> en una URL pública = 3 segundos</td>
+</tr>
+<tr>
+<td>El egresado depende de la universidad para “demostrar” su
+título</td>
+<td>Lo tiene en su wallet, nadie se lo puede sacar</td>
+</tr>
+</tbody>
+</table>
+<p>UNQ tiene ~11.000 estudiantes activos y 18 carreras. <strong>No están
+haciendo un toy project. Están prototipando una pieza de infraestructura
+real.</strong></p>
+<hr />
+<h2 id="reglas">Reglas</h2>
+<table>
+<tbody>
+<tr>
+<td><strong>Plazo de entrega</strong></td>
+<td>Lunes <strong>08/06/2026 · 18:00</strong></td>
+</tr>
+<tr>
+<td><strong>Grupos</strong></td>
+<td>Individual o <strong>pareja</strong> (máximo 2 personas)</td>
+</tr>
+<tr>
+<td><strong>Alcance</strong></td>
+<td>Solo títulos finales (Licenciatura, Tecnicatura, Profesorado)</td>
+</tr>
+<tr>
+<td><strong>Datos</strong></td>
+<td>Caso ficticio. Inventar 3-5 personas. <strong>No usar datos reales
+de alumnos</strong></td>
+</tr>
+<tr>
+<td><strong>Nota mínima</strong></td>
+<td>60 / 100</td>
+</tr>
+<tr>
+<td><strong>Cómo se entrega</strong></td>
+<td>Repositorio Git + video demo (3-5 min) <strong>o</strong> URL
+pública desplegada</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="stack-del-mvp-lo-que-les-damos-cocinado">Stack del MVP (lo que
+les damos cocinado)</h2>
+<p>Repositorio template:</p>
+<blockquote>
+<p><strong><code>dpetrocelli/diplo-unq-blockchain-tp-v2-starter</code></strong></p>
+</blockquote>
+<p>Lo clonan, leen, ejecutan, lo entienden. Después extienden.</p>
+<h3 id="contratos-contracts">Contratos (<code>contracts/</code>)</h3>
+<ul>
+<li><strong>Foundry</strong> (Forge + Anvil + Cast) — ya lo dominan
+desde clase 2.</li>
+<li><code>Diploma.sol</code> — ERC-721 con <code>ERC721URIStorage</code>
+y <code>Ownable</code> de OpenZeppelin.</li>
+<li>Una sola función relevante:
+<code>mint(address student, string uri)</code> con
+<code>onlyOwner</code>.</li>
+<li>3 tests en <code>test/Diploma.t.sol</code>: mint feliz, mint sin
+permiso revierte, balance correcto.</li>
+<li>Script <code>script/Deploy.s.sol</code> para desplegar a
+Sepolia.</li>
+<li><code>forge test</code> pasa, <code>forge coverage</code> reporta el
+baseline.</li>
+</ul>
+<h3 id="api-api">API (<code>api/</code>)</h3>
+<ul>
+<li><strong>FastAPI + web3.py</strong>, stateless, sin base de
+datos.</li>
+<li>Endpoint <code>GET /credentials/:tokenId</code> que llama
+<code>ownerOf</code> y <code>tokenURI</code> al RPC y devuelve
+JSON.</li>
+<li>Endpoint <code>GET /health</code> para verificar conexión al
+RPC.</li>
+<li>CORS abierto (es prototipo).</li>
+</ul>
+<h3 id="frontend-web">Frontend (<code>web/</code>)</h3>
+<ul>
+<li><strong>Next.js 14 (App Router) + wagmi v2 + viem +
+RainbowKit</strong>.</li>
+<li><code>ConnectButton</code> de RainbowKit.</li>
+<li>Form de mint protegido por owner.</li>
+<li>Lista de NFTs del wallet conectado leyendo eventos
+<code>DiplomaIssued</code> con <code>useWatchContractEvent</code>.</li>
+<li>Metadata harcodeada en <code>/public/metadata/N.json</code> (a
+propósito: para que la mejoren ustedes).</li>
+</ul>
+<h3 id="red">Red</h3>
+<ul>
+<li><strong>Sepolia ETH</strong> para el MVP. Faucet recomendado: <a
+href="https://cloud.google.com/application/web3/faucet/ethereum/sepolia">Google
+Cloud Faucet</a>.</li>
+</ul>
+<hr />
+<h2 id="parte-1--entender-y-desplegar-el-mvp-30">Parte 1 — Entender y
+desplegar el MVP (30%)</h2>
+<h3 id="11-setup-local-10">1.1 Setup local (10%)</h3>
+<p>Que funcione en su máquina. La rúbrica es binaria:</p>
+<table>
+<thead>
+<tr>
+<th>Comando</th>
+<th>Resultado esperado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>forge build</code> en <code>contracts/</code></td>
+<td>Compila sin warnings</td>
+</tr>
+<tr>
+<td><code>forge test</code> en <code>contracts/</code></td>
+<td>3 tests pasan</td>
+</tr>
+<tr>
+<td><code>uvicorn main:app --reload</code> en <code>api/</code></td>
+<td><code>GET /health</code> responde <code>{"status":"ok"}</code></td>
+</tr>
+<tr>
+<td><code>npm run dev</code> en <code>web/</code></td>
+<td><code>localhost:3000</code> muestra el ConnectButton</td>
+</tr>
+</tbody>
+</table>
+<h3 id="12-despliegue-a-sepolia-10">1.2 Despliegue a Sepolia (10%)</h3>
+<ul>
+<li>Desplegar <code>Diploma.sol</code> a Sepolia con el script de
+Foundry.</li>
+<li><strong>Verificar el código fuente en Etherscan</strong>
+(<code>forge verify-contract</code>).</li>
+<li>Configurar la dirección del contrato en <code>web/.env.local</code>
+y <code>api/.env</code>.</li>
+<li>Mintear <strong>3 credenciales reales</strong> a 3 wallets distintos
+(pueden ser sus propios wallets de prueba).</li>
+</ul>
+<h3 id="13-documentación-inicial-10">1.3 Documentación inicial
+(10%)</h3>
+<p>README en la raíz del repo con:</p>
+<ul>
+<li>Instrucciones de setup local copiadas y verificadas.</li>
+<li>Dirección del contrato + link a Etherscan verificado.</li>
+<li>Las 3 transacciones de mint con sus hashes.</li>
+<li><strong>Qué extensiones eligieron</strong> (de las 4 disponibles) y
+por qué.</li>
+</ul>
+<hr />
+<h2 id="parte-2--extensiones-obligatorias-50">Parte 2 — Extensiones
+obligatorias (50%)</h2>
+<p>Eligen <strong>al menos 3 de estas 4</strong>. Cada una vale
+<strong>17 puntos</strong>. Si hacen las 4, los 51 puntos se
+redistribuyen como 50 + 1 de bonus.</p>
+<h3 id="extensión-a--soulbound-token-sbt">Extensión A — Soulbound Token
+(SBT)</h3>
+<p><strong>Capas que tocan</strong>: Contrato + Foundry.</p>
+<p><strong>Qué hacer</strong>:</p>
+<ol type="1">
+<li>Override <code>_update</code> en <code>Diploma.sol</code> para que
+<strong>revierta cualquier transferencia entre direcciones</strong>
+(mint y burn siguen funcionando: <code>from == address(0)</code> o
+<code>to == address(0)</code>).</li>
+<li>Definir un custom error <code>DiplomaSoulbound()</code> y revertir
+con él.</li>
+<li>Agregar 2 tests en <code>Diploma.t.sol</code>:
+<ul>
+<li><code>test_RevertWhen_TransferFrom</code>: que
+<code>transferFrom</code> revierta.</li>
+<li><code>test_BurnAllowed</code>: que <code>burn</code> (si lo exponen)
+o el flujo de mint sigan funcionando.</li>
+</ul></li>
+<li>Redesplegar el contrato actualizado a Sepolia y verificarlo.</li>
+</ol>
+<p><strong>Por qué importa</strong>:</p>
+<p>Un diploma <strong>no se transfiere</strong>. No se vende en OpenSea,
+no se regala. La no-transferibilidad del token = la no-transferibilidad
+de la credencial académica. Sin esto, el sistema <strong>no funciona
+conceptualmente</strong>.</p>
+<p>El paper de referencia es <strong>Ohlhaver, Weyl &amp; Buterin
+(2022)</strong> — <em>Decentralized Society: Finding Web3’s Soul</em>
+(<a
+href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4105763">SSRN
+4105763</a>) — que introduce el concepto de <strong>Soulbound Tokens
+(SBTs)</strong>. Citenlo en el README.</p>
+<p><strong>Conceptos que aprenden</strong>:</p>
+<ul>
+<li>Hooks de OpenZeppelin v5 (<code>_update</code> reemplaza a
+<code>_beforeTokenTransfer</code> de v4).</li>
+<li><code>virtual</code> y <code>override</code> en Solidity.</li>
+<li>Custom errors vs <code>require</code> con string.</li>
+<li>Que las “extensiones” del estándar ERC-721 se hacen
+<strong>overrideando hooks</strong>, no agregando funciones nuevas.</li>
+</ul>
+<hr />
+<h3 id="extensión-b--verificación-pública-sin-wallet">Extensión B —
+Verificación pública sin wallet</h3>
+<p><strong>Capas que tocan</strong>: API + Frontend.</p>
+<p><strong>Qué hacer</strong>:</p>
+<ol type="1">
+<li><p><strong>API</strong>: agregar <code>GET /verify/:tokenId</code>
+que devuelva:</p>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode json"><code class="sourceCode json"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;tokenId&quot;</span><span class="fu">:</span> <span class="dv">1</span><span class="fu">,</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;owner&quot;</span><span class="fu">:</span> <span class="st">&quot;0x...&quot;</span><span class="fu">,</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;tokenURI&quot;</span><span class="fu">:</span> <span class="st">&quot;ipfs://...&quot;</span><span class="fu">,</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;exists&quot;</span><span class="fu">:</span> <span class="kw">true</span><span class="fu">,</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;metadata&quot;</span><span class="fu">:</span> <span class="fu">{</span> <span class="er">...</span> <span class="fu">}</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code></pre></div>
+<p>Si el <code>tokenId</code> no existe, responder <code>404</code> con
+<code>{"exists": false}</code>.</p></li>
+<li><p><strong>Frontend</strong>: agregar la ruta
+<code>/verify/[tokenId]/page.tsx</code> (Server Component de
+Next.js):</p>
+<ul>
+<li>Llama a la API desde el server (no desde el client).</li>
+<li><strong>No usa wagmi ni RainbowKit</strong>: no requiere
+wallet.</li>
+<li>Muestra: estado válido/inválido, dirección del egresado abreviada,
+fecha de emisión, link a Etherscan.</li>
+</ul></li>
+<li><p>Probarlo desde un browser <strong>sin MetaMask instalado</strong>
+(ej. Firefox limpio o modo incógnito).</p></li>
+</ol>
+<p><strong>Por qué importa</strong>:</p>
+<p>La blockchain es <strong>pública por diseño</strong>. Leerla no
+requiere wallet ni gas ni firma. El empleador que recibe un CV con un
+<code>tokenId</code> no va a instalar MetaMask. Pega la URL
+<code>unq-diplomas.app/verify/42</code> y ve el resultado en 3
+segundos.</p>
+<p>Esa separación entre <strong>rol emisor</strong> (decano con wallet)
+y <strong>rol verificador</strong> (cualquiera con un browser) es
+<strong>el insight de DApps reales</strong>.</p>
+<p><strong>Conceptos que aprenden</strong>:</p>
+<ul>
+<li><code>createPublicClient</code> de <strong>viem</strong> vs
+<code>useReadContract</code> de wagmi.</li>
+<li>Server Components de Next.js 14 (App Router) — fetch desde el
+server.</li>
+<li>Diferencia entre <code>view</code>/<code>pure</code> (gratis, sin
+wallet) y funciones que mutan estado.</li>
+</ul>
+<hr />
+<h3 id="extensión-c--cache-de-eventos-en-la-api">Extensión C — Cache de
+eventos en la API</h3>
+<p><strong>Capas que tocan</strong>: API + (opcional) Frontend.</p>
+<p><strong>Qué hacer</strong>:</p>
+<ol type="1">
+<li>Elegir storage: <strong>SQLite</strong> (recomendado, cero infra) o
+<strong>PostgreSQL</strong> (si quieren practicar Docker).</li>
+<li>Agregar un <strong>worker</strong> en la API que:
+<ul>
+<li>Lee los eventos <code>DiplomaIssued</code> desde el bloque del
+despliegue hasta el actual.</li>
+<li>Los persiste en una tabla
+<code>events(token_id, student, uri, block_number, tx_hash, created_at)</code>.</li>
+<li>Continúa escuchando nuevos eventos en tiempo real (polling cada N
+segundos o <code>eth_subscribe</code> si se animan a WebSockets).</li>
+</ul></li>
+<li>Agregar endpoints:
+<ul>
+<li><code>GET /credentials/owner/:address</code> — lista de tokens
+emitidos a esa wallet, <strong>leído del cache</strong> (no del
+RPC).</li>
+<li><code>GET /events/recent?limit=10</code> — últimos N eventos.</li>
+</ul></li>
+<li>Documentar en el README <strong>cuántos hits al RPC se
+ahorraron</strong> (medir antes y después).</li>
+</ol>
+<p><strong>Por qué importa</strong>:</p>
+<p>Pegarle al RPC en cada request <strong>no escala</strong>. Cada
+llamada cuesta latencia (200-500ms) y, en Alchemy/Infura free tier, te
+quedás sin créditos rápido. La <strong>separación entre indexación y
+consulta</strong> es lo que hace <strong>The Graph</strong> en
+producción — ustedes están armando una versión chiquita.</p>
+<p><strong>Conceptos que aprenden</strong>:</p>
+<ul>
+<li>Por qué existe <strong>The Graph</strong> (lo que están haciendo a
+mano es lo que The Graph hace generalizado).</li>
+<li>Filtrar eventos con <code>eth_getLogs</code> y rangos de
+bloques.</li>
+<li>Idempotencia: que el worker no inserte el mismo evento dos veces si
+se reinicia.</li>
+<li>Trade-off <strong>RPC directo vs cache local</strong>.</li>
+</ul>
+<hr />
+<h3 id="extensión-d--migración-a-base-sepolia-l2">Extensión D —
+Migración a Base Sepolia (L2)</h3>
+<p><strong>Capas que tocan</strong>: Foundry + Frontend + API.</p>
+<p><strong>Qué hacer</strong>:</p>
+<ol type="1">
+<li><strong>Contrato</strong>:
+<ul>
+<li>Conseguir testnet ETH en <a
+href="https://www.coinbase.com/faucets/base-ethereum-sepolia-faucet">Coinbase
+Faucet de Base Sepolia</a>.</li>
+<li>Desplegar el contrato a <strong>Base Sepolia</strong> (chainId
+<code>84532</code>, RPC <code>https://sepolia.base.org</code>).</li>
+<li>Verificar el código en <strong>Basescan</strong>
+(<code>forge verify-contract --verifier-url https://api-sepolia.basescan.org/api</code>).</li>
+</ul></li>
+<li><strong>Frontend</strong>:
+<ul>
+<li>Actualizar <code>web/src/lib/wagmi.ts</code> para soportar Sepolia
+<strong>y</strong> Base Sepolia (ambas redes en el connector).</li>
+<li>El <code>ConnectButton</code> de RainbowKit debe permitir cambiar de
+red.</li>
+<li>La dirección del contrato se resuelve según la red activa.</li>
+</ul></li>
+<li><strong>API</strong>:
+<ul>
+<li>Variable de entorno <code>CHAIN</code> (<code>sepolia</code> o
+<code>base-sepolia</code>) que selecciona el RPC y la dirección del
+contrato.</li>
+</ul></li>
+<li><strong>Documentar en el README</strong>:
+<ul>
+<li>Diferencia entre L1 (Sepolia ETH) y L2 (Base Sepolia).</li>
+<li>Costo de gas comparado (mismo mint, capturas en Etherscan vs
+Basescan).</li>
+<li>Qué cambió <strong>en el código</strong> (poco) y qué cambió
+<strong>en la config</strong> (todo).</li>
+</ul></li>
+</ol>
+<p><strong>Por qué importa</strong>:</p>
+<p>Migrar entre redes EVM-compatibles es una operación de
+<strong>producción real</strong>. Una empresa empieza en una testnet y
+termina en mainnet, o cambia de L1 a L2 para bajar costos. Aprender que
+<strong>el bytecode no cambia</strong> y que toda la fricción está en
+config + verificación es la lección.</p>
+<p><strong>Conceptos que aprenden</strong>:</p>
+<ul>
+<li>Qué es un L2 (Base es un Optimistic Rollup).</li>
+<li>ChainId, RPC, explorer, faucet — qué es propio de cada red y qué es
+universal.</li>
+<li>Multi-chain en wagmi
+(<code>chains: [sepolia, baseSepolia]</code>).</li>
+<li>Que la EVM es <strong>portable</strong> entre redes
+compatibles.</li>
+</ul>
+<hr />
+<h2 id="parte-3--demo--entrega-final-20">Parte 3 — Demo + Entrega final
+(20%)</h2>
+<h3 id="31-demo-10">3.1 Demo (10%)</h3>
+<p><strong>Opción A</strong> — Video de 3 a 5 minutos, sin cortes,
+mostrando:</p>
+<ol type="1">
+<li>La página principal del front conectando wallet.</li>
+<li>Mint de una credencial nueva (firmando en MetaMask).</li>
+<li>La transacción aparece en Etherscan/Basescan.</li>
+<li><strong>Las extensiones que eligieron en acción</strong>:
+<ul>
+<li>Si hicieron Soulbound: intentar transferir → ver el revert.</li>
+<li>Si hicieron <code>/verify</code>: abrir la URL en otro browser sin
+wallet.</li>
+<li>Si hicieron Cache: mostrar que un
+<code>GET /credentials/owner/:address</code> devuelve sin pegar al
+RPC.</li>
+<li>Si hicieron Base Sepolia: cambiar de red en RainbowKit y mintear en
+la otra red.</li>
+</ul></li>
+<li>Mostrar el README explicando el por qué.</li>
+</ol>
+<p>Subir a YouTube (unlisted), Drive (link público) o adjuntar al
+campus.</p>
+<p><strong>Opción B</strong> — Aplicación desplegada en URL pública:</p>
+<ul>
+<li>Frontend en Vercel / GitHub Pages / Netlify.</li>
+<li>API en Railway / Fly.io / Render free tier.</li>
+<li>Contrato verificado en Etherscan o Basescan.</li>
+<li>3 credenciales emitidas reales.</li>
+</ul>
+<h3 id="32-readme-final-10">3.2 README final (10%)</h3>
+<p>Tiene que cubrir, en orden:</p>
+<ol type="1">
+<li><strong>Hook UNQ</strong> breve (3-5 líneas, ¿por qué este
+TP?).</li>
+<li><strong>Setup local</strong> verificable (<code>forge test</code>,
+<code>npm run dev</code>, etc.).</li>
+<li><strong>Direcciones de despliegue</strong>: contrato +
+Etherscan/Basescan + URL del front (si aplica).</li>
+<li><strong>Las extensiones que eligieron</strong>, con un párrafo cada
+una explicando:
+<ul>
+<li>Qué hicieron.</li>
+<li>Qué archivos tocaron.</li>
+<li>Qué aprendieron.</li>
+</ul></li>
+<li><strong>Mapeo a la rúbrica</strong> abajo de todo: “Parte 1.1 → tal
+commit”, etc. <strong>Esto les ahorra puntos perdidos</strong> porque
+les marcamos qué buscar.</li>
+</ol>
+<hr />
+<h2 id="rúbrica-resumen">Rúbrica resumen</h2>
+<table>
+<thead>
+<tr>
+<th>Parte</th>
+<th>Puntos</th>
+<th>¿Qué evaluamos?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1.1 — Setup local</td>
+<td>10</td>
+<td>Los 4 comandos funcionan en una máquina limpia</td>
+</tr>
+<tr>
+<td>1.2 — Despliegue Sepolia</td>
+<td>10</td>
+<td>Contrato verificado + 3 mints reales</td>
+</tr>
+<tr>
+<td>1.3 — Documentación inicial</td>
+<td>10</td>
+<td>README claro con setup, dirección, decisiones</td>
+</tr>
+<tr>
+<td>2.A — Soulbound <em>(opcional)</em></td>
+<td>17</td>
+<td>Override + 2 tests + redespliegue</td>
+</tr>
+<tr>
+<td>2.B — Verify público <em>(opcional)</em></td>
+<td>17</td>
+<td>Endpoint + ruta SSR sin wallet</td>
+</tr>
+<tr>
+<td>2.C — Cache de eventos <em>(opcional)</em></td>
+<td>17</td>
+<td>Worker + endpoints + medición de hits ahorrados</td>
+</tr>
+<tr>
+<td>2.D — Base Sepolia <em>(opcional)</em></td>
+<td>17</td>
+<td>Despliegue verificado + multi-chain en front + doc</td>
+</tr>
+<tr>
+<td>3.1 — Demo</td>
+<td>10</td>
+<td>Video o app desplegada cubriendo el flujo</td>
+</tr>
+<tr>
+<td>3.2 — README final</td>
+<td>10</td>
+<td>Mapeo a rúbrica + decisiones documentadas</td>
+</tr>
+<tr>
+<td><strong>TOTAL</strong></td>
+<td><strong>100</strong></td>
+<td><strong>Pasa con 60+. Pareja: ambos defienden ambas
+partes.</strong></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>Si hacen las <strong>4 extensiones</strong> (no 3), suman <strong>+1
+de bonus</strong> sobre los 100. No es mucho — el incentivo real es
+aprender más, no la décima.</p>
+</blockquote>
+<hr />
+<h2 id="lo-que-no-les-pedimos-en-esta-v2-vs-v1">Lo que NO les pedimos en
+esta V2 (vs. V1)</h2>
+<p>Para que quede claro qué se simplifica respecto del <a
+href="tp-final.html">TP final original</a>:</p>
+<table>
+<thead>
+<tr>
+<th>Tema</th>
+<th>V1</th>
+<th>V2</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Roles (<code>AccessControl</code>)</td>
+<td>Obligatorio (ISSUER + ADMIN)</td>
+<td>Solo <code>Ownable</code></td>
+</tr>
+<tr>
+<td>Soulbound</td>
+<td>Obligatorio</td>
+<td>Extensión A (opcional)</td>
+</tr>
+<tr>
+<td>Struct extendida con hashes</td>
+<td>Obligatorio</td>
+<td>Solo <code>tokenURI</code></td>
+</tr>
+<tr>
+<td>Eventos custom (4 distintos)</td>
+<td>Obligatorio</td>
+<td>Solo <code>DiplomaIssued</code></td>
+</tr>
+<tr>
+<td>Coverage 80% + fuzz tests</td>
+<td>Obligatorio</td>
+<td>3 tests funcionales</td>
+</tr>
+<tr>
+<td>Slither + SECURITY.md</td>
+<td>Obligatorio</td>
+<td>No requerido</td>
+</tr>
+<tr>
+<td>IPFS (Pinata)</td>
+<td>Bonus</td>
+<td>Pueden agregarlo si quieren (no puntúa)</td>
+</tr>
+<tr>
+<td>Multi-sig / Chainlink / DID</td>
+<td>Bonus</td>
+<td>Fuera de alcance</td>
+</tr>
+<tr>
+<td>Frontend con dual-mode (verify + issuer)</td>
+<td>Obligatorio</td>
+<td>El verify queda en Extensión B</td>
+</tr>
+<tr>
+<td>Base Sepolia</td>
+<td>Obligatorio</td>
+<td>Extensión D (opcional)</td>
+</tr>
+</tbody>
+</table>
+<p>Si después de hacer la V2 quieren ir por más, la V1 sigue ahí. Lo
+recomendamos especialmente para quienes apunten a defender el TP en una
+entrevista laboral.</p>
+<hr />
+<h2 id="preguntas-frecuentes">Preguntas frecuentes</h2>
+<p><strong>¿Puedo hacer la V1 directamente?</strong> Sí. La V2 es una
+opción para quienes prefieren un alcance más manejable. La V1 da más
+puntos máximos posibles porque tiene más bonus, pero ambas se aprueban
+con 60+.</p>
+<p><strong>¿Las 3 extensiones tienen que ser un combo
+específico?</strong> No. Cualquier combinación de 3 de las 4. Si tienen
+dudas de qué combo elegir, vengan a una clase de consulta — los
+orientamos según el perfil de cada uno.</p>
+<p><strong>¿Puedo entregar individual y que mi compañero entregue otro
+TP por su cuenta?</strong> Sí. Pero si entregan en pareja, <strong>ambos
+tienen que poder defender ambas partes</strong>. Si uno hizo solo el
+front y no entiende el contrato, baja la nota de los dos.</p>
+<p><strong>¿Qué pasa si solo hago 2 extensiones bien hechas en lugar de
+3 a medias?</strong> Se evalúa lo entregado. Dos extensiones perfectas a
+17 puntos cada una son 34. Falta llegar a 60. Mejor 3 razonables que 2
+perfectas.</p>
+<p><strong>¿Puedo cambiar de stack (ej. Vue, Express, Hardhat)?</strong>
+No. La consigna es modificar el template, no reescribirlo. Foundry +
+Next.js + FastAPI es lo que evaluamos.</p>
+<hr />
+<h2 id="referencias">Referencias</h2>
+<ul>
+<li><strong>Ohlhaver, Weyl &amp; Buterin (2022)</strong>.
+<em>Decentralized Society: Finding Web3’s Soul</em>. SSRN <a
+href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4105763">4105763</a>.
+Paper que define <strong>Soulbound Tokens</strong> — el concepto detrás
+de la Extensión A.</li>
+<li><strong>Grech &amp; Camilleri (2017)</strong>. <em>Blockchain in
+Education</em>. JRC, Comisión Europea. EUR 28778 EN, doi:<a
+href="https://publications.jrc.ec.europa.eu/repository/handle/JRC108255">10.2760/60649</a>.
+Reporte fundacional sobre adopción de blockchain en educación.</li>
+<li><strong>Universidad Nacional de Córdoba (2025)</strong>. <a
+href="https://www.unc.edu.ar/inform%C3%A1tica/blockchain-y-educaci%C3%B3n-la-unc-premiada-por-su-innovaci%C3%B3n-en-gesti%C3%B3n-acad%C3%A9mica">Premio
+MetaRed TIC</a>. Caso argentino de referencia.</li>
+<li><a href="https://book.getfoundry.sh/">Foundry Book</a> · <a
+href="https://wagmi.sh/">wagmi v2 docs</a> · <a
+href="https://viem.sh/">viem</a> · <a
+href="https://www.rainbowkit.com/">RainbowKit</a> · <a
+href="https://fastapi.tiangolo.com/">FastAPI</a> · <a
+href="https://docs.base.org/chain/network-information">Base Sepolia
+docs</a>.</li>
+</ul>
+<hr />
+<blockquote>
+<p><strong>Cualquier duda</strong>: clases de consulta los lunes 18:00,
+o por mensaje directo. <strong>No usen el foro general</strong> para
+esta V2 — la consigna oficial sigue siendo la V1.</p>
+</blockquote>
+
+    <nav class="page-prev-next" aria-label="Navegación entre páginas">
+      <a class="prev-link" href="#" data-slot="prev" hidden>
+        <span class="arrow">←</span>
+        <span class="nav-meta">
+          <span class="nav-label">Anterior</span>
+          <span class="nav-title" data-slot="prev-title"></span>
+        </span>
+      </a>
+      <a class="next-link" href="#" data-slot="next" hidden>
+        <span class="nav-meta">
+          <span class="nav-label">Siguiente</span>
+          <span class="nav-title" data-slot="next-title"></span>
+        </span>
+        <span class="arrow">→</span>
+      </a>
+    </nav>
+
+    <nav class="page-nav-bottom">
+      <a href="index.html" class="back-to-menu">← Volver al menú principal</a>
+    </nav>
+  </main>
+</div>
+
+<footer class="unq-footer">
+  <div>
+    UNQ · Diplomatura en Blockchain · Desarrollo de Smart Contracts y dApps <strong>2026</strong>
+    · Dr. David Petrocelli &amp; Esp. Ciro Romero
+  </div>
+</footer>
+
+<script>
+// Sidebar show/hide toggle (preference persisted in localStorage)
+(function () {
+  const sidebar = document.getElementById('toc-sidebar');
+  const layout = document.querySelector('.layout');
+  const hideBtn = document.getElementById('sidebar-hide');
+  const showBtn = document.getElementById('sidebar-show');
+  if (!sidebar || !layout || !hideBtn || !showBtn) return;
+
+  const KEY = 'unlu.dcb.sidebar.hidden';
+
+  function apply(hidden) {
+    layout.classList.toggle('sidebar-hidden', hidden);
+    showBtn.classList.toggle('visible', hidden);
+  }
+
+  apply(localStorage.getItem(KEY) === '1');
+
+  hideBtn.addEventListener('click', () => {
+    localStorage.setItem(KEY, '1');
+    apply(true);
+  });
+  showBtn.addEventListener('click', () => {
+    localStorage.removeItem(KEY);
+    apply(false);
+  });
+})();
+
+// Wrap each H2 (and its following content until the next H2) in a <details open>
+// element so users can collapse/expand sections.
+(function () {
+  const main = document.querySelector('main.content');
+  if (!main) return;
+
+  // Collect direct-child H2 headings so we don't touch nested ones (e.g., inside details we'll create)
+  const headings = Array.from(main.children).filter(el => el.tagName === 'H2');
+
+  headings.forEach(h2 => {
+    const details = document.createElement('details');
+    details.open = true;
+    details.className = 'section-collapsible';
+
+    const summary = document.createElement('summary');
+    // Move heading content (incl. anchor) into the summary so anchors keep working
+    summary.innerHTML = h2.innerHTML;
+    if (h2.id) summary.id = h2.id;
+    details.appendChild(summary);
+
+    // Move siblings until next H2 into details
+    const parent = h2.parentNode;
+    let next = h2.nextSibling;
+    parent.replaceChild(details, h2);
+    while (next && !(next.nodeType === 1 && next.tagName === 'H2')) {
+      const node = next;
+      next = next.nextSibling;
+      details.appendChild(node);
+    }
+  });
+
+  // If there's a hash in the URL, ensure the target's <details> is open
+  function openDetailsForHash(hash) {
+    if (!hash) return;
+    const target = document.getElementById(hash.replace(/^#/, ''));
+    if (!target) return;
+    let p = target.closest('details');
+    while (p) { p.open = true; p = p.parentElement && p.parentElement.closest('details'); }
+    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+  openDetailsForHash(window.location.hash);
+  window.addEventListener('hashchange', () => openDetailsForHash(window.location.hash));
+
+  // Wire up "Expand all" / "Collapse all" controls in the inline TOC
+  document.querySelectorAll('.toc-controls [data-action]').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      const action = btn.getAttribute('data-action');
+      const open = action === 'expand-all';
+      document.querySelectorAll('details.section-collapsible').forEach(d => { d.open = open; });
+    });
+  });
+})();
+
+// Populate prev/next navigation based on the current page's banner-num
+(function () {
+  const pill = document.querySelector('.banner-pill');
+  const nav = document.querySelector('.page-prev-next');
+  if (!pill || !nav) return;
+
+  const key = (pill.textContent || '').trim().toUpperCase();
+
+  // Map banner-num → { prev, next }
+  // Each entry: { href, title } (or null if not present)
+  const MAP = {
+    // ----- Clase 1 -----
+    'C1 · CLASE': {
+      prev: { href: 'index.html',         title: 'Menú principal' },
+      next: { href: 'clase-1-tarea.html', title: 'Tarea de clase 1' }
+    },
+    'C1 · TAREA': {
+      prev: { href: 'clase-1-clase.html', title: 'Material en clase 1' },
+      next: { href: 'clase-2-clase.html', title: 'Clase 2' }
+    },
+    // ----- Clase 2 -----
+    'C2 · CLASE': {
+      prev: { href: 'clase-1-tarea.html', title: 'Tarea de clase 1' },
+      next: { href: 'clase-2-tarea.html', title: 'Tarea de clase 2' }
+    },
+    'C2 · TAREA': {
+      prev: { href: 'clase-2-clase.html', title: 'Material en clase 2' },
+      next: { href: 'index.html',         title: 'Menú principal' }
+    },
+    // ----- Clase 3 -----
+    'C3 · CLASE': {
+      prev: { href: 'index.html',         title: 'Menú principal' },
+      next: { href: 'clase-3-tarea.html', title: 'Tarea de clase 3' }
+    },
+    'C3 · TAREA': {
+      prev: { href: 'clase-3-clase.html', title: 'Material en clase 3' },
+      next: { href: 'index.html',         title: 'Menú principal' }
+    },
+    // ----- Clase 4 -----
+    'C4 · CLASE': {
+      prev: { href: 'index.html',         title: 'Menú principal' },
+      next: { href: 'clase-4-tarea.html', title: 'Tarea de clase 4' }
+    },
+    'C4 · TAREA': {
+      prev: { href: 'clase-4-clase.html', title: 'Material en clase 4' },
+      next: { href: 'tp-final.html',      title: 'Trabajo final' }
+    },
+    // ----- TP final -----
+    'TP FINAL': {
+      prev: { href: 'clase-4-tarea.html', title: 'Tarea de clase 4' },
+      next: { href: 'index.html',         title: 'Menú principal' }
+    },
+    // ----- Material transversal -----
+    'DIAGRAMAS': {
+      prev: { href: 'index.html',  title: 'Menú principal' },
+      next: { href: 'glosario.html', title: 'Glosario' }
+    },
+    'GLOSARIO': {
+      prev: { href: 'diagramas-arquitectura.html', title: 'Diagramas' },
+      next: { href: 'cheat-sheet.html',            title: 'Cheat sheet' }
+    },
+    'CHEAT-SHEET': {
+      prev: { href: 'glosario.html', title: 'Glosario' },
+      next: { href: 'index.html',    title: 'Menú principal' }
+    }
+  };
+
+  const entry = MAP[key];
+  if (!entry) return;
+
+  const prevLink = nav.querySelector('[data-slot="prev"]');
+  const nextLink = nav.querySelector('[data-slot="next"]');
+  const prevTitle = nav.querySelector('[data-slot="prev-title"]');
+  const nextTitle = nav.querySelector('[data-slot="next-title"]');
+
+  if (entry.prev && prevLink && prevTitle) {
+    prevLink.setAttribute('href', entry.prev.href);
+    prevTitle.textContent = entry.prev.title;
+    prevLink.hidden = false;
+  }
+  if (entry.next && nextLink && nextTitle) {
+    nextLink.setAttribute('href', entry.next.href);
+    nextTitle.textContent = entry.next.title;
+    nextLink.hidden = false;
+  }
+
+  // If neither slot is shown, hide the whole nav
+  if ((!entry.prev) && (!entry.next)) {
+    nav.style.display = 'none';
+  }
+})();
+
+// Click-to-copy on every <pre> code block
+(function () {
+  document.querySelectorAll('pre').forEach(pre => {
+    pre.addEventListener('click', async (e) => {
+      // Don't trigger if user is selecting text
+      const sel = window.getSelection();
+      if (sel && sel.toString().length > 0 && pre.contains(sel.anchorNode)) return;
+
+      const code = pre.querySelector('code') || pre;
+      const text = code.innerText.trim();
+      try {
+        await navigator.clipboard.writeText(text);
+        pre.classList.add('copied');
+        setTimeout(() => pre.classList.remove('copied'), 1400);
+      } catch (err) {
+        // Fallback: select all
+        const range = document.createRange();
+        range.selectNodeContents(code);
+        const sel2 = window.getSelection();
+        sel2.removeAllRanges();
+        sel2.addRange(range);
+      }
+    });
+  });
+})();
+
+// Open all external links in a new tab (preserves the current page).
+// Internal anchors (#hash), relative links and same-origin links stay in-tab.
+(function () {
+  const here = window.location.hostname;
+  document.querySelectorAll('a[href]').forEach(a => {
+    const href = a.getAttribute('href');
+    if (!href) return;
+    // Skip anchors and pure relative links
+    if (href.startsWith('#') || href.startsWith('/') || !/^https?:\/\//i.test(href)) return;
+    try {
+      const url = new URL(href);
+      if (url.hostname && url.hostname !== here) {
+        a.setAttribute('target', '_blank');
+        a.setAttribute('rel', 'noopener noreferrer');
+      }
+    } catch (_) {
+      // Malformed URL — ignore
+    }
+  });
+})();
+</script>
+
+</body>
+</html>
