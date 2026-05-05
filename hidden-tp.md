@@ -8,7 +8,7 @@ Les damos un **template funcionando end-to-end** (contrato + API + front) y su t
 
 1. **Entender** el código del template y cómo se conectan las tres capas.
 2. **Desplegar** la versión base a Sepolia y verificarla en Etherscan.
-3. **Extender** con **al menos 3 de las 4 features** del bloque "Extensiones obligatorias".
+3. **Extender** con la **Extensión A obligatoria** más **2 de las 3 extensiones opcionales** del bloque "Extensiones".
 4. **Demostrar** que funciona end-to-end con un video o una URL pública.
 
 No se trata de escribir desde cero, sino de **modificar código que ya funciona** — que es lo que ocurre en cualquier proceso de desarrollo profesional. La complejidad está en comprender la base existente y extenderla con criterio, no en partir de un editor en blanco.
@@ -105,107 +105,11 @@ Que funcione en su máquina. La rúbrica es binaria:
 
 ---
 
-## Parte 2 — Extensiones obligatorias (60%)
+## Parte 2 — Extensiones (60%)
 
-Eligen **al menos 3 de estas 4**. Cada una vale **20 puntos**. La cuarta, si la implementan, suma **+20 de bonus** sobre los 100.
+La **Extensión A es obligatoria para todos los grupos**. Las extensiones **B, C y D son opcionales**: cada grupo elige **2 de las 3**. Cada extensión vale **20 puntos** (Parte 2 = 60 puntos). Implementar la tercera de las opcionales (B + C + D completas) suma **+20 de bonus** sobre los 100.
 
-### Extensión A — Soulbound Token (SBT)
-
-**Capas que tocan**: Contrato + Foundry.
-
-**Qué hacer**:
-
-1. Override `_update` en `Diploma.sol` para que **revierta cualquier transferencia entre direcciones** (mint y burn siguen funcionando: `from == address(0)` o `to == address(0)`).
-2. Definir un custom error `DiplomaSoulbound()` y revertir con él.
-3. Agregar 2 tests en `Diploma.t.sol`:
-   - `test_RevertWhen_TransferFrom`: que `transferFrom` revierta.
-   - `test_BurnAllowed`: que `burn` (si lo exponen) o el flujo de mint sigan funcionando.
-4. Redesplegar el contrato actualizado a Sepolia y verificarlo.
-
-**Por qué importa**:
-
-Un diploma **no se transfiere**. No se vende en OpenSea, no se regala. La no-transferibilidad del token = la no-transferibilidad de la credencial académica. Sin esto, el sistema **no funciona conceptualmente**.
-
-El paper de referencia es **Ohlhaver, Weyl & Buterin (2022)** — *Decentralized Society: Finding Web3's Soul* ([SSRN 4105763](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4105763)) — que introduce el concepto de **Soulbound Tokens (SBTs)**. Citenlo en el README.
-
-**Conceptos que aprenden**:
-
-- Hooks de OpenZeppelin v5 (`_update` reemplaza a `_beforeTokenTransfer` de v4).
-- `virtual` y `override` en Solidity.
-- Custom errors vs `require` con string.
-- Que las "extensiones" del estándar ERC-721 se hacen **overrideando hooks**, no agregando funciones nuevas.
-
----
-
-### Extensión B — Verificación pública sin wallet
-
-**Capas que tocan**: API + Frontend.
-
-**Qué hacer**:
-
-1. **API**: agregar `GET /verify/:tokenId` que devuelva:
-   ```json
-   {
-     "tokenId": 1,
-     "owner": "0x...",
-     "tokenURI": "ipfs://...",
-     "exists": true,
-     "metadata": { ... }
-   }
-   ```
-   Si el `tokenId` no existe, responder `404` con `{"exists": false}`.
-
-2. **Frontend**: agregar la ruta `/verify/[tokenId]/page.tsx` (Server Component de Next.js):
-   - Llama a la API desde el server (no desde el client).
-   - **No usa wagmi ni RainbowKit**: no requiere wallet.
-   - Muestra: estado válido/inválido, dirección del egresado abreviada, fecha de emisión, link a Etherscan.
-
-3. Probarlo desde un browser **sin MetaMask instalado** (ej. Firefox limpio o modo incógnito).
-
-**Por qué importa**:
-
-La blockchain es **pública por diseño**. Leerla no requiere wallet ni gas ni firma. El empleador que recibe un CV con un `tokenId` no va a instalar MetaMask. Pega la URL `unq-diplomas.app/verify/42` y ve el resultado en 3 segundos.
-
-Esa separación entre **rol emisor** (decano con wallet) y **rol verificador** (cualquiera con un browser) es **el insight de DApps reales**.
-
-**Conceptos que aprenden**:
-
-- `createPublicClient` de **viem** vs `useReadContract` de wagmi.
-- Server Components de Next.js 14 (App Router) — fetch desde el server.
-- Diferencia entre `view`/`pure` (gratis, sin wallet) y funciones que mutan estado.
-
----
-
-### Extensión C — Cache de eventos en la API
-
-**Capas que tocan**: API + (opcional) Frontend.
-
-**Qué hacer**:
-
-1. Elegir storage: **SQLite** (recomendado, cero infra) o **PostgreSQL** (si quieren practicar Docker).
-2. Agregar un **worker** en la API que:
-   - Lee los eventos `DiplomaIssued` desde el bloque del despliegue hasta el actual.
-   - Los persiste en una tabla `events(token_id, student, uri, block_number, tx_hash, created_at)`.
-   - Continúa escuchando nuevos eventos en tiempo real (polling cada N segundos o `eth_subscribe` si optan por WebSockets).
-3. Agregar endpoints:
-   - `GET /credentials/owner/:address` — lista de tokens emitidos a esa wallet, **leído del cache** (no del RPC).
-   - `GET /events/recent?limit=10` — últimos N eventos.
-4. Documentar en el README **cuántos hits al RPC se ahorraron** (medir antes y después).
-
-**Por qué importa**:
-
-Llamar al RPC en cada request **no escala**. Cada invocación implica latencia (200-500ms) y, en los planes gratuitos de Alchemy / Infura, los créditos se agotan rápidamente. La **separación entre indexación y consulta** es lo que resuelve **The Graph** en producción — esta extensión implementa una versión reducida del mismo patrón.
-
-**Conceptos que aprenden**:
-
-- Por qué existe **The Graph** (lo que están haciendo a mano es lo que The Graph hace generalizado).
-- Filtrar eventos con `eth_getLogs` y rangos de bloques.
-- Idempotencia: que el worker no inserte el mismo evento dos veces si se reinicia.
-- Trade-off **RPC directo vs cache local**.
-
----
-
-### Extensión D — Migración a Base Sepolia (L2)
+### Extensión A — Migración a Base Sepolia (L2) · OBLIGATORIA
 
 **Capas que tocan**: Foundry + Frontend + API.
 
@@ -228,7 +132,7 @@ Llamar al RPC en cada request **no escala**. Cada invocación implica latencia (
 
 **Por qué importa**:
 
-Migrar entre redes EVM-compatibles es una operación de **producción real**. Una empresa empieza en una testnet y termina en mainnet, o cambia de L1 a L2 para bajar costos. Aprender que **el bytecode no cambia** y que toda la fricción está en config + verificación es la lección.
+Migrar entre redes EVM-compatibles es una operación de **producción real**. Una empresa empieza en una testnet y termina en mainnet, o cambia de L1 a L2 para reducir costos de gas. La lección es que **el bytecode no cambia** y que toda la fricción está en la configuración y la verificación.
 
 **Conceptos que aprenden**:
 
@@ -236,6 +140,102 @@ Migrar entre redes EVM-compatibles es una operación de **producción real**. Un
 - ChainId, RPC, explorer, faucet — qué es propio de cada red y qué es universal.
 - Multi-chain en wagmi (`chains: [sepolia, baseSepolia]`).
 - Que la EVM es **portable** entre redes compatibles.
+
+---
+
+### Extensión B — Soulbound Token (SBT) · *opcional (elegir 2 de 3)*
+
+**Capas que tocan**: Contrato + Foundry.
+
+**Qué hacer**:
+
+1. Override `_update` en `Diploma.sol` para que **revierta cualquier transferencia entre direcciones** (mint y burn siguen funcionando: `from == address(0)` o `to == address(0)`).
+2. Definir un custom error `DiplomaSoulbound()` y revertir con él.
+3. Agregar 2 tests en `Diploma.t.sol`:
+   - `test_RevertWhen_TransferFrom`: que `transferFrom` revierta.
+   - `test_BurnAllowed`: que `burn` (si lo exponen) o el flujo de mint sigan funcionando.
+4. Redesplegar el contrato actualizado y verificarlo.
+
+**Por qué importa**:
+
+Un diploma **no se transfiere**. No se vende en OpenSea, no se regala. La no-transferibilidad del token = la no-transferibilidad de la credencial académica. Sin esto, el sistema **no funciona conceptualmente**.
+
+El paper de referencia es **Ohlhaver, Weyl & Buterin (2022)** — *Decentralized Society: Finding Web3's Soul* ([SSRN 4105763](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4105763)) — que introduce el concepto de **Soulbound Tokens (SBTs)**. Citarlo en el README.
+
+**Conceptos que aprenden**:
+
+- Hooks de OpenZeppelin v5 (`_update` reemplaza a `_beforeTokenTransfer` de v4).
+- `virtual` y `override` en Solidity.
+- Custom errors vs `require` con string.
+- Que las "extensiones" del estándar ERC-721 se hacen **overrideando hooks**, no agregando funciones nuevas.
+
+---
+
+### Extensión C — Verificación pública sin wallet · *opcional (elegir 2 de 3)*
+
+**Capas que tocan**: API + Frontend.
+
+**Qué hacer**:
+
+1. **API**: agregar `GET /verify/:tokenId` que devuelva:
+   ```json
+   {
+     "tokenId": 1,
+     "owner": "0x...",
+     "tokenURI": "ipfs://...",
+     "exists": true,
+     "metadata": { ... }
+   }
+   ```
+   Si el `tokenId` no existe, responder `404` con `{"exists": false}`.
+
+2. **Frontend**: agregar la ruta `/verify/[tokenId]/page.tsx` (Server Component de Next.js):
+   - Llama a la API desde el server (no desde el client).
+   - **No usa wagmi ni RainbowKit**: no requiere wallet.
+   - Muestra: estado válido/inválido, dirección del egresado abreviada, fecha de emisión, link a Etherscan/Basescan.
+
+3. Probarlo desde un browser **sin MetaMask instalado** (ej. Firefox limpio o modo incógnito).
+
+**Por qué importa**:
+
+La blockchain es **pública por diseño**. Leerla no requiere wallet, ni gas, ni firma. Un empleador que recibe un CV con un `tokenId` no va a instalar MetaMask: abre la URL `unq-diplomas.app/verify/42` y obtiene el resultado en segundos.
+
+Esa separación entre **rol emisor** (decano con wallet) y **rol verificador** (cualquiera con un browser) es el insight central de las DApps reales.
+
+**Conceptos que aprenden**:
+
+- `createPublicClient` de **viem** vs `useReadContract` de wagmi.
+- Server Components de Next.js 14 (App Router) — fetch desde el server.
+- Diferencia entre `view`/`pure` (gratis, sin wallet) y funciones que mutan estado.
+
+---
+
+### Extensión D — Cache de eventos en la API · *opcional (elegir 2 de 3)*
+
+**Capas que tocan**: API + (opcional) Frontend.
+
+**Qué hacer**:
+
+1. Elegir storage: **SQLite** (recomendado, cero infra) o **PostgreSQL** (si quieren practicar Docker).
+2. Agregar un **worker** en la API que:
+   - Lee los eventos `DiplomaIssued` desde el bloque del despliegue hasta el actual.
+   - Los persiste en una tabla `events(token_id, student, uri, block_number, tx_hash, created_at)`.
+   - Continúa escuchando nuevos eventos en tiempo real (polling cada N segundos o `eth_subscribe` si optan por WebSockets).
+3. Agregar endpoints:
+   - `GET /credentials/owner/:address` — lista de tokens emitidos a esa wallet, **leído del cache** (no del RPC).
+   - `GET /events/recent?limit=10` — últimos N eventos.
+4. Documentar en el README **cuántas llamadas al RPC se ahorraron** (medir antes y después).
+
+**Por qué importa**:
+
+Llamar al RPC en cada request **no escala**. Cada invocación implica latencia (200-500ms) y, en los planes gratuitos de Alchemy / Infura, los créditos se agotan rápidamente. La **separación entre indexación y consulta** es lo que resuelve **The Graph** en producción — esta extensión implementa una versión reducida del mismo patrón.
+
+**Conceptos que aprenden**:
+
+- Por qué existe **The Graph** (lo que se implementa a mano acá es lo que The Graph generaliza).
+- Filtrar eventos con `eth_getLogs` y rangos de bloques.
+- Idempotencia: que el worker no inserte el mismo evento dos veces si se reinicia.
+- Trade-off **RPC directo vs cache local**.
 
 ---
 
@@ -248,11 +248,11 @@ Migrar entre redes EVM-compatibles es una operación de **producción real**. Un
 1. La página principal del front conectando wallet.
 2. Mint de una credencial nueva (firmando en MetaMask).
 3. La transacción aparece en Etherscan/Basescan.
-4. **Las extensiones que eligieron en acción**:
-   - Si hicieron Soulbound: intentar transferir → ver el revert.
-   - Si hicieron `/verify`: abrir la URL en otro browser sin wallet.
-   - Si hicieron Cache: mostrar que un `GET /credentials/owner/:address` resuelve sin invocar al RPC.
-   - Si hicieron Base Sepolia: cambiar de red en RainbowKit y mintear en la otra red.
+4. **Extensiones en acción**:
+   - **Extensión A (Base Sepolia, obligatoria)**: cambiar de red en RainbowKit y mintear sobre Base Sepolia; mostrar la transacción en Basescan.
+   - Si implementaron **Soulbound**: intentar transferir → ver el revert con el custom error.
+   - Si implementaron **`/verify` público**: abrir la URL en otro browser sin wallet.
+   - Si implementaron **Cache de eventos**: mostrar que un `GET /credentials/owner/:address` resuelve sin invocar al RPC.
 5. Mostrar el README explicando el por qué.
 
 Subir a YouTube (unlisted), Drive (link público) o adjuntar al campus.
@@ -285,15 +285,15 @@ Tiene que cubrir, en orden:
 |---|---|---|
 | 1.1 — Setup local | 10 | Los 4 comandos funcionan en una máquina limpia |
 | 1.2 — Despliegue Sepolia | 10 | Contrato verificado + 3 mints reales |
-| 2.A — Soulbound *(elegir 3 de 4)* | 20 | Override + 2 tests + redespliegue |
-| 2.B — Verify público *(elegir 3 de 4)* | 20 | Endpoint + ruta SSR sin wallet |
-| 2.C — Cache de eventos *(elegir 3 de 4)* | 20 | Worker + endpoints + medición de hits ahorrados |
-| 2.D — Base Sepolia *(elegir 3 de 4)* | 20 | Despliegue verificado + multi-chain en front + doc |
+| 2.A — Base Sepolia *(obligatoria)* | 20 | Despliegue verificado + multi-chain en front + doc |
+| 2.B — Soulbound *(elegir 2 de 3)* | 20 | Override + 2 tests + redespliegue |
+| 2.C — Verify público *(elegir 2 de 3)* | 20 | Endpoint + ruta SSR sin wallet |
+| 2.D — Cache de eventos *(elegir 2 de 3)* | 20 | Worker + endpoints + medición de llamadas ahorradas |
 | 3.1 — Demo | 10 | Video o app desplegada cubriendo el flujo |
 | 3.2 — README final | 10 | Setup, direcciones, decisiones, mapeo a rúbrica |
 | **TOTAL** | **100** | **Pasa con 60+. Pareja: ambos defienden ambas partes.** |
 
-> **Bonus**: implementar la **cuarta extensión** (las cuatro completas) suma **+20 puntos** sobre los 100. La nota máxima alcanzable es **120**.
+> **Bonus**: implementar **las tres extensiones opcionales** (B + C + D, además de la A obligatoria) suma **+20 puntos** sobre los 100. La nota máxima alcanzable es **120**.
 
 ---
 
@@ -315,14 +315,14 @@ Si terminan temprano y quieren ir por más, agréguenlo y mencionenlo en el READ
 
 ## Preguntas frecuentes
 
-**¿Las 3 extensiones tienen que ser un combo específico?**
-No. Cualquier combinación de 3 de las 4 es válida. Ante dudas sobre qué combinación elegir, pueden consultarlo en las clases de consulta y se orienta según el perfil del grupo.
+**¿Puedo elegir qué extensiones implementar?**
+La **Extensión A (Base Sepolia)** es obligatoria para todos los grupos. De las opcionales (B, C, D) eligen **2 de las 3**. Cualquier combinación es válida. Ante dudas sobre qué elegir, pueden consultarlo en las clases de consulta y se orienta según el perfil del grupo.
 
 **¿Puedo entregar individual y que mi compañero entregue otro TP por su cuenta?**
 Sí. Pero si entregan en pareja, **ambos tienen que poder defender ambas partes**. Si uno hizo solo el front y no entiende el contrato, baja la nota de los dos.
 
-**¿Qué pasa si solo hago 2 extensiones bien hechas en lugar de 3 a medias?**
-Se evalúa lo entregado. Dos extensiones a 20 puntos cada una suman 40 sobre los 60 posibles de la Parte 2 — se pierden 20 puntos del bloque y la consigna queda incompleta (la mínima son 3). Es preferible entregar 3 extensiones razonables que 2 perfectas: la consistencia entre las capas (contrato, API, front) se evalúa mejor cuando hay más superficie funcional.
+**¿Qué pasa si entrego solo la Extensión A más una opcional?**
+Se evalúa lo entregado, pero la consigna queda incompleta: faltaría una de las dos opcionales requeridas. La cobertura sería A + 1 opcional = 40 sobre los 60 posibles de la Parte 2, y se pierden 20 puntos del bloque. Es preferible entregar las 3 extensiones requeridas (A + 2 opcionales) razonablemente bien antes que 2 perfectas: la consistencia entre las capas (contrato, API, front) se evalúa mejor cuando hay más superficie funcional cubierta.
 
 **¿Puedo cambiar de stack (ej. Vue, Express, Hardhat)?**
 Sí, queda a criterio del grupo. El template oficial usa Foundry + Next.js + FastAPI y la corrección se realiza sobre esa base; cualquier reemplazo de stack debe cumplir los mismos requisitos funcionales (mismas extensiones, misma rúbrica, mismo flujo demo) y la responsabilidad de que el resultado sea evaluable queda a cargo del grupo.
