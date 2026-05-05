@@ -83,7 +83,7 @@ Se clona, se lee, se ejecuta, se comprende. Recién después se extiende.
 
 ---
 
-## Parte 1 — Entender y desplegar el MVP (30%)
+## Parte 1 — Entender y desplegar el MVP (20%)
 
 ### 1.1 Setup local (10%)
 
@@ -103,20 +103,11 @@ Que funcione en su máquina. La rúbrica es binaria:
 - Configurar la dirección del contrato en `web/.env.local` y `api/.env`.
 - Mintear **3 credenciales reales** a 3 wallets distintos (pueden ser sus propios wallets de prueba).
 
-### 1.3 Documentación inicial (10%)
-
-README en la raíz del repo con:
-
-- Instrucciones de setup local copiadas y verificadas.
-- Dirección del contrato + link a Etherscan verificado.
-- Las 3 transacciones de mint con sus hashes.
-- **Qué extensiones eligieron** (de las 4 disponibles) y por qué.
-
 ---
 
-## Parte 2 — Extensiones obligatorias (50%)
+## Parte 2 — Extensiones obligatorias (60%)
 
-Eligen **al menos 3 de estas 4**. Cada una vale **17 puntos**. Si hacen las 4, los 51 puntos se redistribuyen como 50 + 1 de bonus.
+Eligen **al menos 3 de estas 4**. Cada una vale **20 puntos**. La cuarta, si la implementan, suma **+20 de bonus** sobre los 100.
 
 ### Extensión A — Soulbound Token (SBT)
 
@@ -294,16 +285,15 @@ Tiene que cubrir, en orden:
 |---|---|---|
 | 1.1 — Setup local | 10 | Los 4 comandos funcionan en una máquina limpia |
 | 1.2 — Despliegue Sepolia | 10 | Contrato verificado + 3 mints reales |
-| 1.3 — Documentación inicial | 10 | README claro con setup, dirección, decisiones |
-| 2.A — Soulbound *(opcional)* | 17 | Override + 2 tests + redespliegue |
-| 2.B — Verify público *(opcional)* | 17 | Endpoint + ruta SSR sin wallet |
-| 2.C — Cache de eventos *(opcional)* | 17 | Worker + endpoints + medición de hits ahorrados |
-| 2.D — Base Sepolia *(opcional)* | 17 | Despliegue verificado + multi-chain en front + doc |
+| 2.A — Soulbound *(elegir 3 de 4)* | 20 | Override + 2 tests + redespliegue |
+| 2.B — Verify público *(elegir 3 de 4)* | 20 | Endpoint + ruta SSR sin wallet |
+| 2.C — Cache de eventos *(elegir 3 de 4)* | 20 | Worker + endpoints + medición de hits ahorrados |
+| 2.D — Base Sepolia *(elegir 3 de 4)* | 20 | Despliegue verificado + multi-chain en front + doc |
 | 3.1 — Demo | 10 | Video o app desplegada cubriendo el flujo |
-| 3.2 — README final | 10 | Mapeo a rúbrica + decisiones documentadas |
+| 3.2 — README final | 10 | Setup, direcciones, decisiones, mapeo a rúbrica |
 | **TOTAL** | **100** | **Pasa con 60+. Pareja: ambos defienden ambas partes.** |
 
-> Quienes implementen las **4 extensiones** suman **+1 punto de bonus** sobre los 100. El incentivo principal no es la diferencia numérica, sino el alcance técnico adicional cubierto.
+> **Bonus**: implementar la **cuarta extensión** (las cuatro completas) suma **+20 puntos** sobre los 100. La nota máxima alcanzable es **120**.
 
 ---
 
@@ -332,7 +322,7 @@ No. Cualquier combinación de 3 de las 4 es válida. Ante dudas sobre qué combi
 Sí. Pero si entregan en pareja, **ambos tienen que poder defender ambas partes**. Si uno hizo solo el front y no entiende el contrato, baja la nota de los dos.
 
 **¿Qué pasa si solo hago 2 extensiones bien hechas en lugar de 3 a medias?**
-Se evalúa lo entregado. Dos extensiones perfectas a 17 puntos cada una son 34. Falta llegar a 60. Mejor 3 razonables que 2 perfectas.
+Se evalúa lo entregado. Dos extensiones a 20 puntos cada una suman 40 sobre los 60 posibles de la Parte 2 — se pierden 20 puntos del bloque y la consigna queda incompleta (la mínima son 3). Es preferible entregar 3 extensiones razonables que 2 perfectas: la consistencia entre las capas (contrato, API, front) se evalúa mejor cuando hay más superficie funcional.
 
 **¿Puedo cambiar de stack (ej. Vue, Express, Hardhat)?**
 Sí, queda a criterio del grupo. El template oficial usa Foundry + Next.js + FastAPI y la corrección se realiza sobre esa base; cualquier reemplazo de stack debe cumplir los mismos requisitos funcionales (mismas extensiones, misma rúbrica, mismo flujo demo) y la responsabilidad de que el resultado sea evaluable queda a cargo del grupo.
