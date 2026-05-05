@@ -49,7 +49,32 @@ UNQ tiene ~11.000 estudiantes activos y 18 carreras. **No están haciendo un toy
 
 Repositorio base que se entrega como punto de partida:
 
-> **`dpetrocelli/diplo-unq-blockchain-tp-starter`**
+<div class="repo-pill">
+  <code id="repo-slug">dpetrocelli/diplo-unq-blockchain-tp-starter</code>
+  <button type="button" class="repo-copy" data-target="repo-slug">Copiar</button>
+  <a class="repo-link" href="https://github.com/dpetrocelli/diplo-unq-blockchain-tp-starter" target="_blank" rel="noopener">Abrir en GitHub ↗</a>
+</div>
+
+<style>
+.repo-pill{display:inline-flex;align-items:center;gap:10px;padding:10px 14px;background:#fdf2f5;border:1px solid #f3c8d3;border-radius:6px;margin:8px 0 16px;flex-wrap:wrap}
+.repo-pill code{background:transparent;font-size:14px;font-weight:600;color:#7a1d36;padding:0}
+.repo-pill .repo-copy{cursor:pointer;border:1px solid #cfa3b1;background:#fff;color:#7a1d36;padding:4px 10px;border-radius:4px;font-size:12px;font-family:inherit}
+.repo-pill .repo-copy:hover{background:#7a1d36;color:#fff;border-color:#7a1d36}
+.repo-pill .repo-copy.copied{background:#1f7a3a;border-color:#1f7a3a;color:#fff}
+.repo-pill .repo-link{font-size:12px;color:#7a1d36;text-decoration:none;font-weight:600}
+.repo-pill .repo-link:hover{text-decoration:underline}
+</style>
+
+<script>
+document.addEventListener("click",function(e){
+  var b=e.target.closest(".repo-copy");if(!b)return;
+  var t=document.getElementById(b.dataset.target);if(!t)return;
+  navigator.clipboard.writeText(t.textContent.trim()).then(function(){
+    var prev=b.textContent;b.textContent="✓ Copiado";b.classList.add("copied");
+    setTimeout(function(){b.textContent=prev;b.classList.remove("copied")},1500);
+  });
+});
+</script>
 
 Se clona, se lee, se ejecuta, se comprende. Recién después se extiende.
 
