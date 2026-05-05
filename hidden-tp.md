@@ -78,29 +78,37 @@ document.addEventListener("click",function(e){
 
 Se clona, se lee, se ejecuta, se comprende. Recién después se extiende.
 
+<style>
+.tt{display:inline-block;margin-left:6px;font-size:10px;line-height:1.4;color:#7a1d36;background:#fdf2f5;border:1px dashed #cfa3b1;border-radius:10px;padding:1px 7px;cursor:help;font-weight:600;position:relative;vertical-align:baseline;user-select:none;letter-spacing:0.02em;text-transform:uppercase}
+.tt:hover,.tt:focus{background:#7a1d36;color:#fff;border-color:#7a1d36;outline:none}
+.tt:hover::after,.tt:focus::after{content:attr(data-tip);position:absolute;bottom:calc(100% + 8px);left:50%;transform:translateX(-50%);background:#1a1a1a;color:#fff;font-size:12px;font-weight:400;padding:9px 12px;border-radius:5px;width:max-content;max-width:340px;white-space:normal;line-height:1.5;z-index:50;box-shadow:0 6px 18px rgba(0,0,0,0.22);text-transform:none;letter-spacing:normal;text-align:left}
+.tt:hover::before,.tt:focus::before{content:"";position:absolute;bottom:calc(100% + 2px);left:50%;transform:translateX(-50%);border:6px solid transparent;border-top-color:#1a1a1a;z-index:50}
+@media(max-width:640px){.tt:hover::after,.tt:focus::after{max-width:240px}}
+</style>
+
 ### Contratos (`contracts/`)
 
-- **Foundry** (Forge + Anvil + Cast) — herramienta ya trabajada en clase 2.
-- `Diploma.sol` — ERC-721 con `ERC721URIStorage` y `Ownable` de OpenZeppelin.
-- Una sola función relevante: `mint(address student, string uri)` con `onlyOwner`.
-- 3 tests en `test/Diploma.t.sol`: mint exitoso, mint sin permisos (revierte), balance correcto post-mint.
-- Script `script/Deploy.s.sol` para desplegar a Sepolia.
-- `forge test` pasa, `forge coverage` reporta el baseline.
+- **Foundry** (Forge + Anvil + Cast) — herramienta ya trabajada en clase 2.<span tabindex="0" class="tt" data-tip="Toolkit de Solidity escrito en Rust. Forge compila y ejecuta tests, Anvil corre una blockchain local para desarrollo, Cast interactúa con contratos vía CLI. Reemplazo moderno de Hardhat/Truffle.">¿qué es?</span>
+- `Diploma.sol` — ERC-721 con `ERC721URIStorage` y `Ownable` de OpenZeppelin.<span tabindex="0" class="tt" data-tip="ERC721URIStorage: extensión de OpenZeppelin que permite asignar un tokenURI distinto por tokenId (apuntando a su metadata). Ownable: patrón que define un único 'dueño' del contrato; las funciones con onlyOwner solo las puede ejecutar esa dirección.">¿qué es?</span>
+- Una sola función relevante: `mint(address student, string uri)` con `onlyOwner`.<span tabindex="0" class="tt" data-tip="mint() crea un NFT nuevo y se lo asigna al estudiante con la metadata indicada por uri. El modifier onlyOwner (de Ownable) revierte la transacción si quien la llama no es el owner del contrato.">¿qué es?</span>
+- 3 tests en `test/Diploma.t.sol`: mint exitoso, mint sin permisos (revierte), balance correcto post-mint.<span tabindex="0" class="tt" data-tip="Archivo de tests escrito en Solidity (sintaxis Foundry). forge-std provee assertions (assertEq, etc.), vm.prank simula que otra dirección ejecuta la siguiente call, vm.expectRevert verifica que algo falle.">¿qué es?</span>
+- Script `script/Deploy.s.sol` para desplegar a Sepolia.<span tabindex="0" class="tt" data-tip="Script de despliegue de Foundry. Usa vm.startBroadcast() para firmar y enviar la transacción de creación del contrato a la red configurada en --rpc-url.">¿qué es?</span>
+- `forge test` pasa, `forge coverage` reporta el baseline.<span tabindex="0" class="tt" data-tip="forge test corre toda la suite (-vv muestra logs, -vvvv todos los call traces). forge coverage reporta el porcentaje de líneas y ramas cubiertas por los tests — útil para detectar código no testeado.">¿qué es?</span>
 
 ### API (`api/`)
 
-- **FastAPI + web3.py**, stateless, sin base de datos.
-- Endpoint `GET /credentials/:tokenId` que llama `ownerOf` y `tokenURI` al RPC y devuelve JSON.
-- Endpoint `GET /health` para verificar conexión al RPC.
-- CORS abierto (es prototipo).
+- **FastAPI + web3.py**, stateless, sin base de datos.<span tabindex="0" class="tt" data-tip="FastAPI: framework Python para APIs HTTP con tipado, validación automática y docs OpenAPI en /docs. web3.py: cliente Python que habla con nodos Ethereum vía JSON-RPC (ownerOf, tokenURI, getLogs, etc.).">¿qué es?</span>
+- Endpoint `GET /credentials/:tokenId` que llama `ownerOf` y `tokenURI` al RPC y devuelve JSON.<span tabindex="0" class="tt" data-tip="ownerOf(tokenId): función view del ERC-721 que devuelve la dirección que actualmente posee el token. tokenURI(tokenId): devuelve la URL de la metadata del NFT (IPFS o HTTPS apuntando a un JSON con name/description/image). Ambas son view → no consumen gas.">¿qué es?</span>
+- Endpoint `GET /health` para verificar conexión al RPC.<span tabindex="0" class="tt" data-tip="Endpoint de salud típico en APIs. Devuelve el chain_id de la red conectada y la dirección del contrato configurado. Útil para que el frontend (o un monitor) sepa si la API está viva.">¿qué es?</span>
+- CORS abierto (es prototipo).<span tabindex="0" class="tt" data-tip="CORS (Cross-Origin Resource Sharing): mecanismo del browser que limita qué orígenes pueden llamar a la API. En desarrollo se abre con allow_origins=['*']. En producción se restringe al dominio del front.">¿qué es?</span>
 
 ### Frontend (`web/`)
 
-- **Next.js 14 (App Router) + wagmi v2 + viem + RainbowKit**.
-- `ConnectButton` de RainbowKit.
-- Form de mint protegido por owner.
-- Lista de NFTs del wallet conectado leyendo eventos `DiplomaIssued` con `useWatchContractEvent`.
-- Metadata hardcodeada en `/public/metadata/N.json` (intencional: queda como punto de extensión hacia IPFS).
+- **Next.js 14 (App Router) + wagmi v2 + viem + RainbowKit**.<span tabindex="0" class="tt" data-tip="Next.js: framework React de Vercel; el App Router (desde v13) usa carpetas en src/app/ donde cada page.tsx es una ruta y permite Server Components. wagmi: hooks de React para Ethereum. viem: cliente TypeScript de bajo nivel sobre el que wagmi se construye. RainbowKit: componentes de UI listos para conexión de wallet.">¿qué es?</span>
+- `ConnectButton` de RainbowKit.<span tabindex="0" class="tt" data-tip="Componente de RainbowKit que renderiza un botón inteligente: si no hay wallet conectada muestra 'Connect Wallet'; si hay, muestra avatar + balance + red activa con menú para cambiarla. Resuelve en una línea lo que con ethers.js sería decenas.">¿qué es?</span>
+- Form de mint protegido por owner.<span tabindex="0" class="tt" data-tip="El form solo se renderiza si la wallet conectada coincide con el owner() del contrato (verificado vía useReadContract). Para mintear se usa useWriteContract + useWaitForTransactionReceipt para esperar la confirmación.">¿qué es?</span>
+- Lista de NFTs del wallet conectado leyendo eventos `DiplomaIssued` con `useWatchContractEvent`.<span tabindex="0" class="tt" data-tip="DiplomaIssued: evento Solidity que el contrato emite al mintear (lleva student, tokenId, uri). useWatchContractEvent: hook de wagmi que se suscribe al evento y dispara un callback cada vez que se emite uno nuevo, permitiendo refresco en vivo sin recargar la página.">¿qué es?</span>
+- Metadata hardcodeada en `/public/metadata/N.json` (intencional: queda como punto de extensión hacia IPFS).<span tabindex="0" class="tt" data-tip="public/ es la carpeta estática de Next.js; cualquier archivo ahí queda servido en /metadata/0.json, /metadata/1.json, etc. Cada JSON representa la metadata de una credencial (name, description, image, attributes) — el formato estándar de NFTs en OpenSea/Etherscan.">¿qué es?</span>
 
 ### Red
 
