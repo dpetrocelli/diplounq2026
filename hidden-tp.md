@@ -1,29 +1,21 @@
 <head><meta name="robots" content="noindex,nofollow"></head>
 
-# Trabajo Final · V2 — Diploma NFT UNQ (alcance acotado)
+# Trabajo Final — Diploma NFT UNQ
 
-> **Audiencia**: alumnos de la cohorte 2026 que necesitan un alcance más manejable que la versión completa. La V1 sigue disponible en [tp-final.html](tp-final.html) — esta V2 reemplaza esa entrega para quien la elija.
->
-> **Página unlisted**: no está enlazada desde el índice del sitio ni indexada en buscadores. Se comparte por mensaje directo del docente.
+## Cómo se trabaja este TP
 
----
+Les damos un **template funcionando end-to-end** (contrato + API + front) y su trabajo es:
 
-## Filosofía de esta V2
-
-A diferencia del TP original, donde tenían que construir todo el sistema desde cero, acá les damos **el MVP cocinado y funcionando**. Su trabajo consiste en:
-
-1. **Entender** el código del template (contrato, API, front).
+1. **Entender** el código del template y cómo se conectan las tres capas.
 2. **Desplegar** la versión base a Sepolia y verificarla en Etherscan.
 3. **Extender** con **al menos 3 de las 4 features** del bloque "Extensiones obligatorias".
 4. **Demostrar** que funciona end-to-end con un video o una URL pública.
 
-No se trata de escribir menos código, sino de **modificar código que ya funciona** — que es lo que van a hacer en cualquier laburo real.
+No se trata de escribir desde cero, sino de **modificar código que ya funciona** — que es lo que van a hacer en cualquier laburo real. La complejidad está en entender lo que ya está, no en pelearse con un IDE en blanco.
 
 ---
 
-## Punto de partida — ¿Por qué un sistema así?
-
-Esta sección es la misma que la V1 porque el problema **no se simplifica**. Lo que se simplifica es la solución.
+## ¿Por qué este TP?
 
 En mayo de 2023, la Policía Federal desbarata la **"Operación Alejo"**: una red que vendió más de **500 títulos secundarios y universitarios truchos**, principalmente para ejercer en medicina y educación ([Infobae, 2023](https://www.infobae.com/sociedad/2023/05/04/una-banda-de-falsificadores-vendio-titulos-secundarios-y-universitarios-truchos-a-mas-de-500-clientes/)).
 
@@ -57,7 +49,7 @@ UNQ tiene ~11.000 estudiantes activos y 18 carreras. **No están haciendo un toy
 
 Repositorio template:
 
-> **`dpetrocelli/diplo-unq-blockchain-tp-v2-starter`**
+> **`dpetrocelli/diplo-unq-blockchain-tp-starter`**
 
 Lo clonan, leen, ejecutan, lo entienden. Después extienden.
 
@@ -315,31 +307,23 @@ Tiene que cubrir, en orden:
 
 ---
 
-## Lo que NO les pedimos en esta V2 (vs. V1)
+## Fuera de alcance
 
-Para que quede claro qué se simplifica respecto del [TP final original](tp-final.html):
+Para que quede claro qué **no** se evalúa en este TP (pueden hacerlo igual si quieren, pero no suma puntos):
 
-| Tema | V1 | V2 |
-|---|---|---|
-| Roles (`AccessControl`) | Obligatorio (ISSUER + ADMIN) | Solo `Ownable` |
-| Soulbound | Obligatorio | Extensión A (opcional) |
-| Struct extendida con hashes | Obligatorio | Solo `tokenURI` |
-| Eventos custom (4 distintos) | Obligatorio | Solo `DiplomaIssued` |
-| Coverage 80% + fuzz tests | Obligatorio | 3 tests funcionales |
-| Slither + SECURITY.md | Obligatorio | No requerido |
-| IPFS (Pinata) | Bonus | Pueden agregarlo si quieren (no puntúa) |
-| Multi-sig / Chainlink / DID | Bonus | Fuera de alcance |
-| Frontend con dual-mode (verify + issuer) | Obligatorio | El verify queda en Extensión B |
-| Base Sepolia | Obligatorio | Extensión D (opcional) |
+- Roles complejos con `AccessControl` (con `Ownable` alcanza).
+- Struct on-chain con hashes de DNI / nombre del estudiante.
+- Slither + análisis estático formal.
+- Coverage > 80% + fuzz tests.
+- IPFS + Pinata para metadata.
+- Multi-sig (Gnosis Safe), Chainlink Functions, W3C DID.
+- Indexadores externos como The Graph (la Extensión C cubre el insight con SQLite local).
 
-Si después de hacer la V2 quieren ir por más, la V1 sigue ahí. Lo recomendamos especialmente para quienes apunten a defender el TP en una entrevista laboral.
+Si terminan temprano y quieren ir por más, agréguenlo y mencionenlo en el README — lo vamos a leer y comentar, pero no afecta la nota.
 
 ---
 
 ## Preguntas frecuentes
-
-**¿Puedo hacer la V1 directamente?**
-Sí. La V2 es una opción para quienes prefieren un alcance más manejable. La V1 da más puntos máximos posibles porque tiene más bonus, pero ambas se aprueban con 60+.
 
 **¿Las 3 extensiones tienen que ser un combo específico?**
 No. Cualquier combinación de 3 de las 4. Si tienen dudas de qué combo elegir, vengan a una clase de consulta — los orientamos según el perfil de cada uno.
@@ -364,4 +348,4 @@ No. La consigna es modificar el template, no reescribirlo. Foundry + Next.js + F
 
 ---
 
-> **Cualquier duda**: clases de consulta los lunes 18:00, o por mensaje directo. **No usen el foro general** para esta V2 — la consigna oficial sigue siendo la V1.
+> **Cualquier duda**: clases de consulta los lunes 18:00, foro del campus, o mensaje directo a los docentes.
