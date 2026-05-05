@@ -107,9 +107,9 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
     <li><a href="#por-qué-este-tp" id="toc-por-qué-este-tp">¿Por qué
     este TP?</a></li>
     <li><a href="#reglas" id="toc-reglas">Reglas</a></li>
-    <li><a href="#stack-del-mvp-lo-que-les-damos-cocinado"
-    id="toc-stack-del-mvp-lo-que-les-damos-cocinado">Stack del MVP (lo
-    que les damos cocinado)</a>
+    <li><a href="#stack-del-mvp-template-provisto"
+    id="toc-stack-del-mvp-template-provisto">Stack del MVP (template
+    provisto)</a>
     <ul>
     <li><a href="#contratos-contracts"
     id="toc-contratos-contracts">Contratos
@@ -196,9 +196,9 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
       <li><a href="#por-qué-este-tp" id="toc-por-qué-este-tp">¿Por qué
       este TP?</a></li>
       <li><a href="#reglas" id="toc-reglas">Reglas</a></li>
-      <li><a href="#stack-del-mvp-lo-que-les-damos-cocinado"
-      id="toc-stack-del-mvp-lo-que-les-damos-cocinado">Stack del MVP (lo
-      que les damos cocinado)</a>
+      <li><a href="#stack-del-mvp-template-provisto"
+      id="toc-stack-del-mvp-template-provisto">Stack del MVP (template
+      provisto)</a>
       <ul>
       <li><a href="#contratos-contracts"
       id="toc-contratos-contracts">Contratos
@@ -362,24 +362,25 @@ pública desplegada</td>
 </tbody>
 </table>
 <hr />
-<h2 id="stack-del-mvp-lo-que-les-damos-cocinado">Stack del MVP (lo que
-les damos cocinado)</h2>
-<p>Repositorio template:</p>
+<h2 id="stack-del-mvp-template-provisto">Stack del MVP (template
+provisto)</h2>
+<p>Repositorio base que se entrega como punto de partida:</p>
 <blockquote>
 <p><strong><code>dpetrocelli/diplo-unq-blockchain-tp-starter</code></strong></p>
 </blockquote>
-<p>Lo clonan, leen, ejecutan, lo entienden. Después extienden.</p>
+<p>Se clona, se lee, se ejecuta, se comprende. Recién después se
+extiende.</p>
 <h3 id="contratos-contracts">Contratos (<code>contracts/</code>)</h3>
 <ul>
-<li><strong>Foundry</strong> (Forge + Anvil + Cast) — ya lo dominan
-desde clase 2.</li>
+<li><strong>Foundry</strong> (Forge + Anvil + Cast) — herramienta ya
+trabajada en clase 2.</li>
 <li><code>Diploma.sol</code> — ERC-721 con <code>ERC721URIStorage</code>
 y <code>Ownable</code> de OpenZeppelin.</li>
 <li>Una sola función relevante:
 <code>mint(address student, string uri)</code> con
 <code>onlyOwner</code>.</li>
-<li>3 tests en <code>test/Diploma.t.sol</code>: mint feliz, mint sin
-permiso revierte, balance correcto.</li>
+<li>3 tests en <code>test/Diploma.t.sol</code>: mint exitoso, mint sin
+permisos (revierte), balance correcto post-mint.</li>
 <li>Script <code>script/Deploy.s.sol</code> para desplegar a
 Sepolia.</li>
 <li><code>forge test</code> pasa, <code>forge coverage</code> reporta el
@@ -404,8 +405,8 @@ RainbowKit</strong>.</li>
 <li>Form de mint protegido por owner.</li>
 <li>Lista de NFTs del wallet conectado leyendo eventos
 <code>DiplomaIssued</code> con <code>useWatchContractEvent</code>.</li>
-<li>Metadata harcodeada en <code>/public/metadata/N.json</code> (a
-propósito: para que la mejoren ustedes).</li>
+<li>Metadata hardcodeada en <code>/public/metadata/N.json</code>
+(intencional: queda como punto de extensión hacia IPFS).</li>
 </ul>
 <h3 id="red">Red</h3>
 <ul>
@@ -575,7 +576,7 @@ despliegue hasta el actual.</li>
 <li>Los persiste en una tabla
 <code>events(token_id, student, uri, block_number, tx_hash, created_at)</code>.</li>
 <li>Continúa escuchando nuevos eventos en tiempo real (polling cada N
-segundos o <code>eth_subscribe</code> si se animan a WebSockets).</li>
+segundos o <code>eth_subscribe</code> si optan por WebSockets).</li>
 </ul></li>
 <li>Agregar endpoints:
 <ul>
@@ -588,11 +589,12 @@ RPC).</li>
 ahorraron</strong> (medir antes y después).</li>
 </ol>
 <p><strong>Por qué importa</strong>:</p>
-<p>Pegarle al RPC en cada request <strong>no escala</strong>. Cada
-llamada cuesta latencia (200-500ms) y, en Alchemy/Infura free tier, te
-quedás sin créditos rápido. La <strong>separación entre indexación y
-consulta</strong> es lo que hace <strong>The Graph</strong> en
-producción — ustedes están armando una versión chiquita.</p>
+<p>Llamar al RPC en cada request <strong>no escala</strong>. Cada
+invocación implica latencia (200-500ms) y, en los planes gratuitos de
+Alchemy / Infura, los créditos se agotan rápidamente. La
+<strong>separación entre indexación y consulta</strong> es lo que
+resuelve <strong>The Graph</strong> en producción — esta extensión
+implementa una versión reducida del mismo patrón.</p>
 <p><strong>Conceptos que aprenden</strong>:</p>
 <ul>
 <li>Por qué existe <strong>The Graph</strong> (lo que están haciendo a
@@ -674,7 +676,7 @@ mostrando:</p>
 <li>Si hicieron <code>/verify</code>: abrir la URL en otro browser sin
 wallet.</li>
 <li>Si hicieron Cache: mostrar que un
-<code>GET /credentials/owner/:address</code> devuelve sin pegar al
+<code>GET /credentials/owner/:address</code> resuelve sin invocar al
 RPC.</li>
 <li>Si hicieron Base Sepolia: cambiar de red en RainbowKit y mintear en
 la otra red.</li>
@@ -706,9 +708,10 @@ una explicando:
 <li>Qué archivos tocaron.</li>
 <li>Qué aprendieron.</li>
 </ul></li>
-<li><strong>Mapeo a la rúbrica</strong> abajo de todo: “Parte 1.1 → tal
-commit”, etc. <strong>Esto les ahorra puntos perdidos</strong> porque
-les marcamos qué buscar.</li>
+<li><strong>Mapeo a la rúbrica</strong> al final del documento: “Parte
+1.1 → commit X”, “Extensión A → archivo Y”, etc. <strong>Permite ubicar
+la evidencia de cada criterio durante la corrección</strong> y evita que
+se descuenten puntos por ítems que sí están entregados.</li>
 </ol>
 <hr />
 <h2 id="rúbrica-resumen">Rúbrica resumen</h2>
@@ -775,9 +778,10 @@ partes.</strong></td>
 </tbody>
 </table>
 <blockquote>
-<p>Si hacen las <strong>4 extensiones</strong> (no 3), suman <strong>+1
-de bonus</strong> sobre los 100. No es mucho — el incentivo real es
-aprender más, no la décima.</p>
+<p>Quienes implementen las <strong>4 extensiones</strong> suman
+<strong>+1 punto de bonus</strong> sobre los 100. El incentivo principal
+no es la diferencia numérica, sino el alcance técnico adicional
+cubierto.</p>
 </blockquote>
 <hr />
 <h2 id="fuera-de-alcance">Fuera de alcance</h2>
@@ -799,9 +803,9 @@ en el README — lo vamos a leer y comentar, pero no afecta la nota.</p>
 <hr />
 <h2 id="preguntas-frecuentes">Preguntas frecuentes</h2>
 <p><strong>¿Las 3 extensiones tienen que ser un combo
-específico?</strong> No. Cualquier combinación de 3 de las 4. Si tienen
-dudas de qué combo elegir, vengan a una clase de consulta — los
-orientamos según el perfil de cada uno.</p>
+específico?</strong> No. Cualquier combinación de 3 de las 4 es válida.
+Ante dudas sobre qué combinación elegir, pueden consultarlo en las
+clases de consulta y se orienta según el perfil del grupo.</p>
 <p><strong>¿Puedo entregar individual y que mi compañero entregue otro
 TP por su cuenta?</strong> Sí. Pero si entregan en pareja, <strong>ambos
 tienen que poder defender ambas partes</strong>. Si uno hizo solo el

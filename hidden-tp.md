@@ -45,20 +45,20 @@ UNQ tiene ~11.000 estudiantes activos y 18 carreras. **No están haciendo un toy
 
 ---
 
-## Stack del MVP (lo que les damos cocinado)
+## Stack del MVP (template provisto)
 
-Repositorio template:
+Repositorio base que se entrega como punto de partida:
 
 > **`dpetrocelli/diplo-unq-blockchain-tp-starter`**
 
-Lo clonan, leen, ejecutan, lo entienden. Después extienden.
+Se clona, se lee, se ejecuta, se comprende. Recién después se extiende.
 
 ### Contratos (`contracts/`)
 
-- **Foundry** (Forge + Anvil + Cast) — ya lo dominan desde clase 2.
+- **Foundry** (Forge + Anvil + Cast) — herramienta ya trabajada en clase 2.
 - `Diploma.sol` — ERC-721 con `ERC721URIStorage` y `Ownable` de OpenZeppelin.
 - Una sola función relevante: `mint(address student, string uri)` con `onlyOwner`.
-- 3 tests en `test/Diploma.t.sol`: mint feliz, mint sin permiso revierte, balance correcto.
+- 3 tests en `test/Diploma.t.sol`: mint exitoso, mint sin permisos (revierte), balance correcto post-mint.
 - Script `script/Deploy.s.sol` para desplegar a Sepolia.
 - `forge test` pasa, `forge coverage` reporta el baseline.
 
@@ -75,7 +75,7 @@ Lo clonan, leen, ejecutan, lo entienden. Después extienden.
 - `ConnectButton` de RainbowKit.
 - Form de mint protegido por owner.
 - Lista de NFTs del wallet conectado leyendo eventos `DiplomaIssued` con `useWatchContractEvent`.
-- Metadata harcodeada en `/public/metadata/N.json` (a propósito: para que la mejoren ustedes).
+- Metadata hardcodeada en `/public/metadata/N.json` (intencional: queda como punto de extensión hacia IPFS).
 
 ### Red
 
@@ -195,7 +195,7 @@ Esa separación entre **rol emisor** (decano con wallet) y **rol verificador** (
 2. Agregar un **worker** en la API que:
    - Lee los eventos `DiplomaIssued` desde el bloque del despliegue hasta el actual.
    - Los persiste en una tabla `events(token_id, student, uri, block_number, tx_hash, created_at)`.
-   - Continúa escuchando nuevos eventos en tiempo real (polling cada N segundos o `eth_subscribe` si se animan a WebSockets).
+   - Continúa escuchando nuevos eventos en tiempo real (polling cada N segundos o `eth_subscribe` si optan por WebSockets).
 3. Agregar endpoints:
    - `GET /credentials/owner/:address` — lista de tokens emitidos a esa wallet, **leído del cache** (no del RPC).
    - `GET /events/recent?limit=10` — últimos N eventos.
@@ -203,7 +203,7 @@ Esa separación entre **rol emisor** (decano con wallet) y **rol verificador** (
 
 **Por qué importa**:
 
-Pegarle al RPC en cada request **no escala**. Cada llamada cuesta latencia (200-500ms) y, en Alchemy/Infura free tier, te quedás sin créditos rápido. La **separación entre indexación y consulta** es lo que hace **The Graph** en producción — ustedes están armando una versión chiquita.
+Llamar al RPC en cada request **no escala**. Cada invocación implica latencia (200-500ms) y, en los planes gratuitos de Alchemy / Infura, los créditos se agotan rápidamente. La **separación entre indexación y consulta** es lo que resuelve **The Graph** en producción — esta extensión implementa una versión reducida del mismo patrón.
 
 **Conceptos que aprenden**:
 
@@ -260,7 +260,7 @@ Migrar entre redes EVM-compatibles es una operación de **producción real**. Un
 4. **Las extensiones que eligieron en acción**:
    - Si hicieron Soulbound: intentar transferir → ver el revert.
    - Si hicieron `/verify`: abrir la URL en otro browser sin wallet.
-   - Si hicieron Cache: mostrar que un `GET /credentials/owner/:address` devuelve sin pegar al RPC.
+   - Si hicieron Cache: mostrar que un `GET /credentials/owner/:address` resuelve sin invocar al RPC.
    - Si hicieron Base Sepolia: cambiar de red en RainbowKit y mintear en la otra red.
 5. Mostrar el README explicando el por qué.
 
@@ -284,7 +284,7 @@ Tiene que cubrir, en orden:
    - Qué hicieron.
    - Qué archivos tocaron.
    - Qué aprendieron.
-5. **Mapeo a la rúbrica** abajo de todo: "Parte 1.1 → tal commit", etc. **Esto les ahorra puntos perdidos** porque les marcamos qué buscar.
+5. **Mapeo a la rúbrica** al final del documento: "Parte 1.1 → commit X", "Extensión A → archivo Y", etc. **Permite ubicar la evidencia de cada criterio durante la corrección** y evita que se descuenten puntos por ítems que sí están entregados.
 
 ---
 
@@ -303,7 +303,7 @@ Tiene que cubrir, en orden:
 | 3.2 — README final | 10 | Mapeo a rúbrica + decisiones documentadas |
 | **TOTAL** | **100** | **Pasa con 60+. Pareja: ambos defienden ambas partes.** |
 
-> Si hacen las **4 extensiones** (no 3), suman **+1 de bonus** sobre los 100. No es mucho — el incentivo real es aprender más, no la décima.
+> Quienes implementen las **4 extensiones** suman **+1 punto de bonus** sobre los 100. El incentivo principal no es la diferencia numérica, sino el alcance técnico adicional cubierto.
 
 ---
 
@@ -326,7 +326,7 @@ Si terminan temprano y quieren ir por más, agréguenlo y mencionenlo en el READ
 ## Preguntas frecuentes
 
 **¿Las 3 extensiones tienen que ser un combo específico?**
-No. Cualquier combinación de 3 de las 4. Si tienen dudas de qué combo elegir, vengan a una clase de consulta — los orientamos según el perfil de cada uno.
+No. Cualquier combinación de 3 de las 4 es válida. Ante dudas sobre qué combinación elegir, pueden consultarlo en las clases de consulta y se orienta según el perfil del grupo.
 
 **¿Puedo entregar individual y que mi compañero entregue otro TP por su cuenta?**
 Sí. Pero si entregan en pareja, **ambos tienen que poder defender ambas partes**. Si uno hizo solo el front y no entiende el contrato, baja la nota de los dos.
